@@ -15,7 +15,13 @@ namespace NJERJIM_Guide
         public Form1()
         {
             InitializeComponent();
+            InitializeData();
         }
-
+        private void InitializeData()
+        {
+            var db_helper = new DatabaseHelper();
+            var query = "select * from client";
+            db_helper.SetDataGridView(dataGridView1, query);
+        }
     }
 }
