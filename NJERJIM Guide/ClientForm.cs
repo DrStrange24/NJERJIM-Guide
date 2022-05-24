@@ -63,6 +63,7 @@ namespace NJERJIM_Guide
         private void backButton_Click(object sender, EventArgs e)
         {
             new MainMenu().Show();
+            this.Close();
         }
     }
 }
