@@ -46,6 +46,7 @@ namespace NJERJIM_Guide
             this.deleteButton = new System.Windows.Forms.Button();
             this.idLabel = new System.Windows.Forms.Label();
             this.selectedIdLabel = new System.Windows.Forms.Label();
+            this.backButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,7 +86,7 @@ namespace NJERJIM_Guide
             // addClientButton
             // 
             this.addClientButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.addClientButton.Location = new System.Drawing.Point(830, 489);
+            this.addClientButton.Location = new System.Drawing.Point(830, 216);
             this.addClientButton.Name = "addClientButton";
             this.addClientButton.Size = new System.Drawing.Size(75, 23);
             this.addClientButton.TabIndex = 3;
@@ -196,7 +197,7 @@ namespace NJERJIM_Guide
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.Location = new System.Drawing.Point(911, 489);
+            this.deleteButton.Location = new System.Drawing.Point(911, 216);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 14;
@@ -228,11 +229,23 @@ namespace NJERJIM_Guide
             this.selectedIdLabel.Text = "Selected ID";
             this.selectedIdLabel.Visible = false;
             // 
+            // backButton
+            // 
+            this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.backButton.Location = new System.Drawing.Point(911, 489);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 16;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.backButton);
             this.Controls.Add(this.selectedIdLabel);
             this.Controls.Add(this.idLabel);
             this.Controls.Add(this.deleteButton);
@@ -277,6 +290,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.Label selectedIdLabel;
+        private System.Windows.Forms.Button backButton;
     }
 }
 

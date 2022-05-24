@@ -59,5 +59,10 @@ namespace NJERJIM_Guide
             idLabel.Visible = true;
             selectedIdLabel.Visible = true;
         }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            new MainMenu().Show();
+        }
     }
 }
