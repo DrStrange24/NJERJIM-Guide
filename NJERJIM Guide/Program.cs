@@ -8,6 +8,7 @@ namespace NJERJIM_Guide
 {
     static class Program
     {
+        internal static MainMenu MainMenuForm { get; private set; }
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -17,7 +18,8 @@ namespace NJERJIM_Guide
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenu());
+            MainMenuForm = new MainMenu();
+            Application.Run(MainMenuForm);
         }
     }
 }

@@ -20,19 +20,19 @@ namespace NJERJIM_Guide
         private void clientButton_Click(object sender, EventArgs e)
         {
             new Client().Show();
-            this.Close();
+            this.Hide();
         }
 
         private void loanButton_Click(object sender, EventArgs e)
         {
             new Loan().Show();
-            this.Close();
+            this.Hide();
         }
 
         private void collectionButton_Click(object sender, EventArgs e)
         {
             new CollectionForm().Show();
-            this.Close();
+            this.Hide();
         }
     }
 }
