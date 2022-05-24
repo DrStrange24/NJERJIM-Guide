@@ -47,7 +47,6 @@ namespace NJERJIM_Guide
         private void deleteButton_Click(object sender, EventArgs e)
         {
             var db_helper = new DatabaseHelper();
-            Trace.WriteLine($"DELETE FROM {DTLoan.TableName} WHERE {DTLoan.Id}={selectedIdLabel.Text};");
             db_helper.Manipulate($"DELETE FROM {DTLoan.TableName} WHERE {DTLoan.Id}={selectedIdLabel.Text};");
             SetDGV();
         }
