@@ -70,11 +70,6 @@ namespace NJERJIM_Guide
             Command.Dispose();
             Connection.Close();
         }
-        internal static string String(string value)
-        {
-            //Convert the value to database string
-            return "'" + value + "'";
-        }
         internal static string MDFToDDF(DateTime dateTime)
         {
             //"My DateTime Format" To "Database Datetime"
