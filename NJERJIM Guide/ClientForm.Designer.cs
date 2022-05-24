@@ -44,6 +44,8 @@ namespace NJERJIM_Guide
             this.contactNumberTextBox = new System.Windows.Forms.TextBox();
             this.contactNumberLabel = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.idLabel = new System.Windows.Forms.Label();
+            this.selectedIdLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,6 +59,7 @@ namespace NJERJIM_Guide
             this.clientDataGridView.RowTemplate.Height = 25;
             this.clientDataGridView.Size = new System.Drawing.Size(554, 419);
             this.clientDataGridView.TabIndex = 0;
+            this.clientDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientDataGridView_CellClick);
             // 
             // firstNameLabel
             // 
@@ -212,11 +215,39 @@ namespace NJERJIM_Guide
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // idLabel
+            // 
+            this.idLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.idLabel.AutoSize = true;
+            this.idLabel.Location = new System.Drawing.Point(625, 53);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(17, 15);
+            this.idLabel.TabIndex = 15;
+            this.idLabel.Text = "Id";
+            this.idLabel.Visible = false;
+            // 
+            // selectedIDLabel
+            // 
+            this.selectedIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.selectedIdLabel.AutoSize = true;
+            this.selectedIdLabel.Location = new System.Drawing.Point(756, 53);
+            this.selectedIdLabel.Name = "selectedIDLabel";
+            this.selectedIdLabel.Size = new System.Drawing.Size(65, 15);
+            this.selectedIdLabel.TabIndex = 15;
+            this.selectedIdLabel.Text = "Selected ID";
+            this.selectedIdLabel.Visible = false;
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 443);
+            this.Controls.Add(this.selectedIdLabel);
+            this.Controls.Add(this.idLabel);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.addressTextBox);
             this.Controls.Add(this.addressLabel);
@@ -257,6 +288,8 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.TextBox contactNumberTextBox;
         private System.Windows.Forms.Label contactNumberLabel;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Label idLabel;
+        private System.Windows.Forms.Label selectedIdLabel;
     }
 }
 
