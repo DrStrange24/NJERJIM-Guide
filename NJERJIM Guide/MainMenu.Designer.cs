@@ -56,6 +56,7 @@ namespace NJERJIM_Guide
             this.loanButton.TabIndex = 1;
             this.loanButton.Text = "Loan";
             this.loanButton.UseVisualStyleBackColor = true;
+            this.loanButton.Click += new System.EventHandler(this.loanButton_Click);
             // 
             // collectionButton
             // 
@@ -67,6 +68,7 @@ namespace NJERJIM_Guide
             this.collectionButton.TabIndex = 2;
             this.collectionButton.Text = "Collection";
             this.collectionButton.UseVisualStyleBackColor = true;
+            this.collectionButton.Click += new System.EventHandler(this.collectionButton_Click);
             // 
             // MainMenu
             // 

@@ -21,5 +21,15 @@ namespace NJERJIM_Guide
         {
             new Client().Show();
         }
+
+        private void loanButton_Click(object sender, EventArgs e)
+        {
+            new LoanForm().Show();
+        }
+
+        private void collectionButton_Click(object sender, EventArgs e)
+        {
+            new CollectionForm().Show();
+        }
     }
 }
