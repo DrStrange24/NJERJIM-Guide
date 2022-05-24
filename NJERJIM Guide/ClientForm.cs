@@ -21,7 +21,7 @@ namespace NJERJIM_Guide
         {
             var db_helper = new DatabaseHelper();
             var query = "select * from client";
-            db_helper.SetDataGridView(dataGridView1, query);
+            db_helper.SetDataGridView(clientDataGridView, query);
         }
     }
 }
