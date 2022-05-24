@@ -67,7 +67,7 @@ namespace NJERJIM_Guide
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.firstNameLabel.AutoSize = true;
-            this.firstNameLabel.Location = new System.Drawing.Point(625, 86);
+            this.firstNameLabel.Location = new System.Drawing.Point(585, 45);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(64, 15);
             this.firstNameLabel.TabIndex = 1;
@@ -78,7 +78,7 @@ namespace NJERJIM_Guide
             this.firstNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.firstNameTextBox.Location = new System.Drawing.Point(756, 83);
+            this.firstNameTextBox.Location = new System.Drawing.Point(716, 42);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(240, 23);
             this.firstNameTextBox.TabIndex = 2;
@@ -99,7 +99,7 @@ namespace NJERJIM_Guide
             this.middleNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.middleNameTextBox.Location = new System.Drawing.Point(756, 112);
+            this.middleNameTextBox.Location = new System.Drawing.Point(716, 71);
             this.middleNameTextBox.Name = "middleNameTextBox";
             this.middleNameTextBox.Size = new System.Drawing.Size(240, 23);
             this.middleNameTextBox.TabIndex = 5;
@@ -110,7 +110,7 @@ namespace NJERJIM_Guide
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.middleNameLabel.AutoSize = true;
-            this.middleNameLabel.Location = new System.Drawing.Point(625, 115);
+            this.middleNameLabel.Location = new System.Drawing.Point(585, 74);
             this.middleNameLabel.Name = "middleNameLabel";
             this.middleNameLabel.Size = new System.Drawing.Size(79, 15);
             this.middleNameLabel.TabIndex = 4;
@@ -121,7 +121,7 @@ namespace NJERJIM_Guide
             this.lastNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lastNameTextBox.Location = new System.Drawing.Point(756, 141);
+            this.lastNameTextBox.Location = new System.Drawing.Point(716, 100);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(240, 23);
             this.lastNameTextBox.TabIndex = 7;
@@ -132,7 +132,7 @@ namespace NJERJIM_Guide
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lastNameLabel.AutoSize = true;
-            this.lastNameLabel.Location = new System.Drawing.Point(625, 144);
+            this.lastNameLabel.Location = new System.Drawing.Point(585, 103);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(63, 15);
             this.lastNameLabel.TabIndex = 6;
@@ -143,7 +143,7 @@ namespace NJERJIM_Guide
             this.sexTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sexTextBox.Location = new System.Drawing.Point(756, 170);
+            this.sexTextBox.Location = new System.Drawing.Point(716, 129);
             this.sexTextBox.Name = "sexTextBox";
             this.sexTextBox.Size = new System.Drawing.Size(240, 23);
             this.sexTextBox.TabIndex = 9;
@@ -154,7 +154,7 @@ namespace NJERJIM_Guide
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sexLabel.AutoSize = true;
-            this.sexLabel.Location = new System.Drawing.Point(625, 173);
+            this.sexLabel.Location = new System.Drawing.Point(585, 132);
             this.sexLabel.Name = "sexLabel";
             this.sexLabel.Size = new System.Drawing.Size(25, 15);
             this.sexLabel.TabIndex = 8;
@@ -165,7 +165,7 @@ namespace NJERJIM_Guide
             this.addressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.addressTextBox.Location = new System.Drawing.Point(756, 228);
+            this.addressTextBox.Location = new System.Drawing.Point(716, 187);
             this.addressTextBox.Name = "addressTextBox";
             this.addressTextBox.Size = new System.Drawing.Size(240, 23);
             this.addressTextBox.TabIndex = 13;
@@ -176,7 +176,7 @@ namespace NJERJIM_Guide
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.addressLabel.AutoSize = true;
-            this.addressLabel.Location = new System.Drawing.Point(625, 231);
+            this.addressLabel.Location = new System.Drawing.Point(585, 190);
             this.addressLabel.Name = "addressLabel";
             this.addressLabel.Size = new System.Drawing.Size(49, 15);
             this.addressLabel.TabIndex = 12;
@@ -187,7 +187,7 @@ namespace NJERJIM_Guide
             this.contactNumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.contactNumberTextBox.Location = new System.Drawing.Point(756, 199);
+            this.contactNumberTextBox.Location = new System.Drawing.Point(716, 158);
             this.contactNumberTextBox.Name = "contactNumberTextBox";
             this.contactNumberTextBox.Size = new System.Drawing.Size(240, 23);
             this.contactNumberTextBox.TabIndex = 11;
@@ -198,7 +198,7 @@ namespace NJERJIM_Guide
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.contactNumberLabel.AutoSize = true;
-            this.contactNumberLabel.Location = new System.Drawing.Point(625, 202);
+            this.contactNumberLabel.Location = new System.Drawing.Point(585, 161);
             this.contactNumberLabel.Name = "contactNumberLabel";
             this.contactNumberLabel.Size = new System.Drawing.Size(96, 15);
             this.contactNumberLabel.TabIndex = 10;
@@ -221,21 +221,21 @@ namespace NJERJIM_Guide
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(625, 53);
+            this.idLabel.Location = new System.Drawing.Point(585, 12);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(17, 15);
             this.idLabel.TabIndex = 15;
             this.idLabel.Text = "Id";
             this.idLabel.Visible = false;
             // 
-            // selectedIDLabel
+            // selectedIdLabel
             // 
             this.selectedIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.selectedIdLabel.AutoSize = true;
-            this.selectedIdLabel.Location = new System.Drawing.Point(756, 53);
-            this.selectedIdLabel.Name = "selectedIDLabel";
+            this.selectedIdLabel.Location = new System.Drawing.Point(716, 12);
+            this.selectedIdLabel.Name = "selectedIdLabel";
             this.selectedIdLabel.Size = new System.Drawing.Size(65, 15);
             this.selectedIdLabel.TabIndex = 15;
             this.selectedIdLabel.Text = "Selected ID";
