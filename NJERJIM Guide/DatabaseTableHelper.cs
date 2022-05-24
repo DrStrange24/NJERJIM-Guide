@@ -9,41 +9,41 @@ namespace NJERJIM_Guide
     //DT stands for Database Table
     static class DTClient
     {
-        static readonly string TableName = "[client]";
+        internal static readonly string TableName = "[client]";
 
-        static readonly string Id = TableName + ".[Id]";
-        static readonly string FirstName = TableName + ".[first_name]";
-        static readonly string MiddleName = TableName + ".[middle_name]";
-        static readonly string LastName = TableName + ".[last_name]";
-        static readonly string Sex = TableName + ".[sex]";
-        static readonly string ContactNumber = TableName + ".[contact_number]";
-        static readonly string Addess = TableName + ".[address]";
+        internal static readonly string Id = TableName + ".[Id]";
+        internal static readonly string FirstName = TableName + ".[first_name]";
+        internal static readonly string MiddleName = TableName + ".[middle_name]";
+        internal static readonly string LastName = TableName + ".[last_name]";
+        internal static readonly string Sex = TableName + ".[sex]";
+        internal static readonly string ContactNumber = TableName + ".[contact_number]";
+        internal static readonly string Addess = TableName + ".[address]";
     }
     static class DTLoan
     {
-        static readonly string TableName = "[loan]";
+        internal static readonly string TableName = "[loan]";
 
-        static readonly string Id = TableName + ".[Id]";
-        static readonly string ClientId = TableName + ".[client_id]";
-        static readonly string Amount = TableName + ".[amount]";
-        static readonly string DateTime = TableName + ".[datetime]";
+        internal static readonly string Id = TableName + ".[Id]";
+        internal static readonly string ClientId = TableName + ".[client_id]";
+        internal static readonly string Amount = TableName + ".[amount]";
+        internal static readonly string DateTime = TableName + ".[datetime]";
     }
     static class DTCollection
     {
-        static readonly string TableName = "[collection]";
+        internal static readonly string TableName = "[collection]";
 
-        static readonly string Id = TableName + ".[Id]";
-        static readonly string LoanId = TableName + ".[loan_id]";
-        static readonly string Amount = TableName + ".[amount]";
-        static readonly string DateTime = TableName + ".[datetime]";
+        internal static readonly string Id = TableName + ".[Id]";
+        internal static readonly string LoanId = TableName + ".[loan_id]";
+        internal static readonly string Amount = TableName + ".[amount]";
+        internal static readonly string DateTime = TableName + ".[datetime]";
     }
     static class DTTransaction
     {
-        static readonly string TableName = "[transaction]";
+        internal static readonly string TableName = "[transaction]";
 
-        static readonly string Id = TableName + ".[Id]";
-        static readonly string Type = TableName + ".[type]";
-        static readonly string Amount = TableName + ".[amount]";
-        static readonly string DateTime = TableName + ".[datetime]";
+        internal static readonly string Id = TableName + ".[Id]";
+        internal static readonly string Type = TableName + ".[type]";
+        internal static readonly string Amount = TableName + ".[amount]";
+        internal static readonly string DateTime = TableName + ".[datetime]";
     }
 }
