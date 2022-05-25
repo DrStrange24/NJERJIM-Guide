@@ -26,7 +26,7 @@ namespace NJERJIM_Guide
         private void SetDGV()
         {
             var db_helper = new DatabaseHelper();
-            var query = "select * from loan";
+            var query = $"select * from {DTLoan.TableName} order by {DTLoan.DateTime} desc;";
             db_helper.SetDataGridView(loanDataGridView, query);
         }
 
@@ -62,6 +62,11 @@ namespace NJERJIM_Guide
 
             idLabel.Visible = true;
             selectedIdLabel.Visible = true;
+        }
+
+        private void dateTimeTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) addButton_Click(null, null);
         }
     }
 }
