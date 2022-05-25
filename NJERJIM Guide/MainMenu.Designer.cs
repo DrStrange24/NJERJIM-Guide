@@ -32,6 +32,7 @@ namespace NJERJIM_Guide
             this.clientButton = new System.Windows.Forms.Button();
             this.loanButton = new System.Windows.Forms.Button();
             this.collectionButton = new System.Windows.Forms.Button();
+            this.transactionButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // clientButton
@@ -70,11 +71,24 @@ namespace NJERJIM_Guide
             this.collectionButton.UseVisualStyleBackColor = true;
             this.collectionButton.Click += new System.EventHandler(this.collectionButton_Click);
             // 
+            // transactionButton
+            // 
+            this.transactionButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.transactionButton.Location = new System.Drawing.Point(146, 161);
+            this.transactionButton.Name = "transactionButton";
+            this.transactionButton.Size = new System.Drawing.Size(109, 23);
+            this.transactionButton.TabIndex = 3;
+            this.transactionButton.Text = "Transaction";
+            this.transactionButton.UseVisualStyleBackColor = true;
+            this.transactionButton.Click += new System.EventHandler(this.transactionButton_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(428, 271);
+            this.Controls.Add(this.transactionButton);
             this.Controls.Add(this.collectionButton);
             this.Controls.Add(this.loanButton);
             this.Controls.Add(this.clientButton);
@@ -89,5 +103,6 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Button clientButton;
         private System.Windows.Forms.Button loanButton;
         private System.Windows.Forms.Button collectionButton;
+        private System.Windows.Forms.Button transactionButton;
     }
 }

@@ -34,5 +34,11 @@ namespace NJERJIM_Guide
             new CollectionForm().Show();
             this.Hide();
         }
+
+        private void transactionButton_Click(object sender, EventArgs e)
+        {
+            new Transaction().Show();
+            this.Hide();
+        }
     }
 }
