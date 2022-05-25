@@ -25,7 +25,7 @@ namespace NJERJIM_Guide
         private void SetDGV()
         {
             var db_helper = new DatabaseHelper();
-            var query = $"select * from {DTCollection.TableName}";
+            var query = $"select * from {DTCollection.TableName} order by {DTCollection.DateTime} desc;";
             db_helper.SetDataGridView(collectionDataGridView, query);
         } 
         private void addButton_Click(object sender, EventArgs e)
