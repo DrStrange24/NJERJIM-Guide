@@ -40,5 +40,16 @@ namespace NJERJIM_Guide
             new Transaction().Show();
             this.Hide();
         }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void summaryButton_Click(object sender, EventArgs e)
+        {
+            new SummaryForm().Show();
+            this.Hide();
+        }
     }
 }
