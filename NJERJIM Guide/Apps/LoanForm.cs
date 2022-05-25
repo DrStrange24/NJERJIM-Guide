@@ -53,15 +53,18 @@ namespace NJERJIM_Guide
 
         private void loanDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var selectedRow = loanDataGridView.Rows[e.RowIndex].Cells;
+            if (e.RowIndex>=0)
+            {
+                var selectedRow = loanDataGridView.Rows[e.RowIndex].Cells;
 
-            selectedIdLabel.Text = selectedRow[0].Value.ToString();
-            clientIdTextBox.Text = selectedRow[1].Value.ToString();
-            amountTextBox.Text = selectedRow[2].Value.ToString();
-            dateTimeTextBox.Text = selectedRow[3].Value.ToString();
+                selectedIdLabel.Text = selectedRow[0].Value.ToString();
+                clientIdTextBox.Text = selectedRow[1].Value.ToString();
+                amountTextBox.Text = selectedRow[2].Value.ToString();
+                dateTimeTextBox.Text = selectedRow[3].Value.ToString();
 
-            idLabel.Visible = true;
-            selectedIdLabel.Visible = true;
+                idLabel.Visible = true;
+                selectedIdLabel.Visible = true;
+            }
         }
 
         private void dateTimeTextBox_KeyDown(object sender, KeyEventArgs e)
