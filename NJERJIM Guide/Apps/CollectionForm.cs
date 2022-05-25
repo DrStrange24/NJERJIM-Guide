@@ -51,15 +51,23 @@ namespace NJERJIM_Guide
 
         private void collectionDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var selectedRow = collectionDataGridView.Rows[e.RowIndex].Cells;
+            if (e.RowIndex>=0)
+            {
+                var selectedRow = collectionDataGridView.Rows[e.RowIndex].Cells;
 
-            selectedIdLabel.Text = selectedRow[0].Value.ToString();
-            loanIdTextBox.Text = selectedRow[1].Value.ToString();
-            amountTextBox.Text = selectedRow[2].Value.ToString();
-            dateTimeTextBox.Text = selectedRow[3].Value.ToString();
+                selectedIdLabel.Text = selectedRow[0].Value.ToString();
+                loanIdTextBox.Text = selectedRow[1].Value.ToString();
+                amountTextBox.Text = selectedRow[2].Value.ToString();
+                dateTimeTextBox.Text = selectedRow[3].Value.ToString();
 
-            idLabel.Visible = true;
-            selectedIdLabel.Visible = true;
+                idLabel.Visible = true;
+                selectedIdLabel.Visible = true;
+            }
+        }
+
+        private void addCollectionTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) addButton_Click(null, null);
         }
     }
 }
