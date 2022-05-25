@@ -121,6 +121,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.loanButton);
             this.Controls.Add(this.clientButton);
             this.Name = "MainMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainMenu";
             this.ResumeLayout(false);
 
