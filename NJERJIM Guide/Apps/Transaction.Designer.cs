@@ -98,6 +98,7 @@ namespace NJERJIM_Guide
             this.dateTimeTextBox.Name = "dateTimeTextBox";
             this.dateTimeTextBox.Size = new System.Drawing.Size(280, 23);
             this.dateTimeTextBox.TabIndex = 54;
+            this.dateTimeTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addTransactionTextBox_KeyDown);
             // 
             // DateTimeLabel
             // 
@@ -118,6 +119,7 @@ namespace NJERJIM_Guide
             this.amountTextBox.Name = "amountTextBox";
             this.amountTextBox.Size = new System.Drawing.Size(280, 23);
             this.amountTextBox.TabIndex = 52;
+            this.amountTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addTransactionTextBox_KeyDown);
             // 
             // amountLabel
             // 
@@ -149,6 +151,7 @@ namespace NJERJIM_Guide
             this.typeTextBox.Name = "typeTextBox";
             this.typeTextBox.Size = new System.Drawing.Size(280, 23);
             this.typeTextBox.TabIndex = 49;
+            this.typeTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addTransactionTextBox_KeyDown);
             // 
             // typeLabel
             // 

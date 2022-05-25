@@ -25,7 +25,7 @@ namespace NJERJIM_Guide
         private void SetDGV()
         {
             var db_helper = new DatabaseHelper();
-            var query = $"select * from {DTTransaction.TableName}";
+            var query = $"select * from {DTTransaction.TableName} order by {DTTransaction.DateTime} desc;";
             db_helper.SetDataGridView(transactionDataGridView, query);
         }
         private void addButton_Click(object sender, EventArgs e)
@@ -60,6 +60,11 @@ namespace NJERJIM_Guide
 
             idLabel.Visible = true;
             selectedIdLabel.Visible = true;
+        }
+
+        private void addTransactionTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode==Keys.Enter) addButton_Click(null,null);
         }
     }
 }
