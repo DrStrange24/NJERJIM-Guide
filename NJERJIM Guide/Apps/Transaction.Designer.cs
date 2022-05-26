@@ -188,7 +188,6 @@ namespace NJERJIM_Guide
             this.totalDepositValueLabel.Name = "totalDepositValueLabel";
             this.totalDepositValueLabel.Size = new System.Drawing.Size(0, 15);
             this.totalDepositValueLabel.TabIndex = 60;
-            this.totalDepositValueLabel.Visible = false;
             // 
             // totalDepositLabel
             // 
@@ -200,7 +199,6 @@ namespace NJERJIM_Guide
             this.totalDepositLabel.Size = new System.Drawing.Size(75, 15);
             this.totalDepositLabel.TabIndex = 59;
             this.totalDepositLabel.Text = "Total Deposit";
-            this.totalDepositLabel.Visible = false;
             // 
             // Transaction
             // 
