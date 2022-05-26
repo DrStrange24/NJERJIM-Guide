@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -15,40 +16,13 @@ namespace NJERJIM_Guide.Apps
             var db_helper = new DatabaseHelper();
 
             var transaction = db_helper.GetData($"select * from {DTTransaction.TableName} order by {DTTransaction.DateTime} desc;");
-            var transactions = new List<TransactionData>();
-            for (int i = 0; i < transaction.Rows.Count; i++)
-            {
-                var temp_data = new TransactionData();
-                temp_data.Id = Convert.ToInt32(transaction.Rows[i][0]);
-                temp_data.Type = (TransactionType)transaction.Rows[i][1];
-                temp_data.Amount = Convert.ToDouble(transaction.Rows[i][2]);
-                temp_data.DateTime = Convert.ToString(transaction.Rows[i][3]);
-                transactions.Add(temp_data);
-            }
+            var transactions = TransactionData.GetList(transaction);
 
             var loan = db_helper.GetData($"select * from {DTLoan.TableName} order by {DTLoan.DateTime} desc;");
-            var loans = new List<LoanData>();
-            for (int i = 0; i < loan.Rows.Count; i++)
-            {
-                var temp_data = new LoanData();
-                temp_data.Id = Convert.ToInt32(loan.Rows[i][0]);
-                temp_data.ClientId = Convert.ToInt32(loan.Rows[i][1]);
-                temp_data.Amount = Convert.ToDouble(loan.Rows[i][2]);
-                temp_data.DateTime = Convert.ToString(loan.Rows[i][3]);
-                loans.Add(temp_data);
-            }
+            var loans = LoanData.GetList(loan);
 
             var collection = db_helper.GetData($"select * from {DTCollection.TableName} order by {DTCollection.DateTime} desc;");
-            var collections = new List<CollectionData>();
-            for (int i = 0; i < collection.Rows.Count; i++)
-            {
-                var temp_data = new CollectionData();
-                temp_data.Id = Convert.ToInt32(collection.Rows[i][0]);
-                temp_data.LoadId = Convert.ToInt32(collection.Rows[i][1]);
-                temp_data.Amount = Convert.ToDouble(collection.Rows[i][2]);
-                temp_data.DateTime = Convert.ToString(collection.Rows[i][3]);
-                collections.Add(temp_data);
-            }
+            var collections = CollectionData.GetList(collection);
 
             var starting_date = transaction.Rows[transaction.Rows.Count - 1][3];
             var current_date = Convert.ToDateTime(starting_date);
@@ -163,6 +137,30 @@ namespace NJERJIM_Guide.Apps
             {
                 return Convert.ToDateTime(this.DateTime);
             }
+            internal static List<TransactionData> GetList(DataTable data)
+            {
+                var list = new List<TransactionData>();
+                for (int i = 0; i < data.Rows.Count; i++)
+                {
+                    var temp_data = new TransactionData();
+                    temp_data.Id = Convert.ToInt32(data.Rows[i][0]);
+                    temp_data.Type = (TransactionType)data.Rows[i][1];
+                    temp_data.Amount = Convert.ToDouble(data.Rows[i][2]);
+                    temp_data.DateTime = Convert.ToString(data.Rows[i][3]);
+                    list.Add(temp_data);
+                }
+                return list;
+            }
+            internal static double TotalDeposit(List<TransactionData> transactionList)
+            {
+                double amount = 0;
+                foreach(var transaction in transactionList)
+                {
+                    if (transaction.Type == TransactionType.Deposit)
+                        amount += transaction.Amount;
+                }
+                return amount;
+            }
         }
         internal struct LoanData
         {
@@ -179,21 +177,49 @@ namespace NJERJIM_Guide.Apps
             {
                 return Convert.ToDateTime(this.DateTime);
             }
+            internal static List<LoanData> GetList(DataTable data)
+            {
+                var list = new List<LoanData>();
+                for (int i = 0; i < data.Rows.Count; i++)
+                {
+                    var temp_data = new LoanData();
+                    temp_data.Id = Convert.ToInt32(data.Rows[i][0]);
+                    temp_data.ClientId = Convert.ToInt32(data.Rows[i][1]);
+                    temp_data.Amount = Convert.ToDouble(data.Rows[i][2]);
+                    temp_data.DateTime = Convert.ToString(data.Rows[i][3]);
+                    list.Add(temp_data);
+                }
+                return list;
+            }
         }
         internal struct CollectionData
         {
             internal int Id { get; set; }
-            internal int LoadId { get; set; }
+            internal int LoanId { get; set; }
             internal double Amount { get; set; }
             internal string DateTime { get; set; }
             //for testing
             internal void Print()
             {
-                Trace.WriteLine($"{this.Id}:{this.LoadId}:{this.Amount}:{this.DateTime}");
+                Trace.WriteLine($"{this.Id}:{this.LoanId}:{this.Amount}:{this.DateTime}");
             }
             internal DateTime GetDateTime()
             {
                 return Convert.ToDateTime(this.DateTime);
+            }
+            internal static List<CollectionData> GetList(DataTable data)
+            {
+                var list = new List<CollectionData>();
+                for (int i = 0; i < data.Rows.Count; i++)
+                {
+                    var temp_data = new CollectionData();
+                    temp_data.Id = Convert.ToInt32(data.Rows[i][0]);
+                    temp_data.LoanId = Convert.ToInt32(data.Rows[i][1]);
+                    temp_data.Amount = Convert.ToDouble(data.Rows[i][2]);
+                    temp_data.DateTime = Convert.ToString(data.Rows[i][3]);
+                    list.Add(temp_data);
+                }
+                return list;
             }
         }
     }
