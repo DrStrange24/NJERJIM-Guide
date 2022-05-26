@@ -41,6 +41,8 @@ namespace NJERJIM_Guide
             this.loanIdTextBox = new System.Windows.Forms.TextBox();
             this.loanIdLabel = new System.Windows.Forms.Label();
             this.collectionDataGridView = new System.Windows.Forms.DataGridView();
+            this.totalCollectionLabel = new System.Windows.Forms.Label();
+            this.totalCollectionValueLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.collectionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,11 +179,34 @@ namespace NJERJIM_Guide
             this.collectionDataGridView.TabIndex = 35;
             this.collectionDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.collectionDataGridView_CellClick);
             // 
+            // totalCollectionLabel
+            // 
+            this.totalCollectionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalCollectionLabel.AutoSize = true;
+            this.totalCollectionLabel.Location = new System.Drawing.Point(575, 493);
+            this.totalCollectionLabel.Name = "totalCollectionLabel";
+            this.totalCollectionLabel.Size = new System.Drawing.Size(92, 15);
+            this.totalCollectionLabel.TabIndex = 47;
+            this.totalCollectionLabel.Text = "Total Collection:";
+            // 
+            // totalCollectionValueLabel
+            // 
+            this.totalCollectionValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalCollectionValueLabel.AutoSize = true;
+            this.totalCollectionValueLabel.Location = new System.Drawing.Point(706, 493);
+            this.totalCollectionValueLabel.Name = "totalCollectionValueLabel";
+            this.totalCollectionValueLabel.Size = new System.Drawing.Size(0, 15);
+            this.totalCollectionValueLabel.TabIndex = 48;
+            // 
             // CollectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.totalCollectionValueLabel);
+            this.Controls.Add(this.totalCollectionLabel);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.selectedIdLabel);
             this.Controls.Add(this.idLabel);
@@ -216,5 +241,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.TextBox loanIdTextBox;
         private System.Windows.Forms.Label loanIdLabel;
         private System.Windows.Forms.DataGridView collectionDataGridView;
+        private System.Windows.Forms.Label totalCollectionLabel;
+        private System.Windows.Forms.Label totalCollectionValueLabel;
     }
 }

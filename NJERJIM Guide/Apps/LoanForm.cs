@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NJERJIM_Guide.Apps;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static NJERJIM_Guide.Apps.SummaryHelper;
 
 namespace NJERJIM_Guide
 {
@@ -28,6 +30,9 @@ namespace NJERJIM_Guide
             var db_helper = new DatabaseHelper();
             var query = $"select * from {DTLoan.TableName} order by {DTLoan.DateTime} desc;";
             db_helper.SetDataGridView(loanDataGridView, query);
+
+            var data = db_helper.GetData($"select * from {DTLoan.TableName}");
+            totalLoanValueLabel.Text = CurrencyFormat.ToString(LoanData.TotalAmount(LoanData.GetList(data)));
         }
 
         private void backButton_Click(object sender, EventArgs e)

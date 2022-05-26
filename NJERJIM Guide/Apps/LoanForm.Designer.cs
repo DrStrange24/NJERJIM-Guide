@@ -41,6 +41,8 @@ namespace NJERJIM_Guide
             this.clientIdTextBox = new System.Windows.Forms.TextBox();
             this.clientIdLabel = new System.Windows.Forms.Label();
             this.loanDataGridView = new System.Windows.Forms.DataGridView();
+            this.totalLoanValueLabel = new System.Windows.Forms.Label();
+            this.totalLoanLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.loanDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,11 +179,34 @@ namespace NJERJIM_Guide
             this.loanDataGridView.TabIndex = 17;
             this.loanDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.loanDataGridView_CellClick);
             // 
+            // totalLoanValueLabel
+            // 
+            this.totalLoanValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalLoanValueLabel.AutoSize = true;
+            this.totalLoanValueLabel.Location = new System.Drawing.Point(706, 493);
+            this.totalLoanValueLabel.Name = "totalLoanValueLabel";
+            this.totalLoanValueLabel.Size = new System.Drawing.Size(0, 15);
+            this.totalLoanValueLabel.TabIndex = 50;
+            // 
+            // totalLoanLabel
+            // 
+            this.totalLoanLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalLoanLabel.AutoSize = true;
+            this.totalLoanLabel.Location = new System.Drawing.Point(575, 493);
+            this.totalLoanLabel.Name = "totalLoanLabel";
+            this.totalLoanLabel.Size = new System.Drawing.Size(64, 15);
+            this.totalLoanLabel.TabIndex = 49;
+            this.totalLoanLabel.Text = "Total Loan:";
+            // 
             // Loan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.totalLoanValueLabel);
+            this.Controls.Add(this.totalLoanLabel);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.selectedIdLabel);
             this.Controls.Add(this.idLabel);
@@ -216,5 +241,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.TextBox clientIdTextBox;
         private System.Windows.Forms.Label clientIdLabel;
         private System.Windows.Forms.DataGridView loanDataGridView;
+        private System.Windows.Forms.Label totalLoanValueLabel;
+        private System.Windows.Forms.Label totalLoanLabel;
     }
 }

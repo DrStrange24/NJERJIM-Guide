@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NJERJIM_Guide.Apps;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static NJERJIM_Guide.Apps.SummaryHelper;
 
 namespace NJERJIM_Guide
 {
@@ -27,6 +29,9 @@ namespace NJERJIM_Guide
             var db_helper = new DatabaseHelper();
             var query = $"select * from {DTCollection.TableName} order by {DTCollection.DateTime} desc;";
             db_helper.SetDataGridView(collectionDataGridView, query);
+
+            var data = db_helper.GetData($"select * from {DTCollection.TableName}");
+            totalCollectionValueLabel.Text = CurrencyFormat.ToString(CollectionData.TotalAmount(CollectionData.GetList(data)));
         } 
         private void addButton_Click(object sender, EventArgs e)
         {

@@ -228,7 +228,7 @@ namespace NJERJIM_Guide.Apps
                 }
                 return list;
             }
-            internal static double TotalAmount(List<LoanData> collectionList)
+            internal static double TotalAmount(List<CollectionData> collectionList)
             {
                 double amount = 0;
                 foreach (var collection in collectionList)
