@@ -37,7 +37,6 @@ namespace NJERJIM_Guide
             this.middleNameLabel = new System.Windows.Forms.Label();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameLabel = new System.Windows.Forms.Label();
-            this.sexTextBox = new System.Windows.Forms.TextBox();
             this.sexLabel = new System.Windows.Forms.Label();
             this.addressTextBox = new System.Windows.Forms.TextBox();
             this.addressLabel = new System.Windows.Forms.Label();
@@ -47,6 +46,8 @@ namespace NJERJIM_Guide
             this.idLabel = new System.Windows.Forms.Label();
             this.selectedIdLabel = new System.Windows.Forms.Label();
             this.backButton = new System.Windows.Forms.Button();
+            this.maleRadioButton = new System.Windows.Forms.RadioButton();
+            this.femaleRadioButton = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,15 +134,6 @@ namespace NJERJIM_Guide
             this.lastNameLabel.Size = new System.Drawing.Size(63, 15);
             this.lastNameLabel.TabIndex = 6;
             this.lastNameLabel.Text = "Last Name";
-            // 
-            // sexTextBox
-            // 
-            this.sexTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sexTextBox.Location = new System.Drawing.Point(706, 129);
-            this.sexTextBox.Name = "sexTextBox";
-            this.sexTextBox.Size = new System.Drawing.Size(280, 23);
-            this.sexTextBox.TabIndex = 9;
             // 
             // sexLabel
             // 
@@ -240,11 +232,35 @@ namespace NJERJIM_Guide
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
+            // maleRadioButton
+            // 
+            this.maleRadioButton.AutoSize = true;
+            this.maleRadioButton.Location = new System.Drawing.Point(706, 130);
+            this.maleRadioButton.Name = "maleRadioButton";
+            this.maleRadioButton.Size = new System.Drawing.Size(51, 19);
+            this.maleRadioButton.TabIndex = 17;
+            this.maleRadioButton.TabStop = true;
+            this.maleRadioButton.Text = "Male";
+            this.maleRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // femaleRadioButton
+            // 
+            this.femaleRadioButton.AutoSize = true;
+            this.femaleRadioButton.Location = new System.Drawing.Point(811, 130);
+            this.femaleRadioButton.Name = "femaleRadioButton";
+            this.femaleRadioButton.Size = new System.Drawing.Size(63, 19);
+            this.femaleRadioButton.TabIndex = 18;
+            this.femaleRadioButton.TabStop = true;
+            this.femaleRadioButton.Text = "Female";
+            this.femaleRadioButton.UseVisualStyleBackColor = true;
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.femaleRadioButton);
+            this.Controls.Add(this.maleRadioButton);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.selectedIdLabel);
             this.Controls.Add(this.idLabel);
@@ -253,7 +269,6 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.addressLabel);
             this.Controls.Add(this.contactNumberTextBox);
             this.Controls.Add(this.contactNumberLabel);
-            this.Controls.Add(this.sexTextBox);
             this.Controls.Add(this.sexLabel);
             this.Controls.Add(this.lastNameTextBox);
             this.Controls.Add(this.lastNameLabel);
@@ -282,7 +297,6 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label middleNameLabel;
         private System.Windows.Forms.TextBox lastNameTextBox;
         private System.Windows.Forms.Label lastNameLabel;
-        private System.Windows.Forms.TextBox sexTextBox;
         private System.Windows.Forms.Label sexLabel;
         private System.Windows.Forms.TextBox addressTextBox;
         private System.Windows.Forms.Label addressLabel;
@@ -292,6 +306,8 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.Label selectedIdLabel;
         private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.RadioButton maleRadioButton;
+        private System.Windows.Forms.RadioButton femaleRadioButton;
     }
 }
 

@@ -11,4 +11,9 @@ namespace NJERJIM_Guide.Apps
         Deposit = 1,
         Withdraw = 2
     }
+    enum Sex
+    {
+        Male = 1,
+        Female = 2
+    }
 }

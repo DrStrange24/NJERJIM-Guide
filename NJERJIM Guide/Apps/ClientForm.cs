@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NJERJIM_Guide.Apps;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,15 @@ namespace NJERJIM_Guide
 {
     public partial class Client : Form
     {
+        private Sex SelectedSex 
+        {
+            get
+            {
+                if (maleRadioButton.Checked)
+                    return Sex.Male;
+                return Sex.Female;
+            }
+        }
         public Client()
         {
             InitializeComponent();
@@ -33,7 +43,7 @@ namespace NJERJIM_Guide
         {
             var db_helper = new DatabaseHelper();
             db_helper.Manipulate($"INSERT INTO {DTClient.TableName} ({DTClient.FirstName}, {DTClient.MiddleName}, {DTClient.LastName}, {DTClient.Sex}, {DTClient.ContactNumber}, {DTClient.Addess}) " +
-                $"VALUES('{firstNameTextBox.Text}', '{middleNameTextBox.Text}', '{lastNameTextBox.Text}', '{sexTextBox.Text}', '{contactNumberTextBox.Text}', '{addressTextBox.Text}');");
+                $"VALUES('{firstNameTextBox.Text}', '{middleNameTextBox.Text}', '{lastNameTextBox.Text}', {(int)SelectedSex}, '{contactNumberTextBox.Text}', '{addressTextBox.Text}');");
             SetDGV();
         }
 
@@ -52,7 +62,7 @@ namespace NJERJIM_Guide
             firstNameTextBox.Text = selectedRow[1].Value.ToString();
             middleNameTextBox.Text = selectedRow[2].Value.ToString();
             lastNameTextBox.Text = selectedRow[3].Value.ToString();
-            sexTextBox.Text = selectedRow[4].Value.ToString();
+            if ((Sex)selectedRow[4].Value == Sex.Male) maleRadioButton.Checked = true; else femaleRadioButton.Checked = true;
             contactNumberTextBox.Text = selectedRow[5].Value.ToString();
             addressTextBox.Text = selectedRow[6].Value.ToString();
 
