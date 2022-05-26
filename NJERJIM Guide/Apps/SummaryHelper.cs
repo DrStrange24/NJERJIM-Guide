@@ -94,7 +94,7 @@ namespace NJERJIM_Guide.Apps
                 double amount = 0;
                 if (Collections.Count > 0)
                 {
-                    foreach (var data in Transactions)
+                    foreach (var data in Collections)
                         amount += data.Amount;
                 }
                 return amount;
@@ -104,7 +104,7 @@ namespace NJERJIM_Guide.Apps
                 double amount = 0;
                 if (Collections.Count > 0)
                 {
-                    foreach (var data in Transactions)
+                    foreach (var data in Collections)
                         amount += data.Amount;
                     amount = amount * 0.8;
                 }
@@ -115,7 +115,7 @@ namespace NJERJIM_Guide.Apps
                 double amount = 0;
                 if (Collections.Count > 0)
                 {
-                    foreach (var data in Transactions)
+                    foreach (var data in Collections)
                         amount += data.Amount;
                     amount = amount * 0.2;
                 }
