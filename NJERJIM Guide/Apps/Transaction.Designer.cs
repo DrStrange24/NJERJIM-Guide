@@ -41,6 +41,8 @@ namespace NJERJIM_Guide
             this.typeTextBox = new System.Windows.Forms.TextBox();
             this.typeLabel = new System.Windows.Forms.Label();
             this.transactionDataGridView = new System.Windows.Forms.DataGridView();
+            this.totalDepositValueLabel = new System.Windows.Forms.Label();
+            this.totalDepositLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.transactionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,11 +179,36 @@ namespace NJERJIM_Guide
             this.transactionDataGridView.TabIndex = 47;
             this.transactionDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.collectionDataGridView_CellClick);
             // 
+            // totalDepositValueLabel
+            // 
+            this.totalDepositValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalDepositValueLabel.AutoSize = true;
+            this.totalDepositValueLabel.Location = new System.Drawing.Point(706, 493);
+            this.totalDepositValueLabel.Name = "totalDepositValueLabel";
+            this.totalDepositValueLabel.Size = new System.Drawing.Size(0, 15);
+            this.totalDepositValueLabel.TabIndex = 60;
+            this.totalDepositValueLabel.Visible = false;
+            // 
+            // totalDepositLabel
+            // 
+            this.totalDepositLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalDepositLabel.AutoSize = true;
+            this.totalDepositLabel.Location = new System.Drawing.Point(575, 493);
+            this.totalDepositLabel.Name = "totalDepositLabel";
+            this.totalDepositLabel.Size = new System.Drawing.Size(75, 15);
+            this.totalDepositLabel.TabIndex = 59;
+            this.totalDepositLabel.Text = "Total Deposit";
+            this.totalDepositLabel.Visible = false;
+            // 
             // Transaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.totalDepositValueLabel);
+            this.Controls.Add(this.totalDepositLabel);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.selectedIdLabel);
             this.Controls.Add(this.idLabel);
@@ -216,5 +243,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.TextBox typeTextBox;
         private System.Windows.Forms.Label typeLabel;
         private System.Windows.Forms.DataGridView transactionDataGridView;
+        private System.Windows.Forms.Label totalDepositValueLabel;
+        private System.Windows.Forms.Label totalDepositLabel;
     }
 }
