@@ -38,11 +38,11 @@ namespace NJERJIM_Guide
             this.amountTextBox = new System.Windows.Forms.TextBox();
             this.amountLabel = new System.Windows.Forms.Label();
             this.addLoanButton = new System.Windows.Forms.Button();
-            this.clientIdTextBox = new System.Windows.Forms.TextBox();
             this.clientIdLabel = new System.Windows.Forms.Label();
             this.loanDataGridView = new System.Windows.Forms.DataGridView();
             this.totalLoanValueLabel = new System.Windows.Forms.Label();
             this.totalLoanLabel = new System.Windows.Forms.Label();
+            this.clientIdComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.loanDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,8 +59,7 @@ namespace NJERJIM_Guide
             // 
             // selectedIdLabel
             // 
-            this.selectedIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.selectedIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.selectedIdLabel.AutoSize = true;
             this.selectedIdLabel.Location = new System.Drawing.Point(706, 12);
             this.selectedIdLabel.Name = "selectedIdLabel";
@@ -71,8 +70,7 @@ namespace NJERJIM_Guide
             // 
             // idLabel
             // 
-            this.idLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.idLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.idLabel.AutoSize = true;
             this.idLabel.Location = new System.Drawing.Point(575, 12);
             this.idLabel.Name = "idLabel";
@@ -83,7 +81,7 @@ namespace NJERJIM_Guide
             // 
             // deleteButton
             // 
-            this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.deleteButton.Location = new System.Drawing.Point(911, 129);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
@@ -94,8 +92,7 @@ namespace NJERJIM_Guide
             // 
             // dateTimeTextBox
             // 
-            this.dateTimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimeTextBox.Location = new System.Drawing.Point(706, 100);
             this.dateTimeTextBox.Name = "dateTimeTextBox";
             this.dateTimeTextBox.Size = new System.Drawing.Size(280, 23);
@@ -104,8 +101,7 @@ namespace NJERJIM_Guide
             // 
             // DateTimeLabel
             // 
-            this.DateTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DateTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DateTimeLabel.AutoSize = true;
             this.DateTimeLabel.Location = new System.Drawing.Point(575, 103);
             this.DateTimeLabel.Name = "DateTimeLabel";
@@ -115,8 +111,7 @@ namespace NJERJIM_Guide
             // 
             // amountTextBox
             // 
-            this.amountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.amountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.amountTextBox.Location = new System.Drawing.Point(706, 71);
             this.amountTextBox.Name = "amountTextBox";
             this.amountTextBox.Size = new System.Drawing.Size(280, 23);
@@ -125,8 +120,7 @@ namespace NJERJIM_Guide
             // 
             // amountLabel
             // 
-            this.amountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.amountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.amountLabel.AutoSize = true;
             this.amountLabel.Location = new System.Drawing.Point(575, 74);
             this.amountLabel.Name = "amountLabel";
@@ -136,7 +130,7 @@ namespace NJERJIM_Guide
             // 
             // addLoanButton
             // 
-            this.addLoanButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.addLoanButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addLoanButton.Location = new System.Drawing.Point(830, 129);
             this.addLoanButton.Name = "addLoanButton";
             this.addLoanButton.Size = new System.Drawing.Size(75, 23);
@@ -145,20 +139,9 @@ namespace NJERJIM_Guide
             this.addLoanButton.UseVisualStyleBackColor = true;
             this.addLoanButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // clientIdTextBox
-            // 
-            this.clientIdTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.clientIdTextBox.Location = new System.Drawing.Point(706, 42);
-            this.clientIdTextBox.Name = "clientIdTextBox";
-            this.clientIdTextBox.Size = new System.Drawing.Size(280, 23);
-            this.clientIdTextBox.TabIndex = 19;
-            this.clientIdTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimeTextBox_KeyDown);
-            // 
             // clientIdLabel
             // 
-            this.clientIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.clientIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.clientIdLabel.AutoSize = true;
             this.clientIdLabel.Location = new System.Drawing.Point(575, 45);
             this.clientIdLabel.Name = "clientIdLabel";
@@ -200,11 +183,22 @@ namespace NJERJIM_Guide
             this.totalLoanLabel.TabIndex = 49;
             this.totalLoanLabel.Text = "Total Loan:";
             // 
+            // clientIdComboBox
+            // 
+            this.clientIdComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.clientIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.clientIdComboBox.FormattingEnabled = true;
+            this.clientIdComboBox.Location = new System.Drawing.Point(706, 42);
+            this.clientIdComboBox.Name = "clientIdComboBox";
+            this.clientIdComboBox.Size = new System.Drawing.Size(280, 23);
+            this.clientIdComboBox.TabIndex = 51;
+            // 
             // Loan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.clientIdComboBox);
             this.Controls.Add(this.totalLoanValueLabel);
             this.Controls.Add(this.totalLoanLabel);
             this.Controls.Add(this.backButton);
@@ -216,7 +210,6 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.amountTextBox);
             this.Controls.Add(this.amountLabel);
             this.Controls.Add(this.addLoanButton);
-            this.Controls.Add(this.clientIdTextBox);
             this.Controls.Add(this.clientIdLabel);
             this.Controls.Add(this.loanDataGridView);
             this.Name = "Loan";
@@ -238,10 +231,10 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.TextBox amountTextBox;
         private System.Windows.Forms.Label amountLabel;
         private System.Windows.Forms.Button addLoanButton;
-        private System.Windows.Forms.TextBox clientIdTextBox;
         private System.Windows.Forms.Label clientIdLabel;
         private System.Windows.Forms.DataGridView loanDataGridView;
         private System.Windows.Forms.Label totalLoanValueLabel;
         private System.Windows.Forms.Label totalLoanLabel;
+        private System.Windows.Forms.ComboBox clientIdComboBox;
     }
 }
