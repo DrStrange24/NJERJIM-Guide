@@ -36,10 +36,9 @@ namespace NJERJIM_Guide
                 profit += record.TotalProfit();
             }
 
-            var currency_format = new CultureInfo("fil-PH", false).NumberFormat;
-            availableMoneyValueLabel.Text = available_money.ToString("C", currency_format);
-            moneyValueLabel.Text = total_money.ToString("C", currency_format);
-            profitValueLabel.Text = profit.ToString("C", currency_format);
+            availableMoneyValueLabel.Text = CurrencyFormat.ToString(available_money);
+            moneyValueLabel.Text = CurrencyFormat.ToString(total_money);
+            profitValueLabel.Text = CurrencyFormat.ToString(profit);
         }
 
         private void backButton_Click(object sender, EventArgs e)
