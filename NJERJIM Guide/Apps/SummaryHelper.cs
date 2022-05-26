@@ -24,31 +24,34 @@ namespace NJERJIM_Guide.Apps
             var collection = db_helper.GetData($"select * from {DTCollection.TableName} order by {DTCollection.DateTime} desc;");
             var collections = CollectionData.GetList(collection);
 
-            var starting_date = transaction.Rows[transaction.Rows.Count - 1][3];
-            var current_date = Convert.ToDateTime(starting_date);
-
-            Records = new List<DailyRecords>();
-            while(current_date<=DateTime.Now.Date)
+            if (transaction.Rows.Count > 0)
             {
-                var records = new DailyRecords();
-                records.DateTime = current_date;
-                for(int i = 0; i < transactions.Count; i++)
+                var starting_date = transaction.Rows[transaction.Rows.Count - 1][3];
+                var current_date = Convert.ToDateTime(starting_date);
+
+                Records = new List<DailyRecords>();
+                while (current_date <= DateTime.Now.Date)
                 {
-                    if(current_date == transactions[i].GetDateTime())
-                        records.Transactions.Add(transactions[i]);
+                    var records = new DailyRecords();
+                    records.DateTime = current_date;
+                    for (int i = 0; i < transactions.Count; i++)
+                    {
+                        if (current_date == transactions[i].GetDateTime())
+                            records.Transactions.Add(transactions[i]);
+                    }
+                    for (int i = 0; i < loans.Count; i++)
+                    {
+                        if (current_date == loans[i].GetDateTime())
+                            records.Loans.Add(loans[i]);
+                    }
+                    for (int i = 0; i < collections.Count; i++)
+                    {
+                        if (current_date == collections[i].GetDateTime())
+                            records.Collections.Add(collections[i]);
+                    }
+                    Records.Add(records);
+                    current_date = current_date.AddDays(1);
                 }
-                for (int i = 0; i < loans.Count; i++)
-                {
-                    if (current_date == loans[i].GetDateTime())
-                        records.Loans.Add(loans[i]);
-                }
-                for (int i = 0; i < collections.Count; i++)
-                {
-                    if (current_date == collections[i].GetDateTime())
-                        records.Collections.Add(collections[i]);
-                }
-                Records.Add(records);
-                current_date = current_date.AddDays(1);
             }
         }
         internal class DailyRecords

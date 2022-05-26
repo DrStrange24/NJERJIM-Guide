@@ -264,6 +264,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.firstNameLabel);
             this.Controls.Add(this.clientDataGridView);
             this.Name = "Client";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Client";
             ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).EndInit();
             this.ResumeLayout(false);

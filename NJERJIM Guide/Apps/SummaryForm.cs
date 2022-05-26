@@ -27,13 +27,17 @@ namespace NJERJIM_Guide
             double available_money = 0;
             double total_money = 0;
             double profit = 0;
-            foreach(var record in records)
+
+            if (records!=null)
             {
-                available_money += record.TotalTransactions();
-                total_money += record.TotalTransactions();
-                available_money -= record.TotalLoans();
-                available_money += record.TotalCapital();
-                profit += record.TotalProfit();
+                foreach (var record in records)
+                {
+                    available_money += record.TotalTransactions();
+                    total_money += record.TotalTransactions();
+                    available_money -= record.TotalLoans();
+                    available_money += record.TotalCapital();
+                    profit += record.TotalProfit();
+                }
             }
 
             availableMoneyValueLabel.Text = CurrencyFormat.ToString(available_money);
