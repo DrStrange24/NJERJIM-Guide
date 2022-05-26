@@ -191,6 +191,13 @@ namespace NJERJIM_Guide.Apps
                 }
                 return list;
             }
+            internal static double TotalAmount(List<LoanData> loanList)
+            {
+                double amount = 0;
+                foreach (var loan in loanList)
+                    amount += loan.Amount;
+                return amount;
+            }
         }
         internal struct CollectionData
         {
@@ -220,6 +227,13 @@ namespace NJERJIM_Guide.Apps
                     list.Add(temp_data);
                 }
                 return list;
+            }
+            internal static double TotalAmount(List<LoanData> collectionList)
+            {
+                double amount = 0;
+                foreach (var collection in collectionList)
+                    amount += collection.Amount;
+                return amount;
             }
         }
     }
