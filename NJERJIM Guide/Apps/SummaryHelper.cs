@@ -37,17 +37,17 @@ namespace NJERJIM_Guide.Apps
                     records.DateTime = current_date;
                     for (int i = 0; i < transactions.Count; i++)
                     {
-                        if (current_date == transactions[i].GetDateTime())
+                        if (current_date.Date == transactions[i].GetDateTime().Date)
                             records.Transactions.Add(transactions[i]);
                     }
                     for (int i = 0; i < loans.Count; i++)
                     {
-                        if (current_date == loans[i].GetDateTime())
+                        if (current_date.Date == loans[i].GetDateTime().Date)
                             records.Loans.Add(loans[i]);
                     }
                     for (int i = 0; i < collections.Count; i++)
                     {
-                        if (current_date == collections[i].GetDateTime())
+                        if (current_date.Date == collections[i].GetDateTime().Date)
                             records.Collections.Add(collections[i]);
                     }
                     Records.Add(records);
