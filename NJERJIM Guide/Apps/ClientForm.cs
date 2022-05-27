@@ -41,10 +41,24 @@ namespace NJERJIM_Guide
         }
         private void addClientButton_Click(object sender, EventArgs e)
         {
-            var db_helper = new DatabaseHelper();
-            db_helper.Manipulate($"INSERT INTO {DTClient.TableName} ({DTClient.FirstName}, {DTClient.MiddleName}, {DTClient.LastName}, {DTClient.Sex}, {DTClient.ContactNumber}, {DTClient.Addess}) " +
-                $"VALUES('{firstNameTextBox.Text}', '{middleNameTextBox.Text}', '{lastNameTextBox.Text}', {(int)SelectedSex}, '{contactNumberTextBox.Text}', '{addressTextBox.Text}');");
-            SetDGV();
+            bool ValidInputs()
+            {
+                if (String.IsNullOrWhiteSpace(firstNameTextBox.Text) ||
+                    String.IsNullOrWhiteSpace(lastNameTextBox.Text) ||
+                    String.IsNullOrWhiteSpace(contactNumberTextBox.Text) ||
+                    String.IsNullOrWhiteSpace(addressTextBox.Text) ||
+                    (!maleRadioButton.Checked && !femaleRadioButton.Checked))
+                    return false;
+                return true;
+            }
+
+            if (ValidInputs())
+            {
+                var db_helper = new DatabaseHelper();
+                db_helper.Manipulate($"INSERT INTO {DTClient.TableName} ({DTClient.FirstName}, {DTClient.MiddleName}, {DTClient.LastName}, {DTClient.Sex}, {DTClient.ContactNumber}, {DTClient.Addess}) " +
+                    $"VALUES('{firstNameTextBox.Text}', '{middleNameTextBox.Text}', '{lastNameTextBox.Text}', {(int)SelectedSex}, '{contactNumberTextBox.Text}', '{addressTextBox.Text}');");
+                SetDGV();
+            }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
