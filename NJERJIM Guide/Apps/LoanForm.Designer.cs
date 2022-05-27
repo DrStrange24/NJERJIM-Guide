@@ -37,11 +37,11 @@ namespace NJERJIM_Guide
             this.amountTextBox = new System.Windows.Forms.TextBox();
             this.amountLabel = new System.Windows.Forms.Label();
             this.createLoanButton = new System.Windows.Forms.Button();
-            this.clientIdLabel = new System.Windows.Forms.Label();
+            this.clientLabel = new System.Windows.Forms.Label();
             this.loanDataGridView = new System.Windows.Forms.DataGridView();
             this.totalLoanValueLabel = new System.Windows.Forms.Label();
             this.totalLoanLabel = new System.Windows.Forms.Label();
-            this.clientIdComboBox = new System.Windows.Forms.ComboBox();
+            this.clientComboBox = new System.Windows.Forms.ComboBox();
             this.datetimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchLabel = new System.Windows.Forms.Label();
@@ -132,15 +132,15 @@ namespace NJERJIM_Guide
             this.createLoanButton.UseVisualStyleBackColor = true;
             this.createLoanButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // clientIdLabel
+            // clientLabel
             // 
-            this.clientIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clientIdLabel.AutoSize = true;
-            this.clientIdLabel.Location = new System.Drawing.Point(575, 45);
-            this.clientIdLabel.Name = "clientIdLabel";
-            this.clientIdLabel.Size = new System.Drawing.Size(52, 15);
-            this.clientIdLabel.TabIndex = 18;
-            this.clientIdLabel.Text = "Client ID";
+            this.clientLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.clientLabel.AutoSize = true;
+            this.clientLabel.Location = new System.Drawing.Point(575, 45);
+            this.clientLabel.Name = "clientLabel";
+            this.clientLabel.Size = new System.Drawing.Size(38, 15);
+            this.clientLabel.TabIndex = 18;
+            this.clientLabel.Text = "Client";
             // 
             // loanDataGridView
             // 
@@ -178,13 +178,13 @@ namespace NJERJIM_Guide
             // 
             // clientIdComboBox
             // 
-            this.clientIdComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clientIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.clientIdComboBox.FormattingEnabled = true;
-            this.clientIdComboBox.Location = new System.Drawing.Point(706, 42);
-            this.clientIdComboBox.Name = "clientIdComboBox";
-            this.clientIdComboBox.Size = new System.Drawing.Size(280, 23);
-            this.clientIdComboBox.TabIndex = 51;
+            this.clientComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.clientComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.clientComboBox.FormattingEnabled = true;
+            this.clientComboBox.Location = new System.Drawing.Point(706, 42);
+            this.clientComboBox.Name = "clientIdComboBox";
+            this.clientComboBox.Size = new System.Drawing.Size(280, 23);
+            this.clientComboBox.TabIndex = 51;
             // 
             // datetimeDateTimePicker
             // 
@@ -220,7 +220,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.datetimeDateTimePicker);
-            this.Controls.Add(this.clientIdComboBox);
+            this.Controls.Add(this.clientComboBox);
             this.Controls.Add(this.totalLoanValueLabel);
             this.Controls.Add(this.totalLoanLabel);
             this.Controls.Add(this.backButton);
@@ -231,7 +231,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.amountTextBox);
             this.Controls.Add(this.amountLabel);
             this.Controls.Add(this.createLoanButton);
-            this.Controls.Add(this.clientIdLabel);
+            this.Controls.Add(this.clientLabel);
             this.Controls.Add(this.loanDataGridView);
             this.Name = "Loan";
             this.Text = "LoanForm";
@@ -251,11 +251,11 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.TextBox amountTextBox;
         private System.Windows.Forms.Label amountLabel;
         private System.Windows.Forms.Button createLoanButton;
-        private System.Windows.Forms.Label clientIdLabel;
+        private System.Windows.Forms.Label clientLabel;
         private System.Windows.Forms.DataGridView loanDataGridView;
         private System.Windows.Forms.Label totalLoanValueLabel;
         private System.Windows.Forms.Label totalLoanLabel;
-        private System.Windows.Forms.ComboBox clientIdComboBox;
+        private System.Windows.Forms.ComboBox clientComboBox;
         private System.Windows.Forms.DateTimePicker datetimeDateTimePicker;
         private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Label searchLabel;
