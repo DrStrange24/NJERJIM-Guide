@@ -70,7 +70,7 @@ namespace NJERJIM_Guide
 
         private void clientDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex>=0)
+            if (e.RowIndex>=0 && !String.IsNullOrWhiteSpace(clientDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString()))
             {
                 var selectedRow = clientDataGridView.Rows[e.RowIndex].Cells;
 
