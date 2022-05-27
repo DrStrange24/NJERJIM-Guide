@@ -70,18 +70,21 @@ namespace NJERJIM_Guide
 
         private void clientDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var selectedRow = clientDataGridView.Rows[e.RowIndex].Cells;
+            try
+            {
+                var selectedRow = clientDataGridView.Rows[e.RowIndex].Cells;
 
-            selectedIdLabel.Text = selectedRow[0].Value.ToString();
-            firstNameTextBox.Text = selectedRow[1].Value.ToString();
-            middleNameTextBox.Text = selectedRow[2].Value.ToString();
-            lastNameTextBox.Text = selectedRow[3].Value.ToString();
-            if ((Sex)selectedRow[4].Value == Sex.Male) maleRadioButton.Checked = true; else femaleRadioButton.Checked = true;
-            contactNumberTextBox.Text = selectedRow[5].Value.ToString();
-            addressTextBox.Text = selectedRow[6].Value.ToString();
+                selectedIdLabel.Text = selectedRow[0].Value.ToString();
+                firstNameTextBox.Text = selectedRow[1].Value.ToString();
+                middleNameTextBox.Text = selectedRow[2].Value.ToString();
+                lastNameTextBox.Text = selectedRow[3].Value.ToString();
+                if ((Sex)selectedRow[4].Value == Sex.Male) maleRadioButton.Checked = true; else femaleRadioButton.Checked = true;
+                contactNumberTextBox.Text = selectedRow[5].Value.ToString();
+                addressTextBox.Text = selectedRow[6].Value.ToString();
 
-            idLabel.Visible = true;
-            selectedIdLabel.Visible = true;
+                idLabel.Visible = true;
+                selectedIdLabel.Visible = true;
+            }catch { }
         }
 
         private void backButton_Click(object sender, EventArgs e)
