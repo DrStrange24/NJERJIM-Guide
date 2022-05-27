@@ -71,7 +71,7 @@ namespace NJERJIM_Guide
                 var selectedRow = loanDataGridView.Rows[e.RowIndex].Cells;
 
                 selectedIdLabel.Text = selectedRow[0].Value.ToString();
-                clientIdComboBox.SelectedItem = selectedRow[1].Value.ToString();
+                clientIdComboBox.SelectedItem = selectedRow[1].Value;
                 amountTextBox.Text = selectedRow[2].Value.ToString();
                 datetimeDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow[3].Value);
 
