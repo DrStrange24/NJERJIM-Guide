@@ -83,7 +83,7 @@ namespace NJERJIM_Guide
                 clearInputsButton_Click(null,null);
             }
             else
-                MessageBox.Show("Please select an loan first!");
+                MessageBox.Show("Please select a loan first!");
         }
 
         private void loanDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
