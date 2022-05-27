@@ -70,24 +70,25 @@ namespace NJERJIM_Guide
             Command.Dispose();
             Connection.Close();
         }
-        internal static string MDFToDDF(DateTime dateTime)
+
+        internal static string DateTimeToString(DateTime dateTime)
         {
-            //"My DateTime Format" To "Database Datetime"
+            //"DateTime" To "String"
             return dateTime.ToString("yyyy-MM-dd HH:mm:ss:ff");
         }
-        internal static string MDFToDDF()
+        internal static string DateTimeToString()
         {
-            //"My DateTime Format" To "Database Datetime"
+            //DateTime" To "String"
             return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ff");
         }
-        internal static DateTime MDDFToDF(string DatabaseDateTimeFormat)
+        internal static DateTime StringToDateTime(string DatabaseDateTimeFormat)
         {
-            //"My Database DateTime Format" To "DateTime"
+            //"String" To "DateTime DataType"
             return DateTime.ParseExact(DatabaseDateTimeFormat, "yyyy-MM-dd HH:mm:ss:ff", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
         }
-        internal static DateTime MDDFToDF(object DatabaseDateTimeFormat)
+        internal static DateTime StringToDateTime(object DatabaseDateTimeFormat)
         {
-            //"My Database DateTime Format" To "DateTime"
+            //"String" To "DateTime DataType"
             return DateTime.ParseExact(DatabaseDateTimeFormat.ToString(), "yyyy-MM-dd HH:mm:ss:ff", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
         }
     }
