@@ -27,16 +27,16 @@ namespace NJERJIM_Guide
         private void SetDGV()
         {
             var db_helper = new DatabaseHelper();
-            var query = $"select * from {DTCollection.TableName} order by {DTCollection.DateTime} desc;";
+            var query = $"select * from {DTCollection.Table} order by {DTCollection.DateTime} desc;";
             db_helper.SetDataGridView(collectionDataGridView, query);
 
-            var data = db_helper.GetData($"select * from {DTCollection.TableName}");
+            var data = db_helper.GetData($"select * from {DTCollection.Table}");
             totalCollectionValueLabel.Text = CurrencyFormat.ToString(CollectionData.TotalAmount(CollectionData.GetList(data)));
         } 
         private void addButton_Click(object sender, EventArgs e)
         {
             var db_helper = new DatabaseHelper();
-            db_helper.Manipulate($"INSERT INTO {DTCollection.TableName} ({DTCollection.LoanId}, {DTCollection.Amount}, {DTCollection.DateTime}) " +
+            db_helper.Manipulate($"INSERT INTO {DTCollection.Table} ({DTCollection.LoanId}, {DTCollection.Amount}, {DTCollection.DateTime}) " +
                 $"VALUES('{loanIdTextBox.Text}', '{amountTextBox.Text}', '{dateTimeTextBox.Text}');");
             SetDGV();
         }
@@ -50,7 +50,7 @@ namespace NJERJIM_Guide
         private void deleteButton_Click(object sender, EventArgs e)
         {
             var db_helper = new DatabaseHelper();
-            db_helper.Manipulate($"DELETE FROM {DTCollection.TableName} WHERE {DTCollection.Id}={selectedIdLabel.Text};");
+            db_helper.Manipulate($"DELETE FROM {DTCollection.Table} WHERE {DTCollection.Id}={selectedIdLabel.Text};");
             SetDGV();
         }
 

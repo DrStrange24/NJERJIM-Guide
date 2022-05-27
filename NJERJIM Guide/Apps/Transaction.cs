@@ -27,17 +27,17 @@ namespace NJERJIM_Guide
         private void SetDGV()
         {
             var db_helper = new DatabaseHelper();
-            var query = $"select * from {DTTransaction.TableName} order by {DTTransaction.DateTime} desc;";
+            var query = $"select * from {DTTransaction.Table} order by {DTTransaction.DateTime} desc;";
             db_helper.SetDataGridView(transactionDataGridView, query);
 
-            var data = db_helper.GetData($"select * from {DTTransaction.TableName}");
+            var data = db_helper.GetData($"select * from {DTTransaction.Table}");
             var transactions = TransactionData.GetList(data);
             totalDepositValueLabel.Text = CurrencyFormat.ToString(TransactionData.TotalDeposit(transactions));
         }
         private void addButton_Click(object sender, EventArgs e)
         {
             var db_helper = new DatabaseHelper();
-            db_helper.Manipulate($"INSERT INTO {DTTransaction.TableName} ({DTTransaction.Type}, {DTTransaction.Amount}, {DTTransaction.DateTime}) " +
+            db_helper.Manipulate($"INSERT INTO {DTTransaction.Table} ({DTTransaction.Type}, {DTTransaction.Amount}, {DTTransaction.DateTime}) " +
                 $"VALUES('{typeTextBox.Text}', '{amountTextBox.Text}', '{dateTimeTextBox.Text}');");
             SetDGV();
         }
@@ -51,7 +51,7 @@ namespace NJERJIM_Guide
         private void deleteButton_Click(object sender, EventArgs e)
         {
             var db_helper = new DatabaseHelper();
-            db_helper.Manipulate($"DELETE FROM {DTTransaction.TableName} WHERE {DTTransaction.Id}={selectedIdLabel.Text};");
+            db_helper.Manipulate($"DELETE FROM {DTTransaction.Table} WHERE {DTTransaction.Id}={selectedIdLabel.Text};");
             SetDGV();
         }
 

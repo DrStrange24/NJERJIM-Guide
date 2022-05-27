@@ -27,17 +27,17 @@ namespace NJERJIM_Guide
         private void SetClientComboBox()
         {
             var db_helper = new DatabaseHelper();
-            var data = db_helper.GetData($"select {DTClient.Id} from {DTClient.TableName};");
+            var data = db_helper.GetData($"select {DTClient.Id} from {DTClient.Table};");
             for (int i = 0; i < data.Rows.Count; i++)
                 clientIdComboBox.Items.Add(data.Rows[i][0]);
         }
         private void SetData()
         {
             var db_helper = new DatabaseHelper();
-            var query = $"select * from {DTLoan.TableName} order by {DTLoan.DateTime} desc;";
+            var query = $"select * from {DTLoan.Table} order by {DTLoan.DateTime} desc;";
             db_helper.SetDataGridView(loanDataGridView, query);
             //set total Loan
-            var data = db_helper.GetData($"select * from {DTLoan.TableName}");
+            var data = db_helper.GetData($"select * from {DTLoan.Table}");
             totalLoanValueLabel.Text = CurrencyFormat.ToString(LoanData.TotalAmount(LoanData.GetList(data)));
 
             SetClientComboBox();
@@ -52,7 +52,7 @@ namespace NJERJIM_Guide
         private void addButton_Click(object sender, EventArgs e)
         {
             var db_helper = new DatabaseHelper();
-            db_helper.Manipulate($"INSERT INTO {DTLoan.TableName} ({DTLoan.ClientId}, {DTLoan.Amount}, {DTLoan.DateTime}) " +
+            db_helper.Manipulate($"INSERT INTO {DTLoan.Table} ({DTLoan.ClientId}, {DTLoan.Amount}, {DTLoan.DateTime}) " +
                 $"VALUES({clientIdComboBox.Text}, {amountTextBox.Text}, '{DatabaseHelper.DateTimeToString(datetimeDateTimePicker.Value)}');");
             SetData();
         }
@@ -60,7 +60,7 @@ namespace NJERJIM_Guide
         private void deleteButton_Click(object sender, EventArgs e)
         {
             var db_helper = new DatabaseHelper();
-            db_helper.Manipulate($"DELETE FROM {DTLoan.TableName} WHERE {DTLoan.Id}={selectedIdLabel.Text};");
+            db_helper.Manipulate($"DELETE FROM {DTLoan.Table} WHERE {DTLoan.Id}={selectedIdLabel.Text};");
             SetData();
         }
 

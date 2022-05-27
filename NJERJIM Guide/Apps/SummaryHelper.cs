@@ -16,13 +16,13 @@ namespace NJERJIM_Guide.Apps
         {
             var db_helper = new DatabaseHelper();
 
-            var transaction = db_helper.GetData($"select * from {DTTransaction.TableName} order by {DTTransaction.DateTime} desc;");
+            var transaction = db_helper.GetData($"select * from {DTTransaction.Table} order by {DTTransaction.DateTime} desc;");
             var transactions = TransactionData.GetList(transaction);
 
-            var loan = db_helper.GetData($"select * from {DTLoan.TableName} order by {DTLoan.DateTime} desc;");
+            var loan = db_helper.GetData($"select * from {DTLoan.Table} order by {DTLoan.DateTime} desc;");
             var loans = LoanData.GetList(loan);
 
-            var collection = db_helper.GetData($"select * from {DTCollection.TableName} order by {DTCollection.DateTime} desc;");
+            var collection = db_helper.GetData($"select * from {DTCollection.Table} order by {DTCollection.DateTime} desc;");
             var collections = CollectionData.GetList(collection);
 
             if (transaction.Rows.Count > 0)

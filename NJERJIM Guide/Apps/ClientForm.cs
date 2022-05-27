@@ -55,7 +55,7 @@ namespace NJERJIM_Guide
             if (ValidInputs())
             {
                 var db_helper = new DatabaseHelper();
-                db_helper.Manipulate($"INSERT INTO {DTClient.TableName} ({DTClient.FirstName}, {DTClient.MiddleName}, {DTClient.LastName}, {DTClient.Sex}, {DTClient.ContactNumber}, {DTClient.Addess}) " +
+                db_helper.Manipulate($"INSERT INTO {DTClient.Table} ({DTClient.FirstName}, {DTClient.MiddleName}, {DTClient.LastName}, {DTClient.Sex}, {DTClient.ContactNumber}, {DTClient.Addess}) " +
                     $"VALUES('{firstNameTextBox.Text}', '{middleNameTextBox.Text}', '{lastNameTextBox.Text}', {(int)SelectedSex}, '{contactNumberTextBox.Text}', '{addressTextBox.Text}');");
                 SetDGV();
             }
@@ -64,7 +64,7 @@ namespace NJERJIM_Guide
         private void deleteButton_Click(object sender, EventArgs e)
         {
             var db_helper = new DatabaseHelper();
-            db_helper.Manipulate($"DELETE FROM {DTClient.TableName} WHERE {DTClient.Id}={selectedIdLabel.Text};");
+            db_helper.Manipulate($"DELETE FROM {DTClient.Table} WHERE {DTClient.Id}={selectedIdLabel.Text};");
             SetDGV();
         }
 
