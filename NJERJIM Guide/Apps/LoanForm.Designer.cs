@@ -151,6 +151,7 @@ namespace NJERJIM_Guide
             this.loanDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.loanDataGridView.Location = new System.Drawing.Point(12, 12);
             this.loanDataGridView.Name = "loanDataGridView";
+            this.loanDataGridView.ReadOnly = true;
             this.loanDataGridView.RowTemplate.Height = 25;
             this.loanDataGridView.Size = new System.Drawing.Size(544, 472);
             this.loanDataGridView.TabIndex = 17;
