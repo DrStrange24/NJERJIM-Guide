@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace NJERJIM_Guide.Apps
 {
@@ -27,10 +28,10 @@ namespace NJERJIM_Guide.Apps
             if (transaction.Rows.Count > 0)
             {
                 var starting_date = transaction.Rows[transaction.Rows.Count - 1][3];
-                var current_date = Convert.ToDateTime(starting_date);
+                var current_date = DatabaseHelper.StringToDateTime(starting_date);
 
                 Records = new List<DailyRecords>();
-                while (current_date <= DateTime.Now.Date)
+                while (current_date.Date <= DateTime.Now.Date)
                 {
                     var records = new DailyRecords();
                     records.DateTime = current_date;

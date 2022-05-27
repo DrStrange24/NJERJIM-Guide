@@ -62,7 +62,7 @@ namespace NJERJIM_Guide
         }
         internal DateTime GetDateTime()
         {
-            return Convert.ToDateTime(this.DateTime);
+            return DatabaseHelper.StringToDateTime(this.DateTime);
         }
         internal static List<TransactionData> GetList(DataTable data)
         {
@@ -102,7 +102,7 @@ namespace NJERJIM_Guide
         }
         internal DateTime GetDateTime()
         {
-            return Convert.ToDateTime(this.DateTime);
+            return DatabaseHelper.StringToDateTime(this.DateTime);
         }
         internal static List<LoanData> GetList(DataTable data)
         {
@@ -139,7 +139,7 @@ namespace NJERJIM_Guide
         }
         internal DateTime GetDateTime()
         {
-            return Convert.ToDateTime(this.DateTime);
+            return DatabaseHelper.StringToDateTime(this.DateTime);
         }
         internal static List<CollectionData> GetList(DataTable data)
         {
