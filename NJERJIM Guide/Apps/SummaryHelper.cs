@@ -125,4 +125,5 @@ namespace NJERJIM_Guide.Apps
                 return amount;
             }
         }
+    }
 }
