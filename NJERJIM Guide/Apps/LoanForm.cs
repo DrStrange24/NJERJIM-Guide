@@ -22,25 +22,29 @@ namespace NJERJIM_Guide
         }
         private void InitializeData()
         {
-            SetData();
-        }
-        private void SetClientComboBox()
-        {
-            var db_helper = new DatabaseHelper();
-            var data = db_helper.GetData($"select {DTClient.Id},{DTClient.FirstName} from {DTClient.Table};");
-            clientComboBox.Items.Clear();
-            for (int i = 0; i < data.Rows.Count; i++)
-                clientComboBox.Items.Add(data.Rows[i][0] + " - "+data.Rows[i][1]);
-        }
-        private void SetData()
-        {
-            var db_helper = new DatabaseHelper();
-            db_helper.SetDataGridView(loanDataGridView, $"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTClient.FirstName} as [First Name],{DTLoan.Amount} as [Amount],{DTLoan.DateTime} as [Date] from {DTLoan.Table} " +
-                $"join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id} order by {DTLoan.DateTime} desc;");
-            //set total Loan
-            var data = db_helper.GetData($"select * from {DTLoan.Table}");
-            totalLoanValueLabel.Text = CurrencyFormat.ToString(LoanData.TotalAmount(LoanData.GetList(data)));
+            void SetDataGridView()
+            {
+                var db_helper = new DatabaseHelper();
+                db_helper.SetDataGridView(loanDataGridView, $"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTClient.FirstName} as [First Name],{DTLoan.Amount} as [Amount],{DTLoan.DateTime} as [Date] from {DTLoan.Table} " +
+                    $"join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id} order by {DTLoan.DateTime} desc;");
+            }
+            void SetTotalLoan()
+            {
+                var db_helper = new DatabaseHelper();
+                var data = db_helper.GetData($"select * from {DTLoan.Table}");
+                totalLoanValueLabel.Text = CurrencyFormat.ToString(LoanData.TotalAmount(LoanData.GetList(data)));
+            }
+            void SetClientComboBox()
+            {
+                var db_helper = new DatabaseHelper();
+                var data = db_helper.GetData($"select {DTClient.Id},{DTClient.FirstName} from {DTClient.Table};");
+                clientComboBox.Items.Clear();
+                for (int i = 0; i < data.Rows.Count; i++)
+                    clientComboBox.Items.Add(data.Rows[i][0] + " - " + data.Rows[i][1]);
+            }
 
+            SetDataGridView();
+            SetTotalLoan();
             SetClientComboBox();
         }
 
@@ -56,14 +60,14 @@ namespace NJERJIM_Guide
             var db_helper = new DatabaseHelper();
             db_helper.Manipulate($"INSERT INTO {DTLoan.Table} ({DTLoan.ClientId}, {DTLoan.Amount}, {DTLoan.DateTime}) " +
                 $"VALUES({client_id}, {amountTextBox.Text}, '{DatabaseHelper.DateTimeToString(datetimeDateTimePicker.Value)}');");
-            SetData();
+            InitializeData();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
             var db_helper = new DatabaseHelper();
             db_helper.Manipulate($"DELETE FROM {DTLoan.Table} WHERE {DTLoan.Id}={selectedIdLabel.Text};");
-            SetData();
+            InitializeData();
         }
 
         private void loanDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -86,6 +90,11 @@ namespace NJERJIM_Guide
         private void dateTimeTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) addButton_Click(null, null);
+        }
+
+        private void clearInputsButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

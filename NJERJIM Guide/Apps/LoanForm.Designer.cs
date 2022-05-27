@@ -45,6 +45,7 @@ namespace NJERJIM_Guide
             this.datetimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchLabel = new System.Windows.Forms.Label();
+            this.clearInputsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.loanDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,13 +177,13 @@ namespace NJERJIM_Guide
             this.totalLoanLabel.TabIndex = 49;
             this.totalLoanLabel.Text = "Total Loan:";
             // 
-            // clientIdComboBox
+            // clientComboBox
             // 
             this.clientComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.clientComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.clientComboBox.FormattingEnabled = true;
             this.clientComboBox.Location = new System.Drawing.Point(706, 42);
-            this.clientComboBox.Name = "clientIdComboBox";
+            this.clientComboBox.Name = "clientComboBox";
             this.clientComboBox.Size = new System.Drawing.Size(280, 23);
             this.clientComboBox.TabIndex = 51;
             // 
@@ -212,11 +213,23 @@ namespace NJERJIM_Guide
             this.searchLabel.TabIndex = 53;
             this.searchLabel.Text = "Search";
             // 
+            // clearInputsButton
+            // 
+            this.clearInputsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.clearInputsButton.Location = new System.Drawing.Point(706, 129);
+            this.clearInputsButton.Name = "clearInputsButton";
+            this.clearInputsButton.Size = new System.Drawing.Size(75, 23);
+            this.clearInputsButton.TabIndex = 55;
+            this.clearInputsButton.Text = "Clear";
+            this.clearInputsButton.UseVisualStyleBackColor = true;
+            this.clearInputsButton.Click += new System.EventHandler(this.clearInputsButton_Click);
+            // 
             // Loan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.clearInputsButton);
             this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.datetimeDateTimePicker);
@@ -259,5 +272,6 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.DateTimePicker datetimeDateTimePicker;
         private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Label searchLabel;
+        private System.Windows.Forms.Button clearInputsButton;
     }
 }
