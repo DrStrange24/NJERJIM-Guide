@@ -70,7 +70,7 @@ namespace NJERJIM_Guide
 
         private void clientDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (e.RowIndex>=0)
             {
                 var selectedRow = clientDataGridView.Rows[e.RowIndex].Cells;
 
@@ -84,7 +84,7 @@ namespace NJERJIM_Guide
 
                 idLabel.Visible = true;
                 selectedIdLabel.Visible = true;
-            }catch { }
+            }
         }
 
         private void backButton_Click(object sender, EventArgs e)
