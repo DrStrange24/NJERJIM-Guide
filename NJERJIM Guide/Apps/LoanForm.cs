@@ -54,20 +54,36 @@ namespace NJERJIM_Guide
             this.Close();
         }
 
-        private void addButton_Click(object sender, EventArgs e)
+        private void createButton_Click(object sender, EventArgs e)
         {
-            int client_id = Convert.ToInt32(clientComboBox.SelectedItem.ToString().Split(" - ")[0]);
-            var db_helper = new DatabaseHelper();
-            db_helper.Manipulate($"INSERT INTO {DTLoan.Table} ({DTLoan.ClientId}, {DTLoan.Amount}, {DTLoan.DateTime}) " +
-                $"VALUES({client_id}, {amountTextBox.Text}, '{DatabaseHelper.DateTimeToString(datetimeDateTimePicker.Value)}');");
-            InitializeData();
+            bool ValidInput()
+            {
+                if (clientComboBox.SelectedIndex < 0 || string.IsNullOrWhiteSpace(amountTextBox.Text))
+                    return false;
+                return true;
+            }
+            if (ValidInput())
+            {
+                int client_id = Convert.ToInt32(clientComboBox.SelectedItem.ToString().Split(" - ")[0]);
+                var db_helper = new DatabaseHelper();
+                db_helper.Manipulate($"INSERT INTO {DTLoan.Table} ({DTLoan.ClientId}, {DTLoan.Amount}, {DTLoan.DateTime}) " +
+                    $"VALUES({client_id}, {amountTextBox.Text}, '{DatabaseHelper.DateTimeToString(loanDateTimePicker.Value)}');");
+                InitializeData();
+                clearInputsButton_Click(null, null);
+            }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            var db_helper = new DatabaseHelper();
-            db_helper.Manipulate($"DELETE FROM {DTLoan.Table} WHERE {DTLoan.Id}={selectedIdLabel.Text};");
-            InitializeData();
+            if (!string.IsNullOrEmpty(selectedIdLabel.Text))
+            {
+                var db_helper = new DatabaseHelper();
+                db_helper.Manipulate($"DELETE FROM {DTLoan.Table} WHERE {DTLoan.Id}={selectedIdLabel.Text};");
+                InitializeData();
+                clearInputsButton_Click(null,null);
+            }
+            else
+                MessageBox.Show("Please select an loan first!");
         }
 
         private void loanDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -80,7 +96,7 @@ namespace NJERJIM_Guide
                 selectedIdLabel.Text = selectedRow["ID"].Value.ToString();
                 clientComboBox.SelectedItem = selectedRow["Client ID"].Value+" - "+ selectedRow["First Name"].Value;
                 amountTextBox.Text = selectedRow["Amount"].Value.ToString();
-                datetimeDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow["Date"].Value);
+                loanDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow["Date"].Value);
 
                 idLabel.Visible = true;
                 selectedIdLabel.Visible = true;
@@ -89,12 +105,17 @@ namespace NJERJIM_Guide
 
         private void dateTimeTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) addButton_Click(null, null);
+            if (e.KeyCode == Keys.Enter) createButton_Click(null, null);
         }
 
         private void clearInputsButton_Click(object sender, EventArgs e)
         {
-
+            idLabel.Visible = false;
+            selectedIdLabel.Visible = false;
+            selectedIdLabel.Text = null;
+            clientComboBox.SelectedIndex = -1;
+            amountTextBox.Text = string.Empty;
+            loanDateTimePicker.Value = DateTime.Now;
         }
     }
 }

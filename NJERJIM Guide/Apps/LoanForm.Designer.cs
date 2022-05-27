@@ -42,7 +42,7 @@ namespace NJERJIM_Guide
             this.totalLoanValueLabel = new System.Windows.Forms.Label();
             this.totalLoanLabel = new System.Windows.Forms.Label();
             this.clientComboBox = new System.Windows.Forms.ComboBox();
-            this.datetimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.loanDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchLabel = new System.Windows.Forms.Label();
             this.clearInputsButton = new System.Windows.Forms.Button();
@@ -131,7 +131,7 @@ namespace NJERJIM_Guide
             this.createLoanButton.TabIndex = 20;
             this.createLoanButton.Text = "Create";
             this.createLoanButton.UseVisualStyleBackColor = true;
-            this.createLoanButton.Click += new System.EventHandler(this.addButton_Click);
+            this.createLoanButton.Click += new System.EventHandler(this.createButton_Click);
             // 
             // clientLabel
             // 
@@ -189,11 +189,11 @@ namespace NJERJIM_Guide
             // 
             // datetimeDateTimePicker
             // 
-            this.datetimeDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.datetimeDateTimePicker.Location = new System.Drawing.Point(706, 97);
-            this.datetimeDateTimePicker.Name = "datetimeDateTimePicker";
-            this.datetimeDateTimePicker.Size = new System.Drawing.Size(280, 23);
-            this.datetimeDateTimePicker.TabIndex = 52;
+            this.loanDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.loanDateTimePicker.Location = new System.Drawing.Point(706, 97);
+            this.loanDateTimePicker.Name = "datetimeDateTimePicker";
+            this.loanDateTimePicker.Size = new System.Drawing.Size(280, 23);
+            this.loanDateTimePicker.TabIndex = 52;
             // 
             // searchTextBox
             // 
@@ -232,7 +232,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.clearInputsButton);
             this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.searchLabel);
-            this.Controls.Add(this.datetimeDateTimePicker);
+            this.Controls.Add(this.loanDateTimePicker);
             this.Controls.Add(this.clientComboBox);
             this.Controls.Add(this.totalLoanValueLabel);
             this.Controls.Add(this.totalLoanLabel);
@@ -269,7 +269,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label totalLoanValueLabel;
         private System.Windows.Forms.Label totalLoanLabel;
         private System.Windows.Forms.ComboBox clientComboBox;
-        private System.Windows.Forms.DateTimePicker datetimeDateTimePicker;
+        private System.Windows.Forms.DateTimePicker loanDateTimePicker;
         private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Label searchLabel;
         private System.Windows.Forms.Button clearInputsButton;
