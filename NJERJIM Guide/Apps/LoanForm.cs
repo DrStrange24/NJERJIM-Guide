@@ -53,7 +53,7 @@ namespace NJERJIM_Guide
         {
             var db_helper = new DatabaseHelper();
             db_helper.Manipulate($"INSERT INTO {DTLoan.TableName} ({DTLoan.ClientId}, {DTLoan.Amount}, {DTLoan.DateTime}) " +
-                $"VALUES({clientIdComboBox.Text}, {amountTextBox.Text}, '{dateTimeTextBox.Text}');");
+                $"VALUES({clientIdComboBox.Text}, {amountTextBox.Text}, '{DatabaseHelper.DateTimeToString(datetimeDateTimePicker.Value)}');");
             SetData();
         }
 
@@ -73,7 +73,7 @@ namespace NJERJIM_Guide
                 selectedIdLabel.Text = selectedRow[0].Value.ToString();
                 clientIdComboBox.SelectedItem = selectedRow[1].Value.ToString();
                 amountTextBox.Text = selectedRow[2].Value.ToString();
-                dateTimeTextBox.Text = selectedRow[3].Value.ToString();
+                datetimeDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow[3].Value);
 
                 idLabel.Visible = true;
                 selectedIdLabel.Visible = true;
