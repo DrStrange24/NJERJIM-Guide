@@ -81,7 +81,7 @@ namespace NJERJIM_Guide
             this.transactionButton.Name = "transactionButton";
             this.transactionButton.Size = new System.Drawing.Size(109, 23);
             this.transactionButton.TabIndex = 3;
-            this.transactionButton.Text = "Transaction";
+            this.transactionButton.Text = "Supply";
             this.transactionButton.UseVisualStyleBackColor = true;
             this.transactionButton.Click += new System.EventHandler(this.transactionButton_Click);
             // 
