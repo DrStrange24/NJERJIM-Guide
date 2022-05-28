@@ -56,9 +56,11 @@ namespace NJERJIM_Guide
             this.clientDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.clientDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.clientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.clientDataGridView.Location = new System.Drawing.Point(12, 12);
             this.clientDataGridView.Name = "clientDataGridView";
+            this.clientDataGridView.ReadOnly = true;
             this.clientDataGridView.RowTemplate.Height = 25;
             this.clientDataGridView.Size = new System.Drawing.Size(544, 500);
             this.clientDataGridView.TabIndex = 0;
