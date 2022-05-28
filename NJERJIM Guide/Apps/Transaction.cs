@@ -14,6 +14,15 @@ namespace NJERJIM_Guide
 {
     public partial class Transaction : Form
     {
+        private TransactionType SelectedTransactionType
+        {
+            get
+            {
+                if (depositRadioButton.Checked)
+                    return TransactionType.Deposit;
+                return TransactionType.Withdraw;
+            }
+        }
         public Transaction()
         {
             InitializeComponent();
@@ -27,7 +36,7 @@ namespace NJERJIM_Guide
                 var query = $"select * from {DTTransaction.Table} order by {DTTransaction.DateTime} desc;";
                 db_helper.SetDataGridView(transactionDataGridView, query);
             }
-            void SetTotalDeposit()
+            void SetTotalSupply()
             {
                 var db_helper = new DatabaseHelper();
                 var data = db_helper.GetData($"select * from {DTTransaction.Table}");
@@ -36,14 +45,24 @@ namespace NJERJIM_Guide
             }
 
             SetDataGridView();
-            SetTotalDeposit();
+            SetTotalSupply();
         }
-        private void addButton_Click(object sender, EventArgs e)
+        private void createButton_Click(object sender, EventArgs e)
         {
-            var db_helper = new DatabaseHelper();
-            db_helper.Manipulate($"INSERT INTO {DTTransaction.Table} ({DTTransaction.Type}, {DTTransaction.Amount}, {DTTransaction.DateTime}) " +
-                $"VALUES('{typeTextBox.Text}', '{amountTextBox.Text}', '{dateTimeTextBox.Text}');");
-            InitializeData();
+            bool ValidInput()
+            {
+                if ((!depositRadioButton.Checked && !withdrawRadioButton.Checked) || string.IsNullOrWhiteSpace(amountTextBox.Text))
+                    return false;
+                return true;
+            }
+            if (ValidInput())
+            {
+                var db_helper = new DatabaseHelper();
+                db_helper.Manipulate($"INSERT INTO {DTTransaction.Table} ({DTTransaction.Type}, {DTTransaction.Amount}, {DTTransaction.DateTime}) " +
+                    $"VALUES('{SelectedTransactionType}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToString(transactionDateTimePicker.Value)}');");
+                InitializeData();
+                clearInputsButton_Click(null, null);
+            }
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -54,27 +73,44 @@ namespace NJERJIM_Guide
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            var db_helper = new DatabaseHelper();
-            db_helper.Manipulate($"DELETE FROM {DTTransaction.Table} WHERE {DTTransaction.Id}={selectedIdLabel.Text};");
-            InitializeData();
+            if (!string.IsNullOrWhiteSpace(selectedIdLabel.Text))
+            {
+                var db_helper = new DatabaseHelper();
+                db_helper.Manipulate($"DELETE FROM {DTTransaction.Table} WHERE {DTTransaction.Id}={selectedIdLabel.Text};");
+                InitializeData();
+                clearInputsButton_Click(null, null);
+            }
         }
 
         private void collectionDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var selectedRow = transactionDataGridView.Rows[e.RowIndex].Cells;
+            if (e.RowIndex >= 0)
+            {
+                var selectedRow = transactionDataGridView.Rows[e.RowIndex].Cells;
 
-            selectedIdLabel.Text = selectedRow[0].Value.ToString();
-            typeTextBox.Text = selectedRow[1].Value.ToString();
-            amountTextBox.Text = selectedRow[2].Value.ToString();
-            dateTimeTextBox.Text = selectedRow[3].Value.ToString();
+                selectedIdLabel.Text = selectedRow[0].Value.ToString();
+                if (selectedRow[1].Value.ToString() == TransactionType.Deposit.ToString()) depositRadioButton.Checked = true; else withdrawRadioButton.Checked = true;
+                amountTextBox.Text = selectedRow[2].Value.ToString();
+                transactionDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow[3].Value);
 
-            idLabel.Visible = true;
-            selectedIdLabel.Visible = true;
+                idLabel.Visible = true;
+                selectedIdLabel.Visible = true;
+            }
+        }
+        private void createTransaction_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) createButton_Click(null, null);
         }
 
-        private void addTransactionTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void clearInputsButton_Click(object sender, EventArgs e)
         {
-            if(e.KeyCode==Keys.Enter) addButton_Click(null,null);
+            idLabel.Visible = false;
+            selectedIdLabel.Visible = false;
+            selectedIdLabel.Text = string.Empty;
+            depositRadioButton.Checked = false;
+            withdrawRadioButton.Checked = false;
+            amountTextBox.Text = string.Empty;
+            transactionDateTimePicker.Value = DateTime.Now;
         }
     }
 }

@@ -71,7 +71,7 @@ namespace NJERJIM_Guide
     internal struct DSTransaction
     {
         internal int Id { get; set; }
-        internal TransactionType Type { get; set; }
+        internal string Type { get; set; }
         internal double Amount { get; set; }
         /// <summary>
         ///     DateTime with string format from database format
@@ -99,20 +99,27 @@ namespace NJERJIM_Guide
             {
                 var temp_data = new DSTransaction();
                 temp_data.Id = Convert.ToInt32(data.Rows[i][0]);
-                temp_data.Type = (TransactionType)data.Rows[i][1];
+                temp_data.Type =  Convert.ToString(data.Rows[i][1]);
                 temp_data.Amount = Convert.ToDouble(data.Rows[i][2]);
                 temp_data.DateTime = Convert.ToString(data.Rows[i][3]);
                 list.Add(temp_data);
             }
             return list;
         }
+        /// <summary>
+        ///     Total Supply from different transactions
+        /// </summary>
+        /// <param name="transactionList"></param>
+        /// <returns>Supply Left</returns>
         internal static double TotalDeposit(List<DSTransaction> transactionList)
         {
             double amount = 0;
             foreach (var transaction in transactionList)
             {
-                if (transaction.Type == TransactionType.Deposit)
+                if (transaction.Type == TransactionType.Deposit.ToString())
                     amount += transaction.Amount;
+                else
+                    amount -= transaction.Amount;
             }
             return amount;
         }

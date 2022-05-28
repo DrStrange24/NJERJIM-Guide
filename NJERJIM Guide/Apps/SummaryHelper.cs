@@ -77,7 +77,7 @@ namespace NJERJIM_Guide.Apps
                 {
                     foreach (var data in Transactions)
                     {
-                        if (data.Type == TransactionType.Deposit)
+                        if (data.Type == TransactionType.Deposit.ToString())
                             amount += data.Amount;
                         else
                             amount -= data.Amount;

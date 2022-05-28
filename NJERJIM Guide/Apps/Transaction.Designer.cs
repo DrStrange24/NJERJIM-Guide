@@ -33,16 +33,18 @@ namespace NJERJIM_Guide
             this.selectedIdLabel = new System.Windows.Forms.Label();
             this.idLabel = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.dateTimeTextBox = new System.Windows.Forms.TextBox();
+            this.transactionDataGridView = new System.Windows.Forms.DataGridView();
+            this.totalDepositValueLabel = new System.Windows.Forms.Label();
+            this.totalSupplyLabel = new System.Windows.Forms.Label();
+            this.clearInputsButton = new System.Windows.Forms.Button();
+            this.transactionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.DateTimeLabel = new System.Windows.Forms.Label();
             this.amountTextBox = new System.Windows.Forms.TextBox();
             this.amountLabel = new System.Windows.Forms.Label();
-            this.addButton = new System.Windows.Forms.Button();
-            this.typeTextBox = new System.Windows.Forms.TextBox();
+            this.createButton = new System.Windows.Forms.Button();
             this.typeLabel = new System.Windows.Forms.Label();
-            this.transactionDataGridView = new System.Windows.Forms.DataGridView();
-            this.totalDepositValueLabel = new System.Windows.Forms.Label();
-            this.totalDepositLabel = new System.Windows.Forms.Label();
+            this.depositRadioButton = new System.Windows.Forms.RadioButton();
+            this.withdrawRadioButton = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.transactionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,88 +94,17 @@ namespace NJERJIM_Guide
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // dateTimeTextBox
-            // 
-            this.dateTimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimeTextBox.Location = new System.Drawing.Point(706, 100);
-            this.dateTimeTextBox.Name = "dateTimeTextBox";
-            this.dateTimeTextBox.Size = new System.Drawing.Size(280, 23);
-            this.dateTimeTextBox.TabIndex = 54;
-            this.dateTimeTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addTransactionTextBox_KeyDown);
-            // 
-            // DateTimeLabel
-            // 
-            this.DateTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DateTimeLabel.AutoSize = true;
-            this.DateTimeLabel.Location = new System.Drawing.Point(575, 103);
-            this.DateTimeLabel.Name = "DateTimeLabel";
-            this.DateTimeLabel.Size = new System.Drawing.Size(60, 15);
-            this.DateTimeLabel.TabIndex = 53;
-            this.DateTimeLabel.Text = "Date Time";
-            // 
-            // amountTextBox
-            // 
-            this.amountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.amountTextBox.Location = new System.Drawing.Point(706, 71);
-            this.amountTextBox.Name = "amountTextBox";
-            this.amountTextBox.Size = new System.Drawing.Size(280, 23);
-            this.amountTextBox.TabIndex = 52;
-            this.amountTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addTransactionTextBox_KeyDown);
-            // 
-            // amountLabel
-            // 
-            this.amountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.amountLabel.AutoSize = true;
-            this.amountLabel.Location = new System.Drawing.Point(575, 74);
-            this.amountLabel.Name = "amountLabel";
-            this.amountLabel.Size = new System.Drawing.Size(51, 15);
-            this.amountLabel.TabIndex = 51;
-            this.amountLabel.Text = "Amount";
-            // 
-            // addButton
-            // 
-            this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.Location = new System.Drawing.Point(830, 129);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(75, 23);
-            this.addButton.TabIndex = 50;
-            this.addButton.Text = "Add";
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // typeTextBox
-            // 
-            this.typeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.typeTextBox.Location = new System.Drawing.Point(706, 42);
-            this.typeTextBox.Name = "typeTextBox";
-            this.typeTextBox.Size = new System.Drawing.Size(280, 23);
-            this.typeTextBox.TabIndex = 49;
-            this.typeTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addTransactionTextBox_KeyDown);
-            // 
-            // typeLabel
-            // 
-            this.typeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.typeLabel.AutoSize = true;
-            this.typeLabel.Location = new System.Drawing.Point(575, 45);
-            this.typeLabel.Name = "typeLabel";
-            this.typeLabel.Size = new System.Drawing.Size(31, 15);
-            this.typeLabel.TabIndex = 48;
-            this.typeLabel.Text = "Type";
-            // 
             // transactionDataGridView
             // 
+            this.transactionDataGridView.AllowUserToAddRows = false;
             this.transactionDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.transactionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.transactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.transactionDataGridView.Location = new System.Drawing.Point(12, 12);
             this.transactionDataGridView.Name = "transactionDataGridView";
+            this.transactionDataGridView.ReadOnly = true;
             this.transactionDataGridView.RowTemplate.Height = 25;
             this.transactionDataGridView.Size = new System.Drawing.Size(544, 500);
             this.transactionDataGridView.TabIndex = 47;
@@ -189,38 +120,135 @@ namespace NJERJIM_Guide
             this.totalDepositValueLabel.Size = new System.Drawing.Size(0, 15);
             this.totalDepositValueLabel.TabIndex = 60;
             // 
-            // totalDepositLabel
+            // totalSupplyLabel
             // 
-            this.totalDepositLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.totalSupplyLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.totalDepositLabel.AutoSize = true;
-            this.totalDepositLabel.Location = new System.Drawing.Point(575, 493);
-            this.totalDepositLabel.Name = "totalDepositLabel";
-            this.totalDepositLabel.Size = new System.Drawing.Size(75, 15);
-            this.totalDepositLabel.TabIndex = 59;
-            this.totalDepositLabel.Text = "Total Deposit";
+            this.totalSupplyLabel.AutoSize = true;
+            this.totalSupplyLabel.Location = new System.Drawing.Point(575, 493);
+            this.totalSupplyLabel.Name = "totalSupplyLabel";
+            this.totalSupplyLabel.Size = new System.Drawing.Size(71, 15);
+            this.totalSupplyLabel.TabIndex = 59;
+            this.totalSupplyLabel.Text = "Total Supply";
+            // 
+            // clearInputsButton
+            // 
+            this.clearInputsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.clearInputsButton.Location = new System.Drawing.Point(706, 129);
+            this.clearInputsButton.Name = "clearInputsButton";
+            this.clearInputsButton.Size = new System.Drawing.Size(75, 23);
+            this.clearInputsButton.TabIndex = 71;
+            this.clearInputsButton.Text = "Clear";
+            this.clearInputsButton.UseVisualStyleBackColor = true;
+            this.clearInputsButton.Click += new System.EventHandler(this.clearInputsButton_Click);
+            // 
+            // transactionDateTimePicker
+            // 
+            this.transactionDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.transactionDateTimePicker.Location = new System.Drawing.Point(706, 97);
+            this.transactionDateTimePicker.Name = "transactionDateTimePicker";
+            this.transactionDateTimePicker.Size = new System.Drawing.Size(280, 23);
+            this.transactionDateTimePicker.TabIndex = 70;
+            this.transactionDateTimePicker.KeyDown += new System.Windows.Forms.KeyEventHandler(this.createTransaction_KeyDown);
+            // 
+            // DateTimeLabel
+            // 
+            this.DateTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DateTimeLabel.AutoSize = true;
+            this.DateTimeLabel.Location = new System.Drawing.Point(575, 103);
+            this.DateTimeLabel.Name = "DateTimeLabel";
+            this.DateTimeLabel.Size = new System.Drawing.Size(60, 15);
+            this.DateTimeLabel.TabIndex = 68;
+            this.DateTimeLabel.Text = "Date Time";
+            // 
+            // amountTextBox
+            // 
+            this.amountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.amountTextBox.Location = new System.Drawing.Point(706, 71);
+            this.amountTextBox.Name = "amountTextBox";
+            this.amountTextBox.Size = new System.Drawing.Size(280, 23);
+            this.amountTextBox.TabIndex = 67;
+            this.amountTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.createTransaction_KeyDown);
+            // 
+            // amountLabel
+            // 
+            this.amountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.amountLabel.AutoSize = true;
+            this.amountLabel.Location = new System.Drawing.Point(575, 74);
+            this.amountLabel.Name = "amountLabel";
+            this.amountLabel.Size = new System.Drawing.Size(51, 15);
+            this.amountLabel.TabIndex = 66;
+            this.amountLabel.Text = "Amount";
+            // 
+            // createButton
+            // 
+            this.createButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.createButton.Location = new System.Drawing.Point(830, 129);
+            this.createButton.Name = "createButton";
+            this.createButton.Size = new System.Drawing.Size(75, 23);
+            this.createButton.TabIndex = 65;
+            this.createButton.Text = "Create";
+            this.createButton.UseVisualStyleBackColor = true;
+            this.createButton.Click += new System.EventHandler(this.createButton_Click);
+            // 
+            // typeLabel
+            // 
+            this.typeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.typeLabel.AutoSize = true;
+            this.typeLabel.Location = new System.Drawing.Point(575, 45);
+            this.typeLabel.Name = "typeLabel";
+            this.typeLabel.Size = new System.Drawing.Size(31, 15);
+            this.typeLabel.TabIndex = 64;
+            this.typeLabel.Text = "Type";
+            // 
+            // depositRadioButton
+            // 
+            this.depositRadioButton.AutoSize = true;
+            this.depositRadioButton.Location = new System.Drawing.Point(706, 46);
+            this.depositRadioButton.Name = "depositRadioButton";
+            this.depositRadioButton.Size = new System.Drawing.Size(65, 19);
+            this.depositRadioButton.TabIndex = 72;
+            this.depositRadioButton.TabStop = true;
+            this.depositRadioButton.Text = "Deposit";
+            this.depositRadioButton.UseVisualStyleBackColor = true;
+            this.depositRadioButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.createTransaction_KeyDown);
+            // 
+            // withdrawRadioButton
+            // 
+            this.withdrawRadioButton.AutoSize = true;
+            this.withdrawRadioButton.Location = new System.Drawing.Point(811, 46);
+            this.withdrawRadioButton.Name = "withdrawRadioButton";
+            this.withdrawRadioButton.Size = new System.Drawing.Size(76, 19);
+            this.withdrawRadioButton.TabIndex = 73;
+            this.withdrawRadioButton.TabStop = true;
+            this.withdrawRadioButton.Text = "Withdraw";
+            this.withdrawRadioButton.UseVisualStyleBackColor = true;
+            this.withdrawRadioButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.createTransaction_KeyDown);
             // 
             // Transaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.withdrawRadioButton);
+            this.Controls.Add(this.depositRadioButton);
+            this.Controls.Add(this.clearInputsButton);
+            this.Controls.Add(this.transactionDateTimePicker);
+            this.Controls.Add(this.DateTimeLabel);
+            this.Controls.Add(this.amountTextBox);
+            this.Controls.Add(this.amountLabel);
+            this.Controls.Add(this.createButton);
+            this.Controls.Add(this.typeLabel);
             this.Controls.Add(this.totalDepositValueLabel);
-            this.Controls.Add(this.totalDepositLabel);
+            this.Controls.Add(this.totalSupplyLabel);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.selectedIdLabel);
             this.Controls.Add(this.idLabel);
             this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.dateTimeTextBox);
-            this.Controls.Add(this.DateTimeLabel);
-            this.Controls.Add(this.amountTextBox);
-            this.Controls.Add(this.amountLabel);
-            this.Controls.Add(this.addButton);
-            this.Controls.Add(this.typeTextBox);
-            this.Controls.Add(this.typeLabel);
             this.Controls.Add(this.transactionDataGridView);
             this.Name = "Transaction";
-            this.Text = "Transaction";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Supply";
             ((System.ComponentModel.ISupportInitialize)(this.transactionDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -233,15 +261,17 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label selectedIdLabel;
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.TextBox dateTimeTextBox;
+        private System.Windows.Forms.DataGridView transactionDataGridView;
+        private System.Windows.Forms.Label totalDepositValueLabel;
+        private System.Windows.Forms.Label totalSupplyLabel;
+        private System.Windows.Forms.Button clearInputsButton;
+        private System.Windows.Forms.DateTimePicker transactionDateTimePicker;
         private System.Windows.Forms.Label DateTimeLabel;
         private System.Windows.Forms.TextBox amountTextBox;
         private System.Windows.Forms.Label amountLabel;
-        private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.TextBox typeTextBox;
+        private System.Windows.Forms.Button createButton;
         private System.Windows.Forms.Label typeLabel;
-        private System.Windows.Forms.DataGridView transactionDataGridView;
-        private System.Windows.Forms.Label totalDepositValueLabel;
-        private System.Windows.Forms.Label totalDepositLabel;
+        private System.Windows.Forms.RadioButton depositRadioButton;
+        private System.Windows.Forms.RadioButton withdrawRadioButton;
     }
 }
