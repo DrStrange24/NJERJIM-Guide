@@ -160,6 +160,13 @@ namespace NJERJIM_Guide
             }
             return list;
         }
+        /// <summary>
+        ///     Calculate all the amount within the list.
+        /// </summary>
+        /// <param name="loanList"></param>
+        /// <returns>
+        ///     Total Amount within the list.
+        /// </returns>
         internal static double TotalAmount(List<DSLoan> loanList)
         {
             double amount = 0;
