@@ -92,7 +92,7 @@ namespace NJERJIM_Guide
             {
                 var selectedRow = loanDataGridView.Rows[e.RowIndex].Cells;
 
-                //column name are base on SetData() method on setdatagridview query
+                //column name are base on InitializeData() method on setdatagridview query
                 selectedIdLabel.Text = selectedRow["ID"].Value.ToString();
                 clientComboBox.SelectedItem = selectedRow["Client ID"].Value+" - "+ selectedRow["First Name"].Value;
                 amountTextBox.Text = selectedRow["Amount"].Value.ToString();
