@@ -48,11 +48,13 @@ namespace NJERJIM_Guide
             this.backButton = new System.Windows.Forms.Button();
             this.maleRadioButton = new System.Windows.Forms.RadioButton();
             this.femaleRadioButton = new System.Windows.Forms.RadioButton();
+            this.clearButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // clientDataGridView
             // 
+            this.clientDataGridView.AllowUserToAddRows = false;
             this.clientDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -83,6 +85,7 @@ namespace NJERJIM_Guide
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(280, 23);
             this.firstNameTextBox.TabIndex = 2;
+            this.firstNameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addClientTextBox_KeyDown);
             // 
             // addClientButton
             // 
@@ -90,7 +93,7 @@ namespace NJERJIM_Guide
             this.addClientButton.Location = new System.Drawing.Point(830, 216);
             this.addClientButton.Name = "addClientButton";
             this.addClientButton.Size = new System.Drawing.Size(75, 23);
-            this.addClientButton.TabIndex = 3;
+            this.addClientButton.TabIndex = 11;
             this.addClientButton.Text = "Add";
             this.addClientButton.UseVisualStyleBackColor = true;
             this.addClientButton.Click += new System.EventHandler(this.addClientButton_Click);
@@ -101,7 +104,8 @@ namespace NJERJIM_Guide
             this.middleNameTextBox.Location = new System.Drawing.Point(706, 71);
             this.middleNameTextBox.Name = "middleNameTextBox";
             this.middleNameTextBox.Size = new System.Drawing.Size(280, 23);
-            this.middleNameTextBox.TabIndex = 5;
+            this.middleNameTextBox.TabIndex = 3;
+            this.middleNameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addClientTextBox_KeyDown);
             // 
             // middleNameLabel
             // 
@@ -119,7 +123,8 @@ namespace NJERJIM_Guide
             this.lastNameTextBox.Location = new System.Drawing.Point(706, 100);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(280, 23);
-            this.lastNameTextBox.TabIndex = 7;
+            this.lastNameTextBox.TabIndex = 4;
+            this.lastNameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addClientTextBox_KeyDown);
             // 
             // lastNameLabel
             // 
@@ -147,7 +152,8 @@ namespace NJERJIM_Guide
             this.addressTextBox.Location = new System.Drawing.Point(706, 187);
             this.addressTextBox.Name = "addressTextBox";
             this.addressTextBox.Size = new System.Drawing.Size(280, 23);
-            this.addressTextBox.TabIndex = 13;
+            this.addressTextBox.TabIndex = 6;
+            this.addressTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addClientTextBox_KeyDown);
             // 
             // addressLabel
             // 
@@ -165,7 +171,8 @@ namespace NJERJIM_Guide
             this.contactNumberTextBox.Location = new System.Drawing.Point(706, 158);
             this.contactNumberTextBox.Name = "contactNumberTextBox";
             this.contactNumberTextBox.Size = new System.Drawing.Size(280, 23);
-            this.contactNumberTextBox.TabIndex = 11;
+            this.contactNumberTextBox.TabIndex = 5;
+            this.contactNumberTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addClientTextBox_KeyDown);
             // 
             // contactNumberLabel
             // 
@@ -245,11 +252,23 @@ namespace NJERJIM_Guide
             this.femaleRadioButton.Text = "Female";
             this.femaleRadioButton.UseVisualStyleBackColor = true;
             // 
+            // clearButton
+            // 
+            this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.clearButton.Location = new System.Drawing.Point(706, 216);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.TabIndex = 19;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.femaleRadioButton);
             this.Controls.Add(this.maleRadioButton);
             this.Controls.Add(this.backButton);
@@ -299,6 +318,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.RadioButton maleRadioButton;
         private System.Windows.Forms.RadioButton femaleRadioButton;
+        private System.Windows.Forms.Button clearButton;
     }
 }
 
