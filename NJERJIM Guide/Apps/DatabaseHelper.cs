@@ -87,24 +87,39 @@ namespace NJERJIM_Guide
             Command.Dispose();
             Connection.Close();
         }
+        /// <summary>
+        ///     Convert DateTime format to String format for database.
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns>String Format of DateTime</returns>
         internal static string DateTimeToString(DateTime dateTime)
         {
-            //"DateTime" To "String"
             return dateTime.ToString("yyyy-MM-dd HH:mm:ss:ff");
         }
+        /// <summary>
+        ///     Convert DateTime format to String format for database.
+        /// </summary>
+        /// <returns>String Format of DateTime</returns>
         internal static string DateTimeToString()
         {
-            //DateTime" To "String"
             return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ff");
         }
+        /// <summary>
+        ///     Convert String format from database to DateTime datatype.
+        /// </summary>
+        /// <param name="DatabaseDateTimeFormat">string</param>
+        /// <returns>DateTime datatype</returns>
         internal static DateTime StringToDateTime(string DatabaseDateTimeFormat)
         {
-            //"String" To "DateTime DataType"
             return DateTime.ParseExact(DatabaseDateTimeFormat, "yyyy-MM-dd HH:mm:ss:ff", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
         }
+        /// <summary>
+        ///     Convert String format from database to DateTime datatype.
+        /// </summary>
+        /// <param name="DatabaseDateTimeFormat">object</param>
+        /// <returns>DateTime datatype</returns>
         internal static DateTime StringToDateTime(object DatabaseDateTimeFormat)
         {
-            //"String" To "DateTime DataType"
             return DateTime.ParseExact(DatabaseDateTimeFormat.ToString(), "yyyy-MM-dd HH:mm:ss:ff", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
         }
     }
