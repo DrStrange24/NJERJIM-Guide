@@ -21,24 +21,30 @@ namespace NJERJIM_Guide
         }
         private void InitializeData()
         {
-            SetDGV();
-        }
-
-        private void SetDGV()
-        {
-            var db_helper = new DatabaseHelper();
-            var query = $"select * from {DTCollection.Table} order by {DTCollection.DateTime} desc;";
-            db_helper.SetDataGridView(collectionDataGridView, query);
-
-            var data = db_helper.GetData($"select * from {DTCollection.Table}");
-            totalCollectionValueLabel.Text = CurrencyFormat.ToString(DSCollection.TotalAmount(DSCollection.GetList(data)));
-        } 
-        private void addButton_Click(object sender, EventArgs e)
-        {
-            var db_helper = new DatabaseHelper();
-            db_helper.Manipulate($"INSERT INTO {DTCollection.Table} ({DTCollection.LoanId}, {DTCollection.Amount}, {DTCollection.DateTime}) " +
-                $"VALUES('{loanIdTextBox.Text}', '{amountTextBox.Text}', '{dateTimeTextBox.Text}');");
-            SetDGV();
+            void SetDataGridView()
+            {
+                var db_helper = new DatabaseHelper();
+                db_helper.SetDataGridView(collectionDataGridView, $"select {DTCollection.Id} as [ID],{DTCollection.LoanId} as [Loan ID],{DTClient.FirstName} as [First Name]," +
+                    $"{DTCollection.Amount} as [Amount],{DTCollection.DateTime} as [Date] from {DTCollection.Table} join {DTLoan.Table} on {DTCollection.LoanId}={DTLoan.Id} " +
+                    $"join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id} order by {DTCollection.DateTime} desc;");
+            }
+            void SetTotalCollection()
+            {
+                var db_helper = new DatabaseHelper();
+                var data = db_helper.GetData($"select * from {DTCollection.Table}");
+                totalCollectionValueLabel.Text = CurrencyFormat.ToString(DSCollection.TotalAmount(DSCollection.GetList(data)));
+            }
+            void SetComboBoxItems()
+            {
+                var db_helper = new DatabaseHelper();
+                var data = db_helper.GetData($"select {DTLoan.Id},{DTClient.FirstName} from {DTLoan.Table} join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id};");
+                loanComboBox.Items.Clear();
+                for (int i = 0; i < data.Rows.Count; i++)
+                    loanComboBox.Items.Add(data.Rows[i][0] + " - " + data.Rows[i][1]);
+            }
+            SetDataGridView();
+            SetTotalCollection();
+            SetComboBoxItems();
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -49,30 +55,67 @@ namespace NJERJIM_Guide
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            var db_helper = new DatabaseHelper();
-            db_helper.Manipulate($"DELETE FROM {DTCollection.Table} WHERE {DTCollection.Id}={selectedIdLabel.Text};");
-            SetDGV();
+            if (!string.IsNullOrEmpty(selectedIdLabel.Text))
+            {
+                var db_helper = new DatabaseHelper();
+                db_helper.Manipulate($"DELETE FROM {DTCollection.Table} WHERE {DTCollection.Id}={selectedIdLabel.Text};");
+                InitializeData();
+                clearInputsButton_Click(null, null);
+            }
+            else
+                MessageBox.Show("Please select a loan first!");
+            
         }
 
         private void collectionDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex>=0)
+            if (e.RowIndex >= 0)
             {
                 var selectedRow = collectionDataGridView.Rows[e.RowIndex].Cells;
 
-                selectedIdLabel.Text = selectedRow[0].Value.ToString();
-                loanIdTextBox.Text = selectedRow[1].Value.ToString();
-                amountTextBox.Text = selectedRow[2].Value.ToString();
-                dateTimeTextBox.Text = selectedRow[3].Value.ToString();
+                //column name are base on InitializeData() SetDataGridView() method
+                selectedIdLabel.Text = selectedRow["ID"].Value.ToString();
+                loanComboBox.SelectedItem = selectedRow["Loan ID"].Value + " - " + selectedRow["First Name"].Value;
+                amountTextBox.Text = selectedRow["Amount"].Value.ToString();
+                collectionDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow["Date"].Value);
 
                 idLabel.Visible = true;
                 selectedIdLabel.Visible = true;
             }
         }
 
-        private void addCollectionTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void createLoanButton_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) addButton_Click(null, null);
+            bool ValidInput()
+            {
+                if (loanComboBox.SelectedIndex < 0 || string.IsNullOrWhiteSpace(amountTextBox.Text))
+                    return false;
+                return true;
+            }
+            if (ValidInput())
+            {
+                int client_id = Convert.ToInt32(loanComboBox.SelectedItem.ToString().Split(" - ")[0]);
+                var db_helper = new DatabaseHelper();
+                db_helper.Manipulate($"INSERT INTO {DTCollection.Table} ({DTCollection.LoanId}, {DTCollection.Amount}, {DTCollection.DateTime}) " +
+                    $"VALUES('{client_id}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToString(collectionDateTimePicker.Value)}');");
+                InitializeData();
+                clearInputsButton_Click(null, null);
+            }
+        }
+
+        private void clearInputsButton_Click(object sender, EventArgs e)
+        {
+            idLabel.Visible = false;
+            selectedIdLabel.Visible = false;
+            selectedIdLabel.Text = null;
+            loanComboBox.SelectedIndex = -1;
+            amountTextBox.Text = string.Empty;
+            collectionDateTimePicker.Value = DateTime.Now;
+        }
+
+        private void creatCollectionTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) createLoanButton_Click(null, null);
         }
     }
 }
