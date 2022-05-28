@@ -73,15 +73,24 @@ namespace NJERJIM_Guide
         internal int Id { get; set; }
         internal TransactionType Type { get; set; }
         internal double Amount { get; set; }
+        /// <summary>
+        ///     DateTime with string format from database format
+        /// </summary>
         internal string DateTime { get; set; }
 
+        /// <summary>
+        ///     Convert DateTime string to DateTime datatypes.
+        /// </summary>
+        internal DateTime DateTimeFormat
+        {
+            get
+            {
+                return DatabaseHelper.StringToDateTime(this.DateTime);
+            }
+        }
         internal void Print()
         {
             Trace.WriteLine($"{this.Id}:{this.Type}:{this.Amount}:{this.DateTime}");
-        }
-        internal DateTime GetDateTime()
-        {
-            return DatabaseHelper.StringToDateTime(this.DateTime);
         }
         internal static List<DSTransaction> GetList(DataTable data)
         {
@@ -117,15 +126,25 @@ namespace NJERJIM_Guide
         internal int Id { get; set; }
         internal int ClientId { get; set; }
         internal double Amount { get; set; }
+        /// <summary>
+        ///     DateTime with string format from database format
+        /// </summary>
         internal string DateTime { get; set; }
+
+        /// <summary>
+        ///     Convert DateTime string to DateTime datatypes.
+        /// </summary>
+        internal DateTime DateTimeFormat 
+        {
+            get
+            {
+                return DatabaseHelper.StringToDateTime(this.DateTime);
+            }
+        }
 
         internal void Print()
         {
             Trace.WriteLine($"{this.Id}:{this.ClientId}:{this.Amount}:{this.DateTime}");
-        }
-        internal DateTime GetDateTime()
-        {
-            return DatabaseHelper.StringToDateTime(this.DateTime);
         }
         internal static List<DSLoan> GetList(DataTable data)
         {
@@ -158,15 +177,24 @@ namespace NJERJIM_Guide
         internal int Id { get; set; }
         internal int LoanId { get; set; }
         internal double Amount { get; set; }
+        /// <summary>
+        ///     DateTime with string format from database format
+        /// </summary>
         internal string DateTime { get; set; }
-        
+
+        /// <summary>
+        ///     Convert DateTime string to DateTime datatypes.
+        /// </summary>
+        internal DateTime DateTimeFormat
+        {
+            get
+            {
+                return DatabaseHelper.StringToDateTime(this.DateTime);
+            }
+        }
         internal void Print()
         {
             Trace.WriteLine($"{this.Id}:{this.LoanId}:{this.Amount}:{this.DateTime}");
-        }
-        internal DateTime GetDateTime()
-        {
-            return DatabaseHelper.StringToDateTime(this.DateTime);
         }
         internal static List<DSCollection> GetList(DataTable data)
         {

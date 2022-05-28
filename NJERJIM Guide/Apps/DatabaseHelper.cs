@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace NJERJIM_Guide
 {
+    /// <summary>
+    ///     Helps to make easier to query for database in SQLServer
+    /// </summary>
     class DatabaseHelper
     {
         private string DatabasePath { get; set; }

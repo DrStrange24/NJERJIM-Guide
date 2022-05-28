@@ -149,6 +149,7 @@ namespace NJERJIM_Guide
             this.loanDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.loanDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.loanDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.loanDataGridView.Location = new System.Drawing.Point(12, 12);
             this.loanDataGridView.Name = "loanDataGridView";
@@ -187,11 +188,11 @@ namespace NJERJIM_Guide
             this.clientComboBox.Size = new System.Drawing.Size(280, 23);
             this.clientComboBox.TabIndex = 51;
             // 
-            // datetimeDateTimePicker
+            // loanDateTimePicker
             // 
             this.loanDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.loanDateTimePicker.Location = new System.Drawing.Point(706, 97);
-            this.loanDateTimePicker.Name = "datetimeDateTimePicker";
+            this.loanDateTimePicker.Name = "loanDateTimePicker";
             this.loanDateTimePicker.Size = new System.Drawing.Size(280, 23);
             this.loanDateTimePicker.TabIndex = 52;
             // 
@@ -247,6 +248,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.clientLabel);
             this.Controls.Add(this.loanDataGridView);
             this.Name = "Loan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoanForm";
             ((System.ComponentModel.ISupportInitialize)(this.loanDataGridView)).EndInit();
             this.ResumeLayout(false);

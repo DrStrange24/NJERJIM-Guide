@@ -28,7 +28,7 @@ namespace NJERJIM_Guide.Apps
             {
                 var starting_date = transaction.Rows[transaction.Rows.Count - 1][3];
                 var current_date = DatabaseHelper.StringToDateTime(starting_date);
-
+                
                 Records = new List<DailyRecords>();
                 while (current_date.Date <= DateTime.Now.Date)
                 {
@@ -36,17 +36,17 @@ namespace NJERJIM_Guide.Apps
                     records.DateTime = current_date;
                     for (int i = 0; i < transactions.Count; i++)
                     {
-                        if (current_date.Date == transactions[i].GetDateTime().Date)
+                        if (current_date.Date == transactions[i].DateTimeFormat.Date)
                             records.Transactions.Add(transactions[i]);
                     }
                     for (int i = 0; i < loans.Count; i++)
                     {
-                        if (current_date.Date == loans[i].GetDateTime().Date)
+                        if (current_date.Date == loans[i].DateTimeFormat.Date)
                             records.Loans.Add(loans[i]);
                     }
                     for (int i = 0; i < collections.Count; i++)
                     {
-                        if (current_date.Date == collections[i].GetDateTime().Date)
+                        if (current_date.Date == collections[i].DateTimeFormat.Date)
                             records.Collections.Add(collections[i]);
                     }
                     Records.Add(records);
