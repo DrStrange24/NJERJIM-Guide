@@ -31,8 +31,8 @@ namespace NJERJIM_Guide
             db_helper.SetDataGridView(transactionDataGridView, query);
 
             var data = db_helper.GetData($"select * from {DTTransaction.Table}");
-            var transactions = TransactionData.GetList(data);
-            totalDepositValueLabel.Text = CurrencyFormat.ToString(TransactionData.TotalDeposit(transactions));
+            var transactions = DSTransaction.GetList(data);
+            totalDepositValueLabel.Text = CurrencyFormat.ToString(DSTransaction.TotalDeposit(transactions));
         }
         private void addButton_Click(object sender, EventArgs e)
         {

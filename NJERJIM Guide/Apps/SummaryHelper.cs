@@ -15,15 +15,14 @@ namespace NJERJIM_Guide.Apps
         internal SummaryHelper()
         {
             var db_helper = new DatabaseHelper();
-
             var transaction = db_helper.GetData($"select * from {DTTransaction.Table} order by {DTTransaction.DateTime} desc;");
-            var transactions = TransactionData.GetList(transaction);
+            var transactions = DSTransaction.GetList(transaction);
 
             var loan = db_helper.GetData($"select * from {DTLoan.Table} order by {DTLoan.DateTime} desc;");
-            var loans = LoanData.GetList(loan);
+            var loans = DSLoan.GetList(loan);
 
             var collection = db_helper.GetData($"select * from {DTCollection.Table} order by {DTCollection.DateTime} desc;");
-            var collections = CollectionData.GetList(collection);
+            var collections = DSCollection.GetList(collection);
 
             if (transaction.Rows.Count > 0)
             {
@@ -55,18 +54,21 @@ namespace NJERJIM_Guide.Apps
                 }
             }
         }
+        /// <summary>
+        ///     Daily Records Class used to keep data on daily basis.
+        /// </summary>
         internal class DailyRecords
         {
             internal DateTime DateTime { get; set; }
-            internal List<TransactionData> Transactions { get; set; }
-            internal List<LoanData> Loans { get; set; }
-            internal List<CollectionData> Collections { get; set; }
+            internal List<DSTransaction> Transactions { get; set; }
+            internal List<DSLoan> Loans { get; set; }
+            internal List<DSCollection> Collections { get; set; }
 
             internal DailyRecords()
             {
-                this.Transactions = new List<TransactionData>();
-                this.Loans = new List<LoanData>();
-                this.Collections = new List<CollectionData>();
+                this.Transactions = new List<DSTransaction>();
+                this.Loans = new List<DSLoan>();
+                this.Collections = new List<DSCollection>();
             }
             internal double TotalTransactions()
             {

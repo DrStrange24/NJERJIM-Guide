@@ -31,6 +31,11 @@ namespace NJERJIM_Guide
             DatabaseName += ".mdf";
             Connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + DatabasePath + DatabaseName + "\";Integrated Security=True";
         }
+        /// <summary>
+        ///     Retrieve data from database and return a DataTable Class
+        /// </summary>
+        /// <param name="Query">query for database</param>
+        /// <returns>DataTable with complete data of query</returns>
         internal DataTable GetData(string Query)
         {
             DataTable dt = new DataTable();
@@ -42,6 +47,15 @@ namespace NJERJIM_Guide
             Connection.Close();
             return dt;
         }
+        /// <summary>
+        ///    Automatically set datagridview from query you made.
+        /// </summary>
+        /// <param name="dataGridView">
+        ///     for what datagridview you want to set
+        /// </param>
+        /// <param name="Query">
+        ///     database query (example: CRUD etc...)
+        /// </param>
         internal void SetDataGridView(DataGridView dataGridView, string Query)
         {
             Connection.Open();
@@ -70,7 +84,6 @@ namespace NJERJIM_Guide
             Command.Dispose();
             Connection.Close();
         }
-
         internal static string DateTimeToString(DateTime dateTime)
         {
             //"DateTime" To "String"

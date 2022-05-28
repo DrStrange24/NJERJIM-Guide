@@ -32,7 +32,7 @@ namespace NJERJIM_Guide
             {
                 var db_helper = new DatabaseHelper();
                 var data = db_helper.GetData($"select * from {DTLoan.Table}");
-                totalLoanValueLabel.Text = CurrencyFormat.ToString(LoanData.TotalAmount(LoanData.GetList(data)));
+                totalLoanValueLabel.Text = CurrencyFormat.ToString(DSLoan.TotalAmount(DSLoan.GetList(data)));
             }
             void SetClientComboBox()
             {

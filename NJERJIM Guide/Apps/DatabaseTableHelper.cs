@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 
 namespace NJERJIM_Guide
 {
-    //DT stands for Database Table
+    /// <summary>
+    ///     DT stands for Database Table.
+    ///     Client Table with column names.
+    /// </summary>
     static class DTClient
     {
         internal static readonly string Table = "[client]";
@@ -22,6 +25,10 @@ namespace NJERJIM_Guide
         internal static readonly string ContactNumber = Table + ".[contact_number]";
         internal static readonly string Addess = Table + ".[address]";
     }
+    /// <summary>
+    ///     DT stands for Database Table.
+    ///     Loan Table with column names.
+    /// </summary>
     static class DTLoan
     {
         internal static readonly string Table = "[loan]";
@@ -31,6 +38,10 @@ namespace NJERJIM_Guide
         internal static readonly string Amount = Table + ".[amount]";
         internal static readonly string DateTime = Table + ".[datetime]";
     }
+    /// <summary>
+    ///     DT stands for Database Table.
+    ///     Collection Table with column names.
+    /// </summary>
     static class DTCollection
     {
         internal static readonly string Table = "[collection]";
@@ -40,6 +51,10 @@ namespace NJERJIM_Guide
         internal static readonly string Amount = Table + ".[amount]";
         internal static readonly string DateTime = Table + ".[datetime]";
     }
+    /// <summary>
+    ///     DT stands for Database Table.
+    ///     Transaction Table with column names.
+    /// </summary>
     static class DTTransaction
     {
         internal static readonly string Table = "[transaction]";
@@ -49,7 +64,11 @@ namespace NJERJIM_Guide
         internal static readonly string Amount = Table + ".[amount]";
         internal static readonly string DateTime = Table + ".[datetime]";
     }
-    internal struct TransactionData
+    /// <summary>
+    ///     DS stands for Data Structure.
+    ///     Transaction data structure.
+    /// </summary>
+    internal struct DSTransaction
     {
         internal int Id { get; set; }
         internal TransactionType Type { get; set; }
@@ -64,12 +83,12 @@ namespace NJERJIM_Guide
         {
             return DatabaseHelper.StringToDateTime(this.DateTime);
         }
-        internal static List<TransactionData> GetList(DataTable data)
+        internal static List<DSTransaction> GetList(DataTable data)
         {
-            var list = new List<TransactionData>();
+            var list = new List<DSTransaction>();
             for (int i = 0; i < data.Rows.Count; i++)
             {
-                var temp_data = new TransactionData();
+                var temp_data = new DSTransaction();
                 temp_data.Id = Convert.ToInt32(data.Rows[i][0]);
                 temp_data.Type = (TransactionType)data.Rows[i][1];
                 temp_data.Amount = Convert.ToDouble(data.Rows[i][2]);
@@ -78,7 +97,7 @@ namespace NJERJIM_Guide
             }
             return list;
         }
-        internal static double TotalDeposit(List<TransactionData> transactionList)
+        internal static double TotalDeposit(List<DSTransaction> transactionList)
         {
             double amount = 0;
             foreach (var transaction in transactionList)
@@ -89,7 +108,11 @@ namespace NJERJIM_Guide
             return amount;
         }
     }
-    internal struct LoanData
+    /// <summary>
+    ///     DS stands for Data Structure.
+    ///     Loan data structure.
+    /// </summary>
+    internal struct DSLoan
     {
         internal int Id { get; set; }
         internal int ClientId { get; set; }
@@ -104,12 +127,12 @@ namespace NJERJIM_Guide
         {
             return DatabaseHelper.StringToDateTime(this.DateTime);
         }
-        internal static List<LoanData> GetList(DataTable data)
+        internal static List<DSLoan> GetList(DataTable data)
         {
-            var list = new List<LoanData>();
+            var list = new List<DSLoan>();
             for (int i = 0; i < data.Rows.Count; i++)
             {
-                var temp_data = new LoanData();
+                var temp_data = new DSLoan();
                 temp_data.Id = Convert.ToInt32(data.Rows[i][0]);
                 temp_data.ClientId = Convert.ToInt32(data.Rows[i][1]);
                 temp_data.Amount = Convert.ToDouble(data.Rows[i][2]);
@@ -118,7 +141,7 @@ namespace NJERJIM_Guide
             }
             return list;
         }
-        internal static double TotalAmount(List<LoanData> loanList)
+        internal static double TotalAmount(List<DSLoan> loanList)
         {
             double amount = 0;
             foreach (var loan in loanList)
@@ -126,7 +149,11 @@ namespace NJERJIM_Guide
             return amount;
         }
     }
-    internal struct CollectionData
+    /// <summary>
+    ///     DS stands for Data Structure.
+    ///     Collection data structure.
+    /// </summary>
+    internal struct DSCollection
     {
         internal int Id { get; set; }
         internal int LoanId { get; set; }
@@ -141,12 +168,12 @@ namespace NJERJIM_Guide
         {
             return DatabaseHelper.StringToDateTime(this.DateTime);
         }
-        internal static List<CollectionData> GetList(DataTable data)
+        internal static List<DSCollection> GetList(DataTable data)
         {
-            var list = new List<CollectionData>();
+            var list = new List<DSCollection>();
             for (int i = 0; i < data.Rows.Count; i++)
             {
-                var temp_data = new CollectionData();
+                var temp_data = new DSCollection();
                 temp_data.Id = Convert.ToInt32(data.Rows[i][0]);
                 temp_data.LoanId = Convert.ToInt32(data.Rows[i][1]);
                 temp_data.Amount = Convert.ToDouble(data.Rows[i][2]);
@@ -155,7 +182,7 @@ namespace NJERJIM_Guide
             }
             return list;
         }
-        internal static double TotalAmount(List<CollectionData> collectionList)
+        internal static double TotalAmount(List<DSCollection> collectionList)
         {
             double amount = 0;
             foreach (var collection in collectionList)

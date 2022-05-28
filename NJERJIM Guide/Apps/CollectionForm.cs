@@ -31,7 +31,7 @@ namespace NJERJIM_Guide
             db_helper.SetDataGridView(collectionDataGridView, query);
 
             var data = db_helper.GetData($"select * from {DTCollection.Table}");
-            totalCollectionValueLabel.Text = CurrencyFormat.ToString(CollectionData.TotalAmount(CollectionData.GetList(data)));
+            totalCollectionValueLabel.Text = CurrencyFormat.ToString(DSCollection.TotalAmount(DSCollection.GetList(data)));
         } 
         private void addButton_Click(object sender, EventArgs e)
         {
