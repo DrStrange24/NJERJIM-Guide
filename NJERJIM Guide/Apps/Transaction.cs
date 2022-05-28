@@ -21,25 +21,29 @@ namespace NJERJIM_Guide
         }
         private void InitializeData()
         {
-            SetDGV();
-        }
+            void SetDataGridView()
+            {
+                var db_helper = new DatabaseHelper();
+                var query = $"select * from {DTTransaction.Table} order by {DTTransaction.DateTime} desc;";
+                db_helper.SetDataGridView(transactionDataGridView, query);
+            }
+            void SetTotalDeposit()
+            {
+                var db_helper = new DatabaseHelper();
+                var data = db_helper.GetData($"select * from {DTTransaction.Table}");
+                var transactions = DSTransaction.GetList(data);
+                totalDepositValueLabel.Text = CurrencyFormat.ToString(DSTransaction.TotalDeposit(transactions));
+            }
 
-        private void SetDGV()
-        {
-            var db_helper = new DatabaseHelper();
-            var query = $"select * from {DTTransaction.Table} order by {DTTransaction.DateTime} desc;";
-            db_helper.SetDataGridView(transactionDataGridView, query);
-
-            var data = db_helper.GetData($"select * from {DTTransaction.Table}");
-            var transactions = DSTransaction.GetList(data);
-            totalDepositValueLabel.Text = CurrencyFormat.ToString(DSTransaction.TotalDeposit(transactions));
+            SetDataGridView();
+            SetTotalDeposit();
         }
         private void addButton_Click(object sender, EventArgs e)
         {
             var db_helper = new DatabaseHelper();
             db_helper.Manipulate($"INSERT INTO {DTTransaction.Table} ({DTTransaction.Type}, {DTTransaction.Amount}, {DTTransaction.DateTime}) " +
                 $"VALUES('{typeTextBox.Text}', '{amountTextBox.Text}', '{dateTimeTextBox.Text}');");
-            SetDGV();
+            InitializeData();
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -52,7 +56,7 @@ namespace NJERJIM_Guide
         {
             var db_helper = new DatabaseHelper();
             db_helper.Manipulate($"DELETE FROM {DTTransaction.Table} WHERE {DTTransaction.Id}={selectedIdLabel.Text};");
-            SetDGV();
+            InitializeData();
         }
 
         private void collectionDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
