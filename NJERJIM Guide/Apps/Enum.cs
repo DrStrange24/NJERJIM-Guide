@@ -9,7 +9,8 @@ namespace NJERJIM_Guide.Apps
     enum TransactionType
     {
         Deposit = 1,
-        Withdraw = 2
+        Withdraw = 2,
+        WithdrawProfit=3
     }
     enum Sex
     {

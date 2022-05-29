@@ -24,25 +24,27 @@ namespace NJERJIM_Guide
             var Summary = new SummaryHelper();
             var records = Summary.Records;
 
-            double available_money = 0;
-            double total_money = 0;
+            double cashOnHand = 0;
+            double total_supply = 0;
             double profit = 0;
 
             if (records!=null)
             {
                 foreach (var record in records)
                 {
-                    available_money += record.TotalTransactions();
-                    total_money += record.TotalTransactions();
-                    available_money -= record.TotalLoans();
-                    available_money += record.TotalCapital();
-                    profit += record.TotalProfit();
+                    cashOnHand += record.TotalTransactions;
+                    total_supply += record.TotalTransactions;
+                    cashOnHand -= record.TotalLoans;
+                    cashOnHand += record.TotalCapital;
+                    profit += record.TotalProfit;
+                    profit -= record.TotalWithdrawnProfit;
                 }
             }
 
-            availableMoneyValueLabel.Text = CurrencyFormat.ToString(available_money);
-            moneyValueLabel.Text = CurrencyFormat.ToString(total_money);
+            cashOnHandValueLabel.Text = CurrencyFormat.ToString(cashOnHand);
+            totalSupplyValueLabel.Text = CurrencyFormat.ToString(total_supply);
             profitValueLabel.Text = CurrencyFormat.ToString(profit);
+            cashOnHandWithProfitValueLabel.Text = CurrencyFormat.ToString(profit+cashOnHand);
         }
 
         private void backButton_Click(object sender, EventArgs e)

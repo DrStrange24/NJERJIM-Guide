@@ -31,17 +31,19 @@ namespace NJERJIM_Guide
         {
             this.backButton = new System.Windows.Forms.Button();
             this.availableMoneyLabel = new System.Windows.Forms.Label();
-            this.availableMoneyValueLabel = new System.Windows.Forms.Label();
+            this.cashOnHandValueLabel = new System.Windows.Forms.Label();
             this.moneyLabel = new System.Windows.Forms.Label();
-            this.moneyValueLabel = new System.Windows.Forms.Label();
+            this.totalSupplyValueLabel = new System.Windows.Forms.Label();
             this.profitValueLabel = new System.Windows.Forms.Label();
             this.profitLabel = new System.Windows.Forms.Label();
+            this.cashOnHandWithProfitValueLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // backButton
             // 
             this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.backButton.Location = new System.Drawing.Point(284, 173);
+            this.backButton.Location = new System.Drawing.Point(385, 173);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(75, 23);
             this.backButton.TabIndex = 47;
@@ -54,34 +56,34 @@ namespace NJERJIM_Guide
             this.availableMoneyLabel.AutoSize = true;
             this.availableMoneyLabel.Location = new System.Drawing.Point(12, 9);
             this.availableMoneyLabel.Name = "availableMoneyLabel";
-            this.availableMoneyLabel.Size = new System.Drawing.Size(98, 15);
+            this.availableMoneyLabel.Size = new System.Drawing.Size(85, 15);
             this.availableMoneyLabel.TabIndex = 48;
-            this.availableMoneyLabel.Text = "Available Money:";
+            this.availableMoneyLabel.Text = "Cash on Hand:";
             // 
-            // availableMoneyValueLabel
+            // cashOnHandValueLabel
             // 
-            this.availableMoneyValueLabel.AutoSize = true;
-            this.availableMoneyValueLabel.Location = new System.Drawing.Point(116, 9);
-            this.availableMoneyValueLabel.Name = "availableMoneyValueLabel";
-            this.availableMoneyValueLabel.Size = new System.Drawing.Size(0, 15);
-            this.availableMoneyValueLabel.TabIndex = 49;
+            this.cashOnHandValueLabel.AutoSize = true;
+            this.cashOnHandValueLabel.Location = new System.Drawing.Point(116, 9);
+            this.cashOnHandValueLabel.Name = "cashOnHandValueLabel";
+            this.cashOnHandValueLabel.Size = new System.Drawing.Size(0, 15);
+            this.cashOnHandValueLabel.TabIndex = 49;
             // 
             // moneyLabel
             // 
             this.moneyLabel.AutoSize = true;
-            this.moneyLabel.Location = new System.Drawing.Point(63, 43);
+            this.moneyLabel.Location = new System.Drawing.Point(23, 43);
             this.moneyLabel.Name = "moneyLabel";
-            this.moneyLabel.Size = new System.Drawing.Size(47, 15);
+            this.moneyLabel.Size = new System.Drawing.Size(74, 15);
             this.moneyLabel.TabIndex = 50;
-            this.moneyLabel.Text = "Money:";
+            this.moneyLabel.Text = "Total Supply:";
             // 
-            // moneyValueLabel
+            // totalSupplyValueLabel
             // 
-            this.moneyValueLabel.AutoSize = true;
-            this.moneyValueLabel.Location = new System.Drawing.Point(116, 43);
-            this.moneyValueLabel.Name = "moneyValueLabel";
-            this.moneyValueLabel.Size = new System.Drawing.Size(0, 15);
-            this.moneyValueLabel.TabIndex = 51;
+            this.totalSupplyValueLabel.AutoSize = true;
+            this.totalSupplyValueLabel.Location = new System.Drawing.Point(116, 43);
+            this.totalSupplyValueLabel.Name = "totalSupplyValueLabel";
+            this.totalSupplyValueLabel.Size = new System.Drawing.Size(0, 15);
+            this.totalSupplyValueLabel.TabIndex = 51;
             // 
             // profitValueLabel
             // 
@@ -94,22 +96,41 @@ namespace NJERJIM_Guide
             // profitLabel
             // 
             this.profitLabel.AutoSize = true;
-            this.profitLabel.Location = new System.Drawing.Point(71, 80);
+            this.profitLabel.Location = new System.Drawing.Point(58, 80);
             this.profitLabel.Name = "profitLabel";
             this.profitLabel.Size = new System.Drawing.Size(39, 15);
             this.profitLabel.TabIndex = 52;
             this.profitLabel.Text = "Profit:";
             // 
+            // cashOnHandWithProfitValueLabel
+            // 
+            this.cashOnHandWithProfitValueLabel.AutoSize = true;
+            this.cashOnHandWithProfitValueLabel.Location = new System.Drawing.Point(394, 9);
+            this.cashOnHandWithProfitValueLabel.Name = "cashOnHandWithProfitValueLabel";
+            this.cashOnHandWithProfitValueLabel.Size = new System.Drawing.Size(0, 15);
+            this.cashOnHandWithProfitValueLabel.TabIndex = 55;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(243, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(145, 15);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "Cash On Hand with Profit:";
+            // 
             // SummaryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(371, 208);
+            this.ClientSize = new System.Drawing.Size(472, 208);
+            this.Controls.Add(this.cashOnHandWithProfitValueLabel);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.profitValueLabel);
             this.Controls.Add(this.profitLabel);
-            this.Controls.Add(this.moneyValueLabel);
+            this.Controls.Add(this.totalSupplyValueLabel);
             this.Controls.Add(this.moneyLabel);
-            this.Controls.Add(this.availableMoneyValueLabel);
+            this.Controls.Add(this.cashOnHandValueLabel);
             this.Controls.Add(this.availableMoneyLabel);
             this.Controls.Add(this.backButton);
             this.Name = "SummaryForm";
@@ -124,10 +145,12 @@ namespace NJERJIM_Guide
 
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Label availableMoneyLabel;
-        private System.Windows.Forms.Label availableMoneyValueLabel;
+        private System.Windows.Forms.Label cashOnHandValueLabel;
         private System.Windows.Forms.Label moneyLabel;
-        private System.Windows.Forms.Label moneyValueLabel;
+        private System.Windows.Forms.Label totalSupplyValueLabel;
         private System.Windows.Forms.Label profitValueLabel;
         private System.Windows.Forms.Label profitLabel;
+        private System.Windows.Forms.Label cashOnHandWithProfitValueLabel;
+        private System.Windows.Forms.Label label2;
     }
 }

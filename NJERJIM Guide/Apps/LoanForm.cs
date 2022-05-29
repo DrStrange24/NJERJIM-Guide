@@ -27,6 +27,13 @@ namespace NJERJIM_Guide
                 var db_helper = new DatabaseHelper();
                 db_helper.SetDataGridView(loanDataGridView, $"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTClient.FirstName} as [First Name],{DTLoan.Amount} as [Amount],{DTLoan.DateTime} as [Date] from {DTLoan.Table} " +
                     $"join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id} order by {DTLoan.DateTime} desc;");
+                //in progress
+                var sample_index = loanDataGridView.Columns.Add("sample name", "sample header");
+                for (int i = 0;i< loanDataGridView.Rows.Count; i++)
+                {
+                    loanDataGridView.Rows[i].Cells[sample_index].Value = DBNull.Value;
+                    loanDataGridView.Rows[i].Cells[sample_index].Value = "hello world";
+                }
             }
             void SetTotalLoan()
             {

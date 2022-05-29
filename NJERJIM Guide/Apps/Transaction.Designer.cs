@@ -34,7 +34,7 @@ namespace NJERJIM_Guide
             this.idLabel = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
             this.transactionDataGridView = new System.Windows.Forms.DataGridView();
-            this.totalDepositValueLabel = new System.Windows.Forms.Label();
+            this.totalSupplyValueLabel = new System.Windows.Forms.Label();
             this.totalSupplyLabel = new System.Windows.Forms.Label();
             this.clearInputsButton = new System.Windows.Forms.Button();
             this.transactionDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -43,8 +43,7 @@ namespace NJERJIM_Guide
             this.amountLabel = new System.Windows.Forms.Label();
             this.createButton = new System.Windows.Forms.Button();
             this.typeLabel = new System.Windows.Forms.Label();
-            this.depositRadioButton = new System.Windows.Forms.RadioButton();
-            this.withdrawRadioButton = new System.Windows.Forms.RadioButton();
+            this.transactionTypeComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.transactionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,13 +111,13 @@ namespace NJERJIM_Guide
             // 
             // totalDepositValueLabel
             // 
-            this.totalDepositValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.totalSupplyValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.totalDepositValueLabel.AutoSize = true;
-            this.totalDepositValueLabel.Location = new System.Drawing.Point(706, 493);
-            this.totalDepositValueLabel.Name = "totalDepositValueLabel";
-            this.totalDepositValueLabel.Size = new System.Drawing.Size(0, 15);
-            this.totalDepositValueLabel.TabIndex = 60;
+            this.totalSupplyValueLabel.AutoSize = true;
+            this.totalSupplyValueLabel.Location = new System.Drawing.Point(706, 493);
+            this.totalSupplyValueLabel.Name = "totalDepositValueLabel";
+            this.totalSupplyValueLabel.Size = new System.Drawing.Size(0, 15);
+            this.totalSupplyValueLabel.TabIndex = 60;
             // 
             // totalSupplyLabel
             // 
@@ -201,37 +200,21 @@ namespace NJERJIM_Guide
             this.typeLabel.TabIndex = 64;
             this.typeLabel.Text = "Type";
             // 
-            // depositRadioButton
+            // transactionTypeComboBox
             // 
-            this.depositRadioButton.AutoSize = true;
-            this.depositRadioButton.Location = new System.Drawing.Point(706, 46);
-            this.depositRadioButton.Name = "depositRadioButton";
-            this.depositRadioButton.Size = new System.Drawing.Size(65, 19);
-            this.depositRadioButton.TabIndex = 72;
-            this.depositRadioButton.TabStop = true;
-            this.depositRadioButton.Text = "Deposit";
-            this.depositRadioButton.UseVisualStyleBackColor = true;
-            this.depositRadioButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.createTransaction_KeyDown);
-            // 
-            // withdrawRadioButton
-            // 
-            this.withdrawRadioButton.AutoSize = true;
-            this.withdrawRadioButton.Location = new System.Drawing.Point(811, 46);
-            this.withdrawRadioButton.Name = "withdrawRadioButton";
-            this.withdrawRadioButton.Size = new System.Drawing.Size(76, 19);
-            this.withdrawRadioButton.TabIndex = 73;
-            this.withdrawRadioButton.TabStop = true;
-            this.withdrawRadioButton.Text = "Withdraw";
-            this.withdrawRadioButton.UseVisualStyleBackColor = true;
-            this.withdrawRadioButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.createTransaction_KeyDown);
+            this.transactionTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.transactionTypeComboBox.FormattingEnabled = true;
+            this.transactionTypeComboBox.Location = new System.Drawing.Point(706, 42);
+            this.transactionTypeComboBox.Name = "transactionTypeComboBox";
+            this.transactionTypeComboBox.Size = new System.Drawing.Size(280, 23);
+            this.transactionTypeComboBox.TabIndex = 74;
             // 
             // Transaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
-            this.Controls.Add(this.withdrawRadioButton);
-            this.Controls.Add(this.depositRadioButton);
+            this.Controls.Add(this.transactionTypeComboBox);
             this.Controls.Add(this.clearInputsButton);
             this.Controls.Add(this.transactionDateTimePicker);
             this.Controls.Add(this.DateTimeLabel);
@@ -239,7 +222,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.amountLabel);
             this.Controls.Add(this.createButton);
             this.Controls.Add(this.typeLabel);
-            this.Controls.Add(this.totalDepositValueLabel);
+            this.Controls.Add(this.totalSupplyValueLabel);
             this.Controls.Add(this.totalSupplyLabel);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.selectedIdLabel);
@@ -262,7 +245,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.DataGridView transactionDataGridView;
-        private System.Windows.Forms.Label totalDepositValueLabel;
+        private System.Windows.Forms.Label totalSupplyValueLabel;
         private System.Windows.Forms.Label totalSupplyLabel;
         private System.Windows.Forms.Button clearInputsButton;
         private System.Windows.Forms.DateTimePicker transactionDateTimePicker;
@@ -271,7 +254,6 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label amountLabel;
         private System.Windows.Forms.Button createButton;
         private System.Windows.Forms.Label typeLabel;
-        private System.Windows.Forms.RadioButton depositRadioButton;
-        private System.Windows.Forms.RadioButton withdrawRadioButton;
+        private System.Windows.Forms.ComboBox transactionTypeComboBox;
     }
 }

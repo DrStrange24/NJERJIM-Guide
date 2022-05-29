@@ -113,14 +113,14 @@ namespace NJERJIM_Guide
         /// </summary>
         /// <param name="transactionList"></param>
         /// <returns>Supply Left</returns>
-        internal static double TotalDeposit(List<DSTransaction> transactionList)
+        internal static double TotalSupply(List<DSTransaction> transactionList)
         {
             double amount = 0;
             foreach (var transaction in transactionList)
             {
                 if (transaction.Type == TransactionType.Deposit.ToString())
                     amount += transaction.Amount;
-                else
+                else if (transaction.Type == TransactionType.Withdraw.ToString())
                     amount -= transaction.Amount;
             }
             return amount;

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,15 +15,6 @@ namespace NJERJIM_Guide
 {
     public partial class Transaction : Form
     {
-        private TransactionType SelectedTransactionType
-        {
-            get
-            {
-                if (depositRadioButton.Checked)
-                    return TransactionType.Deposit;
-                return TransactionType.Withdraw;
-            }
-        }
         public Transaction()
         {
             InitializeComponent();
@@ -41,17 +33,24 @@ namespace NJERJIM_Guide
                 var db_helper = new DatabaseHelper();
                 var data = db_helper.GetData($"select * from {DTTransaction.Table}");
                 var transactions = DSTransaction.GetList(data);
-                totalDepositValueLabel.Text = CurrencyFormat.ToString(DSTransaction.TotalDeposit(transactions));
+                totalSupplyValueLabel.Text = CurrencyFormat.ToString(DSTransaction.TotalSupply(transactions));
+            }
+            void SetTypeComboBox()
+            {
+                var items = Enum.GetNames(typeof(TransactionType));
+                transactionTypeComboBox.Items.Clear();
+                transactionTypeComboBox.Items.AddRange(items);
             }
 
             SetDataGridView();
             SetTotalSupply();
+            SetTypeComboBox();
         }
         private void createButton_Click(object sender, EventArgs e)
         {
             bool ValidInput()
             {
-                if ((!depositRadioButton.Checked && !withdrawRadioButton.Checked) || string.IsNullOrWhiteSpace(amountTextBox.Text))
+                if (string.IsNullOrWhiteSpace(transactionTypeComboBox.SelectedItem.ToString()) || string.IsNullOrWhiteSpace(amountTextBox.Text))
                     return false;
                 return true;
             }
@@ -59,7 +58,7 @@ namespace NJERJIM_Guide
             {
                 var db_helper = new DatabaseHelper();
                 db_helper.Manipulate($"INSERT INTO {DTTransaction.Table} ({DTTransaction.Type}, {DTTransaction.Amount}, {DTTransaction.DateTime}) " +
-                    $"VALUES('{SelectedTransactionType}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToString(transactionDateTimePicker.Value)}');");
+                    $"VALUES('{transactionTypeComboBox.SelectedItem}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToString(transactionDateTimePicker.Value)}');");
                 InitializeData();
                 clearInputsButton_Click(null, null);
             }
@@ -89,7 +88,7 @@ namespace NJERJIM_Guide
                 var selectedRow = transactionDataGridView.Rows[e.RowIndex].Cells;
 
                 selectedIdLabel.Text = selectedRow[0].Value.ToString();
-                if (selectedRow[1].Value.ToString() == TransactionType.Deposit.ToString()) depositRadioButton.Checked = true; else withdrawRadioButton.Checked = true;
+                transactionTypeComboBox.SelectedItem = selectedRow[1].Value.ToString();
                 amountTextBox.Text = selectedRow[2].Value.ToString();
                 transactionDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow[3].Value);
 
@@ -107,8 +106,7 @@ namespace NJERJIM_Guide
             idLabel.Visible = false;
             selectedIdLabel.Visible = false;
             selectedIdLabel.Text = string.Empty;
-            depositRadioButton.Checked = false;
-            withdrawRadioButton.Checked = false;
+            transactionTypeComboBox.SelectedIndex = -1;
             amountTextBox.Text = string.Empty;
             transactionDateTimePicker.Value = DateTime.Now;
         }
