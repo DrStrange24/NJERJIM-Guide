@@ -46,6 +46,8 @@ namespace NJERJIM_Guide
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchLabel = new System.Windows.Forms.Label();
             this.clearInputsButton = new System.Windows.Forms.Button();
+            this.remarksRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.remarksLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.loanDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,7 +87,7 @@ namespace NJERJIM_Guide
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.Location = new System.Drawing.Point(911, 129);
+            this.deleteButton.Location = new System.Drawing.Point(911, 237);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 31;
@@ -125,7 +127,7 @@ namespace NJERJIM_Guide
             // createLoanButton
             // 
             this.createLoanButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.createLoanButton.Location = new System.Drawing.Point(830, 129);
+            this.createLoanButton.Location = new System.Drawing.Point(830, 237);
             this.createLoanButton.Name = "createLoanButton";
             this.createLoanButton.Size = new System.Drawing.Size(75, 23);
             this.createLoanButton.TabIndex = 20;
@@ -217,7 +219,7 @@ namespace NJERJIM_Guide
             // clearInputsButton
             // 
             this.clearInputsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearInputsButton.Location = new System.Drawing.Point(706, 129);
+            this.clearInputsButton.Location = new System.Drawing.Point(706, 237);
             this.clearInputsButton.Name = "clearInputsButton";
             this.clearInputsButton.Size = new System.Drawing.Size(75, 23);
             this.clearInputsButton.TabIndex = 55;
@@ -225,11 +227,31 @@ namespace NJERJIM_Guide
             this.clearInputsButton.UseVisualStyleBackColor = true;
             this.clearInputsButton.Click += new System.EventHandler(this.clearInputsButton_Click);
             // 
+            // remarksRichTextBox
+            // 
+            this.remarksRichTextBox.Location = new System.Drawing.Point(706, 126);
+            this.remarksRichTextBox.Name = "remarksRichTextBox";
+            this.remarksRichTextBox.Size = new System.Drawing.Size(280, 105);
+            this.remarksRichTextBox.TabIndex = 56;
+            this.remarksRichTextBox.Text = "";
+            // 
+            // remarksLabel
+            // 
+            this.remarksLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.remarksLabel.AutoSize = true;
+            this.remarksLabel.Location = new System.Drawing.Point(575, 129);
+            this.remarksLabel.Name = "remarksLabel";
+            this.remarksLabel.Size = new System.Drawing.Size(52, 15);
+            this.remarksLabel.TabIndex = 57;
+            this.remarksLabel.Text = "Remarks";
+            // 
             // Loan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.remarksLabel);
+            this.Controls.Add(this.remarksRichTextBox);
             this.Controls.Add(this.clearInputsButton);
             this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.searchLabel);
@@ -275,5 +297,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Label searchLabel;
         private System.Windows.Forms.Button clearInputsButton;
+        private System.Windows.Forms.RichTextBox remarksRichTextBox;
+        private System.Windows.Forms.Label remarksLabel;
     }
 }

@@ -25,15 +25,15 @@ namespace NJERJIM_Guide
             void SetDataGridView()
             {
                 var db_helper = new DatabaseHelper();
-                db_helper.SetDataGridView(loanDataGridView, $"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTClient.FirstName} as [First Name],{DTLoan.Amount} as [Amount],{DTLoan.DateTime} as [Date] from {DTLoan.Table} " +
-                    $"join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id} order by {DTLoan.DateTime} desc;");
-                //in progress
-                var sample_index = loanDataGridView.Columns.Add("sample name", "sample header");
-                for (int i = 0;i< loanDataGridView.Rows.Count; i++)
-                {
-                    loanDataGridView.Rows[i].Cells[sample_index].Value = DBNull.Value;
-                    loanDataGridView.Rows[i].Cells[sample_index].Value = "hello world";
-                }
+                db_helper.SetDataGridView(loanDataGridView, $"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTClient.FirstName} as [First Name],{DTLoan.Amount} as [Amount],{DTLoan.DateTime} as [Date]" +
+                    $",{DTLoan.Remarks} as [Remarks] from {DTLoan.Table} join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id} order by {DTLoan.DateTime} desc;");
+                ////in progress
+                //var sample_index = loanDataGridView.Columns.Add("sample name", "sample header");
+                //for (int i = 0;i< loanDataGridView.Rows.Count; i++)
+                //{
+                //    loanDataGridView.Rows[i].Cells[sample_index].Value = DBNull.Value;
+                //    loanDataGridView.Rows[i].Cells[sample_index].Value = "hello world";
+                //}
             }
             void SetTotalLoan()
             {
@@ -73,8 +73,8 @@ namespace NJERJIM_Guide
             {
                 int client_id = Convert.ToInt32(clientComboBox.SelectedItem.ToString().Split(" - ")[0]);
                 var db_helper = new DatabaseHelper();
-                db_helper.Manipulate($"INSERT INTO {DTLoan.Table} ({DTLoan.ClientId}, {DTLoan.Amount}, {DTLoan.DateTime}) " +
-                    $"VALUES({client_id}, {amountTextBox.Text}, '{DatabaseHelper.DateTimeToString(loanDateTimePicker.Value)}');");
+                db_helper.Manipulate($"INSERT INTO {DTLoan.Table} ({DTLoan.ClientId}, {DTLoan.Amount}, {DTLoan.DateTime},{DTLoan.Remarks}) " +
+                    $"VALUES({client_id}, {amountTextBox.Text}, '{DatabaseHelper.DateTimeToString(loanDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
                 InitializeData();
                 clearInputsButton_Click(null, null);
             }
@@ -104,6 +104,7 @@ namespace NJERJIM_Guide
                 clientComboBox.SelectedItem = selectedRow["Client ID"].Value+" - "+ selectedRow["First Name"].Value;
                 amountTextBox.Text = selectedRow["Amount"].Value.ToString();
                 loanDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow["Date"].Value);
+                remarksRichTextBox.Text = selectedRow["Remarks"].Value.ToString();
 
                 idLabel.Visible = true;
                 selectedIdLabel.Visible = true;
@@ -123,6 +124,7 @@ namespace NJERJIM_Guide
             clientComboBox.SelectedIndex = -1;
             amountTextBox.Text = string.Empty;
             loanDateTimePicker.Value = DateTime.Now;
+            remarksRichTextBox.Text = string.Empty;
         }
     }
 }
