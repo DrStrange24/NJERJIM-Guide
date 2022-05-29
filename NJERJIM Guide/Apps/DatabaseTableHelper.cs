@@ -37,6 +37,7 @@ namespace NJERJIM_Guide
         internal static readonly string ClientId = Table + ".[client_id]";
         internal static readonly string Amount = Table + ".[amount]";
         internal static readonly string DateTime = Table + ".[datetime]";
+        internal static readonly string Remarks = Table + ".[remarks]";
     }
     /// <summary>
     ///     DT stands for Database Table.
@@ -50,6 +51,7 @@ namespace NJERJIM_Guide
         internal static readonly string LoanId = Table + ".[loan_id]";
         internal static readonly string Amount = Table + ".[amount]";
         internal static readonly string DateTime = Table + ".[datetime]";
+        internal static readonly string Remarks = Table + ".[remarks]";
     }
     /// <summary>
     ///     DT stands for Database Table.
@@ -137,6 +139,7 @@ namespace NJERJIM_Guide
         ///     DateTime with string format from database format
         /// </summary>
         internal string DateTime { get; set; }
+        internal string Remarks { get; set; }
 
         /// <summary>
         ///     Convert DateTime string to DateTime datatypes.
@@ -195,6 +198,7 @@ namespace NJERJIM_Guide
         ///     DateTime with string format from database format
         /// </summary>
         internal string DateTime { get; set; }
+        internal string Remarks { get; set; }
 
         /// <summary>
         ///     Convert DateTime string to DateTime datatypes.
