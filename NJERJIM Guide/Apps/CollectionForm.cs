@@ -19,6 +19,7 @@ namespace NJERJIM_Guide
             InitializeComponent();
             InitializeData();
         }
+
         private void InitializeData()
         {
             void SetDataGridView()
@@ -37,10 +38,17 @@ namespace NJERJIM_Guide
             void SetComboBoxItems()
             {
                 var db_helper = new DatabaseHelper();
-                var data = db_helper.GetData($"select {DTLoan.Id},{DTClient.FirstName} from {DTLoan.Table} join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id};");
+                var data = db_helper.GetData($"select {DTLoan.Id},{DTLoan.Amount},{DTClient.FirstName} from {DTLoan.Table} join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id};");
                 loanComboBox.Items.Clear();
                 for (int i = 0; i < data.Rows.Count; i++)
-                    loanComboBox.Items.Add(data.Rows[i][0] + " - " + data.Rows[i][1]);
+                {
+                    var loan = new DSLoan();
+                    loan.Id = Convert.ToInt32(data.Rows[i][0]);
+                    loan.Amount = Convert.ToDouble(data.Rows[i][1]);
+
+                    if (loan.IsFullyPaid)
+                        loanComboBox.Items.Add(data.Rows[i][0] + " - " + data.Rows[i][1]);
+                }
             }
             SetDataGridView();
             SetTotalCollection();
