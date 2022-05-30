@@ -229,6 +229,7 @@ namespace NJERJIM_Guide
             // 
             // remarksRichTextBox
             // 
+            this.remarksRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.remarksRichTextBox.Location = new System.Drawing.Point(706, 126);
             this.remarksRichTextBox.Name = "remarksRichTextBox";
             this.remarksRichTextBox.Size = new System.Drawing.Size(280, 105);

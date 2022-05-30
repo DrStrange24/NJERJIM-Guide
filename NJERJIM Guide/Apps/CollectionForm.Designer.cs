@@ -44,6 +44,8 @@ namespace NJERJIM_Guide
             this.amountLabel = new System.Windows.Forms.Label();
             this.createLoanButton = new System.Windows.Forms.Button();
             this.loanLabel = new System.Windows.Forms.Label();
+            this.remarksLabel = new System.Windows.Forms.Label();
+            this.remarksRichTextBox = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.collectionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,7 +85,7 @@ namespace NJERJIM_Guide
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.Location = new System.Drawing.Point(911, 129);
+            this.deleteButton.Location = new System.Drawing.Point(911, 237);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 43;
@@ -129,7 +131,7 @@ namespace NJERJIM_Guide
             // clearInputsButton
             // 
             this.clearInputsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearInputsButton.Location = new System.Drawing.Point(706, 129);
+            this.clearInputsButton.Location = new System.Drawing.Point(706, 237);
             this.clearInputsButton.Name = "clearInputsButton";
             this.clearInputsButton.Size = new System.Drawing.Size(75, 23);
             this.clearInputsButton.TabIndex = 63;
@@ -187,7 +189,7 @@ namespace NJERJIM_Guide
             // createLoanButton
             // 
             this.createLoanButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.createLoanButton.Location = new System.Drawing.Point(830, 129);
+            this.createLoanButton.Location = new System.Drawing.Point(830, 237);
             this.createLoanButton.Name = "createLoanButton";
             this.createLoanButton.Size = new System.Drawing.Size(75, 23);
             this.createLoanButton.TabIndex = 57;
@@ -205,11 +207,32 @@ namespace NJERJIM_Guide
             this.loanLabel.TabIndex = 56;
             this.loanLabel.Text = "Loan";
             // 
+            // remarksLabel
+            // 
+            this.remarksLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.remarksLabel.AutoSize = true;
+            this.remarksLabel.Location = new System.Drawing.Point(575, 129);
+            this.remarksLabel.Name = "remarksLabel";
+            this.remarksLabel.Size = new System.Drawing.Size(52, 15);
+            this.remarksLabel.TabIndex = 65;
+            this.remarksLabel.Text = "Remarks";
+            // 
+            // remarksRichTextBox
+            // 
+            this.remarksRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.remarksRichTextBox.Location = new System.Drawing.Point(706, 126);
+            this.remarksRichTextBox.Name = "remarksRichTextBox";
+            this.remarksRichTextBox.Size = new System.Drawing.Size(280, 105);
+            this.remarksRichTextBox.TabIndex = 64;
+            this.remarksRichTextBox.Text = "";
+            // 
             // CollectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.remarksLabel);
+            this.Controls.Add(this.remarksRichTextBox);
             this.Controls.Add(this.clearInputsButton);
             this.Controls.Add(this.collectionDateTimePicker);
             this.Controls.Add(this.loanComboBox);
@@ -251,5 +274,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label amountLabel;
         private System.Windows.Forms.Button createLoanButton;
         private System.Windows.Forms.Label loanLabel;
+        private System.Windows.Forms.Label remarksLabel;
+        private System.Windows.Forms.RichTextBox remarksRichTextBox;
     }
 }

@@ -26,7 +26,7 @@ namespace NJERJIM_Guide
             {
                 var db_helper = new DatabaseHelper();
                 db_helper.SetDataGridView(collectionDataGridView, $"select {DTCollection.Id} as [ID],{DTCollection.LoanId} as [Loan ID],{DTClient.FirstName} as [First Name]," +
-                    $"{DTCollection.Amount} as [Amount],{DTCollection.DateTime} as [Date] from {DTCollection.Table} join {DTLoan.Table} on {DTCollection.LoanId}={DTLoan.Id} " +
+                    $"{DTCollection.Amount} as [Amount],{DTCollection.DateTime} as [Date],{DTCollection.Remarks} as [Remarks] from {DTCollection.Table} join {DTLoan.Table} on {DTCollection.LoanId}={DTLoan.Id} " +
                     $"join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id} order by {DTCollection.DateTime} desc;");
             }
             void SetTotalCollection()
@@ -86,6 +86,7 @@ namespace NJERJIM_Guide
                 loanComboBox.SelectedItem = selectedRow["Loan ID"].Value + " - " + selectedRow["First Name"].Value;
                 amountTextBox.Text = selectedRow["Amount"].Value.ToString();
                 collectionDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow["Date"].Value);
+                remarksRichTextBox.Text = selectedRow["Remarks"].Value.ToString();
 
                 idLabel.Visible = true;
                 selectedIdLabel.Visible = true;
@@ -104,8 +105,8 @@ namespace NJERJIM_Guide
             {
                 int client_id = Convert.ToInt32(loanComboBox.SelectedItem.ToString().Split(" - ")[0]);
                 var db_helper = new DatabaseHelper();
-                db_helper.Manipulate($"INSERT INTO {DTCollection.Table} ({DTCollection.LoanId}, {DTCollection.Amount}, {DTCollection.DateTime}) " +
-                    $"VALUES('{client_id}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToString(collectionDateTimePicker.Value)}');");
+                db_helper.Manipulate($"INSERT INTO {DTCollection.Table} ({DTCollection.LoanId}, {DTCollection.Amount}, {DTCollection.DateTime},{DTCollection.Remarks}) " +
+                    $"VALUES('{client_id}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToString(collectionDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
                 InitializeData();
                 clearInputsButton_Click(null, null);
             }
@@ -119,6 +120,7 @@ namespace NJERJIM_Guide
             loanComboBox.SelectedIndex = -1;
             amountTextBox.Text = string.Empty;
             collectionDateTimePicker.Value = DateTime.Now;
+            remarksRichTextBox.Text = string.Empty;
         }
 
         private void creatCollectionTextBox_KeyDown(object sender, KeyEventArgs e)
