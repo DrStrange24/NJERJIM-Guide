@@ -72,10 +72,10 @@ namespace NJERJIM_Guide.Apps
                 {
                     foreach (var record in records)
                     {
-                         CashOnHand += record.TotalTransactions;
+                        CashOnHand += record.TotalTransactions;
                         TotalSupply += record.TotalTransactions;
-                         CashOnHand -= record.TotalLoans;
-                         CashOnHand += record.TotalCapital;
+                        CashOnHand -= record.TotalLoans;
+                        CashOnHand += record.TotalCapital;
                         Profit += record.TotalProfit;
                         Profit -= record.TotalWithdrawnProfit;
                     }
