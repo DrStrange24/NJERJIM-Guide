@@ -46,8 +46,8 @@ namespace NJERJIM_Guide
                     loan.Id = Convert.ToInt32(data.Rows[i][0]);
                     loan.Amount = Convert.ToDouble(data.Rows[i][1]);
 
-                    if (loan.IsFullyPaid)
-                        loanComboBox.Items.Add(data.Rows[i][0] + " - " + data.Rows[i][1]);
+                    if (!loan.IsFullyPaid)
+                        loanComboBox.Items.Add(data.Rows[i][0] + " - " + data.Rows[i][2]);
                 }
             }
             SetDataGridView();
