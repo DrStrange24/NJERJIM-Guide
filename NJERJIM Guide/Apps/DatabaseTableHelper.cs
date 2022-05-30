@@ -79,7 +79,6 @@ namespace NJERJIM_Guide
         ///     DateTime with string format from database format
         /// </summary>
         internal string DateTime { get; set; }
-
         /// <summary>
         ///     Convert DateTime string to DateTime datatypes.
         /// </summary>
@@ -132,6 +131,13 @@ namespace NJERJIM_Guide
     /// </summary>
     internal struct DSLoan
     {
+        private readonly double DefaultInterstInPercent
+        {
+            get
+            {
+                return 20;
+            }
+        }
         internal int Id { get; set; }
         internal int ClientId { get; set; }
         internal double Amount { get; set; }
@@ -140,6 +146,35 @@ namespace NJERJIM_Guide
         /// </summary>
         internal string DateTime { get; set; }
         internal string Remarks { get; set; }
+        internal string ToBePaid
+        {
+            get
+            {
+                double amount = this.Amount * (1 + this.DefaultInterstInPercent / 100);
+                return CurrencyFormat.ToString(amount);
+            }
+        }
+        internal string CurrentPaid
+        {
+            get
+            {
+                double amount = 0;
+                var db_helper = new DatabaseHelper();
+                var data = db_helper.GetData($"select {DTCollection.Amount} from {DTCollection.Table} join {DTLoan.Table} on {DTCollection.LoanId}={DTLoan.Id} where {DTLoan.Id}={this.Id}");
+                for (int i = 0; i < data.Rows.Count; i++)
+                    amount += Convert.ToDouble(data.Rows[i][0]);
+                return CurrencyFormat.ToString(amount);
+            }
+        }
+        internal bool IsFullyPaid
+        {
+            get
+            {
+                if(this.ToBePaid==this.CurrentPaid)
+                    return true;
+                return false;
+            }
+        }
 
         /// <summary>
         ///     Convert DateTime string to DateTime datatypes.
@@ -166,6 +201,7 @@ namespace NJERJIM_Guide
                 temp_data.ClientId = Convert.ToInt32(data.Rows[i][1]);
                 temp_data.Amount = Convert.ToDouble(data.Rows[i][2]);
                 temp_data.DateTime = Convert.ToString(data.Rows[i][3]);
+                temp_data.Remarks = Convert.ToString(data.Rows[i][4]);
                 list.Add(temp_data);
             }
             return list;
@@ -224,6 +260,7 @@ namespace NJERJIM_Guide
                 temp_data.LoanId = Convert.ToInt32(data.Rows[i][1]);
                 temp_data.Amount = Convert.ToDouble(data.Rows[i][2]);
                 temp_data.DateTime = Convert.ToString(data.Rows[i][3]);
+                temp_data.Remarks = Convert.ToString(data.Rows[i][4]);
                 list.Add(temp_data);
             }
             return list;
