@@ -118,7 +118,7 @@ namespace NJERJIM_Guide
             {
                 var db_helper = new DatabaseHelper();
                 db_helper.Manipulate($"DELETE FROM {DTCollection.Table} WHERE {DTCollection.Id}={selectedIdLabel.Text};");
-                InitializeData();
+                FilterDataGridView();
                 clearInputsButton_Click(null, null);
             }
             else
@@ -158,7 +158,7 @@ namespace NJERJIM_Guide
                 var db_helper = new DatabaseHelper();
                 db_helper.Manipulate($"INSERT INTO {DTCollection.Table} ({DTCollection.LoanId}, {DTCollection.Amount}, {DTCollection.DateTime},{DTCollection.Remarks}) " +
                     $"VALUES('{client_id}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToString(collectionDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
-                InitializeData();
+                FilterDataGridView();
                 clearInputsButton_Click(null, null);
             }
         }
