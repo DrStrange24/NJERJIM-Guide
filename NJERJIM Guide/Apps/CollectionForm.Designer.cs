@@ -42,7 +42,7 @@ namespace NJERJIM_Guide
             this.DateTimeLabel = new System.Windows.Forms.Label();
             this.amountTextBox = new System.Windows.Forms.TextBox();
             this.amountLabel = new System.Windows.Forms.Label();
-            this.createLoanButton = new System.Windows.Forms.Button();
+            this.collectButton = new System.Windows.Forms.Button();
             this.loanLabel = new System.Windows.Forms.Label();
             this.remarksLabel = new System.Windows.Forms.Label();
             this.remarksRichTextBox = new System.Windows.Forms.RichTextBox();
@@ -196,16 +196,16 @@ namespace NJERJIM_Guide
             this.amountLabel.TabIndex = 58;
             this.amountLabel.Text = "Amount";
             // 
-            // createLoanButton
+            // collectButton
             // 
-            this.createLoanButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.createLoanButton.Location = new System.Drawing.Point(830, 237);
-            this.createLoanButton.Name = "createLoanButton";
-            this.createLoanButton.Size = new System.Drawing.Size(75, 23);
-            this.createLoanButton.TabIndex = 57;
-            this.createLoanButton.Text = "Create";
-            this.createLoanButton.UseVisualStyleBackColor = true;
-            this.createLoanButton.Click += new System.EventHandler(this.createLoanButton_Click);
+            this.collectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.collectButton.Location = new System.Drawing.Point(830, 237);
+            this.collectButton.Name = "collectButton";
+            this.collectButton.Size = new System.Drawing.Size(75, 23);
+            this.collectButton.TabIndex = 57;
+            this.collectButton.Text = "Collect";
+            this.collectButton.UseVisualStyleBackColor = true;
+            this.collectButton.Click += new System.EventHandler(this.collectButton_Click);
             // 
             // loanLabel
             // 
@@ -364,7 +364,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.DateTimeLabel);
             this.Controls.Add(this.amountTextBox);
             this.Controls.Add(this.amountLabel);
-            this.Controls.Add(this.createLoanButton);
+            this.Controls.Add(this.collectButton);
             this.Controls.Add(this.loanLabel);
             this.Controls.Add(this.totalCollectionValueLabel);
             this.Controls.Add(this.totalCollectionLabel);
@@ -397,7 +397,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label DateTimeLabel;
         private System.Windows.Forms.TextBox amountTextBox;
         private System.Windows.Forms.Label amountLabel;
-        private System.Windows.Forms.Button createLoanButton;
+        private System.Windows.Forms.Button collectButton;
         private System.Windows.Forms.Label loanLabel;
         private System.Windows.Forms.Label remarksLabel;
         private System.Windows.Forms.RichTextBox remarksRichTextBox;

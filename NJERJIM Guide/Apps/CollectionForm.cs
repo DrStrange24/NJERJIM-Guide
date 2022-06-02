@@ -118,7 +118,7 @@ namespace NJERJIM_Guide
             {
                 var db_helper = new DatabaseHelper();
                 db_helper.Manipulate($"DELETE FROM {DTCollection.Table} WHERE {DTCollection.Id}={selectedIdLabel.Text};");
-                InitializeData();
+                FilterDataGridView();
                 clearInputsButton_Click(null, null);
             }
             else
@@ -144,7 +144,7 @@ namespace NJERJIM_Guide
             }
         }
 
-        private void createLoanButton_Click(object sender, EventArgs e)
+        private void collectButton_Click(object sender, EventArgs e)
         {
             bool ValidInput()
             {
@@ -158,7 +158,7 @@ namespace NJERJIM_Guide
                 var db_helper = new DatabaseHelper();
                 db_helper.Manipulate($"INSERT INTO {DTCollection.Table} ({DTCollection.LoanId}, {DTCollection.Amount}, {DTCollection.DateTime},{DTCollection.Remarks}) " +
                     $"VALUES('{client_id}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToString(collectionDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
-                InitializeData();
+                FilterDataGridView();
                 clearInputsButton_Click(null, null);
             }
         }
@@ -176,7 +176,7 @@ namespace NJERJIM_Guide
 
         private void creatCollectionTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) createLoanButton_Click(null, null);
+            if (e.KeyCode == Keys.Enter) collectButton_Click(null, null);
         }
         private void searchByTextBox_TextChanged(object sender, EventArgs e)
         {
