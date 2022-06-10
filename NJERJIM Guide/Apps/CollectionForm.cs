@@ -170,8 +170,8 @@ namespace NJERJIM_Guide
             selectedIdLabel.Text = null;
             loanComboBox.SelectedIndex = -1;
             amountTextBox.Text = string.Empty;
-            collectionDateTimePicker.Value = DateTime.Now;
             remarksRichTextBox.Text = string.Empty;
+            collectionDateTimePicker.Value = collectionDateTimePicker.Value.Date + new TimeSpan(0,DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second,DateTime.Now.Millisecond);
         }
 
         private void creatCollectionTextBox_KeyDown(object sender, KeyEventArgs e)
