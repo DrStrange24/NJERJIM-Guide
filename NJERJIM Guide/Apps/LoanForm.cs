@@ -133,5 +133,12 @@ namespace NJERJIM_Guide
             loanDateTimePicker.Value = DateTime.Now;
             remarksRichTextBox.Text = string.Empty;
         }
+
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            var db_helper = new DatabaseHelper();
+            db_helper.SetDataGridView(loanDataGridView, $"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTClient.FirstName} as [First Name],{DTLoan.Amount} as [Amount],{DTLoan.DateTime} as [Date]" +
+                    $",{DTLoan.Remarks} as [Remarks] from {DTLoan.Table} join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id} where {DTClient.FirstName} like '%{searchTextBox.Text}%' order by {DTLoan.DateTime} desc;");
+        }
     }
 }

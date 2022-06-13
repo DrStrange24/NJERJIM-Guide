@@ -205,6 +205,7 @@ namespace NJERJIM_Guide
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(280, 23);
             this.searchTextBox.TabIndex = 54;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // searchLabel
             // 
