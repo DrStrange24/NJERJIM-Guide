@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +23,7 @@ namespace NJERJIM_Guide
         private SqlCommand Command { get; set; }
         internal DatabaseHelper()
         {
-            DatabasePath = "E:\\Dr Strange\\Work\\NJERJIM\\Programming\\NJERJIM Guide\\NJERJIM Guide\\";
+            DatabasePath = $"{Directory.GetCurrentDirectory()}\\";
             DatabaseName = "lending.mdf";
             Connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\""+DatabasePath+DatabaseName+"\";Integrated Security=True");
         }
