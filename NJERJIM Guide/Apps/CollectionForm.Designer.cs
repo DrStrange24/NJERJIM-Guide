@@ -277,6 +277,7 @@ namespace NJERJIM_Guide
             this.fromDateTimePicker.Size = new System.Drawing.Size(200, 23);
             this.fromDateTimePicker.TabIndex = 70;
             this.fromDateTimePicker.ValueChanged += new System.EventHandler(this.fromtoDateTimePicker_ValueChanged);
+            this.fromDateTimePicker.ValueChanged += new System.EventHandler(this.fromDateTimePicker_ValueChanged);
             // 
             // toDateTimePicker
             // 

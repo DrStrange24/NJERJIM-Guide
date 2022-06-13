@@ -205,6 +205,11 @@ namespace NJERJIM_Guide
             FilterDataGridView();
         }
 
+        private void fromDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            toDateTimePicker.Value = fromDateTimePicker.Value.Date.AddDays(1).AddMilliseconds(-1);
+        }
+
         private void loanIdComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(loanIdComboBox.Visible) FilterDataGridView();
