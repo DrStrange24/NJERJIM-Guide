@@ -111,5 +111,11 @@ namespace NJERJIM_Guide
             contactNumberTextBox.Text = string.Empty;
             addressTextBox.Text = string.Empty;
         }
+
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            var db_helper = new DatabaseHelper();
+            db_helper.SetDataGridView(clientDataGridView, $"select * from {DTClient.Table} where {DTClient.FirstName} like '%{searchTextBox.Text}%'");
+        }
     }
 }

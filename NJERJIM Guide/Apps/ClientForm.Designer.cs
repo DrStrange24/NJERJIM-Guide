@@ -49,6 +49,8 @@ namespace NJERJIM_Guide
             this.maleRadioButton = new System.Windows.Forms.RadioButton();
             this.femaleRadioButton = new System.Windows.Forms.RadioButton();
             this.clearButton = new System.Windows.Forms.Button();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
+            this.searchLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +66,7 @@ namespace NJERJIM_Guide
             this.clientDataGridView.Name = "clientDataGridView";
             this.clientDataGridView.ReadOnly = true;
             this.clientDataGridView.RowTemplate.Height = 25;
-            this.clientDataGridView.Size = new System.Drawing.Size(544, 500);
+            this.clientDataGridView.Size = new System.Drawing.Size(544, 472);
             this.clientDataGridView.TabIndex = 0;
             this.clientDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientDataGridView_CellClick);
             // 
@@ -263,11 +265,32 @@ namespace NJERJIM_Guide
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.searchTextBox.Location = new System.Drawing.Point(69, 490);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(280, 23);
+            this.searchTextBox.TabIndex = 56;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
+            // 
+            // searchLabel
+            // 
+            this.searchLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.searchLabel.AutoSize = true;
+            this.searchLabel.Location = new System.Drawing.Point(12, 493);
+            this.searchLabel.Name = "searchLabel";
+            this.searchLabel.Size = new System.Drawing.Size(42, 15);
+            this.searchLabel.TabIndex = 55;
+            this.searchLabel.Text = "Search";
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.searchTextBox);
+            this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.femaleRadioButton);
             this.Controls.Add(this.maleRadioButton);
@@ -319,6 +342,8 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.RadioButton maleRadioButton;
         private System.Windows.Forms.RadioButton femaleRadioButton;
         private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.TextBox searchTextBox;
+        private System.Windows.Forms.Label searchLabel;
     }
 }
 
