@@ -13,10 +13,10 @@ using static NJERJIM_Guide.Apps.SummaryHelper;
 
 namespace NJERJIM_Guide
 {
-    public partial class CollectionForm : Form
+    public partial class Collection : Form
     {
         private DatabaseHelper db_query = new DatabaseHelper();
-        public CollectionForm()
+        public Collection()
         {
             InitializeComponent();
             InitializeData();
@@ -128,21 +128,34 @@ namespace NJERJIM_Guide
 
         private void collectButton_Click(object sender, EventArgs e)
         {
-            bool ValidInput()
+            bool ValidInputs()
             {
                 if (loanComboBox.SelectedIndex < 0 || string.IsNullOrWhiteSpace(amountTextBox.Text))
                     return false;
                 return true;
             }
-            if (ValidInput())
+
+            if (ValidInputs())
             {
-                int client_id = Convert.ToInt32(loanComboBox.SelectedItem.ToString().Split(" - ")[0]);
+                int loan_id = Convert.ToInt32(loanComboBox.SelectedItem.ToString().Split(" - ")[0]);
                 var db_helper = new DatabaseHelper();
-                db_helper.Manipulate($"INSERT INTO {DTCollection.Table} ({DTCollection.LoanId}, {DTCollection.Amount}, {DTCollection.DateTime},{DTCollection.Remarks}) " +
-                    $"VALUES('{client_id}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToString(collectionDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
+                switch (collectButton.Text)
+                {
+                    case "Collect":
+                        db_helper.Manipulate($"INSERT INTO {DTCollection.Table} ({DTCollection.LoanId}, {DTCollection.Amount}, {DTCollection.DateTime},{DTCollection.Remarks}) " +
+                            $"VALUES('{loan_id}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToString(collectionDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
+                        break;
+                    case "Save":
+                        db_helper.Manipulate($"UPDATE {DTCollection.Table} SET {DTCollection.LoanId} = '{loan_id}', {DTCollection.Amount} = '{amountTextBox.Text}' , {DTCollection.DateTime} = '{DatabaseHelper.DateTimeToString(collectionDateTimePicker.Value)}' " +
+                            $",{DTCollection.Remarks} = '{remarksRichTextBox.Text}' WHERE {DTCollection.Id}={selectedIdLabel.Text};");
+                        break;
+                }
                 FilterDataGridView();
                 clearInputsButton_Click(null, null);
             }
+            else
+                MessageBox.Show("Invalid inputs");
+       
         }
 
         private void clearInputsButton_Click(object sender, EventArgs e)
@@ -237,6 +250,14 @@ namespace NJERJIM_Guide
                 idLabel.Visible = true;
                 selectedIdLabel.Visible = true;
             }
+        }
+
+        private void selectedIdLabel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (selectedIdLabel.Visible)
+                collectButton.Text = "Save";
+            else
+                collectButton.Text = "Collect";
         }
     }
 }

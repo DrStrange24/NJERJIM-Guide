@@ -1,7 +1,7 @@
 ﻿
 namespace NJERJIM_Guide
 {
-    partial class CollectionForm
+    partial class Collection
     {
         /// <summary>
         /// Required designer variable.
@@ -80,6 +80,7 @@ namespace NJERJIM_Guide
             this.selectedIdLabel.TabIndex = 45;
             this.selectedIdLabel.Text = "Selected ID";
             this.selectedIdLabel.Visible = false;
+            this.selectedIdLabel.VisibleChanged += new System.EventHandler(this.selectedIdLabel_VisibleChanged);
             // 
             // idLabel
             // 
@@ -341,7 +342,7 @@ namespace NJERJIM_Guide
             this.loanIdComboBox.Visible = false;
             this.loanIdComboBox.SelectedIndexChanged += new System.EventHandler(this.loanIdComboBox_SelectedIndexChanged);
             // 
-            // CollectionForm
+            // Collection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -373,7 +374,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.idLabel);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.collectionDataGridView);
-            this.Name = "CollectionForm";
+            this.Name = "Collection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CollectionForm";
             ((System.ComponentModel.ISupportInitialize)(this.collectionDataGridView)).EndInit();

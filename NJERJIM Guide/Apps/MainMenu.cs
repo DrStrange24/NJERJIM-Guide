@@ -31,7 +31,7 @@ namespace NJERJIM_Guide
 
         private void collectionButton_Click(object sender, EventArgs e)
         {
-            new CollectionForm().Show();
+            new Collection().Show();
             this.Hide();
         }
 
