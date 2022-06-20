@@ -70,21 +70,33 @@ namespace NJERJIM_Guide
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            bool ValidInput()
+            bool ValidInputs()
             {
                 if (clientComboBox.SelectedIndex < 0 || string.IsNullOrWhiteSpace(amountTextBox.Text))
                     return false;
                 return true;
             }
-            if (ValidInput())
+
+            if (ValidInputs())
             {
                 int client_id = Convert.ToInt32(clientComboBox.SelectedItem.ToString().Split(" - ")[0]);
                 var db_helper = new DatabaseHelper();
-                db_helper.Manipulate($"INSERT INTO {DTLoan.Table} ({DTLoan.ClientId}, {DTLoan.Amount}, {DTLoan.DateTime},{DTLoan.Remarks}) " +
-                    $"VALUES({client_id}, {amountTextBox.Text}, '{DatabaseHelper.DateTimeToString(loanDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
+                switch (loanButton.Text)
+                {
+                    case "Create":
+                        db_helper.Manipulate($"INSERT INTO {DTLoan.Table} ({DTLoan.ClientId}, {DTLoan.Amount}, {DTLoan.DateTime},{DTLoan.Remarks}) " +
+                            $"VALUES({client_id}, {amountTextBox.Text}, '{DatabaseHelper.DateTimeToString(loanDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
+                        break;
+                    case "Save":
+                        db_helper.Manipulate($"UPDATE {DTLoan.Table} SET {DTLoan.ClientId} = '{client_id}', {DTLoan.Amount} = '{amountTextBox.Text}' , {DTLoan.DateTime} = '{DatabaseHelper.DateTimeToString(loanDateTimePicker.Value)}' " +
+                            $",{DTLoan.Remarks} = '{remarksRichTextBox.Text}' WHERE {DTLoan.Id}={selectedIdLabel.Text};");
+                        break;
+                }
                 InitializeData();
                 clearInputsButton_Click(null, null);
             }
+            else
+                MessageBox.Show("Invalid inputs");
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -137,6 +149,14 @@ namespace NJERJIM_Guide
                 idLabel.Visible = true;
                 selectedIdLabel.Visible = true;
             }
+        }
+
+        private void selectedIdLabel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (selectedIdLabel.Visible)
+                loanButton.Text = "Save";
+            else
+                loanButton.Text = "Create";
         }
     }
 }

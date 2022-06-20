@@ -36,7 +36,7 @@ namespace NJERJIM_Guide
             this.DateTimeLabel = new System.Windows.Forms.Label();
             this.amountTextBox = new System.Windows.Forms.TextBox();
             this.amountLabel = new System.Windows.Forms.Label();
-            this.createLoanButton = new System.Windows.Forms.Button();
+            this.loanButton = new System.Windows.Forms.Button();
             this.clientLabel = new System.Windows.Forms.Label();
             this.loanDataGridView = new System.Windows.Forms.DataGridView();
             this.totalLoanValueLabel = new System.Windows.Forms.Label();
@@ -72,6 +72,7 @@ namespace NJERJIM_Guide
             this.selectedIdLabel.TabIndex = 33;
             this.selectedIdLabel.Text = "Selected ID";
             this.selectedIdLabel.Visible = false;
+            this.selectedIdLabel.VisibleChanged += new System.EventHandler(this.selectedIdLabel_VisibleChanged);
             // 
             // idLabel
             // 
@@ -124,16 +125,16 @@ namespace NJERJIM_Guide
             this.amountLabel.TabIndex = 21;
             this.amountLabel.Text = "Amount";
             // 
-            // createLoanButton
+            // loanButton
             // 
-            this.createLoanButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.createLoanButton.Location = new System.Drawing.Point(830, 237);
-            this.createLoanButton.Name = "createLoanButton";
-            this.createLoanButton.Size = new System.Drawing.Size(75, 23);
-            this.createLoanButton.TabIndex = 20;
-            this.createLoanButton.Text = "Create";
-            this.createLoanButton.UseVisualStyleBackColor = true;
-            this.createLoanButton.Click += new System.EventHandler(this.createButton_Click);
+            this.loanButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.loanButton.Location = new System.Drawing.Point(830, 237);
+            this.loanButton.Name = "loanButton";
+            this.loanButton.Size = new System.Drawing.Size(75, 23);
+            this.loanButton.TabIndex = 20;
+            this.loanButton.Text = "Create";
+            this.loanButton.UseVisualStyleBackColor = true;
+            this.loanButton.Click += new System.EventHandler(this.createButton_Click);
             // 
             // clientLabel
             // 
@@ -268,12 +269,12 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.DateTimeLabel);
             this.Controls.Add(this.amountTextBox);
             this.Controls.Add(this.amountLabel);
-            this.Controls.Add(this.createLoanButton);
+            this.Controls.Add(this.loanButton);
             this.Controls.Add(this.clientLabel);
             this.Controls.Add(this.loanDataGridView);
             this.Name = "Loan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LoanForm";
+            this.Text = "Loan";
             ((System.ComponentModel.ISupportInitialize)(this.loanDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -289,7 +290,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label DateTimeLabel;
         private System.Windows.Forms.TextBox amountTextBox;
         private System.Windows.Forms.Label amountLabel;
-        private System.Windows.Forms.Button createLoanButton;
+        private System.Windows.Forms.Button loanButton;
         private System.Windows.Forms.Label clientLabel;
         private System.Windows.Forms.DataGridView loanDataGridView;
         private System.Windows.Forms.Label totalLoanValueLabel;
