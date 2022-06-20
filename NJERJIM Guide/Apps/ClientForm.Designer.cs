@@ -32,7 +32,7 @@ namespace NJERJIM_Guide
             this.clientDataGridView = new System.Windows.Forms.DataGridView();
             this.firstNameLabel = new System.Windows.Forms.Label();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
-            this.addClientButton = new System.Windows.Forms.Button();
+            this.clientButton = new System.Windows.Forms.Button();
             this.middleNameTextBox = new System.Windows.Forms.TextBox();
             this.middleNameLabel = new System.Windows.Forms.Label();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
@@ -89,16 +89,16 @@ namespace NJERJIM_Guide
             this.firstNameTextBox.TabIndex = 2;
             this.firstNameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addClientTextBox_KeyDown);
             // 
-            // addClientButton
+            // clientButton
             // 
-            this.addClientButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addClientButton.Location = new System.Drawing.Point(830, 216);
-            this.addClientButton.Name = "addClientButton";
-            this.addClientButton.Size = new System.Drawing.Size(75, 23);
-            this.addClientButton.TabIndex = 11;
-            this.addClientButton.Text = "Add";
-            this.addClientButton.UseVisualStyleBackColor = true;
-            this.addClientButton.Click += new System.EventHandler(this.addClientButton_Click);
+            this.clientButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.clientButton.Location = new System.Drawing.Point(830, 216);
+            this.clientButton.Name = "clientButton";
+            this.clientButton.Size = new System.Drawing.Size(75, 23);
+            this.clientButton.TabIndex = 11;
+            this.clientButton.Text = "Add";
+            this.clientButton.UseVisualStyleBackColor = true;
+            this.clientButton.Click += new System.EventHandler(this.clientButton_Click);
             // 
             // middleNameTextBox
             // 
@@ -218,6 +218,7 @@ namespace NJERJIM_Guide
             this.selectedIdLabel.TabIndex = 15;
             this.selectedIdLabel.Text = "Selected ID";
             this.selectedIdLabel.Visible = false;
+            this.selectedIdLabel.VisibleChanged += new System.EventHandler(this.selectedIdLabel_VisibleChanged);
             // 
             // backButton
             // 
@@ -307,7 +308,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.lastNameLabel);
             this.Controls.Add(this.middleNameTextBox);
             this.Controls.Add(this.middleNameLabel);
-            this.Controls.Add(this.addClientButton);
+            this.Controls.Add(this.clientButton);
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.firstNameLabel);
             this.Controls.Add(this.clientDataGridView);
@@ -325,7 +326,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.DataGridView clientDataGridView;
         private System.Windows.Forms.Label firstNameLabel;
         private System.Windows.Forms.TextBox firstNameTextBox;
-        private System.Windows.Forms.Button addClientButton;
+        private System.Windows.Forms.Button clientButton;
         private System.Windows.Forms.TextBox middleNameTextBox;
         private System.Windows.Forms.Label middleNameLabel;
         private System.Windows.Forms.TextBox lastNameTextBox;

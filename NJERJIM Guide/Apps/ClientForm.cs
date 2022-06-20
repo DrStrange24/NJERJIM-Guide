@@ -31,10 +31,9 @@ namespace NJERJIM_Guide
         private void InitializeData()
         {
             var db_helper = new DatabaseHelper();
-            var query = "select * from client";
-            db_helper.SetDataGridView(clientDataGridView, query);
+            db_helper.SetDataGridView(clientDataGridView, $"select * from {DTClient.Table}");
         }
-        private void addClientButton_Click(object sender, EventArgs e)
+        private void clientButton_Click(object sender, EventArgs e)
         {
             bool ValidInputs()
             {
@@ -46,15 +45,26 @@ namespace NJERJIM_Guide
                     return false;
                 return true;
             }
-
+            
             if (ValidInputs())
             {
                 var db_helper = new DatabaseHelper();
-                db_helper.Manipulate($"INSERT INTO {DTClient.Table} ({DTClient.FirstName}, {DTClient.MiddleName}, {DTClient.LastName}, {DTClient.Sex}, {DTClient.ContactNumber}, {DTClient.Addess}) " +
-                    $"VALUES('{firstNameTextBox.Text}', '{middleNameTextBox.Text}', '{lastNameTextBox.Text}', '{SelectedSex}', '{contactNumberTextBox.Text}', '{addressTextBox.Text}');");
+                switch (clientButton.Text)
+                {
+                    case "Add":
+                        db_helper.Manipulate($"INSERT INTO {DTClient.Table} ({DTClient.FirstName}, {DTClient.MiddleName}, {DTClient.LastName}, {DTClient.Sex}, {DTClient.ContactNumber}, {DTClient.Addess}) " +
+                            $"VALUES('{firstNameTextBox.Text}', '{middleNameTextBox.Text}', '{lastNameTextBox.Text}', '{SelectedSex}', '{contactNumberTextBox.Text}', '{addressTextBox.Text}');");
+                        break;
+                    case "Save":
+                        db_helper.Manipulate($"UPDATE {DTClient.Table} SET {DTClient.FirstName} = '{firstNameTextBox.Text}', {DTClient.MiddleName} = '{middleNameTextBox.Text}' , {DTClient.LastName} = '{lastNameTextBox.Text}' " +
+                            $",{DTClient.Sex} = '{SelectedSex}', {DTClient.ContactNumber} = '{contactNumberTextBox.Text}',{DTClient.Addess} = '{addressTextBox.Text}' WHERE {DTClient.Id}={selectedIdLabel.Text};");
+                        break;
+                }
                 InitializeData();
-                clearButton_Click(null,null);
+                clearButton_Click(null, null);
             }
+            else
+                MessageBox.Show("Invalid inputs");
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -76,7 +86,7 @@ namespace NJERJIM_Guide
 
         private void addClientTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) addClientButton_Click(null, null);
+            if (e.KeyCode == Keys.Enter) clientButton_Click(null, null);
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -116,6 +126,14 @@ namespace NJERJIM_Guide
                 idLabel.Visible = true;
                 selectedIdLabel.Visible = true;
             }
+        }
+
+        private void selectedIdLabel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (selectedIdLabel.Visible)
+                clientButton.Text = "Save";
+            else
+                clientButton.Text = "Add";
         }
     }
 }
