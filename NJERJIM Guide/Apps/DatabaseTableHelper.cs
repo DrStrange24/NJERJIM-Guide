@@ -160,7 +160,7 @@ namespace NJERJIM_Guide
             {
                 double amount = 0;
                 var db_helper = new DatabaseHelper();
-                var data = db_helper.GetData($"select {DTCollection.Amount} from {DTCollection.Table} join {DTLoan.Table} on {DTCollection.LoanId}={DTLoan.Id} where {DTLoan.Id}={this.Id}");
+                var data = db_helper.GetData($"select {DTCollection.Amount} from {DTCollection.Table} join {DTLoan.Table} on {DTCollection.LoanId}={DTLoan.Id} where {DTLoan.Id}={Id}");
                 for (int i = 0; i < data.Rows.Count; i++)
                     amount += Convert.ToDouble(data.Rows[i][0]);
                 return CurrencyFormat.ToString(amount);
@@ -271,6 +271,32 @@ namespace NJERJIM_Guide
             foreach (var collection in collectionList)
                 amount += collection.Amount;
             return amount;
+        }
+    }
+    /// <summary>
+    ///     DS stands for Data Structure.
+    ///     Client data structure.
+    /// </summary>
+    internal struct DSClient
+    {
+        internal int Id { get; set; }
+        internal string FirstName { get; set; }
+        internal bool IsFullyPaid
+        {
+            get
+            {
+                var db_helper = new DatabaseHelper();
+                var data = db_helper.GetData($"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTLoan.Amount} as [Amount] from {DTLoan.Table} where {DTLoan.ClientId}={Id};");
+                for (int i = 0; i < data.Rows.Count; i++)
+                {
+                    var loan = new DSLoan();
+                    loan.Id = Convert.ToInt32(data.Rows[i]["ID"]);
+                    loan.Amount = Convert.ToDouble(data.Rows[i]["Amount"]);
+                    if (!loan.IsFullyPaid)
+                        return false;
+                }
+                return true;
+            }
         }
     }
 }

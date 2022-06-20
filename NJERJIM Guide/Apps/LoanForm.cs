@@ -35,7 +35,13 @@ namespace NJERJIM_Guide
                 var data = db_helper.GetData($"select {DTClient.Id},{DTClient.FirstName} from {DTClient.Table};");
                 clientComboBox.Items.Clear();
                 for (int i = 0; i < data.Rows.Count; i++)
-                    clientComboBox.Items.Add(data.Rows[i][0] + " - " + data.Rows[i][1]);
+                {
+                    var client = new DSClient();
+                    client.Id = Convert.ToInt32(data.Rows[i][0]);
+                    client.FirstName = Convert.ToString(data.Rows[i][1]);
+                    if(client.IsFullyPaid)
+                        clientComboBox.Items.Add(client.Id + " - " + client.FirstName);
+                }
             }
 
             SetDataGridView();
