@@ -42,7 +42,7 @@ namespace NJERJIM_Guide
             SetTotalLoan();
             SetClientComboBox();
         }
-        void SetDataGridView()
+        private void SetDataGridView()
         {
             var db_helper = new DatabaseHelper();
             var data = db_helper.GetData($"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTClient.FirstName} as [First Name],{DTLoan.Amount} as [Amount],{DTLoan.DateTime} as [Date]" +
