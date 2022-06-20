@@ -126,24 +126,6 @@ namespace NJERJIM_Guide
             
         }
 
-        private void collectionDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                var selectedRow = collectionDataGridView.Rows[e.RowIndex].Cells;
-
-                //column name are base on InitializeData() SetDataGridView() method
-                selectedIdLabel.Text = selectedRow["ID"].Value.ToString();
-                loanComboBox.SelectedItem = selectedRow["Loan ID"].Value + " - " + selectedRow["First Name"].Value;
-                amountTextBox.Text = selectedRow["Amount"].Value.ToString();
-                collectionDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow["Date"].Value);
-                remarksRichTextBox.Text = selectedRow["Remarks"].Value.ToString();
-
-                idLabel.Visible = true;
-                selectedIdLabel.Visible = true;
-            }
-        }
-
         private void collectButton_Click(object sender, EventArgs e)
         {
             bool ValidInput()
@@ -237,6 +219,24 @@ namespace NJERJIM_Guide
                 FilterDataGridView();
             }
             catch { }
+        }
+
+        private void collectionDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var selectedRow = collectionDataGridView.Rows[e.RowIndex].Cells;
+
+                //column name are base on InitializeData() SetDataGridView() method
+                selectedIdLabel.Text = selectedRow["ID"].Value.ToString();
+                loanComboBox.SelectedItem = selectedRow["Loan ID"].Value + " - " + selectedRow["First Name"].Value;
+                amountTextBox.Text = selectedRow["Amount"].Value.ToString();
+                collectionDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow["Date"].Value);
+                remarksRichTextBox.Text = selectedRow["Remarks"].Value.ToString();
+
+                idLabel.Visible = true;
+                selectedIdLabel.Visible = true;
+            }
         }
     }
 }

@@ -100,24 +100,6 @@ namespace NJERJIM_Guide
                 MessageBox.Show("Please select a loan first!");
         }
 
-        private void loanDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex>=0)
-            {
-                var selectedRow = loanDataGridView.Rows[e.RowIndex].Cells;
-
-                //column name are base on InitializeData() method on setdatagridview query
-                selectedIdLabel.Text = selectedRow["ID"].Value.ToString();
-                clientComboBox.SelectedItem = selectedRow["Client ID"].Value+" - "+ selectedRow["First Name"].Value;
-                amountTextBox.Text = selectedRow["Amount"].Value.ToString();
-                loanDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow["Date"].Value);
-                remarksRichTextBox.Text = selectedRow["Remarks"].Value.ToString();
-
-                idLabel.Visible = true;
-                selectedIdLabel.Visible = true;
-            }
-        }
-
         private void dateTimeTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) createButton_Click(null, null);
@@ -137,6 +119,24 @@ namespace NJERJIM_Guide
         private void searchTextBox_TextChanged(object sender, EventArgs e)
         {
             SetDataGridView();
+        }
+
+        private void loanDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var selectedRow = loanDataGridView.Rows[e.RowIndex].Cells;
+
+                //column name are base on InitializeData() method on setdatagridview query
+                selectedIdLabel.Text = selectedRow["ID"].Value.ToString();
+                clientComboBox.SelectedItem = selectedRow["Client ID"].Value + " - " + selectedRow["First Name"].Value;
+                amountTextBox.Text = selectedRow["Amount"].Value.ToString();
+                loanDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow["Date"].Value);
+                remarksRichTextBox.Text = selectedRow["Remarks"].Value.ToString();
+
+                idLabel.Visible = true;
+                selectedIdLabel.Visible = true;
+            }
         }
     }
 }

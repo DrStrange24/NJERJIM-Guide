@@ -68,7 +68,7 @@ namespace NJERJIM_Guide
             this.clientDataGridView.RowTemplate.Height = 25;
             this.clientDataGridView.Size = new System.Drawing.Size(544, 472);
             this.clientDataGridView.TabIndex = 0;
-            this.clientDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientDataGridView_CellClick);
+            this.clientDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientDataGridView_CellDoubleClick);
             // 
             // firstNameLabel
             // 

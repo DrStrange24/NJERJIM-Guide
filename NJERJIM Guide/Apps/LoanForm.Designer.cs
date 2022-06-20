@@ -159,7 +159,7 @@ namespace NJERJIM_Guide
             this.loanDataGridView.RowTemplate.Height = 25;
             this.loanDataGridView.Size = new System.Drawing.Size(544, 472);
             this.loanDataGridView.TabIndex = 17;
-            this.loanDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.loanDataGridView_CellClick);
+            this.loanDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.loanDataGridView_CellDoubleClick);
             // 
             // totalLoanValueLabel
             // 

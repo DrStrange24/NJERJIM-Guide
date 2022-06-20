@@ -107,15 +107,15 @@ namespace NJERJIM_Guide
             this.transactionDataGridView.RowTemplate.Height = 25;
             this.transactionDataGridView.Size = new System.Drawing.Size(544, 500);
             this.transactionDataGridView.TabIndex = 47;
-            this.transactionDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.collectionDataGridView_CellClick);
+            this.transactionDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.transactionDataGridView_CellDoubleClick);
             // 
-            // totalDepositValueLabel
+            // totalSupplyValueLabel
             // 
             this.totalSupplyValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.totalSupplyValueLabel.AutoSize = true;
             this.totalSupplyValueLabel.Location = new System.Drawing.Point(706, 493);
-            this.totalSupplyValueLabel.Name = "totalDepositValueLabel";
+            this.totalSupplyValueLabel.Name = "totalSupplyValueLabel";
             this.totalSupplyValueLabel.Size = new System.Drawing.Size(0, 15);
             this.totalSupplyValueLabel.TabIndex = 60;
             // 

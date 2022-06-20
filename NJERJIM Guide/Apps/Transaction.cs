@@ -80,22 +80,6 @@ namespace NJERJIM_Guide
                 clearInputsButton_Click(null, null);
             }
         }
-
-        private void collectionDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                var selectedRow = transactionDataGridView.Rows[e.RowIndex].Cells;
-
-                selectedIdLabel.Text = selectedRow[0].Value.ToString();
-                transactionTypeComboBox.SelectedItem = selectedRow[1].Value.ToString();
-                amountTextBox.Text = selectedRow[2].Value.ToString();
-                transactionDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow[3].Value);
-
-                idLabel.Visible = true;
-                selectedIdLabel.Visible = true;
-            }
-        }
         private void createTransaction_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) createButton_Click(null, null);
@@ -109,6 +93,22 @@ namespace NJERJIM_Guide
             transactionTypeComboBox.SelectedIndex = -1;
             amountTextBox.Text = string.Empty;
             transactionDateTimePicker.Value = DateTime.Now;
+        }
+
+        private void transactionDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var selectedRow = transactionDataGridView.Rows[e.RowIndex].Cells;
+
+                selectedIdLabel.Text = selectedRow[0].Value.ToString();
+                transactionTypeComboBox.SelectedItem = selectedRow[1].Value.ToString();
+                amountTextBox.Text = selectedRow[2].Value.ToString();
+                transactionDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow[3].Value);
+
+                idLabel.Visible = true;
+                selectedIdLabel.Visible = true;
+            }
         }
     }
 }

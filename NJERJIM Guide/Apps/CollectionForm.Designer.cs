@@ -117,7 +117,7 @@ namespace NJERJIM_Guide
             this.collectionDataGridView.RowTemplate.Height = 25;
             this.collectionDataGridView.Size = new System.Drawing.Size(544, 387);
             this.collectionDataGridView.TabIndex = 35;
-            this.collectionDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.collectionDataGridView_CellClick);
+            this.collectionDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.collectionDataGridView_CellDoubleClick);
             // 
             // totalCollectionLabel
             // 
@@ -276,7 +276,6 @@ namespace NJERJIM_Guide
             this.fromDateTimePicker.Name = "fromDateTimePicker";
             this.fromDateTimePicker.Size = new System.Drawing.Size(200, 23);
             this.fromDateTimePicker.TabIndex = 70;
-            this.fromDateTimePicker.ValueChanged += new System.EventHandler(this.fromtoDateTimePicker_ValueChanged);
             this.fromDateTimePicker.ValueChanged += new System.EventHandler(this.fromDateTimePicker_ValueChanged);
             // 
             // toDateTimePicker

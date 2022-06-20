@@ -68,25 +68,6 @@ namespace NJERJIM_Guide
             }
         }
 
-        private void clientDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex>=0 && !String.IsNullOrWhiteSpace(clientDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString()))
-            {
-                var selectedRow = clientDataGridView.Rows[e.RowIndex].Cells;
-
-                selectedIdLabel.Text = selectedRow[0].Value.ToString();
-                firstNameTextBox.Text = selectedRow[1].Value.ToString();
-                middleNameTextBox.Text = selectedRow[2].Value.ToString();
-                lastNameTextBox.Text = selectedRow[3].Value.ToString();
-                if (selectedRow[4].Value.ToString() == Sex.Male.ToString()) maleRadioButton.Checked = true; else femaleRadioButton.Checked = true;
-                contactNumberTextBox.Text = selectedRow[5].Value.ToString();
-                addressTextBox.Text = selectedRow[6].Value.ToString();
-
-                idLabel.Visible = true;
-                selectedIdLabel.Visible = true;
-            }
-        }
-
         private void backButton_Click(object sender, EventArgs e)
         {
             Program.MainMenuForm.Show();
@@ -116,6 +97,25 @@ namespace NJERJIM_Guide
         {
             var db_helper = new DatabaseHelper();
             db_helper.SetDataGridView(clientDataGridView, $"select * from {DTClient.Table} where {DTClient.FirstName} like '%{searchTextBox.Text}%'");
+        }
+
+        private void clientDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && !String.IsNullOrWhiteSpace(clientDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString()))
+            {
+                var selectedRow = clientDataGridView.Rows[e.RowIndex].Cells;
+
+                selectedIdLabel.Text = selectedRow[0].Value.ToString();
+                firstNameTextBox.Text = selectedRow[1].Value.ToString();
+                middleNameTextBox.Text = selectedRow[2].Value.ToString();
+                lastNameTextBox.Text = selectedRow[3].Value.ToString();
+                if (selectedRow[4].Value.ToString() == Sex.Male.ToString()) maleRadioButton.Checked = true; else femaleRadioButton.Checked = true;
+                contactNumberTextBox.Text = selectedRow[5].Value.ToString();
+                addressTextBox.Text = selectedRow[6].Value.ToString();
+
+                idLabel.Visible = true;
+                selectedIdLabel.Visible = true;
+            }
         }
     }
 }
