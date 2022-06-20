@@ -37,7 +37,7 @@ namespace NJERJIM_Guide
 
         private void transactionButton_Click(object sender, EventArgs e)
         {
-            new Transaction().Show();
+            new Supply().Show();
             this.Hide();
         }
 

@@ -146,7 +146,7 @@ namespace NJERJIM_Guide
                             $"VALUES('{loan_id}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToString(collectionDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
                         break;
                     case "Save":
-                        db_helper.Manipulate($"UPDATE {DTCollection.Table} SET {DTCollection.LoanId} = '{loan_id}', {DTCollection.Amount} = '{amountTextBox.Text}' , {DTCollection.DateTime} = '{DatabaseHelper.DateTimeToString(collectionDateTimePicker.Value)}' " +
+                        db_helper.Manipulate($"UPDATE {DTCollection.Table} SET {DTCollection.LoanId} = {loan_id}, {DTCollection.Amount} = {amountTextBox.Text} , {DTCollection.DateTime} = '{DatabaseHelper.DateTimeToString(collectionDateTimePicker.Value)}' " +
                             $",{DTCollection.Remarks} = '{remarksRichTextBox.Text}' WHERE {DTCollection.Id}={selectedIdLabel.Text};");
                         break;
                 }

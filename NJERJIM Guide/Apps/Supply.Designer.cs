@@ -1,7 +1,7 @@
 ﻿
 namespace NJERJIM_Guide
 {
-    partial class Transaction
+    partial class Supply
     {
         /// <summary>
         /// Required designer variable.
@@ -69,6 +69,7 @@ namespace NJERJIM_Guide
             this.selectedIdLabel.TabIndex = 57;
             this.selectedIdLabel.Text = "Selected ID";
             this.selectedIdLabel.Visible = false;
+            this.selectedIdLabel.VisibleChanged += new System.EventHandler(this.selectedIdLabel_VisibleChanged);
             // 
             // idLabel
             // 
@@ -209,7 +210,7 @@ namespace NJERJIM_Guide
             this.transactionTypeComboBox.Size = new System.Drawing.Size(280, 23);
             this.transactionTypeComboBox.TabIndex = 74;
             // 
-            // Transaction
+            // Supply
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -229,7 +230,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.idLabel);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.transactionDataGridView);
-            this.Name = "Transaction";
+            this.Name = "Supply";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supply";
             ((System.ComponentModel.ISupportInitialize)(this.transactionDataGridView)).EndInit();

@@ -13,9 +13,9 @@ using static NJERJIM_Guide.Apps.SummaryHelper;
 
 namespace NJERJIM_Guide
 {
-    public partial class Transaction : Form
+    public partial class Supply : Form
     {
-        public Transaction()
+        public Supply()
         {
             InitializeComponent();
             InitializeData();
@@ -48,20 +48,32 @@ namespace NJERJIM_Guide
         }
         private void createButton_Click(object sender, EventArgs e)
         {
-            bool ValidInput()
+            bool ValidInputs()
             {
                 if (string.IsNullOrWhiteSpace(transactionTypeComboBox.SelectedItem.ToString()) || string.IsNullOrWhiteSpace(amountTextBox.Text))
                     return false;
                 return true;
             }
-            if (ValidInput())
+
+            if (ValidInputs())
             {
                 var db_helper = new DatabaseHelper();
-                db_helper.Manipulate($"INSERT INTO {DTTransaction.Table} ({DTTransaction.Type}, {DTTransaction.Amount}, {DTTransaction.DateTime}) " +
-                    $"VALUES('{transactionTypeComboBox.SelectedItem}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToString(transactionDateTimePicker.Value)}');");
+                switch (createButton.Text)
+                {
+                    case "Create":
+                        db_helper.Manipulate($"INSERT INTO {DTTransaction.Table} ({DTTransaction.Type}, {DTTransaction.Amount}, {DTTransaction.DateTime}) " +
+                            $"VALUES('{transactionTypeComboBox.SelectedItem}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToString(transactionDateTimePicker.Value)}');");
+                        break;
+                    case "Save":
+                        db_helper.Manipulate($"UPDATE {DTTransaction.Table} SET {DTTransaction.Type} = '{transactionTypeComboBox.SelectedItem}', {DTTransaction.Amount} = {amountTextBox.Text} , {DTTransaction.DateTime} = '{DatabaseHelper.DateTimeToString(transactionDateTimePicker.Value)}' " +
+                            $" WHERE {DTTransaction.Id}={selectedIdLabel.Text};");
+                        break;
+                }
                 InitializeData();
                 clearInputsButton_Click(null, null);
             }
+            else
+                MessageBox.Show("Invalid inputs");
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -109,6 +121,14 @@ namespace NJERJIM_Guide
                 idLabel.Visible = true;
                 selectedIdLabel.Visible = true;
             }
+        }
+
+        private void selectedIdLabel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (selectedIdLabel.Visible)
+                createButton.Text = "Save";
+            else
+                createButton.Text = "Create";
         }
     }
 }

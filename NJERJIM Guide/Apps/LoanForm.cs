@@ -88,7 +88,7 @@ namespace NJERJIM_Guide
                             $"VALUES({client_id}, {amountTextBox.Text}, '{DatabaseHelper.DateTimeToString(loanDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
                         break;
                     case "Save":
-                        db_helper.Manipulate($"UPDATE {DTLoan.Table} SET {DTLoan.ClientId} = '{client_id}', {DTLoan.Amount} = '{amountTextBox.Text}' , {DTLoan.DateTime} = '{DatabaseHelper.DateTimeToString(loanDateTimePicker.Value)}' " +
+                        db_helper.Manipulate($"UPDATE {DTLoan.Table} SET {DTLoan.ClientId} = {client_id}, {DTLoan.Amount} = {amountTextBox.Text} , {DTLoan.DateTime} = '{DatabaseHelper.DateTimeToString(loanDateTimePicker.Value)}' " +
                             $",{DTLoan.Remarks} = '{remarksRichTextBox.Text}' WHERE {DTLoan.Id}={selectedIdLabel.Text};");
                         break;
                 }

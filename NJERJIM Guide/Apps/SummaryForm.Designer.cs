@@ -135,7 +135,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.backButton);
             this.Name = "SummaryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SummaryForm";
+            this.Text = "Summary";
             this.ResumeLayout(false);
             this.PerformLayout();
 
