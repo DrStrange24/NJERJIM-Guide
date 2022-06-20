@@ -46,25 +46,25 @@ namespace NJERJIM_Guide
                 var data = db_query.GetData($"select * from {DTCollection.Table}");
                 totalCollectionValueLabel.Text = CurrencyFormat.ToString(DSCollection.TotalAmount(DSCollection.GetList(data)));
             }
-            void SetComboBoxItems()
-            {
-                var data = db_query.GetData($"select {DTLoan.Id},{DTLoan.Amount},{DTClient.FirstName} from {DTLoan.Table} join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id};");
-                loanComboBox.Items.Clear();
-                for (int i = 0; i < data.Rows.Count; i++)
-                {
-                    var loan = new DSLoan();
-                    loan.Id = Convert.ToInt32(data.Rows[i][0]);
-                    loan.Amount = Convert.ToDouble(data.Rows[i][1]);
-
-                    if (!loan.IsFullyPaid)
-                        loanComboBox.Items.Add(data.Rows[i][0] + " - " + data.Rows[i][2]);
-                }
-            }
+            
             SetDataGridView();
             SetTotalCollection();
             SetComboBoxItems();
         }
+        private void SetComboBoxItems()
+        {
+            var data = db_query.GetData($"select {DTLoan.Id},{DTLoan.Amount},{DTClient.FirstName} from {DTLoan.Table} join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id};");
+            loanComboBox.Items.Clear();
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                var loan = new DSLoan();
+                loan.Id = Convert.ToInt32(data.Rows[i][0]);
+                loan.Amount = Convert.ToDouble(data.Rows[i][1]);
 
+                if (!loan.IsFullyPaid)
+                    loanComboBox.Items.Add(data.Rows[i][0] + " - " + data.Rows[i][2]);
+            }
+        }
         private void FilterDataGridView()
         {
             string SearchFilter()
@@ -119,6 +119,7 @@ namespace NJERJIM_Guide
                 var db_helper = new DatabaseHelper();
                 db_helper.Manipulate($"DELETE FROM {DTCollection.Table} WHERE {DTCollection.Id}={selectedIdLabel.Text};");
                 FilterDataGridView();
+                SetComboBoxItems();
                 clearInputsButton_Click(null, null);
             }
             else
@@ -151,6 +152,7 @@ namespace NJERJIM_Guide
                         break;
                 }
                 FilterDataGridView();
+                SetComboBoxItems();
                 clearInputsButton_Click(null, null);
             }
             else
