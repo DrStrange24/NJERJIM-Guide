@@ -145,7 +145,7 @@ namespace NJERJIM_Guide
             this.clearInputsButton.Location = new System.Drawing.Point(706, 237);
             this.clearInputsButton.Name = "clearInputsButton";
             this.clearInputsButton.Size = new System.Drawing.Size(75, 23);
-            this.clearInputsButton.TabIndex = 63;
+            this.clearInputsButton.TabIndex = 59;
             this.clearInputsButton.Text = "Clear";
             this.clearInputsButton.UseVisualStyleBackColor = true;
             this.clearInputsButton.Click += new System.EventHandler(this.clearInputsButton_Click);
@@ -156,7 +156,7 @@ namespace NJERJIM_Guide
             this.collectionDateTimePicker.Location = new System.Drawing.Point(706, 97);
             this.collectionDateTimePicker.Name = "collectionDateTimePicker";
             this.collectionDateTimePicker.Size = new System.Drawing.Size(280, 23);
-            this.collectionDateTimePicker.TabIndex = 62;
+            this.collectionDateTimePicker.TabIndex = 63;
             // 
             // loanComboBox
             // 
@@ -184,7 +184,7 @@ namespace NJERJIM_Guide
             this.amountTextBox.Location = new System.Drawing.Point(706, 71);
             this.amountTextBox.Name = "amountTextBox";
             this.amountTextBox.Size = new System.Drawing.Size(280, 23);
-            this.amountTextBox.TabIndex = 59;
+            this.amountTextBox.TabIndex = 62;
             this.amountTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.creatCollectionTextBox_KeyDown);
             // 
             // amountLabel
@@ -225,7 +225,7 @@ namespace NJERJIM_Guide
             this.remarksLabel.Location = new System.Drawing.Point(575, 129);
             this.remarksLabel.Name = "remarksLabel";
             this.remarksLabel.Size = new System.Drawing.Size(52, 15);
-            this.remarksLabel.TabIndex = 65;
+            this.remarksLabel.TabIndex = 64;
             this.remarksLabel.Text = "Remarks";
             // 
             // remarksRichTextBox

@@ -152,8 +152,10 @@ namespace NJERJIM_Guide
                         break;
                 }
                 FilterDataGridView();
+                var loan = loanComboBox.SelectedItem;// so that selected loan will not reset after collect button is clicked
                 SetComboBoxItems();
                 clearInputsButton_Click(null, null);
+                loanComboBox.SelectedItem = loan;// so that selected loan will not reset after collect button is clicked
             }
             else
                 MessageBox.Show("Invalid inputs");
