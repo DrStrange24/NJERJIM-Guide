@@ -182,7 +182,22 @@ namespace NJERJIM_Guide
                 return false;
             }
         }
-
+        internal DateTime DeadLine 
+        { 
+            get
+            {
+                int deadline_number_of_days = DeadLineNumberOfDays;
+                var datetime = DateTimeFormat;
+                while(deadline_number_of_days > 0)
+                {
+                    datetime = datetime.AddDays(1);
+                    if (DateTimeFormatHelper.GetDay(datetime)=="Sunday")
+                        datetime = datetime.AddDays(1);
+                    deadline_number_of_days--;
+                }
+                return datetime;
+            } 
+        }
         /// <summary>
         ///     Convert DateTime string to DateTime datatypes.
         /// </summary>
@@ -191,6 +206,24 @@ namespace NJERJIM_Guide
             get
             {
                 return DateTimeFormatHelper.StringDBToDateTime(this.DateTime);
+            }
+        }
+        internal int DeadLineNumberOfDays
+        {
+            get
+            {
+                switch (Amount)
+                {
+                    case 2000:
+                        return 40;
+                    case 3000:
+                        return 36;
+                    case 5000:
+                        return 40;
+                    case 10000:
+                        return 60;
+                }
+                return 0;
             }
         }
 

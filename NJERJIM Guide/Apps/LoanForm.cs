@@ -52,26 +52,31 @@ namespace NJERJIM_Guide
         private void SetDataGridView()
         {
             var db_helper = new DatabaseHelper();
-            var data = db_helper.GetData($"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTClient.FirstName} as [First Name],{DTLoan.Amount} as [int Amount],{DTLoan.DateTime} as [Date]" +
+            var data = db_helper.GetData($"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTClient.FirstName} as [First Name],{DTLoan.Amount} as [int_Amount],{DTLoan.DateTime} as [Date]" +
                     $",{DTLoan.Remarks} as [Remarks] from {DTLoan.Table} join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id} where {DTClient.FirstName} like '%{searchTextBox.Text}%' order by {DTLoan.DateTime} desc;");
             data.Columns.Add(new DataColumn("Debt", typeof(string)));
             data.Columns.Add(new DataColumn("Total Debt", typeof(string)));
             data.Columns.Add(new DataColumn("Completed Bill", typeof(string)));
             data.Columns.Add(new DataColumn("Outstanding Bill", typeof(string)));
+            data.Columns.Add(new DataColumn("Deadline", typeof(string)));
+            data.Columns.Add(new DataColumn("Deadline # Days", typeof(int)));
             for (int i = 0; i < data.Rows.Count; i++)
             {
                 var loan = new DSLoan();
                 loan.Id = Convert.ToInt32(data.Rows[i]["ID"]);
-                loan.Amount = Convert.ToDouble(data.Rows[i]["int Amount"]);
+                loan.Amount = Convert.ToDouble(data.Rows[i]["int_Amount"]);
+                loan.DateTime = Convert.ToString(data.Rows[i]["Date"]);
 
                 data.Rows[i]["Completed Bill"] = CurrencyFormat.ToString(loan.CompletedBill);
                 data.Rows[i]["Total Debt"] = CurrencyFormat.ToString(loan.TotalDebt);
                 data.Rows[i]["Debt"] = CurrencyFormat.ToString(loan.Amount);
                 data.Rows[i]["Outstanding Bill"] = CurrencyFormat.ToString(loan.OutstandingBill);
                 data.Rows[i]["Date"] = DateTimeFormatHelper.DateTimeToStringUI(data.Rows[i]["Date"]);
+                data.Rows[i]["Deadline"] = DateTimeFormatHelper.DateTimeToStringUI(loan.DeadLine);
+                data.Rows[i]["Deadline # Days"] = loan.DeadLineNumberOfDays;
             }
             data.Columns["Remarks"].SetOrdinal(data.Columns.Count-1);
-            data.Columns.Remove("int Amount");
+            data.Columns.Remove("int_Amount");
             loanDataGridView.DataSource = data;
         }
 

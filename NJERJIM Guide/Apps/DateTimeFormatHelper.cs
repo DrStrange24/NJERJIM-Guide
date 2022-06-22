@@ -58,5 +58,9 @@ namespace NJERJIM_Guide.Apps
             return DateTime.ParseExact(dateTime.ToString(), "yyyy-MM-dd HH:mm:ss:ff", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal)
                 .ToString("MMMM dd, yyyy - dddd");
         }
+        internal static string GetDay(DateTime dateTime)
+        {
+            return dateTime.ToString("dddd");
+        }
     }
 }
