@@ -33,7 +33,7 @@ namespace NJERJIM_Guide.Apps
                 if (transaction.Rows.Count > 0)
                 {
                     var starting_date = transaction.Rows[transaction.Rows.Count - 1][3];
-                    var current_date = DatabaseHelper.StringToDateTime(starting_date);
+                    var current_date = DateTimeFormatHelper.StringDBToDateTime(starting_date);
 
                     Records = new List<DailyRecords>();
                     while (current_date.Date <= DateTime.Now.Date)

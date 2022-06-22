@@ -86,7 +86,7 @@ namespace NJERJIM_Guide
         {
             get
             {
-                return DatabaseHelper.StringToDateTime(this.DateTime);
+                return DateTimeFormatHelper.StringDBToDateTime(this.DateTime);
             }
         }
         internal void Print()
@@ -190,7 +190,7 @@ namespace NJERJIM_Guide
         {
             get
             {
-                return DatabaseHelper.StringToDateTime(this.DateTime);
+                return DateTimeFormatHelper.StringDBToDateTime(this.DateTime);
             }
         }
 
@@ -250,7 +250,7 @@ namespace NJERJIM_Guide
         {
             get
             {
-                return DatabaseHelper.StringToDateTime(this.DateTime);
+                return DateTimeFormatHelper.StringDBToDateTime(this.DateTime);
             }
         }
         internal void Print()

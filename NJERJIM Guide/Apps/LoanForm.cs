@@ -29,24 +29,25 @@ namespace NJERJIM_Guide
                 var data = db_helper.GetData($"select * from {DTLoan.Table}");
                 totalLoanValueLabel.Text = CurrencyFormat.ToString(DSLoan.TotalAmount(DSLoan.GetList(data)));
             }
-            void SetClientComboBox()
-            {
-                var db_helper = new DatabaseHelper();
-                var data = db_helper.GetData($"select {DTClient.Id},{DTClient.FirstName} from {DTClient.Table};");
-                clientComboBox.Items.Clear();
-                for (int i = 0; i < data.Rows.Count; i++)
-                {
-                    var client = new DSClient();
-                    client.Id = Convert.ToInt32(data.Rows[i][0]);
-                    client.FirstName = Convert.ToString(data.Rows[i][1]);
-                    if(client.IsFullyPaid)
-                        clientComboBox.Items.Add(client.Id + " - " + client.FirstName);
-                }
-            }
+            
 
             SetDataGridView();
             SetTotalLoan();
             SetClientComboBox();
+        }
+        private void SetClientComboBox()
+        {
+            var db_helper = new DatabaseHelper();
+            var data = db_helper.GetData($"select {DTClient.Id},{DTClient.FirstName} from {DTClient.Table};");
+            clientComboBox.Items.Clear();
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                var client = new DSClient();
+                client.Id = Convert.ToInt32(data.Rows[i][0]);
+                client.FirstName = Convert.ToString(data.Rows[i][1]);
+                if (client.IsFullyPaid)
+                    clientComboBox.Items.Add(client.Id + " - " + client.FirstName);
+            }
         }
         private void SetDataGridView()
         {
@@ -67,7 +68,7 @@ namespace NJERJIM_Guide
                 data.Rows[i]["Total Debt"] = CurrencyFormat.ToString(loan.TotalDebt);
                 data.Rows[i]["Debt"] = CurrencyFormat.ToString(loan.Amount);
                 data.Rows[i]["Outstanding Bill"] = CurrencyFormat.ToString(loan.OutstandingBill);
-                data.Rows[i]["Date"] = DatabaseHelper.DateTimeToStringUI(data.Rows[i]["Date"]);
+                data.Rows[i]["Date"] = DateTimeFormatHelper.DateTimeToStringUI(data.Rows[i]["Date"]);
             }
             data.Columns["Remarks"].SetOrdinal(data.Columns.Count-1);
             data.Columns.Remove("int Amount");
@@ -97,10 +98,10 @@ namespace NJERJIM_Guide
                 {
                     case "Create":
                         db_helper.Manipulate($"INSERT INTO {DTLoan.Table} ({DTLoan.ClientId}, {DTLoan.Amount}, {DTLoan.DateTime},{DTLoan.Remarks}) " +
-                            $"VALUES({client_id}, {amountTextBox.Text}, '{DatabaseHelper.DateTimeToStringDB(loanDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
+                            $"VALUES({client_id}, {amountTextBox.Text}, '{DateTimeFormatHelper.DateTimeToStringDB(loanDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
                         break;
                     case "Save":
-                        db_helper.Manipulate($"UPDATE {DTLoan.Table} SET {DTLoan.ClientId} = {client_id}, {DTLoan.Amount} = {amountTextBox.Text} , {DTLoan.DateTime} = '{DatabaseHelper.DateTimeToStringDB(loanDateTimePicker.Value)}' " +
+                        db_helper.Manipulate($"UPDATE {DTLoan.Table} SET {DTLoan.ClientId} = {client_id}, {DTLoan.Amount} = {CurrencyFormat.ToDouble(amountTextBox.Text)} , {DTLoan.DateTime} = '{DateTimeFormatHelper.DateTimeToStringDB(loanDateTimePicker.Value)}' " +
                             $",{DTLoan.Remarks} = '{remarksRichTextBox.Text}' WHERE {DTLoan.Id}={selectedIdLabel.Text};");
                         break;
                 }
@@ -131,6 +132,7 @@ namespace NJERJIM_Guide
 
         private void clearInputsButton_Click(object sender, EventArgs e)
         {
+            SetClientComboBox();
             idLabel.Visible = false;
             selectedIdLabel.Visible = false;
             selectedIdLabel.Text = null;
@@ -153,9 +155,16 @@ namespace NJERJIM_Guide
 
                 //column name are base on InitializeData() method on setdatagridview query
                 selectedIdLabel.Text = selectedRow["ID"].Value.ToString();
-                clientComboBox.SelectedItem = selectedRow["Client ID"].Value + " - " + selectedRow["First Name"].Value;
+                void SetClientComboBox()
+                {
+                    var selected_client = selectedRow["Client ID"].Value + " - " + selectedRow["First Name"].Value;
+                    clientComboBox.Items.Add(selected_client);
+                    clientComboBox.SelectedItem = selected_client;
+                }
+                this.SetClientComboBox();
+                SetClientComboBox();
                 amountTextBox.Text = selectedRow["Debt"].Value.ToString();
-                loanDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow["Date"].Value);
+                loanDateTimePicker.Value = DateTimeFormatHelper.StringUIToDateTime(selectedRow["Date"].Value);
                 remarksRichTextBox.Text = selectedRow["Remarks"].Value.ToString();
 
                 idLabel.Visible = true;

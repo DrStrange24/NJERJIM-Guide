@@ -62,10 +62,10 @@ namespace NJERJIM_Guide
                 {
                     case "Create":
                         db_helper.Manipulate($"INSERT INTO {DTTransaction.Table} ({DTTransaction.Type}, {DTTransaction.Amount}, {DTTransaction.DateTime}) " +
-                            $"VALUES('{transactionTypeComboBox.SelectedItem}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToStringDB(transactionDateTimePicker.Value)}');");
+                            $"VALUES('{transactionTypeComboBox.SelectedItem}', '{amountTextBox.Text}', '{DateTimeFormatHelper.DateTimeToStringDB(transactionDateTimePicker.Value)}');");
                         break;
                     case "Save":
-                        db_helper.Manipulate($"UPDATE {DTTransaction.Table} SET {DTTransaction.Type} = '{transactionTypeComboBox.SelectedItem}', {DTTransaction.Amount} = {amountTextBox.Text} , {DTTransaction.DateTime} = '{DatabaseHelper.DateTimeToStringDB(transactionDateTimePicker.Value)}' " +
+                        db_helper.Manipulate($"UPDATE {DTTransaction.Table} SET {DTTransaction.Type} = '{transactionTypeComboBox.SelectedItem}', {DTTransaction.Amount} = {amountTextBox.Text} , {DTTransaction.DateTime} = '{DateTimeFormatHelper.DateTimeToStringDB(transactionDateTimePicker.Value)}' " +
                             $" WHERE {DTTransaction.Id}={selectedIdLabel.Text};");
                         break;
                 }
@@ -116,7 +116,7 @@ namespace NJERJIM_Guide
                 selectedIdLabel.Text = selectedRow[0].Value.ToString();
                 transactionTypeComboBox.SelectedItem = selectedRow[1].Value.ToString();
                 amountTextBox.Text = selectedRow[2].Value.ToString();
-                transactionDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow[3].Value);
+                transactionDateTimePicker.Value = DateTimeFormatHelper.StringUIToDateTime(selectedRow[3].Value);
 
                 idLabel.Visible = true;
                 selectedIdLabel.Visible = true;

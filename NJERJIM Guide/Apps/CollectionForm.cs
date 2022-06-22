@@ -87,7 +87,7 @@ namespace NJERJIM_Guide
                 if (dateTimeCheckBox.Checked)
                 {
                     dateRange += " and ";
-                    dateRange += $"{DTCollection.DateTime} between '{DatabaseHelper.DateTimeToStringDB(fromDateTimePicker.Value)}' and '{DatabaseHelper.DateTimeToStringDB(toDateTimePicker.Value)}'";
+                    dateRange += $"{DTCollection.DateTime} between '{DateTimeFormatHelper.DateTimeToStringDB(fromDateTimePicker.Value)}' and '{DateTimeFormatHelper.DateTimeToStringDB(toDateTimePicker.Value)}'";
                     return dateRange;
                 }
                 return dateRange;
@@ -96,14 +96,22 @@ namespace NJERJIM_Guide
             {
                 double amount = 0;
                 for(int i=0;i< collectionDataGridView.Rows.Count; i++)
-                    amount +=Convert.ToDouble(collectionDataGridView.Rows[i].Cells["Amount"].Value);
+                    amount +=CurrencyFormat.ToDouble(collectionDataGridView.Rows[i].Cells["Amount"].Value);
                 totalCollectionValueLabel.Text = CurrencyFormat.ToString(amount);
             }
-            db_query.SetDataGridView(collectionDataGridView, $"select {DTCollection.Id} as [ID],{DTCollection.LoanId} as [Loan ID],{DTClient.FirstName} as [First Name]," +
-                    $"{DTCollection.Amount} as [Amount],{DTCollection.DateTime} as [Date],{DTCollection.Remarks} as [Remarks] from {DTCollection.Table} join {DTLoan.Table} on {DTCollection.LoanId}={DTLoan.Id} " +
+            var data = db_query.GetData($"select {DTCollection.Id} as [ID],{DTCollection.LoanId} as [Loan ID],{DTClient.FirstName} as [First Name]," +
+                    $"{DTCollection.Amount} as [int_amount],{DTCollection.DateTime} as [Date],{DTCollection.Remarks} as [Remarks] from {DTCollection.Table} join {DTLoan.Table} on {DTCollection.LoanId}={DTLoan.Id} " +
                     $"join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id} where {SearchFilter()} {DateFilter()} order by {DTCollection.DateTime} desc;");
+            data.Columns.Add(new DataColumn("Amount", typeof(string)));
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                data.Rows[i]["Amount"] = CurrencyFormat.ToString(data.Rows[i]["int_amount"]);
+                data.Rows[i]["Date"] = DateTimeFormatHelper.DateTimeToStringUI(data.Rows[i]["Date"]);
+            }
+            data.Columns["Amount"].SetOrdinal(3);
+            data.Columns.Remove("int_amount");
+            collectionDataGridView.DataSource = data;
             SetTotalCollection();
-
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -144,10 +152,10 @@ namespace NJERJIM_Guide
                 {
                     case "Collect":
                         db_helper.Manipulate($"INSERT INTO {DTCollection.Table} ({DTCollection.LoanId}, {DTCollection.Amount}, {DTCollection.DateTime},{DTCollection.Remarks}) " +
-                            $"VALUES('{loan_id}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToStringDB(collectionDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
+                            $"VALUES('{loan_id}', '{amountTextBox.Text}', '{DateTimeFormatHelper.DateTimeToStringDB(collectionDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
                         break;
                     case "Save":
-                        db_helper.Manipulate($"UPDATE {DTCollection.Table} SET {DTCollection.LoanId} = {loan_id}, {DTCollection.Amount} = {amountTextBox.Text} , {DTCollection.DateTime} = '{DatabaseHelper.DateTimeToStringDB(collectionDateTimePicker.Value)}' " +
+                        db_helper.Manipulate($"UPDATE {DTCollection.Table} SET {DTCollection.LoanId} = {loan_id}, {DTCollection.Amount} = {CurrencyFormat.ToDouble(amountTextBox.Text)} , {DTCollection.DateTime} = '{DateTimeFormatHelper.DateTimeToStringDB(collectionDateTimePicker.Value)}' " +
                             $",{DTCollection.Remarks} = '{remarksRichTextBox.Text}' WHERE {DTCollection.Id}={selectedIdLabel.Text};");
                         break;
                 }
@@ -164,6 +172,7 @@ namespace NJERJIM_Guide
 
         private void clearInputsButton_Click(object sender, EventArgs e)
         {
+            SetComboBoxItems();
             idLabel.Visible = false;
             selectedIdLabel.Visible = false;
             selectedIdLabel.Text = null;
@@ -246,9 +255,16 @@ namespace NJERJIM_Guide
 
                 //column name are base on InitializeData() SetDataGridView() method
                 selectedIdLabel.Text = selectedRow["ID"].Value.ToString();
-                loanComboBox.SelectedItem = selectedRow["Loan ID"].Value + " - " + selectedRow["First Name"].Value;
+                void SetComboBoxItems()
+                {
+                    var selected_client = selectedRow["Loan ID"].Value + " - " + selectedRow["First Name"].Value;
+                    loanComboBox.Items.Add(selected_client);
+                    loanComboBox.SelectedItem = selected_client;
+                }
+                this.SetComboBoxItems();
+                SetComboBoxItems();
                 amountTextBox.Text = selectedRow["Amount"].Value.ToString();
-                collectionDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow["Date"].Value);
+                collectionDateTimePicker.Value = DateTimeFormatHelper.StringUIToDateTime(selectedRow["Date"].Value);
                 remarksRichTextBox.Text = selectedRow["Remarks"].Value.ToString();
 
                 idLabel.Visible = true;
