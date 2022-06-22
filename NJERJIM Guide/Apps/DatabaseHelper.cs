@@ -94,35 +94,41 @@ namespace NJERJIM_Guide
         /// </summary>
         /// <param name="dateTime"></param>
         /// <returns>String Format of DateTime</returns>
-        internal static string DateTimeToString(DateTime dateTime)
+        internal static string DateTimeToStringDB(DateTime dateTime)
         {
             return dateTime.ToString("yyyy-MM-dd HH:mm:ss:ff");
         }
         /// <summary>
-        ///     Convert DateTime format to String format for database.
+        ///     Convert String format from database to DateTime datatype.
         /// </summary>
-        /// <returns>String Format of DateTime</returns>
-        internal static string DateTimeToString()
+        /// <param name="dateTime">string</param>
+        /// <returns>DateTime datatype</returns>
+        internal static DateTime StringToDateTime(string dateTime)
         {
-            return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ff");
+            return DateTime.ParseExact(dateTime, "yyyy-MM-dd HH:mm:ss:ff", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
         }
         /// <summary>
         ///     Convert String format from database to DateTime datatype.
         /// </summary>
-        /// <param name="DatabaseDateTimeFormat">string</param>
+        /// <param name="dateTime">object</param>
         /// <returns>DateTime datatype</returns>
-        internal static DateTime StringToDateTime(string DatabaseDateTimeFormat)
+        internal static DateTime StringToDateTime(object dateTime)
         {
-            return DateTime.ParseExact(DatabaseDateTimeFormat, "yyyy-MM-dd HH:mm:ss:ff", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
+            return DateTime.ParseExact(dateTime.ToString(), "yyyy-MM-dd HH:mm:ss:ff", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
         }
-        /// <summary>
-        ///     Convert String format from database to DateTime datatype.
-        /// </summary>
-        /// <param name="DatabaseDateTimeFormat">object</param>
-        /// <returns>DateTime datatype</returns>
-        internal static DateTime StringToDateTime(object DatabaseDateTimeFormat)
+        internal static string DateTimeToStringUI(DateTime dateTime)
         {
-            return DateTime.ParseExact(DatabaseDateTimeFormat.ToString(), "yyyy-MM-dd HH:mm:ss:ff", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
+            return dateTime.ToString("MMMM dd, yyyy - dddd");
+        }
+        internal static string DateTimeToStringUI(string dateTime)
+        {
+            return DateTime.ParseExact(dateTime.ToString(), "yyyy-MM-dd HH:mm:ss:ff", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal)
+                .ToString("MMMM dd, yyyy - dddd");
+        }
+        internal static string DateTimeToStringUI(object dateTime)
+        {
+            return DateTime.ParseExact(dateTime.ToString(), "yyyy-MM-dd HH:mm:ss:ff", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal)
+                .ToString("MMMM dd, yyyy - dddd");
         }
     }
 }

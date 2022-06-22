@@ -146,15 +146,15 @@ namespace NJERJIM_Guide
         /// </summary>
         internal string DateTime { get; set; }
         internal string Remarks { get; set; }
-        internal string ToBePaid
+        internal double TotalDebt
         {
             get
             {
                 double amount = this.Amount * (1 + this.DefaultInterstInPercent / 100);
-                return CurrencyFormat.ToString(amount);
+                return amount;
             }
         }
-        internal string CurrentPaid
+        internal double CompletedBill
         {
             get
             {
@@ -163,14 +163,21 @@ namespace NJERJIM_Guide
                 var data = db_helper.GetData($"select {DTCollection.Amount} from {DTCollection.Table} join {DTLoan.Table} on {DTCollection.LoanId}={DTLoan.Id} where {DTLoan.Id}={Id}");
                 for (int i = 0; i < data.Rows.Count; i++)
                     amount += Convert.ToDouble(data.Rows[i][0]);
-                return CurrencyFormat.ToString(amount);
+                return amount;
+            }
+        }
+        internal double OutstandingBill
+        {
+            get
+            {
+                return TotalDebt-CompletedBill;
             }
         }
         internal bool IsFullyPaid
         {
             get
             {
-                if(this.ToBePaid==this.CurrentPaid)
+                if(this.TotalDebt==this.CompletedBill)
                     return true;
                 return false;
             }

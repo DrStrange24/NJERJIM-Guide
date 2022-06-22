@@ -51,20 +51,26 @@ namespace NJERJIM_Guide
         private void SetDataGridView()
         {
             var db_helper = new DatabaseHelper();
-            var data = db_helper.GetData($"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTClient.FirstName} as [First Name],{DTLoan.Amount} as [Amount],{DTLoan.DateTime} as [Date]" +
+            var data = db_helper.GetData($"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTClient.FirstName} as [First Name],{DTLoan.Amount} as [int Amount],{DTLoan.DateTime} as [Date]" +
                     $",{DTLoan.Remarks} as [Remarks] from {DTLoan.Table} join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id} where {DTClient.FirstName} like '%{searchTextBox.Text}%' order by {DTLoan.DateTime} desc;");
-            data.Columns.Add(new DataColumn("Current Paid", typeof(string)));
-            data.Columns.Add(new DataColumn("To Be Paid", typeof(string)));
+            data.Columns.Add(new DataColumn("Debt", typeof(string)));
+            data.Columns.Add(new DataColumn("Total Debt", typeof(string)));
+            data.Columns.Add(new DataColumn("Completed Bill", typeof(string)));
+            data.Columns.Add(new DataColumn("Outstanding Bill", typeof(string)));
             for (int i = 0; i < data.Rows.Count; i++)
             {
                 var loan = new DSLoan();
                 loan.Id = Convert.ToInt32(data.Rows[i]["ID"]);
-                loan.Amount = Convert.ToDouble(data.Rows[i]["Amount"]);
+                loan.Amount = Convert.ToDouble(data.Rows[i]["int Amount"]);
 
-                data.Rows[i]["Current Paid"] = loan.CurrentPaid;
-                data.Rows[i]["To Be Paid"] = loan.ToBePaid;
+                data.Rows[i]["Completed Bill"] = CurrencyFormat.ToString(loan.CompletedBill);
+                data.Rows[i]["Total Debt"] = CurrencyFormat.ToString(loan.TotalDebt);
+                data.Rows[i]["Debt"] = CurrencyFormat.ToString(loan.Amount);
+                data.Rows[i]["Outstanding Bill"] = CurrencyFormat.ToString(loan.OutstandingBill);
+                data.Rows[i]["Date"] = DatabaseHelper.DateTimeToStringUI(data.Rows[i]["Date"]);
             }
-
+            data.Columns["Remarks"].SetOrdinal(data.Columns.Count-1);
+            data.Columns.Remove("int Amount");
             loanDataGridView.DataSource = data;
         }
 
@@ -91,10 +97,10 @@ namespace NJERJIM_Guide
                 {
                     case "Create":
                         db_helper.Manipulate($"INSERT INTO {DTLoan.Table} ({DTLoan.ClientId}, {DTLoan.Amount}, {DTLoan.DateTime},{DTLoan.Remarks}) " +
-                            $"VALUES({client_id}, {amountTextBox.Text}, '{DatabaseHelper.DateTimeToString(loanDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
+                            $"VALUES({client_id}, {amountTextBox.Text}, '{DatabaseHelper.DateTimeToStringDB(loanDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
                         break;
                     case "Save":
-                        db_helper.Manipulate($"UPDATE {DTLoan.Table} SET {DTLoan.ClientId} = {client_id}, {DTLoan.Amount} = {amountTextBox.Text} , {DTLoan.DateTime} = '{DatabaseHelper.DateTimeToString(loanDateTimePicker.Value)}' " +
+                        db_helper.Manipulate($"UPDATE {DTLoan.Table} SET {DTLoan.ClientId} = {client_id}, {DTLoan.Amount} = {amountTextBox.Text} , {DTLoan.DateTime} = '{DatabaseHelper.DateTimeToStringDB(loanDateTimePicker.Value)}' " +
                             $",{DTLoan.Remarks} = '{remarksRichTextBox.Text}' WHERE {DTLoan.Id}={selectedIdLabel.Text};");
                         break;
                 }
@@ -148,7 +154,7 @@ namespace NJERJIM_Guide
                 //column name are base on InitializeData() method on setdatagridview query
                 selectedIdLabel.Text = selectedRow["ID"].Value.ToString();
                 clientComboBox.SelectedItem = selectedRow["Client ID"].Value + " - " + selectedRow["First Name"].Value;
-                amountTextBox.Text = selectedRow["Amount"].Value.ToString();
+                amountTextBox.Text = selectedRow["Debt"].Value.ToString();
                 loanDateTimePicker.Value = DatabaseHelper.StringToDateTime(selectedRow["Date"].Value);
                 remarksRichTextBox.Text = selectedRow["Remarks"].Value.ToString();
 

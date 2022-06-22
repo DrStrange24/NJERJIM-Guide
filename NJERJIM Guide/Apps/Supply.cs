@@ -62,10 +62,10 @@ namespace NJERJIM_Guide
                 {
                     case "Create":
                         db_helper.Manipulate($"INSERT INTO {DTTransaction.Table} ({DTTransaction.Type}, {DTTransaction.Amount}, {DTTransaction.DateTime}) " +
-                            $"VALUES('{transactionTypeComboBox.SelectedItem}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToString(transactionDateTimePicker.Value)}');");
+                            $"VALUES('{transactionTypeComboBox.SelectedItem}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToStringDB(transactionDateTimePicker.Value)}');");
                         break;
                     case "Save":
-                        db_helper.Manipulate($"UPDATE {DTTransaction.Table} SET {DTTransaction.Type} = '{transactionTypeComboBox.SelectedItem}', {DTTransaction.Amount} = {amountTextBox.Text} , {DTTransaction.DateTime} = '{DatabaseHelper.DateTimeToString(transactionDateTimePicker.Value)}' " +
+                        db_helper.Manipulate($"UPDATE {DTTransaction.Table} SET {DTTransaction.Type} = '{transactionTypeComboBox.SelectedItem}', {DTTransaction.Amount} = {amountTextBox.Text} , {DTTransaction.DateTime} = '{DatabaseHelper.DateTimeToStringDB(transactionDateTimePicker.Value)}' " +
                             $" WHERE {DTTransaction.Id}={selectedIdLabel.Text};");
                         break;
                 }

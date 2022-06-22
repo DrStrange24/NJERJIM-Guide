@@ -87,7 +87,7 @@ namespace NJERJIM_Guide
                 if (dateTimeCheckBox.Checked)
                 {
                     dateRange += " and ";
-                    dateRange += $"{DTCollection.DateTime} between '{DatabaseHelper.DateTimeToString(fromDateTimePicker.Value)}' and '{DatabaseHelper.DateTimeToString(toDateTimePicker.Value)}'";
+                    dateRange += $"{DTCollection.DateTime} between '{DatabaseHelper.DateTimeToStringDB(fromDateTimePicker.Value)}' and '{DatabaseHelper.DateTimeToStringDB(toDateTimePicker.Value)}'";
                     return dateRange;
                 }
                 return dateRange;
@@ -144,10 +144,10 @@ namespace NJERJIM_Guide
                 {
                     case "Collect":
                         db_helper.Manipulate($"INSERT INTO {DTCollection.Table} ({DTCollection.LoanId}, {DTCollection.Amount}, {DTCollection.DateTime},{DTCollection.Remarks}) " +
-                            $"VALUES('{loan_id}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToString(collectionDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
+                            $"VALUES('{loan_id}', '{amountTextBox.Text}', '{DatabaseHelper.DateTimeToStringDB(collectionDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
                         break;
                     case "Save":
-                        db_helper.Manipulate($"UPDATE {DTCollection.Table} SET {DTCollection.LoanId} = {loan_id}, {DTCollection.Amount} = {amountTextBox.Text} , {DTCollection.DateTime} = '{DatabaseHelper.DateTimeToString(collectionDateTimePicker.Value)}' " +
+                        db_helper.Manipulate($"UPDATE {DTCollection.Table} SET {DTCollection.LoanId} = {loan_id}, {DTCollection.Amount} = {amountTextBox.Text} , {DTCollection.DateTime} = '{DatabaseHelper.DateTimeToStringDB(collectionDateTimePicker.Value)}' " +
                             $",{DTCollection.Remarks} = '{remarksRichTextBox.Text}' WHERE {DTCollection.Id}={selectedIdLabel.Text};");
                         break;
                 }
