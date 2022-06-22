@@ -25,8 +25,17 @@ namespace NJERJIM_Guide
             void SetDataGridView()
             {
                 var db_helper = new DatabaseHelper();
-                var query = $"select * from {DTTransaction.Table} order by {DTTransaction.DateTime} desc;";
-                db_helper.SetDataGridView(transactionDataGridView, query);
+                var data = db_helper.GetData($"select {DTTransaction.Id} as [ID],{DTTransaction.Type} as [Transaction Type],{DTTransaction.Amount} as [int_amount]" +
+                    $",{DTTransaction.DateTime} as [Date] from {DTTransaction.Table} order by {DTTransaction.DateTime} desc;");
+                data.Columns.Add(new DataColumn("Amount", typeof(string)));
+                for (int i = 0; i < data.Rows.Count; i++)
+                {
+                    data.Rows[i]["Amount"] = CurrencyFormat.ToString(data.Rows[i]["int_amount"]);
+                    data.Rows[i]["Date"] = DateTimeFormatHelper.DateTimeToStringUI(data.Rows[i]["Date"]);
+                }
+                data.Columns["Amount"].SetOrdinal(data.Columns.IndexOf("int_amount"));
+                data.Columns.Remove("int_amount");
+                transactionDataGridView.DataSource = data;
             }
             void SetTotalSupply()
             {
@@ -65,7 +74,7 @@ namespace NJERJIM_Guide
                             $"VALUES('{transactionTypeComboBox.SelectedItem}', '{amountTextBox.Text}', '{DateTimeFormatHelper.DateTimeToStringDB(transactionDateTimePicker.Value)}');");
                         break;
                     case "Save":
-                        db_helper.Manipulate($"UPDATE {DTTransaction.Table} SET {DTTransaction.Type} = '{transactionTypeComboBox.SelectedItem}', {DTTransaction.Amount} = {amountTextBox.Text} , {DTTransaction.DateTime} = '{DateTimeFormatHelper.DateTimeToStringDB(transactionDateTimePicker.Value)}' " +
+                        db_helper.Manipulate($"UPDATE {DTTransaction.Table} SET {DTTransaction.Type} = '{transactionTypeComboBox.SelectedItem}', {DTTransaction.Amount} = {CurrencyFormat.ToDouble(amountTextBox.Text)} , {DTTransaction.DateTime} = '{DateTimeFormatHelper.DateTimeToStringDB(transactionDateTimePicker.Value)}' " +
                             $" WHERE {DTTransaction.Id}={selectedIdLabel.Text};");
                         break;
                 }
