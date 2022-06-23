@@ -29,6 +29,7 @@ namespace NJERJIM_Guide
         }
         internal void ChangePath(string Path)
         {
+            Path += "\\";
             Connection.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + Path + DatabaseName + "\";Integrated Security=True";
         }
         internal void ChangDatabase(string DatabaseName)

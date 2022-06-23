@@ -35,7 +35,10 @@ namespace NJERJIM_Guide
 
         internal static readonly string Id = Table + ".[Id]";
         internal static readonly string ClientId = Table + ".[client_id]";
+        internal static readonly string Item = Table + ".[item]";
         internal static readonly string Amount = Table + ".[amount]";
+        internal static readonly string Interest = Table + ".[interest]";
+        internal static readonly string DeadlineInDays = Table + ".[deadline_in_days]";
         internal static readonly string DateTime = Table + ".[datetime]";
         internal static readonly string Remarks = Table + ".[remarks]";
     }
