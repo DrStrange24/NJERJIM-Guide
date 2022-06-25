@@ -377,7 +377,6 @@ namespace NJERJIM_Guide
             this.Name = "Collection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CollectionForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.collectionDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

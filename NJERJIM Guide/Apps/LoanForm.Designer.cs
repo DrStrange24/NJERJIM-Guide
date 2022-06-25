@@ -275,7 +275,6 @@ namespace NJERJIM_Guide
             this.Name = "Loan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Loan";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.loanDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
