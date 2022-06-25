@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NJERJIM_Guide.Apps;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -89,6 +90,24 @@ namespace NJERJIM_Guide
             }
             Command.Dispose();
             Connection.Close();
+        }
+    }
+    internal static class DataTableHelper
+    {
+        /// <summary>
+        ///     Change datatypes of a column in datatable.
+        /// </summary>
+        /// <param name="dataTable">Datatable</param>
+        /// <param name="ColumnName">what column to change</param>
+        /// <param name="type">to what datatype to change</param>
+        internal static void ChangeColumnDatatypes(DataTable dataTable,string ColumnName,Type type)
+        {
+            dataTable.Columns.Add(new DataColumn("temporary_column", type));
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+                dataTable.Rows[i]["temporary_column"] = dataTable.Rows[i][ColumnName];
+            dataTable.Columns["temporary_column"].SetOrdinal(dataTable.Columns.IndexOf(ColumnName));
+            dataTable.Columns.Remove(ColumnName);
+            dataTable.Columns["temporary_column"].ColumnName = ColumnName;
         }
     }
 }

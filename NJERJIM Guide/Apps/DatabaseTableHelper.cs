@@ -62,12 +62,13 @@ namespace NJERJIM_Guide
     /// </summary>
     static class DTTransaction
     {
-        internal static readonly string Table = "[transaction]";
+        internal static readonly string Table = "[supply]";
 
         internal static readonly string Id = Table + ".[Id]";
         internal static readonly string Type = Table + ".[type]";
         internal static readonly string Amount = Table + ".[amount]";
         internal static readonly string DateTime = Table + ".[datetime]";
+        internal static readonly string Remarks = Table + ".[remarks]";
     }
     /// <summary>
     ///     DS stands for Data Structure.

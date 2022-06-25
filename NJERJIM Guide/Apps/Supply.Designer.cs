@@ -44,6 +44,8 @@ namespace NJERJIM_Guide
             this.createButton = new System.Windows.Forms.Button();
             this.typeLabel = new System.Windows.Forms.Label();
             this.transactionTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.remarksLabel = new System.Windows.Forms.Label();
+            this.remarksRichTextBox = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.transactionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,7 +88,7 @@ namespace NJERJIM_Guide
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.Location = new System.Drawing.Point(911, 129);
+            this.deleteButton.Location = new System.Drawing.Point(911, 237);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 55;
@@ -134,7 +136,7 @@ namespace NJERJIM_Guide
             // clearInputsButton
             // 
             this.clearInputsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearInputsButton.Location = new System.Drawing.Point(706, 129);
+            this.clearInputsButton.Location = new System.Drawing.Point(706, 237);
             this.clearInputsButton.Name = "clearInputsButton";
             this.clearInputsButton.Size = new System.Drawing.Size(75, 23);
             this.clearInputsButton.TabIndex = 71;
@@ -183,7 +185,7 @@ namespace NJERJIM_Guide
             // createButton
             // 
             this.createButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.createButton.Location = new System.Drawing.Point(830, 129);
+            this.createButton.Location = new System.Drawing.Point(830, 237);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(75, 23);
             this.createButton.TabIndex = 65;
@@ -210,11 +212,32 @@ namespace NJERJIM_Guide
             this.transactionTypeComboBox.Size = new System.Drawing.Size(280, 23);
             this.transactionTypeComboBox.TabIndex = 74;
             // 
+            // remarksLabel
+            // 
+            this.remarksLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.remarksLabel.AutoSize = true;
+            this.remarksLabel.Location = new System.Drawing.Point(575, 129);
+            this.remarksLabel.Name = "remarksLabel";
+            this.remarksLabel.Size = new System.Drawing.Size(52, 15);
+            this.remarksLabel.TabIndex = 76;
+            this.remarksLabel.Text = "Remarks";
+            // 
+            // remarksRichTextBox
+            // 
+            this.remarksRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.remarksRichTextBox.Location = new System.Drawing.Point(706, 126);
+            this.remarksRichTextBox.Name = "remarksRichTextBox";
+            this.remarksRichTextBox.Size = new System.Drawing.Size(280, 105);
+            this.remarksRichTextBox.TabIndex = 75;
+            this.remarksRichTextBox.Text = "";
+            // 
             // Supply
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.remarksLabel);
+            this.Controls.Add(this.remarksRichTextBox);
             this.Controls.Add(this.transactionTypeComboBox);
             this.Controls.Add(this.clearInputsButton);
             this.Controls.Add(this.transactionDateTimePicker);
@@ -256,5 +279,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Button createButton;
         private System.Windows.Forms.Label typeLabel;
         private System.Windows.Forms.ComboBox transactionTypeComboBox;
+        private System.Windows.Forms.Label remarksLabel;
+        private System.Windows.Forms.RichTextBox remarksRichTextBox;
     }
 }

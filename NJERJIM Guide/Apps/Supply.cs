@@ -25,16 +25,14 @@ namespace NJERJIM_Guide
             void SetDataGridView()
             {
                 var db_helper = new DatabaseHelper();
-                var data = db_helper.GetData($"select {DTTransaction.Id} as [ID],{DTTransaction.Type} as [Transaction Type],{DTTransaction.Amount} as [int_amount]" +
-                    $",{DTTransaction.DateTime} as [Date] from {DTTransaction.Table} order by {DTTransaction.DateTime} desc;");
-                data.Columns.Add(new DataColumn("Amount", typeof(string)));
+                var data = db_helper.GetData($"select {DTTransaction.Id} as [ID],{DTTransaction.Type} as [Transaction Type],{DTTransaction.Amount} as [Amount]" +
+                    $",{DTTransaction.DateTime} as [Date],{DTTransaction.Remarks} as [Remarks] from {DTTransaction.Table} order by {DTTransaction.DateTime} desc;");
+                DataTableHelper.ChangeColumnDatatypes(data, "Amount", typeof(string));
                 for (int i = 0; i < data.Rows.Count; i++)
                 {
-                    data.Rows[i]["Amount"] = CurrencyFormat.ToString(data.Rows[i]["int_amount"]);
+                    data.Rows[i]["Amount"] = CurrencyFormat.ToString(data.Rows[i]["Amount"]);
                     data.Rows[i]["Date"] = DateTimeFormatHelper.DateTimeToStringUI(data.Rows[i]["Date"]);
                 }
-                data.Columns["Amount"].SetOrdinal(data.Columns.IndexOf("int_amount"));
-                data.Columns.Remove("int_amount");
                 transactionDataGridView.DataSource = data;
             }
             void SetTotalSupply()
@@ -70,11 +68,14 @@ namespace NJERJIM_Guide
                 switch (createButton.Text)
                 {
                     case "Create":
-                        db_helper.Manipulate($"INSERT INTO {DTTransaction.Table} ({DTTransaction.Type}, {DTTransaction.Amount}, {DTTransaction.DateTime}) " +
-                            $"VALUES('{transactionTypeComboBox.SelectedItem}', '{amountTextBox.Text}', '{DateTimeFormatHelper.DateTimeToStringDB(transactionDateTimePicker.Value)}');");
+                        db_helper.Manipulate($"INSERT INTO {DTTransaction.Table} ({DTTransaction.Type}, {DTTransaction.Amount}, {DTTransaction.DateTime}, {DTTransaction.Remarks}) " +
+                            $"VALUES('{transactionTypeComboBox.SelectedItem}', '{amountTextBox.Text}', '{DateTimeFormatHelper.DateTimeToStringDB(transactionDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
                         break;
                     case "Save":
-                        db_helper.Manipulate($"UPDATE {DTTransaction.Table} SET {DTTransaction.Type} = '{transactionTypeComboBox.SelectedItem}', {DTTransaction.Amount} = {CurrencyFormat.ToDouble(amountTextBox.Text)} , {DTTransaction.DateTime} = '{DateTimeFormatHelper.DateTimeToStringDB(transactionDateTimePicker.Value)}' " +
+                        db_helper.Manipulate($"UPDATE {DTTransaction.Table} SET {DTTransaction.Type} = '{transactionTypeComboBox.SelectedItem}', " +
+                            $"{DTTransaction.Amount} = {CurrencyFormat.ToDouble(amountTextBox.Text)} , " +
+                            $"{DTTransaction.DateTime} = '{DateTimeFormatHelper.DateTimeToStringDB(transactionDateTimePicker.Value)}'" +
+                            $",{DTTransaction.Remarks} = '{remarksRichTextBox.Text}'" +
                             $" WHERE {DTTransaction.Id}={selectedIdLabel.Text};");
                         break;
                 }
@@ -114,6 +115,7 @@ namespace NJERJIM_Guide
             transactionTypeComboBox.SelectedIndex = -1;
             amountTextBox.Text = string.Empty;
             transactionDateTimePicker.Value = DateTime.Now;
+            remarksRichTextBox.Text = string.Empty;
         }
 
         private void transactionDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -126,6 +128,7 @@ namespace NJERJIM_Guide
                 transactionTypeComboBox.SelectedItem = selectedRow[1].Value.ToString();
                 amountTextBox.Text = selectedRow[2].Value.ToString();
                 transactionDateTimePicker.Value = DateTimeFormatHelper.StringUIToDateTime(selectedRow[3].Value);
+                remarksRichTextBox.Text = selectedRow[4].Value.ToString();
 
                 idLabel.Visible = true;
                 selectedIdLabel.Visible = true;
