@@ -135,27 +135,20 @@ namespace NJERJIM_Guide
     /// </summary>
     internal struct DSLoan
     {
-        private readonly double DefaultInterstInPercent
-        {
-            get
-            {
-                return 20;
-            }
-        }
         internal int Id { get; set; }
         internal int ClientId { get; set; }
+        internal string Item { get; set; }
         internal double Amount { get; set; }
-        /// <summary>
-        ///     DateTime with string format from database format
-        /// </summary>
+        internal double Interest { get; set; }
+        internal int DeadlineInDays { get; set; }
         internal string DateTime { get; set; }
         internal string Remarks { get; set; }
+
         internal double TotalDebt
         {
             get
             {
-                double amount = this.Amount * (1 + this.DefaultInterstInPercent / 100);
-                return amount;
+                return Amount+Interest;
             }
         }
         internal double CompletedBill
@@ -190,7 +183,7 @@ namespace NJERJIM_Guide
         { 
             get
             {
-                int deadline_number_of_days = DeadLineNumberOfDays;
+                int deadline_number_of_days = DeadlineInDays;
                 var datetime = DateTimeFormat;
                 while(deadline_number_of_days > 0)
                 {
@@ -202,32 +195,11 @@ namespace NJERJIM_Guide
                 return datetime;
             } 
         }
-        /// <summary>
-        ///     Convert DateTime string to DateTime datatypes.
-        /// </summary>
         internal DateTime DateTimeFormat 
         {
             get
             {
                 return DateTimeFormatHelper.StringDBToDateTime(this.DateTime);
-            }
-        }
-        internal int DeadLineNumberOfDays
-        {
-            get
-            {
-                switch (Amount)
-                {
-                    case 2000:
-                        return 40;
-                    case 3000:
-                        return 36;
-                    case 5000:
-                        return 40;
-                    case 10000:
-                        return 60;
-                }
-                return 0;
             }
         }
 
@@ -243,9 +215,12 @@ namespace NJERJIM_Guide
                 var temp_data = new DSLoan();
                 temp_data.Id = Convert.ToInt32(data.Rows[i][0]);
                 temp_data.ClientId = Convert.ToInt32(data.Rows[i][1]);
-                temp_data.Amount = Convert.ToDouble(data.Rows[i][2]);
-                temp_data.DateTime = Convert.ToString(data.Rows[i][3]);
-                temp_data.Remarks = Convert.ToString(data.Rows[i][4]);
+                temp_data.Item = Convert.ToString(data.Rows[i][2]);
+                temp_data.Amount = Convert.ToDouble(data.Rows[i][3]);
+                temp_data.Interest = Convert.ToDouble(data.Rows[i][4]);
+                temp_data.DeadlineInDays = Convert.ToInt32(data.Rows[i][5]);
+                temp_data.DateTime = Convert.ToString(data.Rows[i][6]);
+                temp_data.Remarks = Convert.ToString(data.Rows[i][7]);
                 list.Add(temp_data);
             }
             return list;

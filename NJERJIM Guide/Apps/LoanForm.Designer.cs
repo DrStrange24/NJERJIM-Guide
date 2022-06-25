@@ -48,6 +48,12 @@ namespace NJERJIM_Guide
             this.clearInputsButton = new System.Windows.Forms.Button();
             this.remarksRichTextBox = new System.Windows.Forms.RichTextBox();
             this.remarksLabel = new System.Windows.Forms.Label();
+            this.itemTextBox = new System.Windows.Forms.TextBox();
+            this.itemLabel = new System.Windows.Forms.Label();
+            this.interestTextBox = new System.Windows.Forms.TextBox();
+            this.interestLabel = new System.Windows.Forms.Label();
+            this.deadlineInDaysTextBox = new System.Windows.Forms.TextBox();
+            this.deadlineInDaysLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.loanDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,7 +94,7 @@ namespace NJERJIM_Guide
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.Location = new System.Drawing.Point(911, 237);
+            this.deleteButton.Location = new System.Drawing.Point(911, 327);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 31;
@@ -100,7 +106,7 @@ namespace NJERJIM_Guide
             // 
             this.DateTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DateTimeLabel.AutoSize = true;
-            this.DateTimeLabel.Location = new System.Drawing.Point(575, 103);
+            this.DateTimeLabel.Location = new System.Drawing.Point(575, 193);
             this.DateTimeLabel.Name = "DateTimeLabel";
             this.DateTimeLabel.Size = new System.Drawing.Size(60, 15);
             this.DateTimeLabel.TabIndex = 23;
@@ -128,7 +134,7 @@ namespace NJERJIM_Guide
             // loanButton
             // 
             this.loanButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.loanButton.Location = new System.Drawing.Point(830, 237);
+            this.loanButton.Location = new System.Drawing.Point(830, 327);
             this.loanButton.Name = "loanButton";
             this.loanButton.Size = new System.Drawing.Size(75, 23);
             this.loanButton.TabIndex = 20;
@@ -194,7 +200,7 @@ namespace NJERJIM_Guide
             // loanDateTimePicker
             // 
             this.loanDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.loanDateTimePicker.Location = new System.Drawing.Point(706, 97);
+            this.loanDateTimePicker.Location = new System.Drawing.Point(706, 187);
             this.loanDateTimePicker.Name = "loanDateTimePicker";
             this.loanDateTimePicker.Size = new System.Drawing.Size(280, 23);
             this.loanDateTimePicker.TabIndex = 52;
@@ -221,7 +227,7 @@ namespace NJERJIM_Guide
             // clearInputsButton
             // 
             this.clearInputsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearInputsButton.Location = new System.Drawing.Point(706, 237);
+            this.clearInputsButton.Location = new System.Drawing.Point(706, 327);
             this.clearInputsButton.Name = "clearInputsButton";
             this.clearInputsButton.Size = new System.Drawing.Size(75, 23);
             this.clearInputsButton.TabIndex = 55;
@@ -232,7 +238,7 @@ namespace NJERJIM_Guide
             // remarksRichTextBox
             // 
             this.remarksRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.remarksRichTextBox.Location = new System.Drawing.Point(706, 126);
+            this.remarksRichTextBox.Location = new System.Drawing.Point(706, 216);
             this.remarksRichTextBox.Name = "remarksRichTextBox";
             this.remarksRichTextBox.Size = new System.Drawing.Size(280, 105);
             this.remarksRichTextBox.TabIndex = 56;
@@ -242,17 +248,77 @@ namespace NJERJIM_Guide
             // 
             this.remarksLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.remarksLabel.AutoSize = true;
-            this.remarksLabel.Location = new System.Drawing.Point(575, 129);
+            this.remarksLabel.Location = new System.Drawing.Point(575, 219);
             this.remarksLabel.Name = "remarksLabel";
             this.remarksLabel.Size = new System.Drawing.Size(52, 15);
             this.remarksLabel.TabIndex = 57;
             this.remarksLabel.Text = "Remarks";
+            // 
+            // itemTextBox
+            // 
+            this.itemTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemTextBox.Location = new System.Drawing.Point(706, 129);
+            this.itemTextBox.Name = "itemTextBox";
+            this.itemTextBox.Size = new System.Drawing.Size(280, 23);
+            this.itemTextBox.TabIndex = 59;
+            // 
+            // itemLabel
+            // 
+            this.itemLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.itemLabel.AutoSize = true;
+            this.itemLabel.Location = new System.Drawing.Point(575, 132);
+            this.itemLabel.Name = "itemLabel";
+            this.itemLabel.Size = new System.Drawing.Size(31, 15);
+            this.itemLabel.TabIndex = 58;
+            this.itemLabel.Text = "Item";
+            // 
+            // interestTextBox
+            // 
+            this.interestTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.interestTextBox.Location = new System.Drawing.Point(706, 100);
+            this.interestTextBox.Name = "interestTextBox";
+            this.interestTextBox.Size = new System.Drawing.Size(280, 23);
+            this.interestTextBox.TabIndex = 61;
+            // 
+            // interestLabel
+            // 
+            this.interestLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.interestLabel.AutoSize = true;
+            this.interestLabel.Location = new System.Drawing.Point(575, 103);
+            this.interestLabel.Name = "interestLabel";
+            this.interestLabel.Size = new System.Drawing.Size(46, 15);
+            this.interestLabel.TabIndex = 60;
+            this.interestLabel.Text = "Interest";
+            // 
+            // deadlineInDaysTextBox
+            // 
+            this.deadlineInDaysTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.deadlineInDaysTextBox.Location = new System.Drawing.Point(706, 158);
+            this.deadlineInDaysTextBox.Name = "deadlineInDaysTextBox";
+            this.deadlineInDaysTextBox.Size = new System.Drawing.Size(280, 23);
+            this.deadlineInDaysTextBox.TabIndex = 63;
+            // 
+            // deadlineInDaysLabel
+            // 
+            this.deadlineInDaysLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.deadlineInDaysLabel.AutoSize = true;
+            this.deadlineInDaysLabel.Location = new System.Drawing.Point(575, 161);
+            this.deadlineInDaysLabel.Name = "deadlineInDaysLabel";
+            this.deadlineInDaysLabel.Size = new System.Drawing.Size(94, 15);
+            this.deadlineInDaysLabel.TabIndex = 62;
+            this.deadlineInDaysLabel.Text = "Deadline in Days";
             // 
             // Loan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.deadlineInDaysTextBox);
+            this.Controls.Add(this.deadlineInDaysLabel);
+            this.Controls.Add(this.interestTextBox);
+            this.Controls.Add(this.interestLabel);
+            this.Controls.Add(this.itemTextBox);
+            this.Controls.Add(this.itemLabel);
             this.Controls.Add(this.remarksLabel);
             this.Controls.Add(this.remarksRichTextBox);
             this.Controls.Add(this.clearInputsButton);
@@ -302,5 +368,11 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Button clearInputsButton;
         private System.Windows.Forms.RichTextBox remarksRichTextBox;
         private System.Windows.Forms.Label remarksLabel;
+        private System.Windows.Forms.TextBox itemTextBox;
+        private System.Windows.Forms.Label itemLabel;
+        private System.Windows.Forms.TextBox interestTextBox;
+        private System.Windows.Forms.Label interestLabel;
+        private System.Windows.Forms.TextBox deadlineInDaysTextBox;
+        private System.Windows.Forms.Label deadlineInDaysLabel;
     }
 }

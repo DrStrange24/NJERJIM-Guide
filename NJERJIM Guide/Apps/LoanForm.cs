@@ -52,31 +52,44 @@ namespace NJERJIM_Guide
         private void SetDataGridView()
         {
             var db_helper = new DatabaseHelper();
-            var data = db_helper.GetData($"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTClient.FirstName} as [First Name],{DTLoan.Amount} as [int_Amount],{DTLoan.DateTime} as [Date]" +
+            var data = db_helper.GetData($"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTClient.FirstName} as [First Name],{DTLoan.Item} as [Item]," +
+                $"{DTLoan.Amount} as [int_Amount],{DTLoan.Interest} as [int_Interest],{DTLoan.DeadlineInDays} as [Deadline # Day],{DTLoan.DateTime} as [Date]" +
                     $",{DTLoan.Remarks} as [Remarks] from {DTLoan.Table} join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id} where {DTClient.FirstName} like '%{searchTextBox.Text}%' order by {DTLoan.DateTime} desc;");
             data.Columns.Add(new DataColumn("Debt", typeof(string)));
+            data.Columns.Add(new DataColumn("Interest", typeof(string)));
             data.Columns.Add(new DataColumn("Total Debt", typeof(string)));
             data.Columns.Add(new DataColumn("Completed Bill", typeof(string)));
             data.Columns.Add(new DataColumn("Outstanding Bill", typeof(string)));
             data.Columns.Add(new DataColumn("Deadline", typeof(string)));
-            data.Columns.Add(new DataColumn("Deadline # Days", typeof(int)));
+            data.Columns.Add(new DataColumn("Row", typeof(int)));
             for (int i = 0; i < data.Rows.Count; i++)
             {
                 var loan = new DSLoan();
                 loan.Id = Convert.ToInt32(data.Rows[i]["ID"]);
                 loan.Amount = Convert.ToDouble(data.Rows[i]["int_Amount"]);
+                loan.Interest = Convert.ToDouble(data.Rows[i]["int_Interest"]);
                 loan.DateTime = Convert.ToString(data.Rows[i]["Date"]);
+                loan.DeadlineInDays = Convert.ToInt32(data.Rows[i]["Deadline # Day"]);
 
                 data.Rows[i]["Completed Bill"] = CurrencyFormat.ToString(loan.CompletedBill);
                 data.Rows[i]["Total Debt"] = CurrencyFormat.ToString(loan.TotalDebt);
                 data.Rows[i]["Debt"] = CurrencyFormat.ToString(loan.Amount);
+                data.Rows[i]["Interest"] = CurrencyFormat.ToString(loan.Interest);
                 data.Rows[i]["Outstanding Bill"] = CurrencyFormat.ToString(loan.OutstandingBill);
                 data.Rows[i]["Date"] = DateTimeFormatHelper.DateTimeToStringUI(data.Rows[i]["Date"]);
                 data.Rows[i]["Deadline"] = DateTimeFormatHelper.DateTimeToStringUI(loan.DeadLine);
-                data.Rows[i]["Deadline # Days"] = loan.DeadLineNumberOfDays;
+                data.Rows[i]["Row"] = i+1;
             }
-            data.Columns["Remarks"].SetOrdinal(data.Columns.Count-1);
+            data.Columns["Date"].SetOrdinal(3);
+            data.Columns["Item"].SetOrdinal(4);
+            data.Columns["Debt"].SetOrdinal(5);
+            data.Columns["Interest"].SetOrdinal(6);
+            data.Columns["Total Debt"].SetOrdinal(7);
+            data.Columns["Deadline # Day"].SetOrdinal(13);
+            data.Columns["Remarks"].SetOrdinal(data.Columns.Count - 1);
+            data.Columns["Row"].SetOrdinal(0);
             data.Columns.Remove("int_Amount");
+            data.Columns.Remove("int_Interest");
             loanDataGridView.DataSource = data;
         }
 
@@ -90,24 +103,32 @@ namespace NJERJIM_Guide
         {
             bool ValidInputs()
             {
-                if (clientComboBox.SelectedIndex < 0 || string.IsNullOrWhiteSpace(amountTextBox.Text))
+                if (clientComboBox.SelectedIndex < 0 || string.IsNullOrWhiteSpace(amountTextBox.Text) || string.IsNullOrWhiteSpace(interestTextBox.Text) || string.IsNullOrWhiteSpace(deadlineInDaysTextBox.Text))
                     return false;
                 return true;
             }
 
             if (ValidInputs())
             {
+                object item()
+                {
+                    if (string.IsNullOrWhiteSpace(itemTextBox.Text))
+                        return "null";
+                    return $"'{itemTextBox.Text}'";
+                }
                 int client_id = Convert.ToInt32(clientComboBox.SelectedItem.ToString().Split(" - ")[0]);
                 var db_helper = new DatabaseHelper();
                 switch (loanButton.Text)
                 {
                     case "Create":
-                        db_helper.Manipulate($"INSERT INTO {DTLoan.Table} ({DTLoan.ClientId}, {DTLoan.Amount}, {DTLoan.DateTime},{DTLoan.Remarks}) " +
-                            $"VALUES({client_id}, {amountTextBox.Text}, '{DateTimeFormatHelper.DateTimeToStringDB(loanDateTimePicker.Value)}','{remarksRichTextBox.Text}');");
+                        db_helper.Manipulate($"INSERT INTO {DTLoan.Table} ({DTLoan.ClientId}, {DTLoan.Amount}, {DTLoan.DateTime},{DTLoan.Remarks},{DTLoan.Interest},{DTLoan.Item},{DTLoan.DeadlineInDays}) " +
+                            $"VALUES({client_id}, {CurrencyFormat.ToDouble(amountTextBox.Text)}, '{DateTimeFormatHelper.DateTimeToStringDB(loanDateTimePicker.Value)}','" +
+                            $"{remarksRichTextBox.Text}',{CurrencyFormat.ToDouble(interestTextBox.Text)},{item()},{deadlineInDaysTextBox.Text});");
                         break;
                     case "Save":
                         db_helper.Manipulate($"UPDATE {DTLoan.Table} SET {DTLoan.ClientId} = {client_id}, {DTLoan.Amount} = {CurrencyFormat.ToDouble(amountTextBox.Text)} , {DTLoan.DateTime} = '{DateTimeFormatHelper.DateTimeToStringDB(loanDateTimePicker.Value)}' " +
-                            $",{DTLoan.Remarks} = '{remarksRichTextBox.Text}' WHERE {DTLoan.Id}={selectedIdLabel.Text};");
+                            $",{DTLoan.Remarks} = '{remarksRichTextBox.Text}',{DTLoan.Interest} = {CurrencyFormat.ToDouble(interestTextBox.Text)},{DTLoan.Item} = {item()}," +
+                            $"{DTLoan.DeadlineInDays} = {deadlineInDaysTextBox.Text} WHERE {DTLoan.Id}={selectedIdLabel.Text};");
                         break;
                 }
                 InitializeData();
@@ -145,6 +166,9 @@ namespace NJERJIM_Guide
             amountTextBox.Text = string.Empty;
             loanDateTimePicker.Value = DateTime.Now;
             remarksRichTextBox.Text = string.Empty;
+            interestTextBox.Text = string.Empty;
+            itemTextBox.Text = string.Empty;
+            deadlineInDaysTextBox.Text = string.Empty;
         }
 
         private void searchTextBox_TextChanged(object sender, EventArgs e)
@@ -171,6 +195,9 @@ namespace NJERJIM_Guide
                 amountTextBox.Text = selectedRow["Debt"].Value.ToString();
                 loanDateTimePicker.Value = DateTimeFormatHelper.StringUIToDateTime(selectedRow["Date"].Value);
                 remarksRichTextBox.Text = selectedRow["Remarks"].Value.ToString();
+                interestTextBox.Text = selectedRow["Interest"].Value.ToString();
+                itemTextBox.Text = selectedRow["Item"].Value.ToString();
+                deadlineInDaysTextBox.Text = selectedRow["Deadline # Day"].Value.ToString();
 
                 idLabel.Visible = true;
                 selectedIdLabel.Visible = true;
