@@ -151,11 +151,6 @@ namespace NJERJIM_Guide
                 MessageBox.Show("Please select a loan first!");
         }
 
-        private void dateTimeTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) createButton_Click(null, null);
-        }
-
         private void clearInputsButton_Click(object sender, EventArgs e)
         {
             SetClientComboBox();
@@ -210,6 +205,11 @@ namespace NJERJIM_Guide
                 loanButton.Text = "Save";
             else
                 loanButton.Text = "Create";
+        }
+
+        private void enterTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            createButton_Click(null, null);
         }
     }
 }

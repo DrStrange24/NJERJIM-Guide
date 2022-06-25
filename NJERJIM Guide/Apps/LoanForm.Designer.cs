@@ -119,7 +119,7 @@ namespace NJERJIM_Guide
             this.amountTextBox.Name = "amountTextBox";
             this.amountTextBox.Size = new System.Drawing.Size(280, 23);
             this.amountTextBox.TabIndex = 22;
-            this.amountTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimeTextBox_KeyDown);
+            this.amountTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterTextBox_KeyDown);
             // 
             // amountLabel
             // 
@@ -261,6 +261,7 @@ namespace NJERJIM_Guide
             this.itemTextBox.Name = "itemTextBox";
             this.itemTextBox.Size = new System.Drawing.Size(280, 23);
             this.itemTextBox.TabIndex = 59;
+            this.itemTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterTextBox_KeyDown);
             // 
             // itemLabel
             // 
@@ -279,6 +280,7 @@ namespace NJERJIM_Guide
             this.interestTextBox.Name = "interestTextBox";
             this.interestTextBox.Size = new System.Drawing.Size(280, 23);
             this.interestTextBox.TabIndex = 61;
+            this.interestTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterTextBox_KeyDown);
             // 
             // interestLabel
             // 
@@ -297,6 +299,7 @@ namespace NJERJIM_Guide
             this.deadlineInDaysTextBox.Name = "deadlineInDaysTextBox";
             this.deadlineInDaysTextBox.Size = new System.Drawing.Size(280, 23);
             this.deadlineInDaysTextBox.TabIndex = 63;
+            this.deadlineInDaysTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterTextBox_KeyDown);
             // 
             // deadlineInDaysLabel
             // 
