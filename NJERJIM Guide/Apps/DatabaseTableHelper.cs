@@ -202,6 +202,13 @@ namespace NJERJIM_Guide
                 return DateTimeFormatHelper.StringDBToDateTime(this.DateTime);
             }
         }
+        internal double DailyPayment
+        {
+            get
+            {
+                return TotalDebt / DeadlineInDays;
+            }
+        }
 
         internal void Print()
         {

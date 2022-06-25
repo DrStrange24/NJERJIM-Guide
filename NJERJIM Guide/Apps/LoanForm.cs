@@ -53,43 +53,48 @@ namespace NJERJIM_Guide
         {
             var db_helper = new DatabaseHelper();
             var data = db_helper.GetData($"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTClient.FirstName} as [First Name],{DTLoan.Item} as [Item]," +
-                $"{DTLoan.Amount} as [int_Amount],{DTLoan.Interest} as [int_Interest],{DTLoan.DeadlineInDays} as [Deadline # Day],{DTLoan.DateTime} as [Date]" +
+                $"{DTLoan.Amount} as [Amount],{DTLoan.Interest} as [Interest],{DTLoan.DeadlineInDays} as [Deadline # Day],{DTLoan.DateTime} as [Date]" +
                     $",{DTLoan.Remarks} as [Remarks] from {DTLoan.Table} join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id} where {DTClient.FirstName} like '%{searchTextBox.Text}%' order by {DTLoan.DateTime} desc;");
-            data.Columns.Add(new DataColumn("Debt", typeof(string)));
-            data.Columns.Add(new DataColumn("Interest", typeof(string)));
+            DataTableHelper.ChangeColumnDatatypes(data,"Amount",typeof(string));
+            DataTableHelper.ChangeColumnDatatypes(data,"Interest",typeof(string));
             data.Columns.Add(new DataColumn("Total Debt", typeof(string)));
             data.Columns.Add(new DataColumn("Completed Bill", typeof(string)));
             data.Columns.Add(new DataColumn("Outstanding Bill", typeof(string)));
             data.Columns.Add(new DataColumn("Deadline", typeof(string)));
             data.Columns.Add(new DataColumn("Row", typeof(int)));
+            data.Columns.Add(new DataColumn("Daily Payment", typeof(string)));
             for (int i = 0; i < data.Rows.Count; i++)
             {
                 var loan = new DSLoan();
                 loan.Id = Convert.ToInt32(data.Rows[i]["ID"]);
-                loan.Amount = Convert.ToDouble(data.Rows[i]["int_Amount"]);
-                loan.Interest = Convert.ToDouble(data.Rows[i]["int_Interest"]);
+                loan.Amount = Convert.ToDouble(data.Rows[i]["Amount"]);
+                loan.Interest = Convert.ToDouble(data.Rows[i]["Interest"]);
                 loan.DateTime = Convert.ToString(data.Rows[i]["Date"]);
                 loan.DeadlineInDays = Convert.ToInt32(data.Rows[i]["Deadline # Day"]);
 
                 data.Rows[i]["Completed Bill"] = CurrencyFormat.ToString(loan.CompletedBill);
                 data.Rows[i]["Total Debt"] = CurrencyFormat.ToString(loan.TotalDebt);
-                data.Rows[i]["Debt"] = CurrencyFormat.ToString(loan.Amount);
+                data.Rows[i]["Amount"] = CurrencyFormat.ToString(loan.Amount);
                 data.Rows[i]["Interest"] = CurrencyFormat.ToString(loan.Interest);
                 data.Rows[i]["Outstanding Bill"] = CurrencyFormat.ToString(loan.OutstandingBill);
                 data.Rows[i]["Date"] = DateTimeFormatHelper.DateTimeToStringUI(data.Rows[i]["Date"]);
                 data.Rows[i]["Deadline"] = DateTimeFormatHelper.DateTimeToStringUI(loan.DeadLine);
                 data.Rows[i]["Row"] = i+1;
+                data.Rows[i]["Daily Payment"] = CurrencyFormat.ToString(loan.DailyPayment);
             }
-            data.Columns["Date"].SetOrdinal(3);
-            data.Columns["Item"].SetOrdinal(4);
-            data.Columns["Debt"].SetOrdinal(5);
-            data.Columns["Interest"].SetOrdinal(6);
-            data.Columns["Total Debt"].SetOrdinal(7);
-            data.Columns["Deadline # Day"].SetOrdinal(13);
-            data.Columns["Remarks"].SetOrdinal(data.Columns.Count - 1);
             data.Columns["Row"].SetOrdinal(0);
-            data.Columns.Remove("int_Amount");
-            data.Columns.Remove("int_Interest");
+            data.Columns["Date"].SetOrdinal(4);
+            data.Columns["Item"].SetOrdinal(5);
+            data.Columns["Amount"].SetOrdinal(6);
+            data.Columns["Interest"].SetOrdinal(7);
+            data.Columns["Total Debt"].SetOrdinal(8);
+            data.Columns["Completed Bill"].SetOrdinal(9);
+            data.Columns["Outstanding Bill"].SetOrdinal(10);
+            data.Columns["Deadline # Day"].SetOrdinal(11);
+            data.Columns["Daily Payment"].SetOrdinal(12);
+            data.Columns["Deadline"].SetOrdinal(13);
+            data.Columns["Remarks"].SetOrdinal(14);
+            data.Columns["Amount"].ColumnName = "Debt";
             loanDataGridView.DataSource = data;
         }
 
