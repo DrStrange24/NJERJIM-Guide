@@ -109,7 +109,7 @@ namespace NJERJIM_Guide
             this.DateTimeLabel.Location = new System.Drawing.Point(575, 193);
             this.DateTimeLabel.Name = "DateTimeLabel";
             this.DateTimeLabel.Size = new System.Drawing.Size(60, 15);
-            this.DateTimeLabel.TabIndex = 23;
+            this.DateTimeLabel.TabIndex = 56;
             this.DateTimeLabel.Text = "Date Time";
             // 
             // amountTextBox
@@ -118,7 +118,7 @@ namespace NJERJIM_Guide
             this.amountTextBox.Location = new System.Drawing.Point(706, 71);
             this.amountTextBox.Name = "amountTextBox";
             this.amountTextBox.Size = new System.Drawing.Size(280, 23);
-            this.amountTextBox.TabIndex = 22;
+            this.amountTextBox.TabIndex = 52;
             this.amountTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterTextBox_KeyDown);
             // 
             // amountLabel
@@ -137,7 +137,7 @@ namespace NJERJIM_Guide
             this.loanButton.Location = new System.Drawing.Point(830, 327);
             this.loanButton.Name = "loanButton";
             this.loanButton.Size = new System.Drawing.Size(75, 23);
-            this.loanButton.TabIndex = 20;
+            this.loanButton.TabIndex = 58;
             this.loanButton.Text = "Create";
             this.loanButton.UseVisualStyleBackColor = true;
             this.loanButton.Click += new System.EventHandler(this.createButton_Click);
@@ -203,7 +203,7 @@ namespace NJERJIM_Guide
             this.loanDateTimePicker.Location = new System.Drawing.Point(706, 187);
             this.loanDateTimePicker.Name = "loanDateTimePicker";
             this.loanDateTimePicker.Size = new System.Drawing.Size(280, 23);
-            this.loanDateTimePicker.TabIndex = 52;
+            this.loanDateTimePicker.TabIndex = 56;
             // 
             // searchTextBox
             // 
@@ -211,7 +211,7 @@ namespace NJERJIM_Guide
             this.searchTextBox.Location = new System.Drawing.Point(69, 490);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(280, 23);
-            this.searchTextBox.TabIndex = 54;
+            this.searchTextBox.TabIndex = 70;
             this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // searchLabel
@@ -230,7 +230,7 @@ namespace NJERJIM_Guide
             this.clearInputsButton.Location = new System.Drawing.Point(706, 327);
             this.clearInputsButton.Name = "clearInputsButton";
             this.clearInputsButton.Size = new System.Drawing.Size(75, 23);
-            this.clearInputsButton.TabIndex = 55;
+            this.clearInputsButton.TabIndex = 71;
             this.clearInputsButton.Text = "Clear";
             this.clearInputsButton.UseVisualStyleBackColor = true;
             this.clearInputsButton.Click += new System.EventHandler(this.clearInputsButton_Click);
@@ -241,7 +241,7 @@ namespace NJERJIM_Guide
             this.remarksRichTextBox.Location = new System.Drawing.Point(706, 216);
             this.remarksRichTextBox.Name = "remarksRichTextBox";
             this.remarksRichTextBox.Size = new System.Drawing.Size(280, 105);
-            this.remarksRichTextBox.TabIndex = 56;
+            this.remarksRichTextBox.TabIndex = 57;
             this.remarksRichTextBox.Text = "";
             // 
             // remarksLabel
@@ -260,7 +260,7 @@ namespace NJERJIM_Guide
             this.itemTextBox.Location = new System.Drawing.Point(706, 129);
             this.itemTextBox.Name = "itemTextBox";
             this.itemTextBox.Size = new System.Drawing.Size(280, 23);
-            this.itemTextBox.TabIndex = 59;
+            this.itemTextBox.TabIndex = 54;
             this.itemTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterTextBox_KeyDown);
             // 
             // itemLabel
@@ -279,7 +279,7 @@ namespace NJERJIM_Guide
             this.interestTextBox.Location = new System.Drawing.Point(706, 100);
             this.interestTextBox.Name = "interestTextBox";
             this.interestTextBox.Size = new System.Drawing.Size(280, 23);
-            this.interestTextBox.TabIndex = 61;
+            this.interestTextBox.TabIndex = 53;
             this.interestTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterTextBox_KeyDown);
             // 
             // interestLabel
@@ -298,7 +298,7 @@ namespace NJERJIM_Guide
             this.deadlineInDaysTextBox.Location = new System.Drawing.Point(706, 158);
             this.deadlineInDaysTextBox.Name = "deadlineInDaysTextBox";
             this.deadlineInDaysTextBox.Size = new System.Drawing.Size(280, 23);
-            this.deadlineInDaysTextBox.TabIndex = 63;
+            this.deadlineInDaysTextBox.TabIndex = 55;
             this.deadlineInDaysTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterTextBox_KeyDown);
             // 
             // deadlineInDaysLabel
