@@ -74,9 +74,12 @@ namespace NJERJIM_Guide
             Command.Dispose();
             Connection.Close();
         }
+        /// <summary>
+        ///     It can use to Add, Update, Delete Query 
+        /// </summary>
+        /// <param name="Query">query statement</param>
         internal void Manipulate(string Query)
         {
-            //It can use to Add, Update, Delete Query 
             try
             {
                 Connection.Open();
