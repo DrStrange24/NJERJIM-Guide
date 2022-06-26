@@ -19,7 +19,7 @@ namespace NJERJIM_Guide
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             MainMenuForm = new MainMenu();
-            Application.Run(MainMenuForm);
+            Application.Run(new Apps.ISP.Main());
         }
     }
 }
