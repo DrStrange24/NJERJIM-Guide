@@ -214,7 +214,7 @@ namespace NJERJIM_Guide
 
         private void enterTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            createButton_Click(null, null);
+            if(e.KeyCode==Keys.Enter) createButton_Click(null, null);
         }
     }
 }
