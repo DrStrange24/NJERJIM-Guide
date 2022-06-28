@@ -1,75 +1,12 @@
-﻿using NJERJIM_Guide.Apps;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NJERJIM_Guide
+namespace NJERJIM_Guide.Apps
 {
-    /// <summary>
-    ///     DT stands for Database Table.
-    ///     Client Table with column names.
-    /// </summary>
-    static class DTClient
-    {
-        internal static readonly string Table = "[client]";
-
-        internal static readonly string Id = Table + ".[Id]";
-        internal static readonly string FirstName = Table + ".[first_name]";
-        internal static readonly string MiddleName = Table + ".[middle_name]";
-        internal static readonly string LastName = Table + ".[last_name]";
-        internal static readonly string Sex = Table + ".[sex]";
-        internal static readonly string ContactNumber = Table + ".[contact_number]";
-        internal static readonly string Addess = Table + ".[address]";
-    }
-    /// <summary>
-    ///     DT stands for Database Table.
-    ///     Loan Table with column names.
-    /// </summary>
-    static class DTLoan
-    {
-        internal static readonly string Table = "[loan]";
-
-        internal static readonly string Id = Table + ".[Id]";
-        internal static readonly string ClientId = Table + ".[client_id]";
-        internal static readonly string Item = Table + ".[item]";
-        internal static readonly string Amount = Table + ".[amount]";
-        internal static readonly string Interest = Table + ".[interest]";
-        internal static readonly string DeadlineInDays = Table + ".[deadline_in_days]";
-        internal static readonly string DateTime = Table + ".[datetime]";
-        internal static readonly string Remarks = Table + ".[remarks]";
-    }
-    /// <summary>
-    ///     DT stands for Database Table.
-    ///     Collection Table with column names.
-    /// </summary>
-    static class DTCollection
-    {
-        internal static readonly string Table = "[collection]";
-
-        internal static readonly string Id = Table + ".[Id]";
-        internal static readonly string LoanId = Table + ".[loan_id]";
-        internal static readonly string Amount = Table + ".[amount]";
-        internal static readonly string DateTime = Table + ".[datetime]";
-        internal static readonly string Remarks = Table + ".[remarks]";
-    }
-    /// <summary>
-    ///     DT stands for Database Table.
-    ///     Transaction Table with column names.
-    /// </summary>
-    static class DTTransaction
-    {
-        internal static readonly string Table = "[supply]";
-
-        internal static readonly string Id = Table + ".[Id]";
-        internal static readonly string Type = Table + ".[type]";
-        internal static readonly string Amount = Table + ".[amount]";
-        internal static readonly string DateTime = Table + ".[datetime]";
-        internal static readonly string Remarks = Table + ".[remarks]";
-    }
     /// <summary>
     ///     DS stands for Data Structure.
     ///     Transaction data structure.
@@ -93,10 +30,6 @@ namespace NJERJIM_Guide
                 return DateTimeFormatHelper.StringDBToDateTime(this.DateTime);
             }
         }
-        internal void Print()
-        {
-            Trace.WriteLine($"{this.Id}:{this.Type}:{this.Amount}:{this.DateTime}");
-        }
         internal static List<DSTransaction> GetList(DataTable data)
         {
             var list = new List<DSTransaction>();
@@ -104,7 +37,7 @@ namespace NJERJIM_Guide
             {
                 var temp_data = new DSTransaction();
                 temp_data.Id = Convert.ToInt32(data.Rows[i][0]);
-                temp_data.Type =  Convert.ToString(data.Rows[i][1]);
+                temp_data.Type = Convert.ToString(data.Rows[i][1]);
                 temp_data.Amount = Convert.ToDouble(data.Rows[i][2]);
                 temp_data.DateTime = Convert.ToString(data.Rows[i][3]);
                 list.Add(temp_data);
@@ -140,7 +73,7 @@ namespace NJERJIM_Guide
         internal string Item { get; set; }
         internal double Amount { get; set; }
         internal double Interest { get; set; }
-        internal int DeadlineInDays { get; set; }
+        internal double DailyPayment { get; set; }
         internal string DateTime { get; set; }
         internal string Remarks { get; set; }
 
@@ -148,7 +81,7 @@ namespace NJERJIM_Guide
         {
             get
             {
-                return Amount+Interest;
+                return Amount + Interest;
             }
         }
         internal double CompletedBill
@@ -167,53 +100,51 @@ namespace NJERJIM_Guide
         {
             get
             {
-                return TotalDebt-CompletedBill;
+                return TotalDebt - CompletedBill;
             }
         }
         internal bool IsFullyPaid
         {
             get
             {
-                if(this.TotalDebt==this.CompletedBill)
+                if (this.TotalDebt == this.CompletedBill)
                     return true;
                 return false;
             }
         }
-        internal DateTime DeadLine 
-        { 
+        internal DateTime DeadLine
+        {
             get
             {
-                int deadline_number_of_days = DeadlineInDays;
-                var datetime = DateTimeFormat;
-                while(deadline_number_of_days > 0)
-                {
-                    datetime = datetime.AddDays(1);
-                    if (DateTimeFormatHelper.GetDay(datetime)=="Sunday")
-                        datetime = datetime.AddDays(1);
-                    deadline_number_of_days--;
-                }
-                return datetime;
-            } 
+                //wait ka lang
+                //int deadline_number_of_days = DailyPayment;
+                //var datetime = DateTimeFormat;
+                //while (deadline_number_of_days > 0)
+                //{
+                //    datetime = datetime.AddDays(1);
+                //    if (DateTimeFormatHelper.GetDay(datetime) == "Sunday")
+                //        datetime = datetime.AddDays(1);
+                //    deadline_number_of_days--;
+                //}
+                //return datetime;
+                return System.DateTime.Now;
+            }
         }
-        internal DateTime DateTimeFormat 
+        internal DateTime DateTimeFormat
         {
             get
             {
                 return DateTimeFormatHelper.StringDBToDateTime(this.DateTime);
             }
         }
-        internal double DailyPayment
+        internal double DeadlineInDays
         {
             get
             {
-                return TotalDebt / DeadlineInDays;
+                return TotalDebt / DailyPayment;
             }
         }
 
-        internal void Print()
-        {
-            Trace.WriteLine($"{this.Id}:{this.ClientId}:{this.Amount}:{this.DateTime}");
-        }
         internal static List<DSLoan> GetList(DataTable data)
         {
             var list = new List<DSLoan>();
@@ -225,7 +156,7 @@ namespace NJERJIM_Guide
                 temp_data.Item = Convert.ToString(data.Rows[i][2]);
                 temp_data.Amount = Convert.ToDouble(data.Rows[i][3]);
                 temp_data.Interest = Convert.ToDouble(data.Rows[i][4]);
-                temp_data.DeadlineInDays = Convert.ToInt32(data.Rows[i][5]);
+                temp_data.DailyPayment = Convert.ToDouble(data.Rows[i][5]);
                 temp_data.DateTime = Convert.ToString(data.Rows[i][6]);
                 temp_data.Remarks = Convert.ToString(data.Rows[i][7]);
                 list.Add(temp_data);
@@ -272,10 +203,7 @@ namespace NJERJIM_Guide
                 return DateTimeFormatHelper.StringDBToDateTime(this.DateTime);
             }
         }
-        internal void Print()
-        {
-            Trace.WriteLine($"{this.Id}:{this.LoanId}:{this.Amount}:{this.DateTime}");
-        }
+        
         internal static List<DSCollection> GetList(DataTable data)
         {
             var list = new List<DSCollection>();
