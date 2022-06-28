@@ -53,7 +53,7 @@ namespace NJERJIM_Guide
             this.interestTextBox = new System.Windows.Forms.TextBox();
             this.interestLabel = new System.Windows.Forms.Label();
             this.dailyPaymentTextBox = new System.Windows.Forms.TextBox();
-            this.deadlineInDaysLabel = new System.Windows.Forms.Label();
+            this.dailyPaymentLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.loanDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -292,24 +292,24 @@ namespace NJERJIM_Guide
             this.interestLabel.TabIndex = 60;
             this.interestLabel.Text = "Interest";
             // 
-            // deadlineInDaysTextBox
+            // dailyPaymentTextBox
             // 
             this.dailyPaymentTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dailyPaymentTextBox.Location = new System.Drawing.Point(706, 158);
-            this.dailyPaymentTextBox.Name = "deadlineInDaysTextBox";
+            this.dailyPaymentTextBox.Name = "dailyPaymentTextBox";
             this.dailyPaymentTextBox.Size = new System.Drawing.Size(280, 23);
             this.dailyPaymentTextBox.TabIndex = 55;
             this.dailyPaymentTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterTextBox_KeyDown);
             // 
-            // deadlineInDaysLabel
+            // dailyPaymentLabel
             // 
-            this.deadlineInDaysLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deadlineInDaysLabel.AutoSize = true;
-            this.deadlineInDaysLabel.Location = new System.Drawing.Point(575, 161);
-            this.deadlineInDaysLabel.Name = "deadlineInDaysLabel";
-            this.deadlineInDaysLabel.Size = new System.Drawing.Size(94, 15);
-            this.deadlineInDaysLabel.TabIndex = 62;
-            this.deadlineInDaysLabel.Text = "Deadline in Days";
+            this.dailyPaymentLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dailyPaymentLabel.AutoSize = true;
+            this.dailyPaymentLabel.Location = new System.Drawing.Point(575, 161);
+            this.dailyPaymentLabel.Name = "dailyPaymentLabel";
+            this.dailyPaymentLabel.Size = new System.Drawing.Size(83, 15);
+            this.dailyPaymentLabel.TabIndex = 62;
+            this.dailyPaymentLabel.Text = "Daily Payment";
             // 
             // Loan
             // 
@@ -317,7 +317,7 @@ namespace NJERJIM_Guide
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
             this.Controls.Add(this.dailyPaymentTextBox);
-            this.Controls.Add(this.deadlineInDaysLabel);
+            this.Controls.Add(this.dailyPaymentLabel);
             this.Controls.Add(this.interestTextBox);
             this.Controls.Add(this.interestLabel);
             this.Controls.Add(this.itemTextBox);
@@ -376,6 +376,6 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.TextBox interestTextBox;
         private System.Windows.Forms.Label interestLabel;
         private System.Windows.Forms.TextBox dailyPaymentTextBox;
-        private System.Windows.Forms.Label deadlineInDaysLabel;
+        private System.Windows.Forms.Label dailyPaymentLabel;
     }
 }
