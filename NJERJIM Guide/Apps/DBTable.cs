@@ -53,6 +53,35 @@ namespace NJERJIM_Guide
         ///     D represent as "Display". Display column name as string for UI/GUI. example: in table column string.
         /// </summary>
         internal static readonly string DAddess = "Address";
+
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SId = $"{Id} as [{DId}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SFirstName = $"{FirstName} as [{DFirstName}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SMiddleName = $"{MiddleName} as [{DMiddleName}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SLastName = $"{LastName} as [{DLastName}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SSex = $"{Sex} as [{DSex}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SContactNumber = $"{ContactNumber} as [{DContactNumber}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SAddess = $"{Addess} as [{DAddess}]";
     }
     /// <summary>
     ///     DT stands for Database Table.
@@ -103,6 +132,39 @@ namespace NJERJIM_Guide
         ///     D represent as "Display". Display column name as string for UI/GUI. example: in table column string.
         /// </summary>
         internal static readonly string DRemarks = "Remarks";
+
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SId = $"{Id} as [{DId}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SClientId = $"{ClientId} as [{DClientId}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SItem = $"{Item} as [{DItem}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SAmount = $"{Amount} as [{DAmount}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SInterest = $"{Interest} as [{DInterest}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SDailyPayment = $"{DailyPayment} as [{DDailyPayment}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SDateTime = $"{DateTime} as [{DDateTime}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SRemarks = $"{Remarks} as [{DRemarks}]";
     }
     /// <summary>
     ///     DT stands for Database Table.
@@ -138,6 +200,27 @@ namespace NJERJIM_Guide
         ///     D represent as "Display". Display column name as string for UI/GUI. example: in table column string.
         /// </summary>
         internal static readonly string DRemarks = "Remarks";
+
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SId = $"{Id} as [{DId}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SLoanId = $"{LoanId} as [{DLoanId}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SAmount = $"{Amount} as [{DAmount}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SDateTime = $"{DateTime} as [{DDateTime}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SRemarks = $"{Remarks} as [{DRemarks}]";
     }
     /// <summary>
     ///     DT stands for Database Table.
@@ -173,5 +256,26 @@ namespace NJERJIM_Guide
         ///     D represent as "Display". Display column name as string for UI/GUI. example: in table column string.
         /// </summary>
         internal static readonly string DRemarks = "Remarks";
+
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SId = $"{Id} as [{DId}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SType = $"{Type} as [{DType}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SAmount = $"{Amount} as [{DAmount}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SDateTime = $"{DateTime} as [{DDateTime}]";
+        /// <summary>
+        ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
+        /// </summary>
+        internal static readonly string SRemarks = $"{Remarks} as [{DRemarks}]";
     }
 }
