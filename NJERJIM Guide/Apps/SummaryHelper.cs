@@ -47,7 +47,7 @@ namespace NJERJIM_Guide.Apps
                         }
                         for (int i = 0; i < loans.Count; i++)
                         {
-                            if (current_date.Date == loans[i].DateTimeFormat.Date)
+                            if (current_date.Date == loans[i].DateTimeDT.Date)
                                 records.Loans.Add(loans[i]);
                         }
                         for (int i = 0; i < collections.Count; i++)

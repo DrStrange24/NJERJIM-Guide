@@ -74,7 +74,10 @@ namespace NJERJIM_Guide.Apps
         internal double Amount { get; set; }
         internal double Interest { get; set; }
         internal double DailyPayment { get; set; }
-        internal string DateTime { get; set; }
+        /// <summary>
+        ///     Date time in database format which is something string.
+        /// </summary>
+        internal string DateTimeDB { get; set; }
         internal string Remarks { get; set; }
 
         internal double TotalDebt
@@ -116,32 +119,33 @@ namespace NJERJIM_Guide.Apps
         {
             get
             {
-                //wait ka lang
-                //int deadline_number_of_days = DailyPayment;
-                //var datetime = DateTimeFormat;
-                //while (deadline_number_of_days > 0)
-                //{
-                //    datetime = datetime.AddDays(1);
-                //    if (DateTimeFormatHelper.GetDay(datetime) == "Sunday")
-                //        datetime = datetime.AddDays(1);
-                //    deadline_number_of_days--;
-                //}
-                //return datetime;
-                return System.DateTime.Now;
+                int deadline_number_of_days = DeadlineInDays;
+                var datetime = DateTimeDT;
+                while (deadline_number_of_days > 0)
+                {
+                    datetime = datetime.AddDays(1);
+                    if (DateTimeFormatHelper.GetDay(datetime) == "Sunday")
+                        datetime = datetime.AddDays(1);
+                    deadline_number_of_days--;
+                }
+                return datetime;
             }
         }
-        internal DateTime DateTimeFormat
+        /// <summary>
+        ///     Date time format of c# System.DateTime instead of database string format datetime.
+        /// </summary>
+        internal DateTime DateTimeDT
         {
             get
             {
-                return DateTimeFormatHelper.StringDBToDateTime(this.DateTime);
+                return DateTimeFormatHelper.StringDBToDateTime(this.DateTimeDB);
             }
         }
-        internal double DeadlineInDays
+        internal int DeadlineInDays
         {
             get
             {
-                return TotalDebt / DailyPayment;
+                return Convert.ToInt32(TotalDebt / DailyPayment);
             }
         }
 
@@ -157,7 +161,7 @@ namespace NJERJIM_Guide.Apps
                 temp_data.Amount = Convert.ToDouble(data.Rows[i][3]);
                 temp_data.Interest = Convert.ToDouble(data.Rows[i][4]);
                 temp_data.DailyPayment = Convert.ToDouble(data.Rows[i][5]);
-                temp_data.DateTime = Convert.ToString(data.Rows[i][6]);
+                temp_data.DateTimeDB = Convert.ToString(data.Rows[i][6]);
                 temp_data.Remarks = Convert.ToString(data.Rows[i][7]);
                 list.Add(temp_data);
             }
