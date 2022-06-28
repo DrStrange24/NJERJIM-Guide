@@ -52,7 +52,7 @@ namespace NJERJIM_Guide
             this.itemLabel = new System.Windows.Forms.Label();
             this.interestTextBox = new System.Windows.Forms.TextBox();
             this.interestLabel = new System.Windows.Forms.Label();
-            this.deadlineInDaysTextBox = new System.Windows.Forms.TextBox();
+            this.dailyPaymentTextBox = new System.Windows.Forms.TextBox();
             this.deadlineInDaysLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.loanDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -294,12 +294,12 @@ namespace NJERJIM_Guide
             // 
             // deadlineInDaysTextBox
             // 
-            this.deadlineInDaysTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deadlineInDaysTextBox.Location = new System.Drawing.Point(706, 158);
-            this.deadlineInDaysTextBox.Name = "deadlineInDaysTextBox";
-            this.deadlineInDaysTextBox.Size = new System.Drawing.Size(280, 23);
-            this.deadlineInDaysTextBox.TabIndex = 55;
-            this.deadlineInDaysTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterTextBox_KeyDown);
+            this.dailyPaymentTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dailyPaymentTextBox.Location = new System.Drawing.Point(706, 158);
+            this.dailyPaymentTextBox.Name = "deadlineInDaysTextBox";
+            this.dailyPaymentTextBox.Size = new System.Drawing.Size(280, 23);
+            this.dailyPaymentTextBox.TabIndex = 55;
+            this.dailyPaymentTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterTextBox_KeyDown);
             // 
             // deadlineInDaysLabel
             // 
@@ -316,7 +316,7 @@ namespace NJERJIM_Guide
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
-            this.Controls.Add(this.deadlineInDaysTextBox);
+            this.Controls.Add(this.dailyPaymentTextBox);
             this.Controls.Add(this.deadlineInDaysLabel);
             this.Controls.Add(this.interestTextBox);
             this.Controls.Add(this.interestLabel);
@@ -375,7 +375,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label itemLabel;
         private System.Windows.Forms.TextBox interestTextBox;
         private System.Windows.Forms.Label interestLabel;
-        private System.Windows.Forms.TextBox deadlineInDaysTextBox;
+        private System.Windows.Forms.TextBox dailyPaymentTextBox;
         private System.Windows.Forms.Label deadlineInDaysLabel;
     }
 }
