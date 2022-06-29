@@ -159,11 +159,15 @@ namespace NJERJIM_Guide.Apps
         {
             get
             {
-                //wait ka lang taposon taka.
-                return 20;
+                return Interest/Amount*100;
             }
         }
 
+        /// <summary>
+        ///     convert the data of datatable into a list of loan datastructure
+        /// </summary>
+        /// <param name="data">datatable value</param>
+        /// <returns></returns>
         internal static List<DSLoan> GetList(DataTable data)
         {
             var list = new List<DSLoan>();
@@ -222,7 +226,7 @@ namespace NJERJIM_Guide.Apps
                 return DateTimeFormatHelper.StringDBToDateTime(this.DateTime);
             }
         }
-        
+
         internal static List<DSCollection> GetList(DataTable data)
         {
             var list = new List<DSCollection>();

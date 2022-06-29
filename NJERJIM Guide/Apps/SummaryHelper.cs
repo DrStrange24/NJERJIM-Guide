@@ -149,10 +149,12 @@ namespace NJERJIM_Guide.Apps
                     double amount = 0;
                     if (Collections.Count > 0)
                     {
-                        foreach (var data in Collections)
+                        foreach (var collection in Collections)
                         {
-                            //wait ka lang taposon taka.
-                            amount += data.Amount / (1 + data.LoanId / 100);
+                            var dbh = new DatabaseHelper();
+                            var data = dbh.GetData($"select * from {DTLoan.Table} where {DTLoan.Id}={collection.LoanId}");
+                            var loanData = DSLoan.GetList(data)[0];
+                            amount += collection.Amount / (1 + loanData.InterestInPercent / 100);
                         }
                     }
                     return amount;
