@@ -53,16 +53,16 @@ namespace NJERJIM_Guide
         }
         private void SetComboBoxItems()
         {
-            var data = db_query.GetData($"select {DTLoan.Id},{DTLoan.Amount},{DTClient.FirstName} from {DTLoan.Table} join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id};");
+            var data = db_query.GetData($"select {DTLoan.SId},{DTLoan.SAmount},{DTLoan.SInterest},{DTClient.SFirstName} from {DTLoan.Table} join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id};");
             loanComboBox.Items.Clear();
             for (int i = 0; i < data.Rows.Count; i++)
             {
                 var loan = new DSLoan();
-                loan.Id = Convert.ToInt32(data.Rows[i][0]);
-                loan.Amount = Convert.ToDouble(data.Rows[i][1]);
-
+                loan.Id = Convert.ToInt32(data.Rows[i][DTLoan.DId]);
+                loan.Amount = Convert.ToDouble(data.Rows[i][DTLoan.DAmount]);
+                loan.Interest = Convert.ToDouble(data.Rows[i][DTLoan.DInterest]);
                 if (!loan.IsFullyPaid)
-                    loanComboBox.Items.Add(data.Rows[i][0] + " - " + data.Rows[i][2]);
+                    loanComboBox.Items.Add(loan.Id + " - " + data.Rows[i][DTClient.DFirstName]);
             }
         }
         private void FilterDataGridView()
