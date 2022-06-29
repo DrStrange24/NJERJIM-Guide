@@ -72,6 +72,9 @@ namespace NJERJIM_Guide.Apps
         internal int ClientId { get; set; }
         internal string Item { get; set; }
         internal double Amount { get; set; }
+        /// <summary>
+        ///     Interest Amount.
+        /// </summary>
         internal double Interest { get; set; }
         internal double DailyPayment { get; set; }
         /// <summary>
@@ -146,6 +149,17 @@ namespace NJERJIM_Guide.Apps
             get
             {
                 return Convert.ToInt32(TotalDebt / DailyPayment);
+            }
+        }
+        /// <summary>
+        ///     Interest in percentage instead of interest amount. How many percent is the interest
+        /// </summary>
+        internal double InterestInPercent
+        {
+            get
+            {
+                //wait ka lang taposon taka.
+                return 20;
             }
         }
 

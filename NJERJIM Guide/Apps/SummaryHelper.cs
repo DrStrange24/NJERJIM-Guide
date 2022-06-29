@@ -94,13 +94,6 @@ namespace NJERJIM_Guide.Apps
         /// </summary>
         internal class DailyRecords
         {
-            private double DefaultInterstInPercent
-            {
-                get
-                {
-                    return 20;
-                }
-            }
             internal DateTime DateTime { get; set; }
             internal List<DSTransaction> Transactions { get; set; }
             internal List<DSLoan> Loans { get; set; }
@@ -157,8 +150,10 @@ namespace NJERJIM_Guide.Apps
                     if (Collections.Count > 0)
                     {
                         foreach (var data in Collections)
-                            amount += data.Amount;
-                        amount = amount/(1+ this.DefaultInterstInPercent/100);
+                        {
+                            //wait ka lang taposon taka.
+                            amount += data.Amount / (1 + data.LoanId / 100);
+                        }
                     }
                     return amount;
                 }
