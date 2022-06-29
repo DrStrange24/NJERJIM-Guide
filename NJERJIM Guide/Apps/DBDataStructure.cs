@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -113,7 +114,7 @@ namespace NJERJIM_Guide.Apps
         {
             get
             {
-                if (this.TotalDebt == this.CompletedBill)
+                if (TotalDebt == CompletedBill)
                     return true;
                 return false;
             }
@@ -258,12 +259,13 @@ namespace NJERJIM_Guide.Apps
             get
             {
                 var db_helper = new DatabaseHelper();
-                var data = db_helper.GetData($"select {DTLoan.Id} as [ID],{DTLoan.ClientId} [Client ID],{DTLoan.Amount} as [Amount] from {DTLoan.Table} where {DTLoan.ClientId}={Id};");
+                var data = db_helper.GetData($"select {DTLoan.SId},{DTLoan.SClientId},{DTLoan.SAmount},{DTLoan.SInterest} from {DTLoan.Table} where {DTLoan.ClientId}={Id};");
                 for (int i = 0; i < data.Rows.Count; i++)
                 {
                     var loan = new DSLoan();
-                    loan.Id = Convert.ToInt32(data.Rows[i]["ID"]);
-                    loan.Amount = Convert.ToDouble(data.Rows[i]["Amount"]);
+                    loan.Id = Convert.ToInt32(data.Rows[i][DTLoan.DId]);
+                    loan.Amount = Convert.ToDouble(data.Rows[i][DTLoan.DAmount]);
+                    loan.Interest = Convert.ToDouble(data.Rows[i][DTLoan.DInterest]);
                     if (!loan.IsFullyPaid)
                         return false;
                 }
