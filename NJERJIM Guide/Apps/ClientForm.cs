@@ -1,13 +1,6 @@
 ﻿using NJERJIM_Guide.Apps;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NJERJIM_Guide
@@ -31,7 +24,14 @@ namespace NJERJIM_Guide
         private void InitializeData()
         {
             var db_helper = new DatabaseHelper();
-            db_helper.SetDataGridView(clientDataGridView, $"select * from {DTClient.Table}");
+            var data = db_helper.GetData($"select {DTClient.SId},{DTClient.SFirstName},{DTClient.SMiddleName},{DTClient.SLastName},{DTClient.SSex}," +
+                $"{DTClient.SContactNumber},{DTClient.SAddess} from {DTClient.Table}");
+            string row = "Row";
+            data.Columns.Add(new DataColumn(row, typeof(int)));
+            for (int i = 0; i < data.Rows.Count; i++)
+                data.Rows[i][row] = i + 1;
+            data.Columns[row].SetOrdinal(0);
+            clientDataGridView.DataSource = data;
         }
         private void clientButton_Click(object sender, EventArgs e)
         {
