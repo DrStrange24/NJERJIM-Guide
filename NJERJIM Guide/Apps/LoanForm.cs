@@ -45,8 +45,7 @@ namespace NJERJIM_Guide
                 var client = new DSClient();
                 client.Id = Convert.ToInt32(data.Rows[i][0]);
                 client.FirstName = Convert.ToString(data.Rows[i][1]);
-                if (client.IsFullyPaid)
-                    clientComboBox.Items.Add(client.Id + " - " + client.FirstName);
+                clientComboBox.Items.Add(client.Id + " - " + client.FirstName);
             }
         }
         private void SetDataGridView()
