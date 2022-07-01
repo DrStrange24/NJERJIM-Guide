@@ -62,8 +62,7 @@ namespace NJERJIM_Guide
             // 
             // selectedIdLabel
             // 
-            this.selectedIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.selectedIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.selectedIdLabel.AutoSize = true;
             this.selectedIdLabel.Location = new System.Drawing.Point(706, 12);
             this.selectedIdLabel.Name = "selectedIdLabel";
@@ -75,8 +74,7 @@ namespace NJERJIM_Guide
             // 
             // idLabel
             // 
-            this.idLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.idLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.idLabel.AutoSize = true;
             this.idLabel.Location = new System.Drawing.Point(575, 12);
             this.idLabel.Name = "idLabel";
@@ -87,7 +85,7 @@ namespace NJERJIM_Guide
             // 
             // deleteButton
             // 
-            this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.deleteButton.Location = new System.Drawing.Point(911, 237);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
@@ -114,8 +112,7 @@ namespace NJERJIM_Guide
             // 
             // totalSupplyValueLabel
             // 
-            this.totalSupplyValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalSupplyValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.totalSupplyValueLabel.AutoSize = true;
             this.totalSupplyValueLabel.Location = new System.Drawing.Point(706, 493);
             this.totalSupplyValueLabel.Name = "totalSupplyValueLabel";
@@ -124,8 +121,7 @@ namespace NJERJIM_Guide
             // 
             // totalSupplyLabel
             // 
-            this.totalSupplyLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalSupplyLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.totalSupplyLabel.AutoSize = true;
             this.totalSupplyLabel.Location = new System.Drawing.Point(575, 493);
             this.totalSupplyLabel.Name = "totalSupplyLabel";
@@ -205,6 +201,7 @@ namespace NJERJIM_Guide
             // 
             // transactionTypeComboBox
             // 
+            this.transactionTypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.transactionTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.transactionTypeComboBox.FormattingEnabled = true;
             this.transactionTypeComboBox.Location = new System.Drawing.Point(706, 42);
