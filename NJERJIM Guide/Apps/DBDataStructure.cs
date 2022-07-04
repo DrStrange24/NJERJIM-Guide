@@ -91,6 +91,9 @@ namespace NJERJIM_Guide.Apps
                 return Amount + Interest;
             }
         }
+        /// <summary>
+        ///     how much money has the client already paid you.
+        /// </summary>
         internal double CompletedBill
         {
             get
@@ -101,6 +104,16 @@ namespace NJERJIM_Guide.Apps
                 for (int i = 0; i < data.Rows.Count; i++)
                     amount += Convert.ToDouble(data.Rows[i][0]);
                 return amount;
+            }
+        }
+        /// <summary>
+        ///     detemines how much profit you get from the completed bill.
+        /// </summary>
+        internal double CompletedBillProfit
+        {
+            get
+            {
+                return CompletedBill-(CompletedBill/(1+InterestInPercent/100));
             }
         }
         internal double OutstandingBill
