@@ -54,6 +54,7 @@ namespace NJERJIM_Guide
             this.interestLabel = new System.Windows.Forms.Label();
             this.dailyPaymentTextBox = new System.Windows.Forms.TextBox();
             this.dailyPaymentLabel = new System.Windows.Forms.Label();
+            this.paidComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.loanDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,7 +165,7 @@ namespace NJERJIM_Guide
             this.loanDataGridView.Name = "loanDataGridView";
             this.loanDataGridView.ReadOnly = true;
             this.loanDataGridView.RowTemplate.Height = 25;
-            this.loanDataGridView.Size = new System.Drawing.Size(544, 472);
+            this.loanDataGridView.Size = new System.Drawing.Size(544, 443);
             this.loanDataGridView.TabIndex = 17;
             this.loanDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.loanDataGridView_CellDoubleClick);
             // 
@@ -311,11 +312,27 @@ namespace NJERJIM_Guide
             this.dailyPaymentLabel.TabIndex = 62;
             this.dailyPaymentLabel.Text = "Daily Payment";
             // 
+            // paidComboBox
+            // 
+            this.paidComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.paidComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.paidComboBox.FormattingEnabled = true;
+            this.paidComboBox.Items.AddRange(new object[] {
+            "All Records",
+            "Fully Paid",
+            "Not Fully Paid"});
+            this.paidComboBox.Location = new System.Drawing.Point(69, 461);
+            this.paidComboBox.Name = "paidComboBox";
+            this.paidComboBox.Size = new System.Drawing.Size(144, 23);
+            this.paidComboBox.TabIndex = 72;
+            this.paidComboBox.SelectedIndexChanged += new System.EventHandler(this.paidComboBox_SelectedIndexChanged);
+            // 
             // Loan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.paidComboBox);
             this.Controls.Add(this.dailyPaymentTextBox);
             this.Controls.Add(this.dailyPaymentLabel);
             this.Controls.Add(this.interestTextBox);
@@ -377,5 +394,6 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label interestLabel;
         private System.Windows.Forms.TextBox dailyPaymentTextBox;
         private System.Windows.Forms.Label dailyPaymentLabel;
+        private System.Windows.Forms.ComboBox paidComboBox;
     }
 }

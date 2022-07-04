@@ -23,17 +23,16 @@ namespace NJERJIM_Guide
 
         private void InitializeData()
         {
-            void SetTotalLoan()
-            {
-                var db_helper = new DatabaseHelper();
-                var data = db_helper.GetData($"select * from {DTLoan.Table}");
-                totalLoanValueLabel.Text = CurrencyFormat.ToString(DSLoan.TotalAmount(DSLoan.GetList(data)));
-            }
-            
-
-            SetDataGridView();
+            paidComboBox.SelectedIndex = 0;
             SetTotalLoan();
             SetClientComboBox();
+            SetDataGridView();
+        }
+        private void SetTotalLoan()
+        {
+            var db_helper = new DatabaseHelper();
+            var data = db_helper.GetData($"select * from {DTLoan.Table}");
+            totalLoanValueLabel.Text = CurrencyFormat.ToString(DSLoan.TotalAmount(DSLoan.GetList(data)));
         }
         private void SetClientComboBox()
         {
@@ -71,6 +70,7 @@ namespace NJERJIM_Guide
             data.Columns.Add(new DataColumn(deadlineInNumberOfDays, typeof(int)));
             data.Columns.Add(new DataColumn(row, typeof(int)));
             data.Columns.Add(new DataColumn(interestInPercent, typeof(string)));
+
             for (int i = 0; i < data.Rows.Count; i++)
             {
                 var loan = new DSLoan();
@@ -87,10 +87,29 @@ namespace NJERJIM_Guide
                 data.Rows[i][outstandingBill] = CurrencyFormat.ToString(loan.OutstandingBill);
                 data.Rows[i][DTLoan.DDateTime] = DateTimeFormatHelper.DateTimeToStringUI(data.Rows[i][DTLoan.DDateTime]);
                 data.Rows[i][deadline] = DateTimeFormatHelper.DateTimeToStringUI(loan.DeadLine);
-                data.Rows[i][row] = i+1;
+                data.Rows[i][row] = i + 1;
                 data.Rows[i][deadlineInNumberOfDays] = loan.DeadlineInDays;
                 data.Rows[i][DTLoan.DDailyPayment] = CurrencyFormat.ToString(loan.DailyPayment);
-                data.Rows[i][interestInPercent] = loan.InterestInPercent+"%";
+                data.Rows[i][interestInPercent] = loan.InterestInPercent + "%";
+                switch (paidComboBox.SelectedItem)
+                {
+                    case "All Records":
+                        break;
+                    case "Fully Paid":
+                        if (!loan.IsFullyPaid)
+                        {
+                            data.Rows.RemoveAt(i);
+                            i--;
+                        }
+                        break;
+                    case "Not Fully Paid":
+                        if (loan.IsFullyPaid)
+                        {
+                            data.Rows.RemoveAt(i);
+                            i--;
+                        }
+                        break;
+                }
             }
             data.Columns[row].SetOrdinal(0);
             data.Columns[DTLoan.DDateTime].SetOrdinal(4);
@@ -146,7 +165,8 @@ namespace NJERJIM_Guide
                             $"{DTLoan.DailyPayment} = {dailyPaymentTextBox.Text} WHERE {DTLoan.Id}={selectedIdLabel.Text};");
                         break;
                 }
-                InitializeData();
+                SetDataGridView();
+                SetTotalLoan();
                 clearInputsButton_Click(null, null);
             }
             else
@@ -159,7 +179,8 @@ namespace NJERJIM_Guide
             {
                 var db_helper = new DatabaseHelper();
                 db_helper.Manipulate($"DELETE FROM {DTLoan.Table} WHERE {DTLoan.Id}={selectedIdLabel.Text};");
-                InitializeData();
+                SetDataGridView();
+                SetTotalLoan();
                 clearInputsButton_Click(null,null);
             }
             else
@@ -224,6 +245,11 @@ namespace NJERJIM_Guide
         private void enterTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode==Keys.Enter) createButton_Click(null, null);
+        }
+
+        private void paidComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetDataGridView();
         }
     }
 }
