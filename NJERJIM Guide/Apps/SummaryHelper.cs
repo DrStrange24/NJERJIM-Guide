@@ -35,8 +35,16 @@ namespace NJERJIM_Guide.Apps
                     var starting_date = transaction.Rows[transaction.Rows.Count - 1][3];
                     var current_date = DateTimeFormatHelper.StringDBToDateTime(starting_date);
 
+                    DateTime EndingDate()
+                    {
+                        if (DateTimeFormatHelper.StringDBToDateTime(transaction.Rows[0][3]).Date < DateTimeFormatHelper.StringDBToDateTime(loan.Rows[0][6]))
+                            return DateTimeFormatHelper.StringDBToDateTime(loan.Rows[0][6]);
+                        return DateTimeFormatHelper.StringDBToDateTime(transaction.Rows[0][3]);
+                    }
+                    var ending_date = EndingDate();
+
                     Records = new List<DailyRecords>();
-                    while (current_date.Date <= DateTime.Now.Date)
+                    while (current_date.Date <= ending_date.Date)
                     {
                         var records = new DailyRecords();
                         records.DateTime = current_date;

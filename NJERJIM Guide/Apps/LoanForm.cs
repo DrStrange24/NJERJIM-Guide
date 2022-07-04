@@ -147,6 +147,16 @@ namespace NJERJIM_Guide
             {
                 if (clientComboBox.SelectedIndex < 0 || string.IsNullOrWhiteSpace(amountTextBox.Text) || string.IsNullOrWhiteSpace(interestTextBox.Text) || string.IsNullOrWhiteSpace(dailyPaymentTextBox.Text))
                     return false;
+
+                bool IsSupplyAvailable()
+                {
+                    var summary = new SummaryHelper();
+                    if (CurrencyFormat.ToDouble(summary.CashOnHand) - CurrencyFormat.ToDouble(amountTextBox.Text)>0)
+                        return true;
+                    return false;
+                }
+                if (!IsSupplyAvailable())
+                    return false;
                 return true;
             }
 
