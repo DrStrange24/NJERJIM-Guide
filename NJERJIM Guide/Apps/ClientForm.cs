@@ -25,7 +25,7 @@ namespace NJERJIM_Guide
         {
             var db_helper = new DatabaseHelper();
             var data = db_helper.GetData($"select {DTClient.SId},{DTClient.SFirstName},{DTClient.SMiddleName},{DTClient.SLastName},{DTClient.SSex}," +
-                $"{DTClient.SContactNumber},{DTClient.SAddess} from {DTClient.Table}");
+                $"{DTClient.SContactNumber},{DTClient.SAddess} from {DTClient.Table} where {DTClient.FirstName} like '%{searchTextBox.Text}%'");
             string row = "Row";
             data.Columns.Add(new DataColumn(row, typeof(int)));
             for (int i = 0; i < data.Rows.Count; i++)
@@ -105,8 +105,7 @@ namespace NJERJIM_Guide
 
         private void searchTextBox_TextChanged(object sender, EventArgs e)
         {
-            var db_helper = new DatabaseHelper();
-            db_helper.SetDataGridView(clientDataGridView, $"select * from {DTClient.Table} where {DTClient.FirstName} like '%{searchTextBox.Text}%'");
+            InitializeData();
         }
 
         private void clientDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -115,13 +114,13 @@ namespace NJERJIM_Guide
             {
                 var selectedRow = clientDataGridView.Rows[e.RowIndex].Cells;
 
-                selectedIdLabel.Text = selectedRow[0].Value.ToString();
-                firstNameTextBox.Text = selectedRow[1].Value.ToString();
-                middleNameTextBox.Text = selectedRow[2].Value.ToString();
-                lastNameTextBox.Text = selectedRow[3].Value.ToString();
-                if (selectedRow[4].Value.ToString() == Sex.Male.ToString()) maleRadioButton.Checked = true; else femaleRadioButton.Checked = true;
-                contactNumberTextBox.Text = selectedRow[5].Value.ToString();
-                addressTextBox.Text = selectedRow[6].Value.ToString();
+                selectedIdLabel.Text = selectedRow[DTClient.DId].Value.ToString();
+                firstNameTextBox.Text = selectedRow[DTClient.DFirstName].Value.ToString();
+                middleNameTextBox.Text = selectedRow[DTClient.DMiddleName].Value.ToString();
+                lastNameTextBox.Text = selectedRow[DTClient.DLastName].Value.ToString();
+                if (selectedRow[DTClient.DSex].Value.ToString() == Sex.Male.ToString()) maleRadioButton.Checked = true; else femaleRadioButton.Checked = true;
+                contactNumberTextBox.Text = selectedRow[DTClient.DContactNumber].Value.ToString();
+                addressTextBox.Text = selectedRow[DTClient.DAddess].Value.ToString();
 
                 idLabel.Visible = true;
                 selectedIdLabel.Visible = true;
