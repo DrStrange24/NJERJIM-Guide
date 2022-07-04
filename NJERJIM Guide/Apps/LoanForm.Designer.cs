@@ -55,6 +55,8 @@ namespace NJERJIM_Guide
             this.dailyPaymentTextBox = new System.Windows.Forms.TextBox();
             this.dailyPaymentLabel = new System.Windows.Forms.Label();
             this.paidComboBox = new System.Windows.Forms.ComboBox();
+            this.totalProfitLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.loanDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,18 +173,18 @@ namespace NJERJIM_Guide
             // 
             // totalLoanValueLabel
             // 
-            this.totalLoanValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalLoanValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.totalLoanValueLabel.AutoSize = true;
-            this.totalLoanValueLabel.Location = new System.Drawing.Point(706, 493);
+            this.totalLoanValueLabel.Location = new System.Drawing.Point(82, 464);
             this.totalLoanValueLabel.Name = "totalLoanValueLabel";
             this.totalLoanValueLabel.Size = new System.Drawing.Size(0, 15);
             this.totalLoanValueLabel.TabIndex = 50;
             // 
             // totalLoanLabel
             // 
-            this.totalLoanLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalLoanLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.totalLoanLabel.AutoSize = true;
-            this.totalLoanLabel.Location = new System.Drawing.Point(575, 493);
+            this.totalLoanLabel.Location = new System.Drawing.Point(12, 464);
             this.totalLoanLabel.Name = "totalLoanLabel";
             this.totalLoanLabel.Size = new System.Drawing.Size(64, 15);
             this.totalLoanLabel.TabIndex = 49;
@@ -321,17 +323,38 @@ namespace NJERJIM_Guide
             "All Records",
             "Fully Paid",
             "Not Fully Paid"});
-            this.paidComboBox.Location = new System.Drawing.Point(69, 461);
+            this.paidComboBox.Location = new System.Drawing.Point(355, 489);
             this.paidComboBox.Name = "paidComboBox";
             this.paidComboBox.Size = new System.Drawing.Size(144, 23);
             this.paidComboBox.TabIndex = 72;
             this.paidComboBox.SelectedIndexChanged += new System.EventHandler(this.paidComboBox_SelectedIndexChanged);
+            // 
+            // totalProfitLabel
+            // 
+            this.totalProfitLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.totalProfitLabel.AutoSize = true;
+            this.totalProfitLabel.Location = new System.Drawing.Point(316, 464);
+            this.totalProfitLabel.Name = "totalProfitLabel";
+            this.totalProfitLabel.Size = new System.Drawing.Size(0, 15);
+            this.totalProfitLabel.TabIndex = 74;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(243, 464);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 15);
+            this.label2.TabIndex = 73;
+            this.label2.Text = "Total Profit:";
             // 
             // Loan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.totalProfitLabel);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.paidComboBox);
             this.Controls.Add(this.dailyPaymentTextBox);
             this.Controls.Add(this.dailyPaymentLabel);
@@ -395,5 +418,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.TextBox dailyPaymentTextBox;
         private System.Windows.Forms.Label dailyPaymentLabel;
         private System.Windows.Forms.ComboBox paidComboBox;
+        private System.Windows.Forms.Label totalProfitLabel;
+        private System.Windows.Forms.Label label2;
     }
 }
