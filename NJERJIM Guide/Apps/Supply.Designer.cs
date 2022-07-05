@@ -46,6 +46,8 @@ namespace NJERJIM_Guide
             this.transactionTypeComboBox = new System.Windows.Forms.ComboBox();
             this.remarksLabel = new System.Windows.Forms.Label();
             this.remarksRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.totalExpensesLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.transactionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,28 +108,28 @@ namespace NJERJIM_Guide
             this.transactionDataGridView.Name = "transactionDataGridView";
             this.transactionDataGridView.ReadOnly = true;
             this.transactionDataGridView.RowTemplate.Height = 25;
-            this.transactionDataGridView.Size = new System.Drawing.Size(544, 500);
+            this.transactionDataGridView.Size = new System.Drawing.Size(544, 448);
             this.transactionDataGridView.TabIndex = 47;
             this.transactionDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.transactionDataGridView_CellDoubleClick);
             // 
             // totalSupplyValueLabel
             // 
-            this.totalSupplyValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalSupplyValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.totalSupplyValueLabel.AutoSize = true;
-            this.totalSupplyValueLabel.Location = new System.Drawing.Point(706, 493);
+            this.totalSupplyValueLabel.Location = new System.Drawing.Point(89, 463);
             this.totalSupplyValueLabel.Name = "totalSupplyValueLabel";
             this.totalSupplyValueLabel.Size = new System.Drawing.Size(0, 15);
             this.totalSupplyValueLabel.TabIndex = 60;
             // 
             // totalSupplyLabel
             // 
-            this.totalSupplyLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalSupplyLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.totalSupplyLabel.AutoSize = true;
-            this.totalSupplyLabel.Location = new System.Drawing.Point(575, 493);
+            this.totalSupplyLabel.Location = new System.Drawing.Point(12, 463);
             this.totalSupplyLabel.Name = "totalSupplyLabel";
-            this.totalSupplyLabel.Size = new System.Drawing.Size(71, 15);
+            this.totalSupplyLabel.Size = new System.Drawing.Size(74, 15);
             this.totalSupplyLabel.TabIndex = 59;
-            this.totalSupplyLabel.Text = "Total Supply";
+            this.totalSupplyLabel.Text = "Total Supply:";
             // 
             // clearInputsButton
             // 
@@ -228,11 +230,32 @@ namespace NJERJIM_Guide
             this.remarksRichTextBox.TabIndex = 75;
             this.remarksRichTextBox.Text = "";
             // 
+            // totalExpensesLabel
+            // 
+            this.totalExpensesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.totalExpensesLabel.AutoSize = true;
+            this.totalExpensesLabel.Location = new System.Drawing.Point(270, 463);
+            this.totalExpensesLabel.Name = "totalExpensesLabel";
+            this.totalExpensesLabel.Size = new System.Drawing.Size(0, 15);
+            this.totalExpensesLabel.TabIndex = 78;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(181, 463);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 15);
+            this.label2.TabIndex = 77;
+            this.label2.Text = "Total Expenses";
+            // 
             // Supply
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.totalExpensesLabel);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.remarksLabel);
             this.Controls.Add(this.remarksRichTextBox);
             this.Controls.Add(this.transactionTypeComboBox);
@@ -278,5 +301,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.ComboBox transactionTypeComboBox;
         private System.Windows.Forms.Label remarksLabel;
         private System.Windows.Forms.RichTextBox remarksRichTextBox;
+        private System.Windows.Forms.Label totalExpensesLabel;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -62,6 +62,16 @@ namespace NJERJIM_Guide.Apps
             }
             return amount;
         }
+        internal static double TotalExpenses(List<DSTransaction> transactionList)
+        {
+            double amount = 0;
+            foreach (var transaction in transactionList)
+            {
+                if (transaction.Type == TransactionType.WithdrawProfit.ToString())
+                    amount += transaction.Amount;
+            }
+            return amount;
+        }
     }
     /// <summary>
     ///     DS stands for Data Structure.

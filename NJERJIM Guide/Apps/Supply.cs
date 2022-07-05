@@ -35,12 +35,13 @@ namespace NJERJIM_Guide
                 }
                 transactionDataGridView.DataSource = data;
             }
-            void SetTotalSupply()
+            void SetTotalSupplyAndTotalExpenses()
             {
                 var db_helper = new DatabaseHelper();
                 var data = db_helper.GetData($"select * from {DTTransaction.Table}");
                 var transactions = DSTransaction.GetList(data);
                 totalSupplyValueLabel.Text = CurrencyFormat.ToString(DSTransaction.TotalSupply(transactions));
+                totalExpensesLabel.Text = CurrencyFormat.ToString(DSTransaction.TotalExpenses(transactions));
             }
             void SetTypeComboBox()
             {
@@ -50,7 +51,7 @@ namespace NJERJIM_Guide
             }
 
             SetDataGridView();
-            SetTotalSupply();
+            SetTotalSupplyAndTotalExpenses();
             SetTypeComboBox();
         }
         private void createButton_Click(object sender, EventArgs e)
