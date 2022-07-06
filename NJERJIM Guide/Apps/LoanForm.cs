@@ -73,6 +73,7 @@ namespace NJERJIM_Guide
             data.Columns.Add(new DataColumn(interestInPercent, typeof(string)));
             data.Columns.Add(new DataColumn(completedBillProfit, typeof(string)));
             double totalProfit = 0;
+            double expectedDailyCollection = 0;
             for (int i = 0; i < data.Rows.Count; i++)
             {
                 var loan = new DSLoan();
@@ -96,6 +97,7 @@ namespace NJERJIM_Guide
                 data.Rows[i][interestInPercent] = loan.InterestInPercent + "%";
 
                 totalProfit += loan.CompletedBillProfit;
+                if (!loan.IsFullyPaid) expectedDailyCollection += loan.DailyPayment;
                 switch (paidComboBox.SelectedItem)
                 {
                     case "All Records":
@@ -132,6 +134,7 @@ namespace NJERJIM_Guide
             data.Columns[deadline].SetOrdinal(15);
             data.Columns[DTLoan.DRemarks].SetOrdinal(16);
             totalProfitLabel.Text = CurrencyFormat.ToString(totalProfit);
+            expectedDailyCollectionLabel.Text = CurrencyFormat.ToString(expectedDailyCollection);
             loanDataGridView.DataSource = data;
         }
 
