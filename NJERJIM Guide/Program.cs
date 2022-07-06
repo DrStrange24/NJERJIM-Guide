@@ -8,6 +8,9 @@ namespace NJERJIM_Guide
 {
     static class Program
     {
+        /// <summary>
+        ///     Can used to call and show main menu from hiding it.
+        /// </summary>
         internal static MainMenu MainMenuForm { get; private set; }
         /// <summary>
         ///  The main entry point for the application.
