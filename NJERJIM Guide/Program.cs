@@ -25,4 +25,5 @@ namespace NJERJIM_Guide
             Application.Run(MainMenuForm);
         }
     }
+    //random comment for testing
 }
