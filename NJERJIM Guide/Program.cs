@@ -22,7 +22,7 @@ namespace NJERJIM_Guide
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             MainMenuForm = new MainMenu();
-            Application.Run(MainMenuForm);
+            Application.Run(MainMenuForm);//testing comment 2
         }
     }
     //random comment for testing
