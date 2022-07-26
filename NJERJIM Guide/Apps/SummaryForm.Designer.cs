@@ -96,11 +96,11 @@ namespace NJERJIM_Guide
             // profitLabel
             // 
             this.profitLabel.AutoSize = true;
-            this.profitLabel.Location = new System.Drawing.Point(58, 80);
+            this.profitLabel.Location = new System.Drawing.Point(47, 80);
             this.profitLabel.Name = "profitLabel";
-            this.profitLabel.Size = new System.Drawing.Size(39, 15);
+            this.profitLabel.Size = new System.Drawing.Size(50, 15);
             this.profitLabel.TabIndex = 52;
-            this.profitLabel.Text = "Profit:";
+            this.profitLabel.Text = "Income:";
             // 
             // cashOnHandWithProfitValueLabel
             // 
