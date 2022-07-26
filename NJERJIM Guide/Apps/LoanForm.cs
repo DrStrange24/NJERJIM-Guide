@@ -72,6 +72,7 @@ namespace NJERJIM_Guide
             data.Columns.Add(new DataColumn(completedBillProfit, typeof(string)));
             double totalProfit = 0;
             double expectedDailyCollection = 0;
+            double expectedDailyIncome = 0;
             for (int i = 0; i < data.Rows.Count; i++)
             {
                 var loan = new DSLoan();
@@ -79,7 +80,7 @@ namespace NJERJIM_Guide
                 loan.Amount = Convert.ToDouble(data.Rows[i][DTLoan.DAmount]);
                 loan.Interest = Convert.ToDouble(data.Rows[i][DTLoan.DInterest]);
                 loan.DateTimeDB = Convert.ToString(data.Rows[i][DTLoan.DDateTime]);
-                loan.DailyPayment = Convert.ToDouble(data.Rows[i][DTLoan.DDailyPayment]);
+                loan.ExpectedDailyPayment = Convert.ToDouble(data.Rows[i][DTLoan.DDailyPayment]);
 
                 data.Rows[i][completedBill] = CurrencyFormat.ToString(loan.CompletedBill);
                 data.Rows[i][completedBillProfit] = CurrencyFormat.ToString(loan.CompletedBillProfit);
@@ -90,11 +91,15 @@ namespace NJERJIM_Guide
                 data.Rows[i][DTLoan.DDateTime] = DateTimeFormatHelper.DateTimeToStringUI(data.Rows[i][DTLoan.DDateTime]);
                 data.Rows[i][deadline] = DateTimeFormatHelper.DateTimeToStringUI(loan.DeadLine);
                 data.Rows[i][deadlineInNumberOfDays] = loan.DeadlineInDays;
-                data.Rows[i][DTLoan.DDailyPayment] = CurrencyFormat.ToString(loan.DailyPayment);
+                data.Rows[i][DTLoan.DDailyPayment] = CurrencyFormat.ToString(loan.ExpectedDailyPayment);
                 data.Rows[i][interestInPercent] = loan.InterestInPercent + "%";
 
                 totalProfit += loan.CompletedBillProfit;
-                if (!loan.IsFullyPaid) expectedDailyCollection += loan.DailyPayment;
+                if (!loan.IsFullyPaid)
+                {
+                    expectedDailyCollection += loan.ExpectedDailyPayment;
+                    expectedDailyIncome += loan.ExpectedDailyIncome;
+                }
                 switch (paidComboBox.SelectedItem)
                 {
                     case "All Records":
@@ -133,6 +138,7 @@ namespace NJERJIM_Guide
             expectedDailyCollectionLabel.Text = CurrencyFormat.ToString(expectedDailyCollection);
             loanDataGridView.DataSource = data;
             numberOfLoansLabel.Text = data.Rows.Count.ToString();
+            expectedDailyIncomeLabel.Text = CurrencyFormat.ToString(expectedDailyIncome);
         }
 
         private void backButton_Click(object sender, EventArgs e)

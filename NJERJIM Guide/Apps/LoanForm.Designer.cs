@@ -61,6 +61,8 @@ namespace NJERJIM_Guide
             this.label3 = new System.Windows.Forms.Label();
             this.numberOfLoansLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.expectedDailyIncomeLabel = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.loanDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,7 +173,7 @@ namespace NJERJIM_Guide
             this.loanDataGridView.Name = "loanDataGridView";
             this.loanDataGridView.ReadOnly = true;
             this.loanDataGridView.RowTemplate.Height = 25;
-            this.loanDataGridView.Size = new System.Drawing.Size(884, 578);
+            this.loanDataGridView.Size = new System.Drawing.Size(884, 462);
             this.loanDataGridView.TabIndex = 17;
             this.loanDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.loanDataGridView_CellDoubleClick);
             // 
@@ -179,7 +181,7 @@ namespace NJERJIM_Guide
             // 
             this.totalLoanValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.totalLoanValueLabel.AutoSize = true;
-            this.totalLoanValueLabel.Location = new System.Drawing.Point(82, 599);
+            this.totalLoanValueLabel.Location = new System.Drawing.Point(85, 477);
             this.totalLoanValueLabel.Name = "totalLoanValueLabel";
             this.totalLoanValueLabel.Size = new System.Drawing.Size(0, 15);
             this.totalLoanValueLabel.TabIndex = 50;
@@ -188,7 +190,7 @@ namespace NJERJIM_Guide
             // 
             this.totalLoanLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.totalLoanLabel.AutoSize = true;
-            this.totalLoanLabel.Location = new System.Drawing.Point(12, 599);
+            this.totalLoanLabel.Location = new System.Drawing.Point(15, 477);
             this.totalLoanLabel.Name = "totalLoanLabel";
             this.totalLoanLabel.Size = new System.Drawing.Size(64, 15);
             this.totalLoanLabel.TabIndex = 49;
@@ -337,7 +339,7 @@ namespace NJERJIM_Guide
             // 
             this.totalProfitLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.totalProfitLabel.AutoSize = true;
-            this.totalProfitLabel.Location = new System.Drawing.Point(248, 599);
+            this.totalProfitLabel.Location = new System.Drawing.Point(88, 504);
             this.totalProfitLabel.Name = "totalProfitLabel";
             this.totalProfitLabel.Size = new System.Drawing.Size(0, 15);
             this.totalProfitLabel.TabIndex = 74;
@@ -346,7 +348,7 @@ namespace NJERJIM_Guide
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(175, 599);
+            this.label2.Location = new System.Drawing.Point(15, 504);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 15);
             this.label2.TabIndex = 73;
@@ -356,7 +358,7 @@ namespace NJERJIM_Guide
             // 
             this.expectedDailyCollectionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.expectedDailyCollectionLabel.AutoSize = true;
-            this.expectedDailyCollectionLabel.Location = new System.Drawing.Point(495, 599);
+            this.expectedDailyCollectionLabel.Location = new System.Drawing.Point(165, 532);
             this.expectedDailyCollectionLabel.Name = "expectedDailyCollectionLabel";
             this.expectedDailyCollectionLabel.Size = new System.Drawing.Size(0, 15);
             this.expectedDailyCollectionLabel.TabIndex = 76;
@@ -365,7 +367,7 @@ namespace NJERJIM_Guide
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(345, 599);
+            this.label3.Location = new System.Drawing.Point(15, 532);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(144, 15);
             this.label3.TabIndex = 75;
@@ -375,7 +377,7 @@ namespace NJERJIM_Guide
             // 
             this.numberOfLoansLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.numberOfLoansLabel.AutoSize = true;
-            this.numberOfLoansLabel.Location = new System.Drawing.Point(637, 599);
+            this.numberOfLoansLabel.Location = new System.Drawing.Point(271, 477);
             this.numberOfLoansLabel.Name = "numberOfLoansLabel";
             this.numberOfLoansLabel.Size = new System.Drawing.Size(0, 15);
             this.numberOfLoansLabel.TabIndex = 78;
@@ -384,17 +386,38 @@ namespace NJERJIM_Guide
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(554, 599);
+            this.label4.Location = new System.Drawing.Point(188, 477);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 15);
             this.label4.TabIndex = 77;
             this.label4.Text = "No. of Loans:";
+            // 
+            // expectedDailyIncomeLabel
+            // 
+            this.expectedDailyIncomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.expectedDailyIncomeLabel.AutoSize = true;
+            this.expectedDailyIncomeLabel.Location = new System.Drawing.Point(151, 561);
+            this.expectedDailyIncomeLabel.Name = "expectedDailyIncomeLabel";
+            this.expectedDailyIncomeLabel.Size = new System.Drawing.Size(0, 15);
+            this.expectedDailyIncomeLabel.TabIndex = 80;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(15, 561);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(130, 15);
+            this.label5.TabIndex = 79;
+            this.label5.Text = "Expected Daily Income:";
             // 
             // Loan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1338, 659);
+            this.Controls.Add(this.expectedDailyIncomeLabel);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.numberOfLoansLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.expectedDailyCollectionLabel);
@@ -470,5 +493,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label numberOfLoansLabel;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label expectedDailyIncomeLabel;
+        private System.Windows.Forms.Label label5;
     }
 }
