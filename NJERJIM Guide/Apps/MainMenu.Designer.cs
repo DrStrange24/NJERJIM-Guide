@@ -45,7 +45,7 @@ namespace NJERJIM_Guide
             this.clientButton.Name = "clientButton";
             this.clientButton.Size = new System.Drawing.Size(109, 23);
             this.clientButton.TabIndex = 0;
-            this.clientButton.Text = "Client";
+            this.clientButton.Text = "Customer";
             this.clientButton.UseVisualStyleBackColor = true;
             this.clientButton.Click += new System.EventHandler(this.clientButton_Click);
             // 
@@ -122,7 +122,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.clientButton);
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainMenu";
+            this.Text = "Main Menu";
             this.ResumeLayout(false);
 
         }

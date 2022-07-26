@@ -43,8 +43,8 @@ namespace NJERJIM_Guide
         private void SetDataGridView()
         {
             var db_helper = new DatabaseHelper();
-            var data = db_helper.GetData($"select {DTLoan.SId},{DTLoan.SClientId},{DTClient.SFirstName},{DTLoan.SItem},{DTLoan.SAmount},{DTLoan.SInterest}," +
-                $"{DTLoan.SDailyPayment},{DTLoan.SDateTime},{DTLoan.SRemarks} from {DTLoan.Table} join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id} " +
+            var data = db_helper.GetData($"select {DTLoan.SId},{DTLoan.SCustomerId},{DTClient.SFirstName},{DTLoan.SItem},{DTLoan.SAmount},{DTLoan.SInterest}," +
+                $"{DTLoan.SDailyPayment},{DTLoan.SDateTime},{DTLoan.SRemarks} from {DTLoan.Table} join {DTClient.Table} on {DTLoan.CustomerId}={DTClient.Id} " +
                 $"where {DTClient.FirstName} like '%{searchTextBox.Text}%' order by {DTLoan.DateTime} desc;");
             DataTableHelper.ChangeColumnDatatypes(data,DTLoan.DAmount,typeof(string));
             DataTableHelper.ChangeColumnDatatypes(data,DTLoan.DInterest,typeof(string));
@@ -182,12 +182,12 @@ namespace NJERJIM_Guide
                 switch (loanButton.Text)
                 {
                     case "Create":
-                        db_helper.Manipulate($"INSERT INTO {DTLoan.Table} ({DTLoan.ClientId}, {DTLoan.Amount}, {DTLoan.DateTime},{DTLoan.Remarks},{DTLoan.Interest},{DTLoan.Item},{DTLoan.DailyPayment}) " +
+                        db_helper.Manipulate($"INSERT INTO {DTLoan.Table} ({DTLoan.CustomerId}, {DTLoan.Amount}, {DTLoan.DateTime},{DTLoan.Remarks},{DTLoan.Interest},{DTLoan.Item},{DTLoan.DailyPayment}) " +
                             $"VALUES({client_id}, {CurrencyFormat.ToDouble(amountTextBox.Text)}, '{DateTimeFormatHelper.DateTimeToStringDB(loanDateTimePicker.Value)}','" +
                             $"{remarksRichTextBox.Text}',{CurrencyFormat.ToDouble(interestTextBox.Text)},{item()},{dailyPaymentTextBox.Text});");
                         break;
                     case "Save":
-                        db_helper.Manipulate($"UPDATE {DTLoan.Table} SET {DTLoan.ClientId} = {client_id}, {DTLoan.Amount} = {CurrencyFormat.ToDouble(amountTextBox.Text)} , {DTLoan.DateTime} = '{DateTimeFormatHelper.DateTimeToStringDB(loanDateTimePicker.Value)}' " +
+                        db_helper.Manipulate($"UPDATE {DTLoan.Table} SET {DTLoan.CustomerId} = {client_id}, {DTLoan.Amount} = {CurrencyFormat.ToDouble(amountTextBox.Text)} , {DTLoan.DateTime} = '{DateTimeFormatHelper.DateTimeToStringDB(loanDateTimePicker.Value)}' " +
                             $",{DTLoan.Remarks} = '{remarksRichTextBox.Text}',{DTLoan.Interest} = {CurrencyFormat.ToDouble(interestTextBox.Text)},{DTLoan.Item} = {item()}," +
                             $"{DTLoan.DailyPayment} = {dailyPaymentTextBox.Text} WHERE {DTLoan.Id}={selectedIdLabel.Text};");
                         break;
@@ -241,7 +241,7 @@ namespace NJERJIM_Guide
                 selectedIdLabel.Text = selectedRow[DTLoan.DId].Value.ToString();
                 void SetClientComboBox()
                 {
-                    var selected_client = selectedRow[DTLoan.DClientId].Value + " - " + selectedRow[DTClient.DFirstName].Value;
+                    var selected_client = selectedRow[DTLoan.DCustomerId].Value + " - " + selectedRow[DTClient.DFirstName].Value;
                     clientComboBox.Items.Add(selected_client);
                     clientComboBox.SelectedItem = selected_client;
                 }

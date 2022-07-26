@@ -92,7 +92,7 @@ namespace NJERJIM_Guide
         internal static readonly string Table = "[loan]";
 
         internal static readonly string Id = Table + ".[Id]";
-        internal static readonly string ClientId = Table + ".[client_id]";
+        internal static readonly string CustomerId = Table + ".[client_id]";
         internal static readonly string Item = Table + ".[item]";
         internal static readonly string Amount = Table + ".[amount]";
         internal static readonly string Interest = Table + ".[interest]";
@@ -107,7 +107,7 @@ namespace NJERJIM_Guide
         /// <summary>
         ///     D represent as "Display". Display column name as string for UI/GUI. example: in table column string.
         /// </summary>
-        internal static readonly string DClientId = "Client ID";
+        internal static readonly string DCustomerId = "Customer ID";
         /// <summary>
         ///     D represent as "Display". Display column name as string for UI/GUI. example: in table column string.
         /// </summary>
@@ -140,7 +140,7 @@ namespace NJERJIM_Guide
         /// <summary>
         ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
         /// </summary>
-        internal static readonly string SClientId = $"{ClientId} as [{DClientId}]";
+        internal static readonly string SCustomerId = $"{CustomerId} as [{DCustomerId}]";
         /// <summary>
         ///     S stands for "Select". Use for "Select" db query. db column name as UI/GUI column name.
         /// </summary>

@@ -263,7 +263,7 @@ namespace NJERJIM_Guide
             this.searchByComboBox.FormattingEnabled = true;
             this.searchByComboBox.Items.AddRange(new object[] {
             "Loan ID",
-            "Client Name"});
+            "Customer Name"});
             this.searchByComboBox.Location = new System.Drawing.Point(86, 489);
             this.searchByComboBox.Name = "searchByComboBox";
             this.searchByComboBox.Size = new System.Drawing.Size(121, 23);
@@ -376,7 +376,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.collectionDataGridView);
             this.Name = "Collection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CollectionForm";
+            this.Text = "Collection";
             ((System.ComponentModel.ISupportInitialize)(this.collectionDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

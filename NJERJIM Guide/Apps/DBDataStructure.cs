@@ -299,7 +299,7 @@ namespace NJERJIM_Guide.Apps
             get
             {
                 var db_helper = new DatabaseHelper();
-                var data = db_helper.GetData($"select {DTLoan.SId},{DTLoan.SClientId},{DTLoan.SAmount},{DTLoan.SInterest} from {DTLoan.Table} where {DTLoan.ClientId}={Id};");
+                var data = db_helper.GetData($"select {DTLoan.SId},{DTLoan.SCustomerId},{DTLoan.SAmount},{DTLoan.SInterest} from {DTLoan.Table} where {DTLoan.CustomerId}={Id};");
                 for (int i = 0; i < data.Rows.Count; i++)
                 {
                     var loan = new DSLoan();

@@ -157,9 +157,9 @@ namespace NJERJIM_Guide
             this.clientLabel.AutoSize = true;
             this.clientLabel.Location = new System.Drawing.Point(915, 45);
             this.clientLabel.Name = "clientLabel";
-            this.clientLabel.Size = new System.Drawing.Size(38, 15);
+            this.clientLabel.Size = new System.Drawing.Size(59, 15);
             this.clientLabel.TabIndex = 18;
-            this.clientLabel.Text = "Client";
+            this.clientLabel.Text = "Customer";
             // 
             // loanDataGridView
             // 

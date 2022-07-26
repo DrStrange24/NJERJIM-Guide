@@ -53,7 +53,7 @@ namespace NJERJIM_Guide
         }
         private void SetComboBoxItems()
         {
-            var data = db_query.GetData($"select {DTLoan.SId},{DTLoan.SAmount},{DTLoan.SInterest},{DTClient.SFirstName} from {DTLoan.Table} join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id};");
+            var data = db_query.GetData($"select {DTLoan.SId},{DTLoan.SAmount},{DTLoan.SInterest},{DTClient.SFirstName} from {DTLoan.Table} join {DTClient.Table} on {DTLoan.CustomerId}={DTClient.Id};");
             loanComboBox.Items.Clear();
             for (int i = 0; i < data.Rows.Count; i++)
             {
@@ -75,7 +75,7 @@ namespace NJERJIM_Guide
                     case "Loan ID":
                         condition = $"{DTLoan.Id}={loanIdComboBox.SelectedItem}";
                         return condition;
-                    case "Client Name":
+                    case "Customer Name":
                         condition = $"{DTClient.FirstName} like '%{searchTextBox.Text}%'";
                         return condition;
                 }
@@ -101,7 +101,7 @@ namespace NJERJIM_Guide
             }
             var data = db_query.GetData($"select {DTCollection.Id} as [ID],{DTCollection.LoanId} as [Loan ID],{DTClient.FirstName} as [First Name]," +
                     $"{DTCollection.Amount} as [int_amount],{DTCollection.DateTime} as [Date],{DTCollection.Remarks} as [Remarks] from {DTCollection.Table} join {DTLoan.Table} on {DTCollection.LoanId}={DTLoan.Id} " +
-                    $"join {DTClient.Table} on {DTLoan.ClientId}={DTClient.Id} where {SearchFilter()} {DateFilter()} order by {DTCollection.DateTime} desc;");
+                    $"join {DTClient.Table} on {DTLoan.CustomerId}={DTClient.Id} where {SearchFilter()} {DateFilter()} order by {DTCollection.DateTime} desc;");
             data.Columns.Add(new DataColumn("Amount", typeof(string)));
             for (int i = 0; i < data.Rows.Count; i++)
             {
@@ -235,7 +235,7 @@ namespace NJERJIM_Guide
                         loanIdComboBox.Visible = true;
                         loanIdComboBox.SelectedIndex = 0;
                         break;
-                    case "Client Name":
+                    case "Customer Name":
                         searchTextBox.Visible = true;
                         searchTextBox.Text = string.Empty;
                         loanIdComboBox.Visible = false;
