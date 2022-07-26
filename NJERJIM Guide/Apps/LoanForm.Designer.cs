@@ -57,7 +57,7 @@ namespace NJERJIM_Guide
             this.paidComboBox = new System.Windows.Forms.ComboBox();
             this.totalProfitLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.expectedDailyCollectionLabel = new System.Windows.Forms.Label();
+            this.expectedDailyRepaymentLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.numberOfLoansLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -327,8 +327,8 @@ namespace NJERJIM_Guide
             this.paidComboBox.FormattingEnabled = true;
             this.paidComboBox.Items.AddRange(new object[] {
             "All Records",
-            "Fully Paid",
-            "Not Fully Paid"});
+            "Completed",
+            "Active"});
             this.paidComboBox.Location = new System.Drawing.Point(355, 624);
             this.paidComboBox.Name = "paidComboBox";
             this.paidComboBox.Size = new System.Drawing.Size(144, 23);
@@ -339,7 +339,7 @@ namespace NJERJIM_Guide
             // 
             this.totalProfitLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.totalProfitLabel.AutoSize = true;
-            this.totalProfitLabel.Location = new System.Drawing.Point(88, 504);
+            this.totalProfitLabel.Location = new System.Drawing.Point(142, 504);
             this.totalProfitLabel.Name = "totalProfitLabel";
             this.totalProfitLabel.Size = new System.Drawing.Size(0, 15);
             this.totalProfitLabel.TabIndex = 74;
@@ -350,18 +350,18 @@ namespace NJERJIM_Guide
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(15, 504);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 15);
+            this.label2.Size = new System.Drawing.Size(121, 15);
             this.label2.TabIndex = 73;
-            this.label2.Text = "Total Profit:";
+            this.label2.Text = "Total Income Receive:";
             // 
-            // expectedDailyCollectionLabel
+            // expectedDailyRepaymentLabel
             // 
-            this.expectedDailyCollectionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.expectedDailyCollectionLabel.AutoSize = true;
-            this.expectedDailyCollectionLabel.Location = new System.Drawing.Point(165, 532);
-            this.expectedDailyCollectionLabel.Name = "expectedDailyCollectionLabel";
-            this.expectedDailyCollectionLabel.Size = new System.Drawing.Size(0, 15);
-            this.expectedDailyCollectionLabel.TabIndex = 76;
+            this.expectedDailyRepaymentLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.expectedDailyRepaymentLabel.AutoSize = true;
+            this.expectedDailyRepaymentLabel.Location = new System.Drawing.Point(171, 532);
+            this.expectedDailyRepaymentLabel.Name = "expectedDailyRepaymentLabel";
+            this.expectedDailyRepaymentLabel.Size = new System.Drawing.Size(0, 15);
+            this.expectedDailyRepaymentLabel.TabIndex = 76;
             // 
             // label3
             // 
@@ -369,9 +369,9 @@ namespace NJERJIM_Guide
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(15, 532);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 15);
+            this.label3.Size = new System.Drawing.Size(150, 15);
             this.label3.TabIndex = 75;
-            this.label3.Text = "Expected Daily Collection:";
+            this.label3.Text = "Expected Daily Repayment:";
             // 
             // numberOfLoansLabel
             // 
@@ -420,7 +420,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.label5);
             this.Controls.Add(this.numberOfLoansLabel);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.expectedDailyCollectionLabel);
+            this.Controls.Add(this.expectedDailyRepaymentLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.totalProfitLabel);
             this.Controls.Add(this.label2);
@@ -489,7 +489,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.ComboBox paidComboBox;
         private System.Windows.Forms.Label totalProfitLabel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label expectedDailyCollectionLabel;
+        private System.Windows.Forms.Label expectedDailyRepaymentLabel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label numberOfLoansLabel;
         private System.Windows.Forms.Label label4;

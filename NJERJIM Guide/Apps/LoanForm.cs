@@ -24,15 +24,8 @@ namespace NJERJIM_Guide
         private void InitializeData()
         {
             paidComboBox.SelectedIndex = 0;
-            SetTotalLoan();
             SetClientComboBox();
             SetDataGridView();
-        }
-        private void SetTotalLoan()
-        {
-            var db_helper = new DatabaseHelper();
-            var data = db_helper.GetData($"select * from {DTLoan.Table}");
-            totalLoanValueLabel.Text = CurrencyFormat.ToString(DSLoan.TotalAmount(DSLoan.GetList(data)));
         }
         private void SetClientComboBox()
         {
@@ -68,8 +61,9 @@ namespace NJERJIM_Guide
             data.Columns.Add(new DataColumn(deadline, typeof(string)));
             data.Columns.Add(new DataColumn(deadlineInNumberOfDays, typeof(int)));
             data.Columns.Add(new DataColumn(interestInPercent, typeof(string)));
-            double totalProfit = 0;
-            double expectedDailyCollection = 0;
+            double totalLoanCapital = 0;
+            double totalProfitReceive = 0;
+            double expectedDailyRepayment = 0;
             double expectedDailyIncome = 0;
             for (int i = 0; i < data.Rows.Count; i++)
             {
@@ -91,32 +85,44 @@ namespace NJERJIM_Guide
                 data.Rows[i][DTLoan.DDailyPayment] = CurrencyFormat.ToString(loan.ExpectedDailyPayment);
                 data.Rows[i][interestInPercent] = loan.InterestInPercent + "%";
 
-                totalProfit += loan.CompletedBillProfit;
                 if (!loan.IsFullyPaid)
                 {
-                    expectedDailyCollection += loan.ExpectedDailyPayment;
+                    expectedDailyRepayment += loan.ExpectedDailyPayment;
                     expectedDailyIncome += loan.ExpectedDailyIncome;
                 }
                 switch (paidComboBox.SelectedItem)
                 {
                     case "All Records":
+                        totalLoanCapital += loan.Amount;
+                        totalProfitReceive += loan.CompletedBillProfit;
                         break;
-                    case "Fully Paid":
+                    case "Completed":
+                        //if loan is not fully paid then remove current from the list
                         if (!loan.IsFullyPaid)
                         {
                             data.Rows.RemoveAt(i);
                             i--;
                         }
+                        else
+                        {
+                            totalLoanCapital += loan.Amount;
+                            totalProfitReceive += loan.CompletedBillProfit;
+                        }
                         break;
-                    case "Not Fully Paid":
+                    case "Active":
+                        //if loan is fully paid then remove current from the list
                         if (loan.IsFullyPaid)
                         {
                             data.Rows.RemoveAt(i);
                             i--;
                         }
+                        else
+                        {
+                            totalLoanCapital += loan.Amount;
+                            totalProfitReceive += loan.CompletedBillProfit;
+                        }
                         break;
                 }
-                
             }
             data.Columns[DTLoan.DDateTime].SetOrdinal(3);
             data.Columns[DTLoan.DItem].SetOrdinal(4);
@@ -130,8 +136,9 @@ namespace NJERJIM_Guide
             data.Columns[deadlineInNumberOfDays].SetOrdinal(12);
             data.Columns[deadline].SetOrdinal(13);
             data.Columns[DTLoan.DRemarks].SetOrdinal(14);
-            totalProfitLabel.Text = CurrencyFormat.ToString(totalProfit);
-            expectedDailyCollectionLabel.Text = CurrencyFormat.ToString(expectedDailyCollection);
+            totalLoanValueLabel.Text = CurrencyFormat.ToString(totalLoanCapital);
+            totalProfitLabel.Text = CurrencyFormat.ToString(totalProfitReceive);
+            expectedDailyRepaymentLabel.Text = CurrencyFormat.ToString(expectedDailyRepayment);
             loanDataGridView.DataSource = data;
             numberOfLoansLabel.Text = data.Rows.Count.ToString();
             expectedDailyIncomeLabel.Text = CurrencyFormat.ToString(expectedDailyIncome);
@@ -186,7 +193,6 @@ namespace NJERJIM_Guide
                         break;
                 }
                 SetDataGridView();
-                SetTotalLoan();
                 clearInputsButton_Click(null, null);
             }
             else
@@ -200,7 +206,6 @@ namespace NJERJIM_Guide
                 var db_helper = new DatabaseHelper();
                 db_helper.Manipulate($"DELETE FROM {DTLoan.Table} WHERE {DTLoan.Id}={selectedIdLabel.Text};");
                 SetDataGridView();
-                SetTotalLoan();
                 clearInputsButton_Click(null,null);
             }
             else
