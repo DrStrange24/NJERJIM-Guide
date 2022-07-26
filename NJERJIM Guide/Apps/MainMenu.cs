@@ -19,7 +19,7 @@ namespace NJERJIM_Guide
 
         private void clientButton_Click(object sender, EventArgs e)
         {
-            new Client().Show();
+            new Customer().Show();
             this.Hide();
         }
 

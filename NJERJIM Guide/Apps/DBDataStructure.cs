@@ -290,7 +290,7 @@ namespace NJERJIM_Guide.Apps
     ///     DS stands for Data Structure.
     ///     Client data structure.
     /// </summary>
-    internal struct DSClient
+    internal struct DSCustomer
     {
         internal int Id { get; set; }
         internal string FirstName { get; set; }

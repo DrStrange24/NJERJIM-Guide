@@ -1,7 +1,7 @@
 ﻿
 namespace NJERJIM_Guide
 {
-    partial class Client
+    partial class Customer
     {
         /// <summary>
         ///  Required designer variable.
@@ -51,6 +51,8 @@ namespace NJERJIM_Guide
             this.clearButton = new System.Windows.Forms.Button();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numberOfCustomerValueLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -285,11 +287,31 @@ namespace NJERJIM_Guide
             this.searchLabel.TabIndex = 55;
             this.searchLabel.Text = "Search";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(355, 493);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 15);
+            this.label1.TabIndex = 57;
+            this.label1.Text = "No. of Customer:";
+            // 
+            // numberOfCustomerValueLabel
+            // 
+            this.numberOfCustomerValueLabel.AutoSize = true;
+            this.numberOfCustomerValueLabel.Location = new System.Drawing.Point(449, 493);
+            this.numberOfCustomerValueLabel.Name = "numberOfCustomerValueLabel";
+            this.numberOfCustomerValueLabel.Size = new System.Drawing.Size(13, 15);
+            this.numberOfCustomerValueLabel.TabIndex = 58;
+            this.numberOfCustomerValueLabel.Text = "0";
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.numberOfCustomerValueLabel);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.clearButton);
@@ -314,7 +336,7 @@ namespace NJERJIM_Guide
             this.Controls.Add(this.clientDataGridView);
             this.Name = "Client";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Client";
+            this.Text = "Customer";
             ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -345,6 +367,8 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Label searchLabel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label numberOfCustomerValueLabel;
     }
 }
 

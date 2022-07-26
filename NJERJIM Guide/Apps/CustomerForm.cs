@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace NJERJIM_Guide
 {
-    public partial class Client : Form
+    public partial class Customer : Form
     {
         private Sex SelectedSex 
         {
@@ -16,7 +16,7 @@ namespace NJERJIM_Guide
                 return Sex.Female;
             }
         }
-        public Client()
+        public Customer()
         {
             InitializeComponent();
             InitializeData();
@@ -26,12 +26,8 @@ namespace NJERJIM_Guide
             var db_helper = new DatabaseHelper();
             var data = db_helper.GetData($"select {DTClient.SId},{DTClient.SFirstName},{DTClient.SMiddleName},{DTClient.SLastName},{DTClient.SSex}," +
                 $"{DTClient.SContactNumber},{DTClient.SAddess} from {DTClient.Table} where {DTClient.FirstName} like '%{searchTextBox.Text}%'");
-            string row = "Row";
-            data.Columns.Add(new DataColumn(row, typeof(int)));
-            for (int i = 0; i < data.Rows.Count; i++)
-                data.Rows[i][row] = i + 1;
-            data.Columns[row].SetOrdinal(0);
             clientDataGridView.DataSource = data;
+            numberOfCustomerValueLabel.Text = data.Rows.Count.ToString();
         }
         private void clientButton_Click(object sender, EventArgs e)
         {
