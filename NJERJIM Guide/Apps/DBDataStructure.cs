@@ -87,7 +87,10 @@ namespace NJERJIM_Guide.Apps
         ///     Interest Amount.
         /// </summary>
         internal double Interest { get; set; }
-        internal double DailyPayment { get; set; }
+        /// <summary>
+        ///     return expected daily repayment
+        /// </summary>
+        internal double ExpectedDailyPayment { get; set; }
         /// <summary>
         ///     Date time in database format which is something string.
         /// </summary>
@@ -172,7 +175,7 @@ namespace NJERJIM_Guide.Apps
         {
             get
             {
-                return Convert.ToInt32(TotalDebt / DailyPayment);
+                return Convert.ToInt32(TotalDebt / ExpectedDailyPayment);
             }
         }
         /// <summary>
@@ -183,6 +186,16 @@ namespace NJERJIM_Guide.Apps
             get
             {
                 return Interest/Amount*100;
+            }
+        }
+        /// <summary>
+        ///     return expected income of expected daily payment
+        /// </summary>
+        internal double ExpectedDailyIncome
+        {
+            get 
+            { 
+                return ExpectedDailyPayment-ExpectedDailyPayment/((InterestInPercent / 100)+1);
             }
         }
 
@@ -202,7 +215,7 @@ namespace NJERJIM_Guide.Apps
                 temp_data.Item = Convert.ToString(data.Rows[i][2]);
                 temp_data.Amount = Convert.ToDouble(data.Rows[i][3]);
                 temp_data.Interest = Convert.ToDouble(data.Rows[i][4]);
-                temp_data.DailyPayment = Convert.ToDouble(data.Rows[i][5]);
+                temp_data.ExpectedDailyPayment = Convert.ToDouble(data.Rows[i][5]);
                 temp_data.DateTimeDB = Convert.ToString(data.Rows[i][6]);
                 temp_data.Remarks = Convert.ToString(data.Rows[i][7]);
                 list.Add(temp_data);
