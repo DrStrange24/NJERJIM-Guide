@@ -62,14 +62,12 @@ namespace NJERJIM_Guide
             string deadline = "Deadline";
             string deadlineInNumberOfDays = "Deadline in # of days";
             string interestInPercent = "Interest In Percent";
-            string completedBillProfit = "Completed Bill Profit";
             data.Columns.Add(new DataColumn(totalDebt, typeof(string)));
             data.Columns.Add(new DataColumn(completedBill, typeof(string)));
             data.Columns.Add(new DataColumn(outstandingBill, typeof(string)));
             data.Columns.Add(new DataColumn(deadline, typeof(string)));
             data.Columns.Add(new DataColumn(deadlineInNumberOfDays, typeof(int)));
             data.Columns.Add(new DataColumn(interestInPercent, typeof(string)));
-            data.Columns.Add(new DataColumn(completedBillProfit, typeof(string)));
             double totalProfit = 0;
             double expectedDailyCollection = 0;
             double expectedDailyIncome = 0;
@@ -83,7 +81,6 @@ namespace NJERJIM_Guide
                 loan.ExpectedDailyPayment = Convert.ToDouble(data.Rows[i][DTLoan.DDailyPayment]);
 
                 data.Rows[i][completedBill] = CurrencyFormat.ToString(loan.CompletedBill);
-                data.Rows[i][completedBillProfit] = CurrencyFormat.ToString(loan.CompletedBillProfit);
                 data.Rows[i][totalDebt] = CurrencyFormat.ToString(loan.TotalDebt);
                 data.Rows[i][DTLoan.DAmount] = CurrencyFormat.ToString(loan.Amount);
                 data.Rows[i][DTLoan.DInterest] = CurrencyFormat.ToString(loan.Interest);
@@ -128,12 +125,11 @@ namespace NJERJIM_Guide
             data.Columns[totalDebt].SetOrdinal(7);
             data.Columns[interestInPercent].SetOrdinal(8);
             data.Columns[completedBill].SetOrdinal(9);
-            data.Columns[completedBillProfit].SetOrdinal(10);
-            data.Columns[outstandingBill].SetOrdinal(11);
-            data.Columns[DTLoan.DDailyPayment].SetOrdinal(12);
-            data.Columns[deadlineInNumberOfDays].SetOrdinal(13);
-            data.Columns[deadline].SetOrdinal(14);
-            data.Columns[DTLoan.DRemarks].SetOrdinal(15);
+            data.Columns[outstandingBill].SetOrdinal(10);
+            data.Columns[DTLoan.DDailyPayment].SetOrdinal(11);
+            data.Columns[deadlineInNumberOfDays].SetOrdinal(12);
+            data.Columns[deadline].SetOrdinal(13);
+            data.Columns[DTLoan.DRemarks].SetOrdinal(14);
             totalProfitLabel.Text = CurrencyFormat.ToString(totalProfit);
             expectedDailyCollectionLabel.Text = CurrencyFormat.ToString(expectedDailyCollection);
             loanDataGridView.DataSource = data;
