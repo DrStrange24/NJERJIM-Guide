@@ -56,6 +56,10 @@ namespace NJERJIM_Guide
             this.searchByLabel = new System.Windows.Forms.Label();
             this.dateTimeCheckBox = new System.Windows.Forms.CheckBox();
             this.loanIdComboBox = new System.Windows.Forms.ComboBox();
+            this.totalIncomeValueLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.totalPrincipalValueLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.collectionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,7 +138,7 @@ namespace NJERJIM_Guide
             // 
             this.totalCollectionValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.totalCollectionValueLabel.AutoSize = true;
-            this.totalCollectionValueLabel.Location = new System.Drawing.Point(143, 414);
+            this.totalCollectionValueLabel.Location = new System.Drawing.Point(110, 414);
             this.totalCollectionValueLabel.Name = "totalCollectionValueLabel";
             this.totalCollectionValueLabel.Size = new System.Drawing.Size(0, 15);
             this.totalCollectionValueLabel.TabIndex = 48;
@@ -342,11 +346,53 @@ namespace NJERJIM_Guide
             this.loanIdComboBox.Visible = false;
             this.loanIdComboBox.SelectedIndexChanged += new System.EventHandler(this.loanIdComboBox_SelectedIndexChanged);
             // 
+            // totalIncomeValueLabel
+            // 
+            this.totalIncomeValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.totalIncomeValueLabel.AutoSize = true;
+            this.totalIncomeValueLabel.Location = new System.Drawing.Point(278, 414);
+            this.totalIncomeValueLabel.Name = "totalIncomeValueLabel";
+            this.totalIncomeValueLabel.Size = new System.Drawing.Size(0, 15);
+            this.totalIncomeValueLabel.TabIndex = 78;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(194, 414);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 15);
+            this.label2.TabIndex = 77;
+            this.label2.Text = "Total Income:";
+            // 
+            // totalPrincipalValueLabel
+            // 
+            this.totalPrincipalValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.totalPrincipalValueLabel.AutoSize = true;
+            this.totalPrincipalValueLabel.Location = new System.Drawing.Point(456, 414);
+            this.totalPrincipalValueLabel.Name = "totalPrincipalValueLabel";
+            this.totalPrincipalValueLabel.Size = new System.Drawing.Size(0, 15);
+            this.totalPrincipalValueLabel.TabIndex = 80;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(366, 414);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 15);
+            this.label3.TabIndex = 79;
+            this.label3.Text = "Total Principal:";
+            // 
             // Collection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.totalPrincipalValueLabel);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.totalIncomeValueLabel);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.loanIdComboBox);
             this.Controls.Add(this.dateTimeCheckBox);
             this.Controls.Add(this.searchByLabel);
@@ -412,5 +458,9 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label searchByLabel;
         private System.Windows.Forms.CheckBox dateTimeCheckBox;
         private System.Windows.Forms.ComboBox loanIdComboBox;
+        private System.Windows.Forms.Label totalIncomeValueLabel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label totalPrincipalValueLabel;
+        private System.Windows.Forms.Label label3;
     }
 }

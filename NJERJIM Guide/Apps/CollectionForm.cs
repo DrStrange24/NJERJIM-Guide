@@ -99,19 +99,26 @@ namespace NJERJIM_Guide
                     amount +=CurrencyFormat.ToDouble(collectionDataGridView.Rows[i].Cells["Amount"].Value);
                 totalCollectionValueLabel.Text = CurrencyFormat.ToString(amount);
             }
-            var data = db_query.GetData($"select {DTCollection.Id} as [ID],{DTCollection.LoanId} as [Loan ID],{DTClient.FirstName} as [First Name]," +
-                    $"{DTCollection.Amount} as [int_amount],{DTCollection.DateTime} as [Date],{DTCollection.Remarks} as [Remarks] from {DTCollection.Table} join {DTLoan.Table} on {DTCollection.LoanId}={DTLoan.Id} " +
-                    $"join {DTClient.Table} on {DTLoan.CustomerId}={DTClient.Id} where {SearchFilter()} {DateFilter()} order by {DTCollection.DateTime} desc;");
-            data.Columns.Add(new DataColumn("Amount", typeof(string)));
+            var data = db_query.GetData($"select {DTCollection.SId},{DTCollection.SLoanId},{DTClient.SFirstName},{DTCollection.SAmount},{DTCollection.SDateTime},{DTCollection.SRemarks} from {DTCollection.Table} " +
+                $"join {DTLoan.Table} on {DTCollection.LoanId}={DTLoan.Id} join {DTClient.Table} on {DTLoan.CustomerId}={DTClient.Id} where {SearchFilter()} {DateFilter()} order by {DTCollection.DateTime} desc;");
+            DataTableHelper.ChangeColumnDatatypes(data, DTLoan.DAmount, typeof(string));
+            double totalIncome = 0;
             for (int i = 0; i < data.Rows.Count; i++)
             {
-                data.Rows[i]["Amount"] = CurrencyFormat.ToString(data.Rows[i]["int_amount"]);
-                data.Rows[i]["Date"] = DateTimeFormatHelper.DateTimeToStringUI(data.Rows[i]["Date"]);
+                data.Rows[i][DTCollection.DAmount] = CurrencyFormat.ToString(data.Rows[i][DTCollection.DAmount]);
+                data.Rows[i][DTCollection.DDateTime] = DateTimeFormatHelper.DateTimeToStringUI(data.Rows[i][DTCollection.DDateTime]);
+
+                //to set total income
+                var repayment = new DSCollection();
+                repayment.LoanId = Convert.ToInt32(data.Rows[i][DTCollection.DLoanId]);
+                double currentLoanAmount = CurrencyFormat.ToDouble(data.Rows[i][DTCollection.DAmount]);
+                double currentLoanIncome = currentLoanAmount - currentLoanAmount / (1 + (repayment.Loan.InterestInPercent / 100));
+                totalIncome += currentLoanIncome;
             }
-            data.Columns["Amount"].SetOrdinal(3);
-            data.Columns.Remove("int_amount");
             collectionDataGridView.DataSource = data;
+            totalIncomeValueLabel.Text = CurrencyFormat.ToString(totalIncome);
             SetTotalCollection();
+            totalPrincipalValueLabel.Text = CurrencyFormat.ToString(CurrencyFormat.ToDouble(totalCollectionValueLabel.Text)-totalIncome);
         }
 
         private void backButton_Click(object sender, EventArgs e)

@@ -263,6 +263,17 @@ namespace NJERJIM_Guide.Apps
             }
         }
 
+        internal DSLoan Loan
+        {
+            get
+            {
+                var db_query = new DatabaseHelper();
+                var data = db_query.GetData($"select * from {DTLoan.Table} where {DTLoan.Id}={LoanId}");
+                var loan = DSLoan.GetList(data)[0];
+                return loan;
+            }
+        }
+
         internal static List<DSCollection> GetList(DataTable data)
         {
             var list = new List<DSCollection>();
