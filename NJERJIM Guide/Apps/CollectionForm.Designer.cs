@@ -60,6 +60,7 @@ namespace NJERJIM_Guide
             this.label2 = new System.Windows.Forms.Label();
             this.totalPrincipalValueLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.moneyFormatComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.collectionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -290,7 +291,7 @@ namespace NJERJIM_Guide
             this.toDateTimePicker.Name = "toDateTimePicker";
             this.toDateTimePicker.Size = new System.Drawing.Size(200, 23);
             this.toDateTimePicker.TabIndex = 72;
-            this.toDateTimePicker.ValueChanged += new System.EventHandler(this.fromtoDateTimePicker_ValueChanged);
+            
             // 
             // dateTimeToLabel
             // 
@@ -384,11 +385,26 @@ namespace NJERJIM_Guide
             this.label3.TabIndex = 79;
             this.label3.Text = "Total Principal:";
             // 
+            // moneyFormatComboBox
+            // 
+            this.moneyFormatComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.moneyFormatComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.moneyFormatComboBox.FormattingEnabled = true;
+            this.moneyFormatComboBox.Items.AddRange(new object[] {
+            "Finance",
+            "Pesos"});
+            this.moneyFormatComboBox.Location = new System.Drawing.Point(450, 489);
+            this.moneyFormatComboBox.Name = "moneyFormatComboBox";
+            this.moneyFormatComboBox.Size = new System.Drawing.Size(121, 23);
+            this.moneyFormatComboBox.TabIndex = 81;
+            
+            // 
             // Collection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.moneyFormatComboBox);
             this.Controls.Add(this.totalPrincipalValueLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.totalIncomeValueLabel);
@@ -462,5 +478,6 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label totalPrincipalValueLabel;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox moneyFormatComboBox;
     }
 }

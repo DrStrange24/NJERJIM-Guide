@@ -26,6 +26,7 @@ namespace NJERJIM_Guide
         {
             void SetDataGridView()
             {
+
                 void SetSearchLoanIdComboBox()
                 {
                     var data = db_query.GetData($"select {DTLoan.Id} from {DTLoan.Table}");
@@ -33,23 +34,21 @@ namespace NJERJIM_Guide
                         loanIdComboBox.Items.Add(data.Rows[i][0]);
                     loanIdComboBox.SelectedIndex = 0;
                 }
-
                 searchByComboBox.SelectedIndex = 1;
                 fromDateTimePicker.Enabled = false;
                 toDateTimePicker.Enabled = false;
                 fromDateTimePicker.Value = DateTime.Now.Date;
                 toDateTimePicker.Value = DateTime.Now.Date.AddDays(1).AddMilliseconds(-1);
                 SetSearchLoanIdComboBox();
-            }
-            void SetTotalCollection()
-            {
-                var data = db_query.GetData($"select * from {DTCollection.Table}");
-                totalCollectionValueLabel.Text = CurrencyFormat.ToString(DSCollection.TotalAmount(DSCollection.GetList(data)));
+                moneyFormatComboBox.SelectedIndex = 0;
             }
             
             SetDataGridView();
-            SetTotalCollection();
             SetComboBoxItems();
+            FilterDataGridView();
+
+            this.moneyFormatComboBox.SelectedIndexChanged += new System.EventHandler(this.moneyFormatComboBox_SelectedIndexChanged);
+            this.toDateTimePicker.ValueChanged += new System.EventHandler(this.fromtoDateTimePicker_ValueChanged);
         }
         private void SetComboBoxItems()
         {
@@ -92,20 +91,38 @@ namespace NJERJIM_Guide
                 }
                 return dateRange;
             }
-            void SetTotalCollection()
+            object MoneyFormat(object money)
             {
-                double amount = 0;
-                for(int i=0;i< collectionDataGridView.Rows.Count; i++)
-                    amount +=CurrencyFormat.ToDouble(collectionDataGridView.Rows[i].Cells["Amount"].Value);
-                totalCollectionValueLabel.Text = CurrencyFormat.ToString(amount);
+                switch (moneyFormatComboBox.SelectedItem.ToString())
+                {
+                    case "Finance":
+                        return Convert.ToDouble(money);
+                    case "Pesos":
+                        return CurrencyFormat.ToString(money);
+                }
+                return 0;
             }
+            Type MoneyDataTypes()
+            {
+                switch (moneyFormatComboBox.SelectedItem.ToString())
+                {
+                    case "Finance":
+                        return typeof(double);
+                    case "Pesos":
+                        return typeof(string);
+                }
+                return null;
+            }
+            Func<int> getRandomNumber = () => new Random().Next(1, 100);
+            getRandomNumber();
             var data = db_query.GetData($"select {DTCollection.SId},{DTCollection.SLoanId},{DTClient.SFirstName},{DTCollection.SAmount},{DTCollection.SDateTime},{DTCollection.SRemarks} from {DTCollection.Table} " +
                 $"join {DTLoan.Table} on {DTCollection.LoanId}={DTLoan.Id} join {DTClient.Table} on {DTLoan.CustomerId}={DTClient.Id} where {SearchFilter()} {DateFilter()} order by {DTCollection.DateTime} desc;");
-            DataTableHelper.ChangeColumnDatatypes(data, DTLoan.DAmount, typeof(string));
+            DataTableHelper.ChangeColumnDatatypes(data, DTLoan.DAmount, MoneyDataTypes());
             double totalIncome = 0;
+            double totalCollection = 0;
             for (int i = 0; i < data.Rows.Count; i++)
             {
-                data.Rows[i][DTCollection.DAmount] = CurrencyFormat.ToString(data.Rows[i][DTCollection.DAmount]);
+                data.Rows[i][DTCollection.DAmount] = MoneyFormat(data.Rows[i][DTCollection.DAmount]);
                 data.Rows[i][DTCollection.DDateTime] = DateTimeFormatHelper.DateTimeToStringUI(data.Rows[i][DTCollection.DDateTime]);
 
                 //to set total income
@@ -114,10 +131,11 @@ namespace NJERJIM_Guide
                 double currentLoanAmount = CurrencyFormat.ToDouble(data.Rows[i][DTCollection.DAmount]);
                 double currentLoanIncome = currentLoanAmount - currentLoanAmount / (1 + (repayment.Loan.InterestInPercent / 100));
                 totalIncome += currentLoanIncome;
+                totalCollection += currentLoanAmount;
             }
             collectionDataGridView.DataSource = data;
             totalIncomeValueLabel.Text = CurrencyFormat.ToString(totalIncome);
-            SetTotalCollection();
+            totalCollectionValueLabel.Text = CurrencyFormat.ToString(totalCollection);
             totalPrincipalValueLabel.Text = CurrencyFormat.ToString(CurrencyFormat.ToDouble(totalCollectionValueLabel.Text)-totalIncome);
         }
 
@@ -285,6 +303,11 @@ namespace NJERJIM_Guide
                 collectButton.Text = "Save";
             else
                 collectButton.Text = "Collect";
+        }
+
+        private void moneyFormatComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterDataGridView();
         }
     }
 }
