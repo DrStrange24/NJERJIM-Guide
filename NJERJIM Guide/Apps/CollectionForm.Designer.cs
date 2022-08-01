@@ -61,6 +61,7 @@ namespace NJERJIM_Guide
             this.totalPrincipalValueLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.moneyFormatComboBox = new System.Windows.Forms.ComboBox();
+            this.importButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.collectionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -291,7 +292,6 @@ namespace NJERJIM_Guide
             this.toDateTimePicker.Name = "toDateTimePicker";
             this.toDateTimePicker.Size = new System.Drawing.Size(200, 23);
             this.toDateTimePicker.TabIndex = 72;
-            
             // 
             // dateTimeToLabel
             // 
@@ -397,13 +397,24 @@ namespace NJERJIM_Guide
             this.moneyFormatComboBox.Name = "moneyFormatComboBox";
             this.moneyFormatComboBox.Size = new System.Drawing.Size(121, 23);
             this.moneyFormatComboBox.TabIndex = 81;
-            
+            // 
+            // importButton
+            // 
+            this.importButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.importButton.Location = new System.Drawing.Point(830, 266);
+            this.importButton.Name = "importButton";
+            this.importButton.Size = new System.Drawing.Size(75, 23);
+            this.importButton.TabIndex = 82;
+            this.importButton.Text = "Import";
+            this.importButton.UseVisualStyleBackColor = true;
+            this.importButton.Click += new System.EventHandler(this.importButton_Click);
             // 
             // Collection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.importButton);
             this.Controls.Add(this.moneyFormatComboBox);
             this.Controls.Add(this.totalPrincipalValueLabel);
             this.Controls.Add(this.label3);
@@ -479,5 +490,6 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label totalPrincipalValueLabel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox moneyFormatComboBox;
+        private System.Windows.Forms.Button importButton;
     }
 }

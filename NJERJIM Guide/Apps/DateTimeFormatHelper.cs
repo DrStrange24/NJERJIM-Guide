@@ -62,5 +62,9 @@ namespace NJERJIM_Guide.Apps
         {
             return dateTime.ToString("dddd");
         }
+        internal static string ToGoogleSheet(DateTime dateTime)
+        {
+            return dateTime.ToString("MMMM-dd-yyyy");
+        }
     }
 }
