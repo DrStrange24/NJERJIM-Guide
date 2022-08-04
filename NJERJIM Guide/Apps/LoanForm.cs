@@ -122,6 +122,19 @@ namespace NJERJIM_Guide
                             totalProfitReceive += loan.CompletedBillProfit;
                         }
                         break;
+                    case "Overdue Payment":
+                        //if datetime now is not greater than deadline then remove from the list
+                        if (loan.IsFullyPaid || DateTime.Now.Date<=loan.DeadLine)
+                        {
+                            data.Rows.RemoveAt(i);
+                            i--;
+                        }
+                        else
+                        {
+                            totalLoanCapital += loan.Amount;
+                            totalProfitReceive += loan.CompletedBillProfit;
+                        }
+                        break;
                 }
             }
             data.Columns[DTLoan.DDateTime].SetOrdinal(3);

@@ -196,13 +196,13 @@ namespace NJERJIM_Guide
             this.totalLoanLabel.TabIndex = 49;
             this.totalLoanLabel.Text = "Total Loan:";
             // 
-            // clientComboBox
+            // customersComboBox
             // 
             this.customersComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.customersComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.customersComboBox.FormattingEnabled = true;
             this.customersComboBox.Location = new System.Drawing.Point(1046, 42);
-            this.customersComboBox.Name = "clientComboBox";
+            this.customersComboBox.Name = "customersComboBox";
             this.customersComboBox.Size = new System.Drawing.Size(280, 23);
             this.customersComboBox.TabIndex = 51;
             // 
@@ -328,7 +328,8 @@ namespace NJERJIM_Guide
             this.paidComboBox.Items.AddRange(new object[] {
             "All Records",
             "Completed",
-            "Active"});
+            "Active",
+            "Overdue Payment"});
             this.paidComboBox.Location = new System.Drawing.Point(355, 624);
             this.paidComboBox.Name = "paidComboBox";
             this.paidComboBox.Size = new System.Drawing.Size(144, 23);
