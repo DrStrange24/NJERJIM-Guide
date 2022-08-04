@@ -31,13 +31,13 @@ namespace NJERJIM_Guide
         {
             var db_helper = new DatabaseHelper();
             var data = db_helper.GetData($"select {DTClient.Id},{DTClient.FirstName} from {DTClient.Table};");
-            clientComboBox.Items.Clear();
+            customersComboBox.Items.Clear();
             for (int i = 0; i < data.Rows.Count; i++)
             {
                 var client = new DSCustomer();
                 client.Id = Convert.ToInt32(data.Rows[i][0]);
                 client.FirstName = Convert.ToString(data.Rows[i][1]);
-                clientComboBox.Items.Add(client.Id + " - " + client.FirstName);
+                customersComboBox.Items.Add(client.Id + " - " + client.FirstName);
             }
         }
         private void SetDataGridView()
@@ -154,18 +154,41 @@ namespace NJERJIM_Guide
         {
             bool ValidInputs()
             {
-                if (clientComboBox.SelectedIndex < 0 || string.IsNullOrWhiteSpace(amountTextBox.Text) || string.IsNullOrWhiteSpace(interestTextBox.Text) || string.IsNullOrWhiteSpace(dailyPaymentTextBox.Text))
+                if (customersComboBox.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Please select a customers ID");
                     return false;
+                }
+
+                if(string.IsNullOrWhiteSpace(amountTextBox.Text))
+                {
+                    MessageBox.Show("Please Insert an amount");
+                    return false;
+                }
+
+                if (string.IsNullOrWhiteSpace(interestTextBox.Text))
+                {
+                    MessageBox.Show("Please Insert an interest");
+                    return false;
+                }
+
+                if (string.IsNullOrWhiteSpace(dailyPaymentTextBox.Text))
+                {
+                    MessageBox.Show("Please Insert a dailay payment");
+                    return false;
+                }
 
                 bool IsSupplyAvailable()
                 {
                     var summary = new SummaryHelper();
                     if (CurrencyFormat.ToDouble(summary.CashOnHand) - CurrencyFormat.ToDouble(amountTextBox.Text)>0)
                         return true;
+                    MessageBox.Show("Supply is not available.");
                     return false;
                 }
-                if (!IsSupplyAvailable())
-                    return false;
+
+                if (!IsSupplyAvailable()) return false;
+
                 return true;
             }
 
@@ -177,7 +200,7 @@ namespace NJERJIM_Guide
                         return "null";
                     return $"'{itemTextBox.Text}'";
                 }
-                int client_id = Convert.ToInt32(clientComboBox.SelectedItem.ToString().Split(" - ")[0]);
+                int client_id = Convert.ToInt32(customersComboBox.SelectedItem.ToString().Split(" - ")[0]);
                 var db_helper = new DatabaseHelper();
                 switch (loanButton.Text)
                 {
@@ -195,8 +218,6 @@ namespace NJERJIM_Guide
                 SetDataGridView();
                 clearInputsButton_Click(null, null);
             }
-            else
-                MessageBox.Show("Invalid inputs");
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -218,7 +239,7 @@ namespace NJERJIM_Guide
             idLabel.Visible = false;
             selectedIdLabel.Visible = false;
             selectedIdLabel.Text = null;
-            clientComboBox.SelectedIndex = -1;
+            customersComboBox.SelectedIndex = -1;
             amountTextBox.Text = string.Empty;
             loanDateTimePicker.Value = DateTime.Now;
             remarksRichTextBox.Text = string.Empty;
@@ -242,8 +263,8 @@ namespace NJERJIM_Guide
                 void SetClientComboBox()
                 {
                     var selected_client = selectedRow[DTLoan.DCustomerId].Value + " - " + selectedRow[DTClient.DFirstName].Value;
-                    clientComboBox.Items.Add(selected_client);
-                    clientComboBox.SelectedItem = selected_client;
+                    customersComboBox.Items.Add(selected_client);
+                    customersComboBox.SelectedItem = selected_client;
                 }
                 this.SetClientComboBox();
                 SetClientComboBox();
