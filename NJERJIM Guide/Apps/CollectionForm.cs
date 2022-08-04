@@ -199,12 +199,12 @@ namespace NJERJIM_Guide
                 clearInputsButton_Click(null, null);
                 loanComboBox.SelectedItem = loan;// so that selected loan will not reset after collect button is clicked
 
-                NotifyCompleteAndOverduePaymentLoan(loan_id);
+                NotifyCompleteOrOverPaymentLoan(loan_id);
             }
        
         }
 
-        public static void NotifyCompleteAndOverduePaymentLoan(int loanId)
+        public static void NotifyCompleteOrOverPaymentLoan(int loanId)
         {
             DSCollection collection = new DSCollection();
             collection.LoanId = loanId;
