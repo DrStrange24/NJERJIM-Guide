@@ -97,6 +97,9 @@ namespace NJERJIM_Guide.Apps
         internal string DateTimeDB { get; set; }
         internal string Remarks { get; set; }
 
+        /// <summary>
+        ///     totaldebt is the amount plus interest in total.
+        /// </summary>
         internal double TotalDebt
         {
             get
@@ -105,7 +108,7 @@ namespace NJERJIM_Guide.Apps
             }
         }
         /// <summary>
-        ///     how much money has the client already paid you.
+        ///     how much money has the customer already paid you.
         /// </summary>
         internal double CompletedBill
         {

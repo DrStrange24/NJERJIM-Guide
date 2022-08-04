@@ -198,10 +198,20 @@ namespace NJERJIM_Guide
                 SetComboBoxItems();
                 clearInputsButton_Click(null, null);
                 loanComboBox.SelectedItem = loan;// so that selected loan will not reset after collect button is clicked
+
+                NotifyCompleteAndOverduePaymentLoan(loan_id);
             }
        
         }
 
+        public static void NotifyCompleteAndOverduePaymentLoan(int loanId)
+        {
+            DSCollection collection = new DSCollection();
+            collection.LoanId = loanId;
+            var loan = collection.Loan;
+            if (loan.IsFullyPaid) MessageBox.Show($"Loan ID: {loan.Id} has completed the loan.");
+            if (loan.CompletedBill > loan.TotalDebt) MessageBox.Show($"Loan ID: {loan.Id} has an overpayment.");
+        }
         private void clearInputsButton_Click(object sender, EventArgs e)
         {
             SetComboBoxItems();
