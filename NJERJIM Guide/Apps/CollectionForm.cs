@@ -199,8 +199,6 @@ namespace NJERJIM_Guide
                 clearInputsButton_Click(null, null);
                 loanComboBox.SelectedItem = loan;// so that selected loan will not reset after collect button is clicked
             }
-            else
-                MessageBox.Show("Invalid inputs");
        
         }
 
