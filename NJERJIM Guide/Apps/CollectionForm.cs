@@ -164,8 +164,17 @@ namespace NJERJIM_Guide
         {
             bool ValidInputs()
             {
-                if (loanComboBox.SelectedIndex < 0 || string.IsNullOrWhiteSpace(amountTextBox.Text))
+                if(loanComboBox.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Please select a loan account");
                     return false;
+                }
+                if (string.IsNullOrWhiteSpace(amountTextBox.Text))
+                {
+                    MessageBox.Show("Please insert an amount");
+                    return false;
+                }
+
                 return true;
             }
 
