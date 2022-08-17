@@ -43,15 +43,26 @@ namespace NJERJIM_Guide.Apps
             if (values != null && values.Count > 0)
             {
                 var db_helper = new DatabaseHelper();
-                foreach (var row in values)
+
+                Dictionary<string, int> getRowHeader()
                 {
+                    var rowHeader = new Dictionary<string, int>();
+                    var columnHeader = values[0];
+                    //loop all the column header and save the index of a specified column
+                    for (int i = 0; i < columnHeader.Count; i++)
+                        rowHeader.Add(columnHeader[i].ToString(), i);
+                    return rowHeader;
+                }
+                var rowHeader = getRowHeader();
+
+                for (int i = 1; i < values.Count; i++)
+                {
+                    var row = values[i];
                     DSCollection collection = new DSCollection();
 
-                    collection.LoanId = Convert.ToInt32(row[0]);
-                    collection.Amount = Convert.ToDouble(row[2]);
-
-                    if (row.Count > 3) collection.Remarks = Convert.ToString(row[3]);
-                    else collection.Remarks = "";
+                    collection.LoanId = Convert.ToInt32(row[rowHeader["Loan ID"]]);
+                    collection.Amount = Convert.ToDouble(row[rowHeader["Amount"]]);
+                    collection.Remarks = Convert.ToString(row[rowHeader["Remarks"]]);
 
                     bool ValidInputs()
                     {
@@ -66,15 +77,13 @@ namespace NJERJIM_Guide.Apps
                             $"VALUES({collection.LoanId}, {collection.Amount}, '{DateTimeFormatHelper.DateTimeToStringDB(SheetName)}','{collection.Remarks}');");
                     }
                     else
-                        MessageBox.Show($"ID: {collection.LoanId} has invalid inputs.");
+                        MessageBox.Show($"ID: {collection.LoanId} has an invalid inputs.");
 
                     Collection.NotifyCompleteOrOverpaidLoan(collection.LoanId);
                 }
             }
             else
-            {
                 MessageBox.Show("No data found.");
-            }
         }
     }
 }
