@@ -330,7 +330,7 @@ namespace NJERJIM_Guide
         private void importButton_Click(object sender, EventArgs e)
         {
             GoogleSheetHelper gsheetHelper = new GoogleSheetHelper();
-            gsheetHelper.ImportData(collectionDateTimePicker.Value, "A3:D1000");
+            gsheetHelper.ImportData(collectionDateTimePicker.Value, sheetRangeTextBox.Text);
             FilterDataGridView();
         }
     }

@@ -62,6 +62,8 @@ namespace NJERJIM_Guide
             this.label3 = new System.Windows.Forms.Label();
             this.moneyFormatComboBox = new System.Windows.Forms.ComboBox();
             this.importButton = new System.Windows.Forms.Button();
+            this.sheetRangeTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.collectionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -401,7 +403,7 @@ namespace NJERJIM_Guide
             // importButton
             // 
             this.importButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.importButton.Location = new System.Drawing.Point(830, 266);
+            this.importButton.Location = new System.Drawing.Point(911, 297);
             this.importButton.Name = "importButton";
             this.importButton.Size = new System.Drawing.Size(75, 23);
             this.importButton.TabIndex = 82;
@@ -409,11 +411,32 @@ namespace NJERJIM_Guide
             this.importButton.UseVisualStyleBackColor = true;
             this.importButton.Click += new System.EventHandler(this.importButton_Click);
             // 
+            // sheetRangeTextBox
+            // 
+            this.sheetRangeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.sheetRangeTextBox.Location = new System.Drawing.Point(706, 268);
+            this.sheetRangeTextBox.Name = "sheetRangeTextBox";
+            this.sheetRangeTextBox.Size = new System.Drawing.Size(280, 23);
+            this.sheetRangeTextBox.TabIndex = 83;
+            this.sheetRangeTextBox.Text = "A2:F1000";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(575, 271);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 15);
+            this.label1.TabIndex = 84;
+            this.label1.Text = "Sheet Range";
+            // 
             // Collection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 524);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.sheetRangeTextBox);
             this.Controls.Add(this.importButton);
             this.Controls.Add(this.moneyFormatComboBox);
             this.Controls.Add(this.totalPrincipalValueLabel);
@@ -491,5 +514,7 @@ namespace NJERJIM_Guide
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox moneyFormatComboBox;
         private System.Windows.Forms.Button importButton;
+        private System.Windows.Forms.TextBox sheetRangeTextBox;
+        private System.Windows.Forms.Label label1;
     }
 }
