@@ -82,7 +82,7 @@ namespace NJERJIM_Guide
                 data.Rows[i][DTLoan.DDateTime] = DateTimeFormatHelper.DateTimeToStringUI(data.Rows[i][DTLoan.DDateTime]);
                 data.Rows[i][deadline] = DateTimeFormatHelper.DateTimeToStringUI(loan.DeadLine);
                 data.Rows[i][deadlineInNumberOfDays] = loan.DeadlineInDays;
-                data.Rows[i][DTLoan.DDailyPayment] = CurrencyFormat.ToString(loan.ExpectedDailyPayment);
+                data.Rows[i][DTLoan.DDailyPayment] = Convert.ToString(loan.ExpectedDailyPayment);
                 data.Rows[i][interestInPercent] = loan.InterestInPercent + "%";
 
                 if (!loan.IsFullyPaid)
