@@ -68,7 +68,7 @@ namespace NJERJIM_Guide.Apps
                     else
                         MessageBox.Show($"ID: {collection.LoanId} has invalid inputs.");
 
-                    Collection.NotifyCompleteOrOverPaymentLoan(collection.LoanId);
+                    Collection.NotifyCompleteOrOverpaidLoan(collection.LoanId);
                 }
             }
             else

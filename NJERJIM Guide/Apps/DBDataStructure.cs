@@ -100,7 +100,7 @@ namespace NJERJIM_Guide.Apps
         /// <summary>
         ///     totaldebt is the amount plus interest in total.
         /// </summary>
-        internal double TotalDebt
+        internal double TotalDue
         {
             get
             {
@@ -136,14 +136,14 @@ namespace NJERJIM_Guide.Apps
         {
             get
             {
-                return TotalDebt - CompletedBill;
+                return TotalDue - CompletedBill;
             }
         }
         internal bool IsFullyPaid
         {
             get
             {
-                if (TotalDebt == CompletedBill)
+                if (TotalDue == CompletedBill)
                     return true;
                 return false;
             }
@@ -178,7 +178,7 @@ namespace NJERJIM_Guide.Apps
         {
             get
             {
-                return Convert.ToInt32(TotalDebt / ExpectedDailyPayment);
+                return Convert.ToInt32(TotalDue / ExpectedDailyPayment);
             }
         }
         /// <summary>

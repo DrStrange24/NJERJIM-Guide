@@ -75,7 +75,7 @@ namespace NJERJIM_Guide
                 loan.ExpectedDailyPayment = Convert.ToDouble(data.Rows[i][DTLoan.DDailyPayment]);
 
                 data.Rows[i][completedBill] = CurrencyFormat.ToString(loan.CompletedBill);
-                data.Rows[i][totalDebt] = CurrencyFormat.ToString(loan.TotalDebt);
+                data.Rows[i][totalDebt] = CurrencyFormat.ToString(loan.TotalDue);
                 data.Rows[i][DTLoan.DAmount] = CurrencyFormat.ToString(loan.Amount);
                 data.Rows[i][DTLoan.DInterest] = CurrencyFormat.ToString(loan.Interest);
                 data.Rows[i][outstandingBill] = CurrencyFormat.ToString(loan.OutstandingBill);
