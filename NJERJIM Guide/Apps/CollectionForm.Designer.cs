@@ -418,7 +418,7 @@ namespace NJERJIM_Guide
             this.sheetRangeTextBox.Name = "sheetRangeTextBox";
             this.sheetRangeTextBox.Size = new System.Drawing.Size(280, 23);
             this.sheetRangeTextBox.TabIndex = 83;
-            this.sheetRangeTextBox.Text = "A2:F1000";
+            this.sheetRangeTextBox.Text = "A2:H1000";
             // 
             // label1
             // 
