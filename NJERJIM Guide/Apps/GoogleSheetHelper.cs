@@ -62,7 +62,7 @@ namespace NJERJIM_Guide.Apps
 
                     collection.LoanId = Convert.ToInt32(row[rowHeader["Loan ID"]]);
                     collection.Amount = Convert.ToDouble(row[rowHeader["Amount"]]);
-                    collection.Remarks = Convert.ToString(row[rowHeader["Remarks"]]);
+                    collection.Remarks = row.Count == rowHeader.Count? Convert.ToString(row[rowHeader["Remarks"]]) : "";
 
                     bool ValidInputs()
                     {
